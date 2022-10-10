@@ -8,7 +8,7 @@ req_pkgs <- c("dplyr", "stringr", "data.table", "yaml", "openxlsx","rmarkdown",
 
 
 #uncomment if package installs are needed
-# utils::install.packages(req_pkgs, dependencies = TRUE)
+ utils::install.packages(req_pkgs, dependencies = TRUE)
 
 devtools::install_github(
   "nhsbsa-data-analytics/gphsR",
@@ -63,35 +63,35 @@ write.csv(icb_extract,"icb_extract.csv")
 ref_data <- list()
 
 # import 2015/16 flu data not held in DWH
-ref_data$flu_data_1516 <- dplyr::select(
+ref_data$flu_data_1516v1 <- dplyr::select(
   data.table::fread(list.files("./Ref/Flu",full.names = TRUE)),
-  FINANCIAL_YEAR,	,num_flu_pharm,	flu_items_total,	flu_cost_total,	flu_fees_total
+  FINANCIAL_YEAR,APPLIANCE_DISPENSER_HIST,num_flu_pharm,	flu_items_total,	flu_cost_total,	flu_fees_total
 )
 
-flu_data<- national_extract %>%
-  filter(APPLIANCE_DISPENSER_HIST == "N") %>%
+national_extract<- national_extract %>%
+  #filter(APPLIANCE_DISPENSER_HIST == "N") %>%
   # join the 15/16 flu csv data to main data on year and dispenser code
   left_join(
     ref_data$flu_data_1516,
-    by = c("FINANCIAL_YEAR"),
+    by = c("FINANCIAL_YEAR","APPLIANCE_DISPENSER_HIST"),
     suffix = c("_dwh","_csv")
   )
-#%>%
-  # # compute final flu columns, replacing NAs with 0
-  # mutate(num_flu_pharm = case_when(FINANCIAL_YEAR == "2015/2016" ~ num_flu_pharm_csv,
-  #                         TRUE ~ num_flu_pharm_dwh),
-  #   flu_items_total = case_when(FINANCIAL_YEAR == "2015/2016" ~ flu_items_total_csv,
-  #                         TRUE ~ flu_items_total_dwh),
-  #   flu_cost_total = case_when(FINANCIAL_YEAR == "2015/2016" ~ flu_cost_total_csv,
-  #                        TRUE ~ flu_cost_total_dwh),
-  #   flu_fees_total = case_when(FINANCIAL_YEAR == "2015/2016" ~ flu_fees_total_csv,
-  #                        TRUE ~ flu_fees_total_dwh)
-  # ) %>%
-  # # drop excess cols
-  # select(-(ends_with("_csv")),-(ends_with("_dwh")))
+# %>%
+# # compute final flu columns, replacing NAs with 0
+# mutate(num_flu_pharm = case_when(FINANCIAL_YEAR == "2015/2016" ~ num_flu_pharm_csv,
+#                         TRUE ~ num_flu_pharm_dwh),
+#   flu_items_total = case_when(FINANCIAL_YEAR == "2015/2016" ~ flu_items_total_csv,
+#                         TRUE ~ flu_items_total_dwh),
+#   flu_cost_total = case_when(FINANCIAL_YEAR == "2015/2016" ~ flu_cost_total_csv,
+#                        TRUE ~ flu_cost_total_dwh),
+#   flu_fees_total = case_when(FINANCIAL_YEAR == "2015/2016" ~ flu_fees_total_csv,
+#                        TRUE ~ flu_fees_total_dwh)
+# ) %>%
+# # drop excess cols
+# select(-(ends_with("_csv")),-(ends_with("_dwh")))
 
-#rlang::last_error()
-#rlang::last_trace()
+rlang::last_error()
+rlang::last_trace()
 
 # 5. write data to .xlsx -
 
@@ -100,10 +100,10 @@ flu_data<- national_extract %>%
 # 7. Automate Narrative - tba
 
 # 8. render markdown ------------------------------------------------------
-  rmarkdown::render("gphs-narrative-markdown.Rmd",
+  rmarkdown::render("gphs_annual_narrative.Rmd",
                     output_format = "html_document",
                     output_file = "outputs/gphs_annual_2021_22_v001.html")
 
-  rmarkdown::render("gphs-narrative-markdown.Rmd",
+  rmarkdown::render("gphs_annual_narrative.Rmd",
                     output_format = "word_document",
                     output_file = "outputs/gphs_annual_2021_22_v001.docx")

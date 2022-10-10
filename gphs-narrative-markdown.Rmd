@@ -725,7 +725,7 @@ The fee for providing the Community Pharmacist Consultation Service is £14 (inc
 <!-- ``` -->
 <!-- Source: [Summary Tables - General Pharmaceutical Services - Table 2](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2021-summary-tables-v001.xlsx) -->
 
-No data prior to 2019/20 is available for Community Pharmacy Consultation Services. A total of 896,000 Community Pharmacist Consultation Service and 136% increase on the 380,000 claimed in 2020/21.
+No data prior to 2019/20 is available for Community Pharmacy Consultation Services. 
 
 #### **`r paste0("Figure ",14,": Total Cost of Community Pharmacy Consultation Services 2021/22")`**
 ```{r cspc fee cost}
@@ -757,7 +757,7 @@ Source: [Summary Tables - General Pharmaceutical Services - Table 2](https://nhs
 The cost of fees paid for Community Pharmacy Consultation Services in 2021/22 was £12.5 million, a 81.4% increase on the £5.31 million  claimed in 2020/21.
 
 #### **`r paste0("Figure ",15,": Total Cost of GP referral pathway to the Community Pharmacist Consultation Service engagement fees")`**
-```{r cspc drug cost}
+```{r gp reffee cost}
 national_extract %>%
   filter(APPLIANCE_DISPENSER_HIST == "N",
          FINANCIAL_YEAR %in% c("2020/2021","2021/2022")) %>% 
@@ -896,7 +896,6 @@ The cost of Hepatitis C testing service fees administered by community pharmacie
 
 Hypertension Case-Finding is an Advanced Service in the NHS Community Pharmacy Contractual Framework (CPCF). The service was introduced in October 2021 following a NHS England pilot where pharmacies offered blood pressure checks to people 40 years and over and 24 hour ambulatory blood pressure monitoring (ABPM) to some patient's with elevated initial blood pressure readings.
 
-
 Pharmacy contractors who have signed up to deliver the NHS Community Pharmacy Hypertension Case-Finding Advanced Service qualify for a set up payment of £440 to support initial costs incurred in setting up the service.
 
 A fee of £15 will be paid for each patient receiving a clinic blood pressure check. A fee of £45 will be paid for ABPM provided to a patient. 
@@ -908,6 +907,8 @@ Additionally, pharmacy contractors who deliver the following minimum number of A
 ```{r HYPTENCHECK_FEES}
 
 national_month_extract %>%
+  
+  filter(YEAR_MONTH >202109) %>% 
   dplyr::select(YEAR_MONTH,HYPTENCHECK_FEES) %>%
   summarise(HYPTENCHECK_FEES = sum(HYPTENCHECK_FEES))  %>%
   tidyr::pivot_longer(cols = HYPTENCHECK_FEES,
@@ -942,6 +943,8 @@ The cost of Hypertension Case-Finding Advanced Service fees in 2021/22 was £3.4
 ```{r HYPTENSET_FEES}
 
 national_month_extract %>%
+  
+  filter(YEAR_MONTH >202107) %>% 
   dplyr::select(YEAR_MONTH,HYPTENSET_FEES) %>%
   summarise(HYPTENSET_FEES = sum(HYPTENSET_FEES))  %>%
   tidyr::pivot_longer(cols = HYPTENSET_FEES,
@@ -976,6 +979,8 @@ The cost of Hypertension Case-Finding Advanced Service Set up payments in 2021/2
 ```{r HYPTEN_INC}
 
 national_month_extract %>%
+  
+  filter(YEAR_MONTH >202109) %>% 
   dplyr::select(YEAR_MONTH,HYPTEN_INC) %>%
   summarise(HYPTEN_INC = sum(HYPTEN_INC))  %>%
   tidyr::pivot_longer(cols = HYPTEN_INC,
@@ -1092,8 +1097,8 @@ From 4 October 2021 there were two service fees:
 * A service fee of £1.70 + VAT per transaction using a collect code
 * A service fee of £1.20 + VAT per transaction not using a collect code.
 
-#### **`r paste0("Figure ",24,": Total Cost of ommunity Pharmacy Covid-19 Lateral Flow Device Distribution Services fees 2021/22")`**
-```{r advanced services home cost}
+#### **`r paste0("Figure ",24,": Total Cost of Community Pharmacy Covid-19 Lateral Flow Device Distribution Services fees 2021/22")`**
+```{r cvd_test_kit}
 national_month_extract %>%
   filter(APPLIANCE_DISPENSER_HIST == "N") %>% 
   dplyr::select(YEAR_MONTH,CVDTEST_KITS) %>%
@@ -1220,7 +1225,7 @@ national_month_extract %>%
 
 Source: [Summary Tables - General Pharmaceutical Services - Table 2](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2021-summary-tables-v001.xlsx)
 
-The costs of COVID-19 vaccines fees in 2021/22 were £334 million, with a peak in Autumn when Phase 3 launched.
+The costs of COVID-19 vaccines fees in 2021/22 were £334 million, with a peak in autumn when Phase 3 launched.
 
 
 ---
@@ -1275,7 +1280,7 @@ Changes to the NHS Organisational Structure mean that Integrated care boards (IC
 <!-- Further information on the methodology used in this publication and more background information is available in the [Background Information and Methodology](https://www.nhsbsa.nhs.uk/sites/default/files/2021-10/gps_2021_background_information_methodology_v001.pdf) supporting document that accompanies this release. -->
 
 ### 3.2. Accuracy of these statistics {.toc-ignore}
- {.toc-ignore}
+
 
 Further information on the accuracy of the data used in this publication and the impact of post payment verification (PPV) and other checks carried out by NHS Prescription Services (a division of NHSBSA) on the statistics is available in the [Impacts of errors identified on the accuracy of the General Pharmaceutical Services](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2021-accuracy-v001.html) supporting document that accompanies this release.
 
