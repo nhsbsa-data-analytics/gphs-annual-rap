@@ -133,7 +133,7 @@ Prescription forms include both paper prescriptions and electronic messages sent
 
 There are many costs incurred when a dispensing contractor fulfils a prescription. The term cost refers to the basic price of the item and quantity prescribed that is reimbursed back to the contractor. This is sometimes called the 'Net Ingredient Cost' (NIC). Costs paid to contractors to cover the cost of dispensed items are referred to as reimbursement.
 
-Fees are also payable to dispensing contractors for dispensing and for providing essential and advanced services to NHS patients. Many, but not all, fees are described in these summary statistics alongside their accompanying [summary tables](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx). Details of what fees are payable to community pharmacies and appliance contractors can be found in the [Drug Tariff for England and Wales](https://www.nhsbsa.nhs.uk/pharmacies-gp-practices-and-appliance-contractors/drug-tariff). Fee payments to dispensing contractors for prescribing and other services are known as remuneration.
+Fees are also payable to dispensing contractors for dispensing and for providing essential and advanced services to NHS patients. Many, but not all, fees are described in these summary statistics alongside their accompanying [summary tables](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx). Details of what fees are payable to community pharmacies and appliance contractors can be found in the [Drug Tariff for England and Wales](https://www.nhsbsa.nhs.uk/pharmacies-gp-practices-and-appliance-contractors/drug-tariff). Fee payments to dispensing contractors for prescribing and other services are known as remuneration.
 
 Further definitions of terms used in this publication can be found in the Glossary of the [Background Information and Methodology](https://www.nhsbsa.nhs.uk/statistical-collections/general-pharmaceutical-services-england/general-pharmaceutical-services-england-201516-202122) supporting document that accompanies this release.
 
@@ -170,7 +170,7 @@ national_extract %>%
     
   )
 ```
-Source: [Summary Tables - General Pharmaceutical Services - Table 1](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx)
+Source: [Summary Tables - General Pharmaceutical Services - Table 1](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx)
 
 The number of community pharmacies and appliance contractors in England has remained fairly consistent for the past six years. However, the number of active community pharmacies in 2021/22 is the lowest it has been in the previous six years. This follows three consecutive years of decreases, with the number of community pharmacies decreasing by 3.76% between 2017/18 and 2021/22.
 
@@ -199,7 +199,7 @@ national_extract %>%
     
   )
 ```
-Source: [Summary Tables - General Pharmaceutical Services - Table 3 and 10](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx)
+Source: [Summary Tables - General Pharmaceutical Services - Table 3 and 10](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx)
 
 The number of items dispensed by community pharmacies in England between 2020/21 and 2021/22 increased by 2.59% from 1.02 billion to 1.04 billion. Overall, the number of items dispensed is 4.80% higher than the 995 million items dispensed in 2015/16.
 
@@ -234,7 +234,7 @@ national_extract %>%
 
 ```
 
-Source: [Summary Tables - General Pharmaceutical Services - Table 3 and 10](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx)
+Source: [Summary Tables - General Pharmaceutical Services - Table 3 and 10](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx)
 
 The yearly average number of items dispensed per contractor has been calculated by dividing the total number of items dispensed by the total number of contractors. This average is a mean.
 
@@ -278,7 +278,7 @@ national_extract %>%
 
 ```
 
-Source: [Summary Tables - General Pharmaceutical Services - Table 3 and 10](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx)
+Source: [Summary Tables - General Pharmaceutical Services - Table 3 and 10](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx)
 
 An NHS prescription can be fulfilled by either a paper form presented to a contractor by a patient, or by the Electronic Prescription Service (EPS). Since 2015/16 the proportion of prescription items that have been dispensed via EPS by community pharmacies and appliance contractors has increased significantly, and EPS is now the primary method that prescriptions are issued and dispensed by.
 
@@ -309,7 +309,7 @@ national_extract %>%
     title = "",
     currency = TRUE  )
 ```
-Source: [Summary Tables - General Pharmaceutical Services - Table 3 and 10](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx)
+Source: [Summary Tables - General Pharmaceutical Services - Table 3 and 10](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx)
 
 Contractors can receive many payments for fulfilling a prescription. These include being reimbursed for the basic price of the drug or appliance they have dispensed and receiving fees that relate to the dispensing of that item. There are many fees that can be claimed by a contractor depending on the item that is dispensed. Details of what fees are payable to community pharmacies and appliance contractors can be found in the [Drug Tariff for England and Wales](https://www.nhsbsa.nhs.uk/pharmacies-gp-practices-and-appliance-contractors/drug-tariff).
 
@@ -417,7 +417,7 @@ flu_data %>%
 
 ```
 
-Source: [Summary Tables - General Pharmaceutical Services - Table 8](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx)
+Source: [Summary Tables - General Pharmaceutical Services - Table 8](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx)
 
 The number of vaccines administered by pharmacies as part of the Flu Vaccination Advanced Service has increased by 8.15 times since the service began in 2015/16. In 2021/22 there were  4.85 million vaccines administered by 9,860 community pharmacies at an average of 492 vaccines per pharmacy. This was an increase of 75.1% on the 2.77 million vaccines administered in 2020/21.
 
@@ -451,7 +451,7 @@ DT::datatable(data = flu_table,
                                                     targets = '_all'))))
 ```
 
-Source: [Summary Tables - General Pharmaceutical Services - Table 8](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx)
+Source: [Summary Tables - General Pharmaceutical Services - Table 8](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx)
 
 The average number of flu vaccines administered per community pharmacy has been calculated by dividing the total number of flu vaccines administered for each year by the total number of community pharmacies that have provided the service. This average is a mean.
 
@@ -486,7 +486,7 @@ flu_data %>%
 
 ```
 
-Source: [Summary Tables - General Pharmaceutical Services - Table 8](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx)
+Source: [Summary Tables - General Pharmaceutical Services - Table 8](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx)
 
 In line with the increase in the number of flu vaccines administered each year, the costs reimbursed and fees paid to community pharmacies as part of the advanced service have increased dramatically. The costs of vaccines administered have increased by 13.3 times between 2015/16 and 2021/22, from £3.75 million to £49.8 million.
 
@@ -524,7 +524,7 @@ national_extract %>%
     yLab = "Total Advance Services",
     title = ""  )
 ```
-Source: [Summary Tables - General Pharmaceutical Services - Table 8](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx)
+Source: [Summary Tables - General Pharmaceutical Services - Table 8](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx)
 
 The number of NMSs claimed in 2021/22 increased by 125% from 933,000 in 2020/21 to 2.10 million in 2021/22, a return to trend after a decrease in 2020/21 following five years of increases. The number of NMSs is  155% higher than the 822,000 claimed in 2015/16. 
 
@@ -558,7 +558,7 @@ national_extract %>%
   )
 
 ```
-Source: [Summary Tables - General Pharmaceutical Services - Table 8](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx)
+Source: [Summary Tables - General Pharmaceutical Services - Table 8](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx)
 
 In line with the increase in the number of NMSs provided, the fees paid to community pharmacies as part of the advanced service have increased by 130% from £23.4 million  in 2020/21 to £53.9 million  in 2021/22 and are 166% higher than the £20.3 million paid in 2015/16.
 
@@ -604,9 +604,9 @@ national_extract %>%
   title = ""
 )
 ```
-Source: [Summary Tables - General Pharmaceutical Services - Table 6](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx)
+Source: [Summary Tables - General Pharmaceutical Services - Table 6](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx)
 
-In 2021/22 the number of AURs increased by 61.9% from 2020/21, which had seen a decrease after 5 years of steady increases. During 2020/21 regional and national restrictions were introduced to tackle the COVID-19 pandemic. This included restrictions on face-to-face services between patients and pharmacies. Telephone and video options were introduced for AURs during the COVID-19 pandemic, although these were not available for the full year. The number of AURs is 92.2% higher than 2015/16.
+In 2021/22 the number of AURs increased by 61.9% from 2020/21, which had seen a decrease after 5 years of steady increases. During 2020/21 regional and national restrictions were introduced to tackle the COVID-19 pandemic. This included restrictions on face-to-face services between patients and pharmacies. Telephone and video options were introduced for AURs during the COVID-19 pandemic, although these were not available for the full year. The number of AURs carried out in 2020/21 increased by 92.2% compared to 2015/16.
 
 This advanced service can be offered by both community pharmacies and appliance contractors and a breakdown by contractor type and AUR type can be found in Table 6 in the accompanying summary tables.
 
@@ -639,7 +639,7 @@ national_extract %>%
   currency =TRUE
 )
 ```
-Source: [Summary Tables - General Pharmaceutical Services - Table 6](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx)
+Source: [Summary Tables - General Pharmaceutical Services - Table 6](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx)
 
 The total cost of fees for Appliance Use Reviews increased by 30.9% in 2021/22 to £2.73 million from the £2.09 million paid in 2021/22. In line with the increase in the number of reviews undertaken,  the total paid was 47.9% higher than the £1.85 million paid in 2015/16.
 
@@ -671,7 +671,7 @@ national_extract %>%
   yLab = "Total Advance Services",
   title = "")
 ```
-Source: [Summary Tables - General Pharmaceutical Services - Table 6](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx)
+Source: [Summary Tables - General Pharmaceutical Services - Table 6](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx)
 
 
 The number of SACs provided by community pharmacies decreased by 28.0% from 11,600 to 8,330 between 2020/21 and 2021/22. This followed 5 consecutive years of decreases between 2015/16 and 2020/21. The number of SACs provided by appliance contractors between 2020/21 and 2021/22  went up by 5.23% from 1.52 million to 1.60 million. This followed 5 consecutive years of increases between 2015/16 and 2021/22.
@@ -701,7 +701,7 @@ national_extract %>%
   title = "",
   currency = TRUE)
 ```
-Source: [Summary Tables - General Pharmaceutical Services - Table 6](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx)
+Source: [Summary Tables - General Pharmaceutical Services - Table 6](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx)
 
 The fee for Stoma Appliance Customisation is a set payment that has not changed since its introduction so the increase in the cost of the fees mirrors the increasing trend for the number of SACs carried out. In total, £6.96 million  was spent in 2021/22 compared to £6.63 million in 2015/16. In line with the increase in the number of SACs provided each year, the fees paid to community pharmacies as part of the advanced service have increased. As the SAC is a set payment that has not changed since its introduction this percentage increase for 2021/22 is also 4.98%.
 
@@ -711,7 +711,7 @@ The NHS Community Pharmacist Consultation Service (CPCS) Advanced Service began 
 
 The service is intended to improve access to services and provide  treatment closer to patients’ homes by harnessing the skills and medicines knowledge of pharmacists and relieving pressure on GP appointments and emergency departments. 
 
-1 November 2020, general practices have been able to refer patients for a minor illness consultation via CPCS, once a local referral pathway has been agreed.
+From 1 November 2020, general practices have been able to refer patients for a minor illness consultation via CPCS, once a local referral pathway has been agreed.
 
 The fee for providing the Community Pharmacist Consultation Service is £14 (including VAT) per consultation.
 
@@ -741,7 +741,7 @@ The fee for providing the Community Pharmacist Consultation Service is £14 (inc
 <!--   title = "" -->
 <!-- )   -->
 <!-- ``` -->
-<!-- Source: [Summary Tables - General Pharmaceutical Services - Table 2](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx) -->
+<!-- Source: [Summary Tables - General Pharmaceutical Services - Table 2](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx) -->
 
 No data prior to 2019/20 is available for Community Pharmacy Consultation Services. 
 
@@ -767,10 +767,26 @@ national_extract %>%
   xLab = "Financial Year",
   yLab = "Value (GBP)",
     title ="",
-    currency = TRUE) 
+    currency = TRUE) %>% 
+  hc_xAxis(
+  plotLines = list(
+    list(
+      value = 0,
+      color = "grey",
+      width = 1,
+      dashStyle = "dash",
+      label = list(
+        rotation = 0,
+        text = "<b>Note:</b> The figures <br>at this point <br> do not represent<br> the full financial year<br> and are for <br>October 2019 to <br>March 2020 only",
+        style = list(
+          fontSize = "10px"
+        )
+      )
+    ))
+)
 
 ```
-Source: [Summary Tables - General Pharmaceutical Services - Table 7](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx)
+Source: [Summary Tables - General Pharmaceutical Services - Table 7](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx)
 
 The cost of fees paid for Community Pharmacy Consultation Services in 2021/22 was £12.6 million, a 81.4% increase on the £5.31 million  claimed in 2020/21.
 
@@ -796,10 +812,26 @@ national_extract %>%
   xLab = "Financial Year",
   yLab = "Value (GBP)",
     title ="",
-    currency = TRUE) 
+    currency = TRUE) %>% 
+  hc_xAxis(
+  plotLines = list(
+    list(
+      value = 0,
+      color = "grey",
+      width = 1,
+      dashStyle = "dash",
+      label = list(
+        rotation = 0,
+        text = "<b>Note:</b> The figures <br>at this point <br> do not represent<br> the full financial year<br> and are for <br>November 2020 to <br>March 2021 only",
+        style = list(
+          fontSize = "10px"
+        )
+      )
+    ))
+)
 
 ```
-Source: [Summary Tables - General Pharmaceutical Services - Table 7](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx)
+Source: [Summary Tables - General Pharmaceutical Services - Table 7](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx)
 
 From November 2020, pharmacies that completed engagement activity in  the NHS CPCS service specification could also receive a £300 activity payment called the GP referral pathway engagement fee.
 
@@ -827,10 +859,26 @@ national_extract %>%
   xLab = "Financial Year",
   yLab = "Value (GBP)",
     title ="",
-    currency = TRUE) 
+    currency = TRUE) %>% 
+  hc_xAxis(
+  plotLines = list(
+    list(
+      value = 0,
+      color = "grey",
+      width = 1,
+      dashStyle = "dash",
+      label = list(
+        rotation = 0,
+        text = "<b>Note:</b> The figures <br>at this point <br> do not represent<br> the full financial year<br> and are for <br>October 2019 to <br>March 2020 only",
+        style = list(
+          fontSize = "10px"
+        )
+      )
+    ))
+)
 
 ```
-Source: [Summary Tables - General Pharmaceutical Services - Table 7](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx)
+Source: [Summary Tables - General Pharmaceutical Services - Table 7](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx)
 
 The cost of drugs paid for Community Pharmacy Consultation Services in 2021/22 was £2.84 million, an 81.4% increase on the £1.56 million  claimed in 2020/21.
 
@@ -871,7 +919,7 @@ The cost of drugs paid for Community Pharmacy Consultation Services in 2021/22 w
 <!--   hc_xAxis(type = "datetime") -->
 <!-- ``` -->
 
-<!-- Source: [Summary Tables - General Pharmaceutical Services - Table 2](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx) -->
+<!-- Source: [Summary Tables - General Pharmaceutical Services - Table 2](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx) -->
 
 <!-- The cost of Hepatitis C testing service fees administered by community pharmacies in 2021/22 was £10,000. -->
 
@@ -905,7 +953,7 @@ The cost of drugs paid for Community Pharmacy Consultation Services in 2021/22 w
 <!--   hc_xAxis(type = "datetime") -->
 <!-- ``` -->
 
-<!-- Source: [Summary Tables - General Pharmaceutical Services - Table 2](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx) -->
+<!-- Source: [Summary Tables - General Pharmaceutical Services - Table 2](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx) -->
 
 <!-- The cost of Hepatitis C testing service fees administered by community pharmacies in 2021/22 was £1,670. -->
 
@@ -952,7 +1000,7 @@ The cost of drugs paid for Community Pharmacy Consultation Services in 2021/22 w
 <!--   hc_xAxis(type = "datetime") -->
 <!-- ``` -->
 
-<!-- Source: [Summary Tables - General Pharmaceutical Services - Table 2](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx) -->
+<!-- Source: [Summary Tables - General Pharmaceutical Services - Table 2](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx) -->
 
 <!-- The cost of Hypertension Case-Finding Advanced Service fees in 2021/22 was £3.42 million. -->
 
@@ -988,7 +1036,7 @@ The cost of drugs paid for Community Pharmacy Consultation Services in 2021/22 w
 <!--   hc_xAxis(type = "datetime") -->
 <!-- ``` -->
 
-<!-- Source: [Summary Tables - General Pharmaceutical Services - Table 2](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx) -->
+<!-- Source: [Summary Tables - General Pharmaceutical Services - Table 2](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx) -->
 
 <!-- The cost of Hypertension Case-Finding Advanced Service Set up payments in 2021/22 was £4.03 million. -->
 
@@ -1024,7 +1072,7 @@ The cost of drugs paid for Community Pharmacy Consultation Services in 2021/22 w
 <!--   hc_xAxis(type = "datetime") -->
 <!-- ``` -->
 
-<!-- Source: [Summary Tables - General Pharmaceutical Services - Table 2](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx) -->
+<!-- Source: [Summary Tables - General Pharmaceutical Services - Table 2](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx) -->
 
 <!-- The cost of Hypertension Case-Finding Advanced Service Incentive payments in 2021/22 was £713,000 -->
 
@@ -1063,7 +1111,7 @@ national_month_extract %>%
 )  %>%
   hc_xAxis(type = "datetime")
 ```
-Source: [Summary Tables - General Pharmaceutical Services - Table 9](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx)
+Source: [Summary Tables - General Pharmaceutical Services - Table 9](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx)
 
 No data prior to 2020/21 is available for Community Pharmacy Home Delivery Services which were introduced during the COVID-19 pandemic; therefore, we have presented this data monthly. Variation in the monthly amount of this service lines up with the time periods it was active. A total of 456,000 Home Delivery Services were claimed, with the greatest number being in April 2021 with 135,000. This service was ended on 31 March 2022.
 
@@ -1096,7 +1144,7 @@ national_month_extract %>%
 #hc_tooltip(enabled = T,             shared = T,             sort = T) %>% 
   hc_xAxis(type = "datetime")
 ```
-Source: [Summary Tables - General Pharmaceutical Services - Table 9](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx)
+Source: [Summary Tables - General Pharmaceutical Services - Table 9](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx)
 
 The cost of fees paid for the Home Delivery Services had the same variation as the number of home deliveries with a total of £2.74 million paid for Home Delivery Services. April 2021 was the highest value month with £808,000 in fees paid.
 
@@ -1149,7 +1197,7 @@ national_month_extract %>%
 #hc_tooltip(enabled = T,             shared = T,             sort = T) %>% 
   hc_xAxis(type = "datetime")
 ```
-Source: [Summary Tables - General Pharmaceutical Services - Table 9](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx)
+Source: [Summary Tables - General Pharmaceutical Services - Table 9](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx)
 
 The cost of Community Pharmacy Covid-19 Lateral Flow Device Distribution Services fees in 2021/22 was £66.0 million.
 
@@ -1204,7 +1252,7 @@ This does not include any cost for the Lateral Flow Devices which were supplied 
 <!--   hc_xAxis(type = "datetime") -->
 <!-- ``` -->
 
-<!-- <!-- Source: [Summary Tables - General Pharmaceutical Services - Table 2](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx) --> 
+<!-- <!-- Source: [Summary Tables - General Pharmaceutical Services - Table 2](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx) --> 
 
 <!-- The additional costs of COVID-19 claimed  by community pharmacies in 2021/22 were £264 million. -->
 
@@ -1258,7 +1306,7 @@ national_month_extract %>%
   hc_xAxis(type = "datetime")
 ```
 
-Source: [Summary Tables - General Pharmaceutical Services - Table 9](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2022-summary-tables-v001.xlsx)
+Source: [Summary Tables - General Pharmaceutical Services - Table 9](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2122-summary-tables-v001.xlsx)
 
 The costs of COVID-19 vaccines fees in 2021/22 were £334 million, with a peak starting in autumn when Phase 3 launched.
 
@@ -1306,7 +1354,7 @@ Following user feedback changes to the tables have been made to make them easier
 
 Tables 1 and 2 have been split into further tables to make them more user-friendly, grouping together similar data. 
 
-The supporting summary tables have been pivoted into a 'long' format to increase machine readability in line with recognised best practice to make spread sheets more [accessible](https://analysisfunction.civilservice.gov.uk/policy-store/data-visualisation-tables/) 
+The supporting summary tables have been pivoted into a 'long' format to increase machine readability in line with recognised best practice to make spread sheets more [accessible.](https://analysisfunction.civilservice.gov.uk/policy-store/data-visualisation-tables/) 
 
 Previously some figures in the supplementary tables regarding fees and fee counts had been rounded to the nearest 10, to reflect that these figures are estimated based on claims by contractors and that work will be done to confirm these payments. This rounding has been discontinued as the figures, while based on claims are based on the values paid to contractors. Users should always use the statistics in the latest release of the publication to make sure they are the most up to date figures available.
 
