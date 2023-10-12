@@ -1,0 +1,757 @@
+---
+title: "`r config$publication_top_name`"
+pagetitle: GPhS England
+always_allow_html: true
+output:
+  word_document:
+    toc: yes
+    toc_depth: '3'
+  html_document:
+    anchor_sections: no
+    css: www/style.css
+    toc: yes
+    toc_depth: 3
+    toc_float:
+      collapsed: no
+---
+
+<script>
+  $(document).ready(function() {
+    $('#TOC').prepend('<div><img src=`r knitr::image_uri("www/national-statistics-logo.svg")` alt=\"National Statistics logo\" style=\"position: relative; width: 50%; margin: 10% auto 10% auto; display: block;\"></div>');
+  });
+  
+  $(document).ready(function() {
+    $('#header').prepend('<img src=`r knitr::image_uri("www/bsa_logo.svg")` alt=\"NHSBSA logo\" style=\"position:absolute; top: 0; right: 0; padding: 10px; width: 25%;\">');
+  });
+</script>
+
+<style type="text/css">  body, td {
+    font-size: 16px;
+    font-family: sans-serif;
+  }
+  .list-group-item.active {
+    background-color: #005EB8!important;
+    border-color: #005EB8!important;
+  }
+    a {
+        color: #005EB8!important;
+    }
+    .tocify {
+        border-radius: 0px!important;
+    }
+</style>
+  <html lang="en">
+
+```{r setup, include=FALSE}
+# set code chunk options to disable echo by default
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE)
+
+```
+
+<main>
+
+# `r config$publication_sub_name` {.toc-ignore}
+
+Published `r config$publication_date` 
+
+
+
+
+## Key findings
+
+In England in 2022/23 for community pharmacies and appliance contractors:
+
+* there were 11,414 active community pharmacies and 111 active appliance contractors. This is the lowest number of active dispensing contractors since 2015/16.
+
+* a total of 297 new pharmacies opened, while 388 pharmacies closed. 
+
+* 1.08 billion prescription items were dispensed by community pharmacies. This is a 3.4% increase from 2021/22.
+
+* 11 million prescription items were dispensed by appliance contractors. This is a 2% increase from 2021/22.
+
+* 1.04 billion prescription items were dispensed via the Electronic Prescription Service (EPS), 96% of all items dispensed, a small increase from 2021/22.
+
+* the cost of drugs and appliances reimbursed totalled £9.7 billion. This is a 7.5% increase from 2021/22.
+
+<!-- * 5.01 million seasonal influenza vaccines were administered by community pharmacies. This was a 3.24% increase from the 4.85 million vaccines administered in  2021/22. -->
+
+
+---
+
+## 1. Things you should know
+
+### 1.1 Introduction {.toc-ignore} 
+
+
+
+This publication is an accredited official statistic release. Accredited official statistics status means that General Pharmaceutical Services (GPhS) - England complies with the [Code of Practice for Statistics](https://code.statisticsauthority.gov.uk/), showing trustworthiness, quality and value. 
+    
+The designation of this publication as an accredited official statistic was confirmed in December 2021 following an independent review by the Office for Statistics Regulation (OSR). You can read more about this confirmation and the assessment of these statistics on the [OSR website.](https://osr.statisticsauthority.gov.uk/correspondence/ed-humpherson-to-matthew-wilson-confirmation-of-national-statistics-designation-for-statistics-on-general-pharmaceutical-services-in-england/)
+
+### 1.2 Background {.toc-ignore} 
+
+
+From 1 April 2013, NHS England became responsible for the commissioning of NHS pharmaceutical services in England and for negotiating changes to arrangements for the provision of services. The [Community Pharmacy Contractual Framework](https://cpe.org.uk/quality-and-regulations/the-pharmacy-contract/) (CPCF) for pharmacy contractors is set out in the [The National Health Service (Pharmaceutical and Local Pharmaceutical Services) Regulations 2013](https://www.legislation.gov.uk/uksi/2013/349/contents/made), and the Pharmaceutical Services (Advanced and Enhanced Services) (England) Directions 2013 are contained within the [Drug Tariff for England and Wales](https://www.nhsbsa.nhs.uk/pharmacies-gp-practices-and-appliance-contractors/drug-tariff).
+
+In order to be able to provide pharmaceutical services for the NHS, the 2013 regulations state that a person (other than doctors or dentists) must be included in a pharmaceutical list. NHS England are required to prepare and maintain lists of those who have been granted applications. The list specifies both the premises and the named contractor.
+
+To receive payment for the costs and fees incurred while providing services to the general public on behalf of the NHS, community pharmacies and appliance contractors must submit their prescriptions to NHSBSA along with a submission document, known as the FP34C. This has recently been digitised by the Manage Your Submission (MYS) application but was historically done via a paper form that accompanied paper prescription batches.
+
+Data regarding Advanced Services such as the provision of New Medicines Service (NMS) and Appliance Use Reviews (AURs) is taken from the FP34C submission document, or from the MYS application. This is then passed to NHSBSA payment systems to calculate account level payments that are to be made to community pharmacies and appliance contractors.
+
+### 1.3 Scope {.toc-ignore} 
+
+Data is collected from prescriptions submitted to the NHSBSA by dispensing contractors (community pharmacies and appliance contractors). These prescriptions can be issued by GPs and other authorised prescribers such as nurses, dentists, and allied health professionals. Prescriptions that are issued by hospitals can also be dispensed in the community and submitted for reimbursement. Prescriptions that are issued in hospitals and fulfilled by the hospital pharmacy or dispensary are not included in this data.
+
+Data is limited in this publication to only prescription items that have been dispensed by a community pharmacy or appliance contractor in England. Items dispensed by dispensing doctors, hospitals or prisons or submitted for reimbursement via a personal administration account have been excluded.
+
+Data on advanced services provided by community pharmacies and appliance contractors is limited to where a claim has been submitted to NHSBSA in relation to performing one of those services. Counts around the number of services provided are based upon the number of times a fee has been paid to a contractor. The figures around the number of contractors that provide a service are based upon the number of contractors that have received payment of at least one fee for that service.
+
+
+This publication aims to describe the activity of community pharmacies and appliance contractors in England across the whole financial year.
+
+These statistics detail:
+
+* the number of prescription items dispensed
+* the reimbursement costs of prescription items dispensed
+* the number of single activity fees they have received
+* the remuneration costs of single activity fees received
+* the number of essential and advanced services that they have provided
+* the associated costs for essential and advanced services
+
+These statistics cover the financial years between April 2015 and March 2023.
+
+
+### 1.4 Definitions {.toc-ignore} 
+::::{.row style="display: flex; padding-bottom: 10px;"} 
+:::{.col-md-12} 
+`r infoBox_border("Item", text = "A single unit of medication listed separately on a prescription form. In this publication, an example of an item would be Fluoxetine 20mg tables x56.", width = "100%")`
+::: 
+::::
+::::{.row style="display: flex; padding-bottom: 10px;"} 
+:::{.col-md-12} 
+`r infoBox_border("Dispensing contractor", text = "A dispensing contractor or dispenser can be a community pharmacy or appliance contractor. Community pharmacies can dispense both drugs and appliances, but appliance contractors are limited to the supply of appliances as listed in Part IXA, IXB and IXC of the Drug Tariff.", width = "100%")`
+::: 
+::::
+::::{.row style="display: flex; padding-bottom: 10px;"} 
+:::{.col-md-12} 
+`r infoBox_border("Form", text = "Prescription forms include both paper prescriptions and electronic messages sent via the Electronic Prescription Service (EPS). EPS allows prescribers to send prescriptions electronically to a dispenser (such as a pharmacy) of the patient's choice. This makes the prescribing and dispensing process more efficient and convenient for patients and staff.", width = "100%")`
+::: 
+::::
+::::{.row style="display: flex; padding-bottom: 10px;"} 
+:::{.col-md-12}   
+`r infoBox_border("Cost", text = "There are many costs incurred when a dispensing contractor fulfils a prescription. The term cost refers to the basic price of the item and quantity prescribed that is reimbursed back to the contractor. This is sometimes called the 'Net Ingredient Cost' (NIC). Costs paid to contractors to cover the cost of dispensed items are referred to as reimbursement. The basic price is determined by the [Drug Tariff](https://www.nhsbsa.nhs.uk/pharmacies-gp-practices-and-appliance-contractors/drug-tariff) or by the manufacturer, wholesaler, or supplier of the product.", width = "100%")`
+::: 
+::::
+::::{.row style="display: flex; padding-bottom: 10px;"} 
+:::{.col-md-12}   
+`r infoBox_border("Fees", text = "Fees are also payable to dispensing contractors for dispensing and for providing essential and advanced services to NHS patients.  Many, but not all, fees are described in these summary statistics are included in the accompanying [summary tables](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps_2223_summary_tables_v001.xlsx) . Details of what fees are payable to community pharmacies and appliance contractors can be found in the [Drug Tariff for England and Wales](https://www.nhsbsa.nhs.uk/pharmacies-gp-practices-and-appliance-contractors/drug-tariff). Fee payments to dispensing contractors for prescribing and other services are known as remuneration.", width = "100%")`
+::: 
+::::  
+::::{.row style="display: flex; padding-bottom: 10px;"} 
+:::{.col-md-12}   
+`r infoBox_border("Essential services", text = "Essential services are those listed in the NHS CPCF that all pharmacy contractors must provide to NHS patients.", width = "100%")`
+::: 
+:::: 
+::::{.row style="display: flex; padding-bottom: 10px;"} 
+:::{.col-md-12}   
+`r infoBox_border("Advanced services", text = "There are several Advanced Services within the NHS Community Pharmacy Contractual Framework (CPCF). Community pharmacies can choose to provide any of these services as long as they meet the requirements set out in the Secretary of State Directions.", width = "100%")`
+::: 
+:::: 
+::::{.row style="display: flex; padding-bottom: 10px;"} 
+:::{.col-md-12}   
+`r infoBox_border("Enhanced services", text = "As well as national services provided by all pharmacies, the NHS Community Pharmacy Contractual Framework also includes services that are commissioned at a local level, known as Local Enhanced Services (LES).
+In December 2021, provisions were made within the NHS (Pharmaceutical and Local Pharmaceutical Services) Regulations 2013 for a new type of Enhanced service, the National Enhanced Service. Under this type of service, NHS England And Improvement (NHSE&I) commissions an Enhanced service that is nationally specified.", width = "100%")`
+::: 
+:::: 
+
+Further definitions of terms used in this publication can be found in the Glossary of the [Background Information and Methodology](`r config$background_link` ) supporting document that accompanies this release.
+
+---
+
+## 2. Results and commentary
+
+The charts in these statistics are interactive and allow you to isolate the topics that you are interested in by selecting or deselecting a series from the legend of the chart. For example, if you only want to view data for community pharmacies, you can click the other categories in the legend of the chart to deselect them. If you wish to include them again just click on their legend entry once more.
+
+### 2.1 Essential Services for Contractors {.toc-ignore}
+
+
+#### **`r paste0("Figure ",1,": Number of community pharmacies and appliance contractors between 2015/16 and 2022/23")`**
+
+```{r total_contractors, out.width="100%"}
+figure_1
+```
+`r get_download_button(title = "Download data table", data = figure_1_data, filename = "figure_1")`
+Source: [Summary Tables - General Pharmaceutical Services - Table 1](`r config$fy_excel_link`)
+
+::::{.row style="display: flex; padding-bottom: 15px;"}
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b> There were 11,414 active community pharmacies in 2022/23.</b>", width = "100%")`
+:::
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b>There were 111 active appliance contractors in 2022/23.</b>", width = "100%")`
+:::
+::::
+
+In 2022/23, there 11,414 active community pharmacies, 108 fewer than in 2021/22 and the lowest since 2015/16. 
+
+The number of active appliance contractors in 2022/23 in England remained the same at 111 compared to 2021/22.
+
+
+
+#### **`r paste0("Figure ",2,": Total items dispensed by community pharmacies and appliance contractors between 2015/16 and 2022/23")`**
+
+```{r items_dispensed, out.width="100%"}
+figure_2
+```
+`r get_download_button(title = "Download data table", data = figure_2_data, filename = "figure_2")`
+Source: [Summary Tables - General Pharmaceutical Services - Tables 3 and 10](`r config$fy_excel_link`)
+
+::::{.row style="display: flex; padding-bottom: 15px;"}
+:::{.col-md-4}
+`r infoBox_no_border("", text = "<b> There were 1.1 billion items dispensed by community pharmacies in 2022/23.</b>", width = "100%")`
+:::
+:::{.col-md-4}
+`r infoBox_no_border("", text = "<b>There were 11 million items dispensed by appliance contractors in 2022/23.</b>", width = "100%")`
+:::
+:::{.col-md-4}
+`r infoBox_no_border("", text = "<b> Total items for community pharmacies have trended upwards for the last two years.</b>", width = "100%")`
+:::
+::::
+
+The number of items dispensed by community pharmacies in England between 2021/22 and 2022/23 increased by 3.44% from 1.04 billion to 1.08 billion. Overall, the number of items dispensed is 8.41% higher than the 995 million items dispensed in 2015/16.
+
+The number of items dispensed by appliance contractors in 2022/23 increased by 2.01% from 2021/22. This has increased each year since 2015/16, from 7.91 million to 11.1 million items. This is an increase of 40.7%.
+
+#### **`r paste0("Figure ",3,": Average number of items dispensed per contractor between 2015/16 and 2022/23")`**
+
+```{r avg_items dispensed, out.width="100%"}
+figure_3
+
+```
+`r get_download_button(title = "Download data table", data = figure_3_data, filename = "figure_3")`
+Source: [Summary Tables - General Pharmaceutical Services - Tables 3 and 10](`r config$fy_excel_link`)
+
+::::{.row style="display: flex; padding-bottom: 15px;"}
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b> On average, there were 95,000 items dispensed per contractor by community pharmacies in 2022/23.</b>", width = "100%")`
+:::
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b>On average, there were 100,000 items dispensed per contractor by appliance contractors in 2022/23.</b>", width = "100%")`
+:::
+::::
+
+The yearly average number of items dispensed per contractor has been calculated by dividing the total number of items dispensed by the total number of contractors. This average is a mean.
+
+The average number of items dispensed per community pharmacy has increased by 4.42% from 90,500 in 2021/22 to 94,500 in 2022/23.  This is an increase of 13.5% from the average of 83,300 in 2015/16.
+
+The average yearly items dispensed for appliance contractors has increased each year since 2015/16 and has now surpassed the average items dispensed for community pharmacies in 2020/21. It is 100,000 in 2022/23, a 47.0% increase from 2015/16.
+
+#### **`r paste0("Figure ",4,": Number of items dispensed via the Electronic Prescription Service (EPS) between 2015/16 and 2022/23")`**
+
+```{r eps_items, out.width="100%"}
+
+figure_4
+
+```
+`r get_download_button(title = "Download data table", data = figure_4_data, filename = "figure_4")`
+Source: [Summary Tables - General Pharmaceutical Services - Tables 3 and 10](`r config$fy_excel_link`)
+
+::::{.row style="display: flex; padding-bottom: 15px;"}
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b> There were 1.04 billion prescription items dispensed via EPS in  2022/23.</b>", width = "100%")`
+:::
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b>99.7% of contractors dispensed at least one item via EPS in  2022/23.</b>", width = "100%")`
+:::
+::::
+
+An NHS prescription can be fulfilled by either a paper form presented to a contractor by a patient, or by an electronic message sent via the EPS.
+
+In 2022/23, 1.04 billion prescription items were dispensed via EPS. This was 95.6% of all items dispensed in the year. This was an increase of 60.2 percentage points from 2015/16, when 355 million items where dispensed via EPS, 35.4% of all items.
+
+Additionally in 2022/23, 99.7% of all contractors dispensed at least one prescription item via EPS, an increase from 97.5% in 2015/16.
+
+
+#### **`r paste0("Figure ",5,": Total costs and value of fees received for contractors between 2015/16 and 2022/23")`**
+```{r costs_and_fees, out.width="100%"}
+figure_5
+```
+`r get_download_button(title = "Download data table", data = figure_5_data, filename = "figure_5")`
+Source: [Summary Tables - General Pharmaceutical Services - Tables 3, 5 and 10](`r config$fy_excel_link`)
+
+::::{.row style="display: flex; padding-bottom: 15px;"}
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b> The total for drugs and appliance reimbursement costs paid to contractors was £9.7 billion in 2022/23.</b>", width = "100%")`
+:::
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b>The value of single activity fees paid to contractors was £1.4 billion in 2022/23.</b>", width = "100%")`
+:::
+::::
+
+Figure 5 shows the total value of costs for drugs and appliances reimbursed to contractors, along with the value of all single activity fees (SAF) that have been claimed. This is not the total amount paid to contractors for dispensing an item as many fees are not included in these figures, such as additional fees that apply to controlled drugs. 
+
+Costs reimbursed to contractors increased in 2022/23, for the fourth consecutive year. Costs increased by 7.50% between 2021/22 and 2022/23 from £9.05 billion to £9.72 billion. This is an 8 year high.
+
+The value of SAFs  received by contractors increased in 2022/23 by 2.36% to £1.40 billion from £1.37 billion in 2021/22. This was despite a decrease in the SAF from 129 pence to 127 pence in April 2022. 
+
+It should be noted, prior to December 2016 the figures reported are for professional fees only, and do not include the three additional payments that the SAF consists of.
+
+::::{.row style="display: flex; padding-bottom: 10px;"} 
+:::{.col-md-12} 
+`r infoBox_border("Single Activity Fee", text = "Contractors can receive many payments for fulfilling a prescription. These include being reimbursed for the basic price of the drug or appliance they have dispensed and receiving fees that relate to the dispensing of that item. There are many fees that can be claimed by a contractor depending on the item that is dispensed. Details of what fees are payable to community pharmacies and appliance contractors can be found in the [Drug Tariff for England and Wales](https://www.nhsbsa.nhs.uk/pharmacies-gp-practices-and-appliance-contractors/drug-tariff).
+
+The SAF is a fixed fee that applies to every prescription item that is dispensed. The SAF was introduced in December 2016 by the Department of Health and Social Care (DHSC) to consolidate a range of payments into one single fee. These payments were:
+
+* the professional fee (also known as dispensing fee)
+* practice payment
+* repeat dispensing payment
+* EPS monthly allowance
+
+The value of the SAF is set by DHSC and can fluctuate throughout the year. It is based upon the forecast of the total number of items dispensed to ensure that the fee delivery remains within the agreed funding envelope for the year. Table 1 displays the value of the SAF and the dates that it has changed.", width = "100%")`
+:::
+::::
+
+#### **`r paste0("Table ",1,": Dispensing fees, their value, and when they came into effect")`**
+``` {r saf_values, out.width="100%"}
+
+table_1_saf
+
+```
+`r get_download_button(title = "Download data table", data = table_1_data, filename = "table_1")`
+Source: [The Drug Tariff for England and Wales](https://www.nhsbsa.nhs.uk/pharmacies-gp-practices-and-appliance-contractors/drug-tariff)
+
+### 2.2 Advanced Services for Contractors {.toc-ignore} 
+
+
+::::{.row style="display: flex; padding-bottom: 10px;"} 
+:::{.col-md-12} 
+`r infoBox_border("Seasonal influenza vaccination advanced service", text = "In 2015 community pharmacies began providing seasonal influenza vaccinations under a nationally commissioned service by NHS England & Improvement. Each year from September through to March pharmacy contractors can administer flu vaccines to patients and submit a claim to NHSBSA for payment. This includes reimbursement of the cost of the vaccine, plus a fee for providing the service to NHS patients.
+
+The figures in these statistics for flu vaccinations only relate to those administered by community pharmacies, and do not include vaccines issued to GP patients, healthcare workers, or children of primary school age. [Official Statistics for these are produced by UK Health Security Agency (UKHSA)](https://www.gov.uk/health-and-social-care/health-protection-immunisation).", width = "100%")`
+:::
+::::
+
+#### **`r paste0("Figure ",6,": Number of flu vaccinations provided by contractors between 2015/16 and 2022/23")`**
+
+```{r flu_items, out.width="100%"}
+
+figure_6
+
+```
+`r get_download_button(title = "Download data table", data = figure_6_data, filename = "figure_6")`
+Source: [Summary Tables - General Pharmaceutical Services - Table 6](`r config$fy_excel_link`)
+
+::::{.row style="display: flex; padding-bottom: 15px;"}
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b> There were 5 million flu vaccines administered by community pharmacies  in  2022/23.</b>", width = "100%")`
+:::
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b>There were 9,700 community pharmacies adminstering flu vaccines in 2022/23.</b>", width = "100%")`
+:::
+::::
+
+The number of vaccines administered by pharmacies as part of the Flu Vaccination Advanced Service has increased every year since the service began in 2015/16. In 2022/23 there were 5.01 million vaccines administered by 9,650 community pharmacies at an average of 519 vaccines per pharmacy. This was an increase of 3.24% on the 4.85 million vaccines administered in 2021/22.
+
+
+#### **`r paste0("Table ",2,": Average number of flu vaccines provided per participating community pharmacy between 2015/16 and 2022/23")`**
+``` {r avg_flu_items_table, out.width="100%"}
+table_2_flu
+```
+`r get_download_button(title = "Download data table", data = table_2_data, filename = "table_2")`
+Source: [Summary Tables - General Pharmaceutical Services - Table 6](`r config$fy_excel_link`)
+
+::::{.row style="display: flex; padding-bottom: 10px;"} 
+:::{.col-md-12}
+`r infoBox_border("Average number of vaccines", text = "The average number of flu vaccines administered per community pharmacy has been calculated by dividing the total number of flu vaccines administered for each year by the total number of community pharmacies that have provided the service. This average is a mean.", width = "100%")`
+:::
+::::
+
+The average number of flu vaccines administered per community pharmacy that provides the seasonal influenza advanced service follows a similar trend to the total number of flu vaccines administered. In 2022/23 the average number of flu vaccines administered per community pharmacy was 519. This is over 6 times the average in 2015/16, which was 83.
+
+#### **`r paste0("Figure ",7,": Cost and fees for flu vaccinations provided by contractors between 2015/16 and 2022/23")`**
+
+```{r flu_costs_and_fees, out.width="100%"}
+
+figure_7
+```
+`r get_download_button(title = "Download data table", data = figure_7_data, filename = "figure_7")`
+Source: [Summary Tables - General Pharmaceutical Services - Table 6](`r config$fy_excel_link`)
+
+::::{.row style="display: flex; padding-bottom: 15px;"}
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b> The cost of flu vaccines was £62 million in  2022/23.</b>", width = "100%")`
+:::
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b> The value of flu vaccine fees was £48 million  2022/23.</b>", width = "100%")`
+:::
+::::
+
+In line with the increase in the number of flu vaccines administered each year, the costs reimbursed and fees paid to community pharmacies as part of the advanced service have increased dramatically. The cost of vaccines administered was over 16 times higher in 2022/23 than 2015/16, increasing from £3.75 million to £61.8 million.
+
+The value of fees paid to pharmacies for delivering the flu vaccination service was nearly 9 times higher in 2022/23 than 2015/16, increasing from £5.44 million to £48.0
+million.
+
+::::{.row style="display: flex; padding-bottom: 10px;"} 
+:::{.col-md-12}
+`r infoBox_border("New Medicine Service", text = "The New Medicine Service (NMS) is an Advanced Service within the NHS Community Pharmacy Contractual Framework. The service provides support for people with long-term conditions newly prescribed a medicine to help improve medicines adherence; it is focused on specific patient groups and conditions. Details of the currently covered patient groups can be found in the [NHS England Service Specification](https://www.england.nhs.uk/publication/advanced-service-specification-nhs-new-medicine-service-nms/).
+
+
+The fee for NMS varies between £20 and £28 depending on the volume of prescriptions dispensed by a contractor and the number of NMSs undertaken.", width = "100%")`
+:::
+::::
+
+
+#### **`r paste0("Figure ",8,": Total New Medicine Services undertaken by community pharmacies between  2015/16 and 2022/23")`**
+
+```{r advanced services nms, out.width="100%"}
+
+figure_8
+```
+`r get_download_button(title = "Download data table", data = figure_8_data, filename = "figure_8")`
+Source: [Summary Tables - General Pharmaceutical Services - Table 6](`r config$fy_excel_link`)
+
+::::{.row style="display: flex; padding-bottom: 15px;"}
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b> There were 2.8 million NMSs claimed in 2022/23.</b>", width = "100%")`
+:::
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b> The number of NMSs claimed in 2022/23 has increased by 36% from 2021/22.</b>", width = "100%")`
+:::
+::::
+
+NMSs have shown sizable increases for the last two financial years. Thirteen additional conditions were added to the specification list in September 2021.
+
+During 2021/2022 a catch-up NMS was introduced for patients who were prescribed a new medicine but did not receive an NMS or any additional support during the COVID-19 pandemic. This catch-up service was offered to eligible patients between 1st September 2021 and 31st March 2022.
+
+#### **`r paste0("Figure ",9,": Total Cost of New Medicine Services undertaken by community pharmacies between  2015/16 and 2022/23")`**
+
+
+```{r advanced services nms cost, out.width="100%"}
+
+figure_9
+
+```
+`r get_download_button(title = "Download data table", data = figure_9_data, filename = "figure_9")`
+Source: [Summary Tables - General Pharmaceutical Services - Table 6](`r config$fy_excel_link`)
+
+::::{.row style="display: flex; padding-bottom: 15px;"}
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b> The cost of NMSs was £76 million in  2022/23.</b>", width = "100%")`
+:::
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b> The cost of NMSs  claimed in 2022/23 has increased by 42% from 2021/22.</b>", width = "100%")`
+:::
+::::
+
+In line with the increase in the number of NMSs provided, fees paid to community pharmacies as part of the NMS have increased by 42% since 2021/22.
+
+
+
+::::{.row style="display: flex; padding-bottom: 10px;"} 
+:::{.col-md-12}
+`r infoBox_border("Appliance Use Review", text = "Appliance Use Review (AUR) is an Advanced Service in the NHS Community Pharmacy Contractual Framework. AURs can be carried out by a pharmacist or a specialist nurse in the pharmacy or at the patient’s home.
+
+AURs should improve the patient’s knowledge and use of any ‘specified appliance‘ by:
+
+* establishing the way the patient uses the appliance and the patient’s experience of such use
+* identifying, discussing and assisting in the resolution of poor or ineffective use of the appliance by the patient
+* advising the patient on the safe and appropriate storage of the appliance
+* advising the patient on the safe and proper disposal of the appliances that are used or unwanted.
+
+A fee of £28 is payable for an AUR conducted on the premises of a contractor or by telephone or video link where clinically appropriate<sup>1</sup> managed by the pharmacy or appliance contractor. A fee of £54 is payable for a review conducted at the patient’s home. When carrying out AURs for multiple patients living at the same property in the same 24 hours, only the first AUR is paid at the home rate with subsequent AURs paid at the lower premises rate.
+
+The total number of AURs that an appliance or pharmacy contractor may claim fees for will be limited to one for every 35 Part IXA (qualifying items), Part IXB and Part IXC prescription items dispensed in the financial year of the claim.
+
+<small>1. This was introduced as of 1 September 2020.</small>", width = "100%")`
+:::
+::::
+#### **`r paste0("Figure ",10,": Total Appliance Use Reviews (AUR) provided between 2015/16 and 2022/23")`** 
+
+```{r advanced services aur, out.width="100%"}
+
+figure_10
+```
+`r get_download_button(title = "Download data table", data = figure_10_data, filename = "figure_10")`
+Source: [Summary Tables - General Pharmaceutical Services - Tables 7 and 11](`r config$fy_excel_link`)
+
+::::{.row style="display: flex; padding-bottom: 15px;"}
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b> There were 75,000 AURs provided in  2022/23.</b>", width = "100%")`
+:::
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b> In 2022/23 the number of AURs increased by 22% compared to 2021/22.</b>", width = "100%")`
+:::
+::::
+
+This advanced service can be offered by both community pharmacies and appliance contractors and a breakdown by contractor type and AUR type can be found in Tables 7 and 11 in the accompanying summary tables.
+
+#### **`r paste0("Figure ",11,": Total Cost of Appliance Use Reviews (AUR) provided between 2015/16 and 2022/23")`** 
+```{r advanced services aur cost, out.width="100%"}
+figure_11
+```
+`r get_download_button(title = "Download data table", data = figure_11_data, filename = "figure_11")`
+Source: [Summary Tables - General Pharmaceutical Services - Tables 7 and 11](`r config$fy_excel_link`)
+
+::::{.row style="display: flex; padding-bottom: 15px;"}
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b> The cost of AURs provided in 2022/23 was £3.3 million.</b>", width = "100%")`
+:::
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b>The cost of AURs provided in 2022/23 increased by 21% compared to 2021/22.</b>", width = "100%")`
+:::
+::::
+
+
+
+::::{.row style="display: flex; padding-bottom: 10px;"} 
+:::{.col-md-12}
+`r infoBox_border("Stoma Appliance Customisation", text = "Stoma Appliance Customisation (SAC) is an Advanced Service in the NHS Community Pharmacy Contractual Framework. The service involves the customisation of stoma appliances, based on the patient’s measurements or a template. The aim of the service is to ensure proper use and comfortable fitting of the stoma appliance and to improve the duration of usage, thereby reducing waste. The stoma appliances that can be customised are listed in Part IXC of the Drug Tariff.
+
+A fee of £4.32 is payable for every Part IXC prescription item that can be customised as denoted in the Drug Tariff. The fee does not have to be claimed and will be paid automatically to those pharmacy and appliance contractors  in England who have registered their intent to provide stoma appliance customisation services to the NHSBSA.", width = "100%")`
+:::
+::::
+
+#### **`r paste0("Figure ",12,": Total  Stoma Appliance Customisation (SAC) provided between 2015/16 and 2022/23")`** 
+
+```{r advanced services sac, out.width="100%"}
+figure_12
+```
+`r get_download_button(title = "Download data table", data = figure_12_data, filename = "figure_12")`
+Source: [Summary Tables - General Pharmaceutical Services - Tables 7 and 11](`r config$fy_excel_link`)
+
+::::{.row style="display: flex; padding-bottom: 15px;"}
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b> There were 1.7 million SACs provided by appliance contractors in  2022/23.</b>", width = "100%")`
+:::
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b>There were 5,900 SACs provided by community pharmacies in  2022/23. </b>", width = "100%")`
+:::
+::::
+
+The total number of SACs has increased by 4.9% from 1.6 million to 1.7 million between 2021/22 and 2022/23. 
+
+<!-- The number of SACs provided by community pharmacies decreased by 28.0% from 11,600 to 8,330 between 2021/22 and 2022/23. This followed 5 consecutive years of decreases between 2015/16 and 2020/21. The number of SACs provided by appliance contractors between 2020/21 and 2022/23  went up by 5.23% from 1.52 million to 1.60 million. This followed 5 consecutive years of increases between 2015/16 and 2022/23. -->
+
+<!-- The majority of SACs are provided by appliance contractors, which means the reduction in those provided by community pharmacies has not prevented an overall increase. The total number of SACs has increased by 5.04% from 1.60 million to 1.68 million between 2021/22 and 2022/23. This is an increase of 30.2% from the 1.24 million provided in 2015/16. -->
+
+#### **`r paste0("Figure ",13,": Total Cost of Stoma Appliance Customisation (SAC) provided between 2015/16 and 2022/23")`** 
+```{r advanced services sac cost, out.width="100%"}
+
+figure_13
+```
+`r get_download_button(title = "Download data table", data = figure_13_data, filename = "figure_13")`
+Source: [Summary Tables - General Pharmaceutical Services - Tables 7 and 11](`r config$fy_excel_link`)
+
+::::{.row style="display: flex; padding-bottom: 15px;"}
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b> The cost of SACs provided in  2022/23 was £7.3 million.</b>", width = "100%")`
+:::
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b> The cost of SACs has increased by 4.9% between 2021/22 and 2022/23.</b>", width = "100%")`
+:::
+::::
+
+As the SAC is a set payment that has not changed since its introduction, the percentage increase for volume and cost is the same.
+
+
+::::{.row style="display: flex; padding-bottom: 10px;"} 
+:::{.col-md-12}
+`r infoBox_border("Community Pharmacist Consultation Services", text = "The NHS Community Pharmacist Consultation Service (CPCS) Advanced Service began on 29 October 2019 to allow patients to have a same day community pharmacist appointment for a minor illness or an urgent supply of a regular medicine.
+
+The service is intended to improve access to services and provide  treatment closer to patients’ homes by harnessing the skills and medicines knowledge of pharmacists and relieving pressure on GP appointments and emergency departments. 
+
+From 1 November 2020, general practices have been able to refer patients for a minor illness consultation via CPCS, once a local referral pathway has been agreed.
+
+The fee for providing the CPCS is £14 (including VAT) per consultation.
+
+No data prior to 2019/20 is available for Community Pharmacy Consultation Services.", width = "100%")`
+:::
+::::
+
+#### **`r paste0("Figure ",14,": Total Cost of Community Pharmacy Consultation Services 2022/23")`**
+```{r cspc fee cost, out.width="100%"}
+figure_14
+
+```
+`r get_download_button(title = "Download data table", data = figure_14_data, filename = "figure_14")`
+Source: [Summary Tables - General Pharmaceutical Services - Table 8](`r config$fy_excel_link`)
+
+::::{.row style="display: flex; padding-bottom: 15px;"}
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b> The cost of CSPCs provided in  2022/23 was £18 million.</b>", width = "100%")`
+:::
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b> The cost of CSPCs has increased by 81% between 2021/22 and 2022/23.</b>", width = "100%")`
+:::
+::::
+
+<!-- The cost of fees paid for Community Pharmacy Consultation Services in 2022/23 was £12.6 million, a 81.4% increase on the £5.31 million  claimed in 2021/22. -->
+
+
+#### **`r paste0("Figure ",15,": Total Cost of Drugs provided during Community Pharmacy Consultation Services 2022/23")`**
+```{r cspc drug cost, out.width="100%"}
+figure_15
+
+```
+`r get_download_button(title = "Download data table", data = figure_15_data, filename = "figure_15")`
+Source: [Summary Tables - General Pharmaceutical Services - Table 8](`r config$fy_excel_link`)
+
+::::{.row style="display: flex; padding-bottom: 15px;"}
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b> The cost of drugs provided for CSPCs provided in  2022/23 was £3.1 million.</b>", width = "100%")`
+:::
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b> The cost of drugs provided for CSPCs has increased by 35% between 2021/22 and 2022/23.</b>", width = "100%")`
+:::
+::::
+### 2.3 Enhanced Services for Contractors {.toc-ignore} 
+
+Data is not available for most Local Enhanced Services because the NHSBSA holds data of amounts paid but not which locally commissioned service these payments were assigned to. An exception was the COVID-19 vaccination enhanced service which began as a local enhanced service.
+
+::::{.row style="display: flex; padding-bottom: 10px;"} 
+:::{.col-md-12}
+`r infoBox_border("COVID-19  vaccination enhanced service", text = "Towards the end of 2020/21 community pharmacies began providing COVID-19 vaccinations as a local enhanced service to deliver Phase 1 and Phase 2 cohorts  of the Joint Committee on Vaccination and Immunisation (JCVI). A further enhanced service was commissioned to deliver Phase 3 which was provided alongside the seasonal influenza vaccination programme, which runs each autumn.
+
+The figures in these statistics for COVID-19 vaccinations only relate to those administered by community pharmacies. [Official Statistics for all COVID-19 vaccinations are produced by UK Health Security Agency](https://coronavirus.data.gov.uk/).", width = "100%")`
+:::
+::::
+
+#### **`r paste0("Figure ",16,": Total Costs for COVID-19  vaccinations fees provided by contractors in 2022/23")`**
+
+```{r covidvaccine_costs_and_fees, out.width="100%"}
+
+figure_16
+```
+`r get_download_button(title = "Download data table", data = figure_16_data, filename = "figure_16")`
+Source: [Summary Tables - General Pharmaceutical Services - Table 9](`r config$fy_excel_link`)
+
+::::{.row style="display: flex; padding-bottom: 15px;"}
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b> The costs of COVID-19 vaccines fees in 2022/23 were £110 million.</b>", width = "100%")`
+:::
+:::{.col-md-6}
+`r infoBox_no_border("", text = "<b> The costs of COVID-19 vaccines fees have decreased by 64% between 2021/22 and 2022/23.</b>", width = "100%")`
+:::
+::::
+
+The COVID-19 vaccines made available under this enhanced service are provided to the pharmacy contractor free of charge, therefore no data on the cost of the vaccine is held by the NHSBSA.
+
+---
+
+## 3. About these statistics
+
+The General Pharmaceutical Services publication (GPhS) is an official accredited statistic release. Official accredited statistic status means this release complies with the [Code of Practice for Statistics](https://code.statisticsauthority.gov.uk/), showing trustworthiness, quality, and value. 
+
+These official statistics were independently reviewed by the Office for Statistics Regulation (OSR) in [December 2021](https://osr.statisticsauthority.gov.uk/correspondence/ed-humpherson-to-matthew-wilson-confirmation-of-national-statistics-designation-for-statistics-on-general-pharmaceutical-services-in-england/).
+
+
+### 3.1. Changes made to this publication {.toc-ignore}
+
+#### Changes to the statistical narrative 
+
+Details of the  Community Pharmacy Consultation Services GP referral engagement fees have been removed. This was a setup payment that had to be claimed by 30th June 2021. Historical data is included in the summary tables. 
+
+Some data regarding COVID-19 related services that were undertaken by pharmacies has been removed from this narrative, because the services are no longer operational and payments are no longer made to contractors.
+
+This includes data and payments on:
+
+* COVID-19 testing
+* Home Delivery payments introduced during COVID-19
+
+Historical data is included in the summary tables. 
+
+#### Additions to the summary tables
+
+Data regarding the advanced service Smoking Cessation Service (SCS) have been added to the summary tables.
+
+
+### 3.2. Accuracy of these statistics {.toc-ignore}
+
+Further information on the accuracy of the data used in this publication is available in the [Background Information and Methodology supporting document](`r config$background_link`). Details regarding the impact of post payment verification (PPV) and other checks carried out by NHS Prescription Services (a division of NHSBSA) on the statistics are available in the [Impacts of errors identified on the accuracy of the General Pharmaceutical Services](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gps-2021-accuracy-v001.html) supporting document that accompanied the 2020/21 publication.
+
+### 3.3. PHS1 Pharmacy Data Collection  {.toc-ignore}
+
+Data that has previously been obtained from the NHS Digital PHS1 Pharmacy Data collection is no longer available, as the collection exercise no longer takes place. An alternative data source for this data has not been identified which means this information has not been included in this report. However, some information previously included on the PHS1, such as pharmacy openings and closures and some exempt categories has been sourced from the NHSBSA administrative records.
+
+
+Historic versions of this publication released by NHS Digital are [available on the NHS Digital website](https://digital.nhs.uk/data-and-information/publications/statistical/general-pharmaceutical-services). Users should always use the statistics in the latest release of the publication to make sure they are the most up to date figures available.
+
+### 3.4. Uses of these statistics {.toc-ignore}
+
+These statistics can be used to understand the activity of community pharmacies and appliance contractors in England, including essential and advanced services provided to NHS patients. They cannot be used to provide the total number or cost of prescription items dispensed in England in the community as they do not contain dispensing from all sources. This can be obtained from another NHSBSA official accredited statistic publication, [Prescription Cost Analysis](https://www.nhsbsa.nhs.uk/statistical-collections/prescription-cost-analysis-england).
+
+
+### 3.5. Geographies included in this publication {.toc-ignore}
+
+The geographies used in this publication are based upon NHSBSA administrative records, not geographical health boundaries as defined by the Office for National Statistics (ONS). These administrative records more closely reflect the operational organisation of dispensing contractors than other geographical data sources such as the National Statistics Postcode Lookup (NSPL).
+
+
+### 3.6 Planned changes to this publication {.toc-ignore}
+
+
+<!-- The NHSBSA is currently developing an open data set public feed based on the monthly [Management Information Spreadsheet](https://www.nhsbsa.nhs.uk/access-our-data-products/information-services-portal-isp/isp-report-information) (MIS) report. This is intended for release by April 2023 and will compliment this National Statistic publication.  This new data set will not be an Official Statistic release. -->
+
+<!-- Following the release of this publication the NHSBSA will be launching a public consultation on the statistical methodology that is used in these statistics and will be seeking feedback from users and stakeholders. NHSBSA also plan to hold a user engagement event for this release in early 2021. Details of the event will be announced on the [Statistics section](https://www.nhsbsa.nhs.uk/announcements) of the NHSBSA website. -->
+
+NHSBSA plans to expand the scope of this publication in future releases to report on all fees that a contractor can claim for providing NHS services, in order to provide a more complete picture of the total cost of community pharmacy to the public purse. Next year's release will include the advanced service of Pharmacy Contraception Service which commenced in April 2023.
+
+
+---
+
+## 4. Statistical Disclosure Control
+
+The high-level figures in this statistical summary have been rounded where appropriate for clarity, in most cases to three significant figures. This is to make this narrative as accessible as possible to all readers. The summary tables released with this publication allow users to investigate this data at lower levels of granularity. 
+
+---
+
+## 5. Accessibility
+
+### How to request content in an accessible format {.toc-ignore}
+
+If you need information on this website in a different format like accessible PDF, large print, easy read, audio recording or braille, you can contact us by:
+
+**Email**: accessibility@nhsbsa.nhs.uk
+
+**Phone**: 0191 203 5318
+
+[Find out about call charges](https://www.nhsbsa.nhs.uk/contact-us/call-charges-and-phone-numbers)
+
+We’ll consider your request and get back to you in 5 working days.
+
+These contact details are only for accessibility queries. This inbox is not for technical queries or IT problems. If you have a query that is not about accessibility, go to the ‘Contact us’ section of this page.
+
+View our [Accessibility statement for Official Statistics Narratives](https://www.nhsbsa.nhs.uk/accessibility-statement-official-statistics-narratives).
+
+---
+
+
+## 6. Feedback and contact us
+
+Feedback is important to us; we welcome any questions and comments relating to these statistics.
+
+You can complete a [short survey about this publication](`r config$stats_survey_link`)  to help us improve the Official Statistics that we produce. All responses will remain anonymous, and individuals will not be identifiable in any report that we produce.
+
+You can view our [privacy policy](https://www.nhsbsa.nhs.uk/our-policies/privacy) on our website to see how your data is used and stored.
+
+You can contact us by:
+
+**Email:** statistics@nhsbsa.nhs.uk
+
+**You can also write to us at:**
+
+NHSBSA - Statistics<br>
+NHS Business Services Authority<br>
+Stella House<br>
+Goldcrest Way<br>
+Newburn Riverside<br>
+Newcastle upon Tyne<br>
+NE15 8NY
+
+
+**Responsible statistician:** `r config$responsible_statistician`
+
+
+</main>
