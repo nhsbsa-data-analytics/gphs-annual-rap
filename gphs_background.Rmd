@@ -1,0 +1,482 @@
+---
+title: "General Pharmaceutical Services – England"
+always_allow_html: true
+output:
+  word_document:
+    toc: yes
+    toc_depth: '3'
+  html_document:
+    anchor_sections: no
+    css: www/style.css
+    toc: yes
+    toc_depth: 3
+    toc_float:
+      collapsed: no
+---
+  
+  <script>
+    $(document).ready(function() {
+      $('#header').prepend('<img src=`r knitr::image_uri("www/bsa_logo.svg")` alt=\"NHSBSA logo\" style=\"position:relative; float: right; top: 0; right: 0; padding: 10px; width: 25%;\">');
+  });
+</script>
+  
+  <style type="text/css">
+  
+  body, td {
+    font-size: 16px;
+    font-family: sans-serif;
+  }
+</style>
+  <html lang="en">
+  
+```{r setup, include=FALSE}
+# set code chunk options to disable echo by default
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE)
+```
+
+<main>
+  
+# Background Information and Methodology {.toc-ignore}
+  
+## October 2023 {.toc-ignore}
+  
+  
+---
+  
+## 1. Background information
+
+### 1.1. About this document  {.toc-ignore}
+
+This document is intended to provide detailed information about prescription data, as well as information on the essential and advanced services provided by community pharmacies and appliance contractors to the general public on behalf of the NHS. These details include the processes carried out to transform a prescription issued by a prescriber and submitted for reimbursement by a dispensing contractor, into these statistics. This document also provides information on the methodologies used in these statistics and used in an operational context to ensure the accuracy and trustworthiness of this data.
+
+This document will be updated as the statistical methodologies and underlying business processes change over time. It will remain relevant to the most up to date releases of the series.
+
+### 1.2 About these statistics {.toc-ignore}
+
+Community pharmacies and appliance contractors are responsible for dispensing medications, appliances, and medical devices to NHS patients. They are not a direct part of the NHS but provide essential services on behalf of the NHS to the general public.
+
+The General Pharmaceutical Services (GPhS) – England publication shows details on community pharmacy and appliance contractor activity across the whole financial year. This includes the details on the number of prescription items they have dispensed, the number of single activity fees they have received, and further details on essential and advanced services that they have provided. They cannot be used to provide the total number or cost of prescription items dispensed in England in the community, as they do not contain dispensing from all sources. This can be obtained from another NHS Business Services Authority (NHSBSA) National Statistic publication, [Prescription Cost Analysis](https://www.nhsbsa.nhs.uk/statistical-collections/prescription-cost-analysis-england).
+
+The GPhS publication is an accredited official statistic release. Accredited official statistics status means that GPhS meets the highest standards of trustworthiness, quality, and public value, and complies with all aspects of the [Code of Practice for Statistics](https://code.statisticsauthority.gov.uk/).
+
+The designation of this publication as an accredited official statistic was confirmed in December 2021 following an assessment by the Office for Statistics Regulation (OSR). You can read more about this confirmation and the assessment of these statistics on the [OSR website](https://osr.statisticsauthority.gov.uk/correspondence/ed-humpherson-to-matthew-wilson-confirmation-of-national-statistics-designation-for-statistics-on-general-pharmaceutical-services-in-england/).
+
+This publication can have a wide range of uses including informing government or local NHS policy and allowing public scrutiny of national and regional dispensing activities. 
+
+### 1.3 Community pharmacies and appliance contractors {.toc-ignore}
+
+From 1 April 2013, NHS England became responsible for the commissioning of NHS pharmaceutical services in England and for negotiating changes to arrangements for the provision of services. The [Community Pharmacy Contractual Framework](https://cpe.org.uk/quality-and-regulations/the-pharmacy-contract/) (CPCF) for pharmacy contractors is set out in the [The National Health Service (Pharmaceutical and Local Pharmaceutical Services) Regulations 2013](https://www.legislation.gov.uk/uksi/2013/349/contents/made), and the Pharmaceutical Services (Advanced and Enhanced Services) (England) Directions 2013 are contained within the [Drug Tariff for England and Wales](https://www.nhsbsa.nhs.uk/pharmacies-gp-practices-and-appliance-contractors/drug-tariff). 
+
+Changes to the CPCF are negotiated between NHS England and Community Pharmacy England (CPE), who are the representative body of community pharmacists. The role of the Department of Health and Social Care (DHSC) from April 2013 is to make any necessary changes to the legislative framework.
+
+In order to be able to provide pharmaceutical services for the NHS, the 2013 regulations state that a person (other than doctors or dentists) must be included in a pharmaceutical list. NHS England are required to prepare and maintain lists of those who have been granted applications. The list specifies both the premises and the named contractor. Community pharmacies can dispense both drugs and appliances, but appliance contractors are limited to the supply of appliances as listed in Part IXA, IXB and IXC of the Drug Tariff.  The Drug Tariff is published by NHSBSA on behalf of the DHSC and Wales.
+
+To receive payment for the costs and fees incurred while providing services to the general public on behalf of the NHS, community pharmacies and appliance contractors must submit their prescriptions to NHSBSA along with a submission document, known as the FP34C. This has recently been digitised by the Manage Your Submission (MYS) application but was historically done via a paper form that accompanied paper prescription batches. The processing applied to individual prescriptions is discussed as part of ‘The prescription journey’ later in this document. 
+
+Data regarding advanced services is taken from the FP34C submission document, or from the MYS application. This is then passed to NHSBSA payment systems to calculate account level payments that are to be made to community pharmacies and appliance contractors.
+
+### 1.4 Data included {.toc-ignore}
+
+#### 1.4.1 Prescription data {.toc-ignore}
+
+Prescription data is a long-standing administrative source of data that has been used by commissioners, providers, government, academia, industry, and media to inform local and national policy, in academic research, to monitor medicine uptake, and allow public scrutiny of prescribing habits. It is collected by the NHSBSA for the operational purpose of reimbursing and remunerating dispensing contractors for the costs of supplying drugs and devices, along with essential and advanced services, to NHS patients. All prescribing data that forms the basis of the statistics in this publication is collected as a by-product of this process.
+
+Data is collected from the submission of prescriptions by dispensing contractors to the NHSBSA. These prescriptions can be issued by GPs and other authorised prescribers such as nurses, dentists, and allied health professionals. Prescriptions that are issued by hospitals can also be dispensed in the community and submitted for reimbursement. Prescriptions that are issued in hospitals and fulfilled by the hospital pharmacy or dispensary are not included in this data.
+
+Prescriptions can be issued as either a paper form or as an electronic message using the Electronic Prescription Service (EPS). EPS prescriptions make up most of prescribing and dispensing activity carried out in England, accounting for 88%<sup>1</sup> of all prescriptions dispensed in England during 2021. EPS messages are submitted by the dispensing contractor once the prescription has been fulfilled and issued to the patient. The message is initially sent to the NHS Spine, maintained by NHS Digital, and then sent to the NHSBSA for processing. 
+
+Paper prescriptions are compiled by the dispensing contractor and sent to the NHSBSA at the end of each month by secure courier. These paper prescriptions are then scanned and transformed into digital images, which are passed through intelligent character recognition (ICR) to extract the relevant data from them. Most paper forms go through ICR without any manual intervention. However, there are cases where operator intervention is required to accurately capture information from the prescription form. This manual intervention can be required for many reasons, such as if a form is handwritten or information is obscured by a pharmacy stamp.
+
+After this processing for the reimbursement and remuneration of dispensing contractors, data is extracted from the NHSBSA transactional systems alongside data from the NHSBSA drug and organisational databases and loaded in to the NHSBSA Enterprise Data Warehouse (EDW). During this extract, load and transform (ELT) process a series of business logic is applied to the data to make it easier to use and more useful than if it were to be kept in its raw form. The EDW is the source used by many of our reporting systems and data extracts, including ePACT2, eDEN, eOPS, the English Prescribing Dataset (EPD), and Official Statistics publications.
+
+Data is limited in this publication to only prescription items that have been dispensed by a community pharmacy or appliance contractor in England. Items dispensed by dispensing doctors, hospitals or prisons or submitted for reimbursement via a personal administration account have been excluded.
+
+Data on advanced services provided by community pharmacies and appliance contractors is limited to where a claim has been submitted to NHSBSA in relation to performing one of those services. Counts around the number of services provided are based upon the number of times a fee has been paid to a contractor. The figures of the number of contractors that provide a service are based upon the number of contractors that have received payment of at least one fee for that service.
+
+<small><sup>1</sup> Source – NHSBSA Enterprise Data Warehouse.</small>
+
+#### 1.4.2 Primary care appeals data {.toc-ignore}
+
+Primary care appeals data is provided by NHS Resolution (previously known as the NHS Litigation Authority) on an annual basis. If an application for market entry for a pharmacy is refused, it can be appealed to NHS Resolution under the [NHS Pharmaceutical and Local Pharmaceutical Services Regulations 2013](https://www.legislation.gov.uk/uksi/2013/349/contents/made). 
+
+The NHSBSA receive this data by secure transfer from NHS Resolution on an annual basis. However, an [aggregated version of this data](https://resolution.nhs.uk/resources/factsheet-6-primary-care-appeals-statistics-2022-23/) is already available in the public domain, published by NHS Resolution as part of their annual report. This published data is not as granular as the data included in this publication and does not contain breakdowns by appeal types or the locality of the appeals.
+
+The data is generated from NHS Resolution’s claims management system. This system is subject to internal audit and external audit by the National Audit Office (NAO). Internal checks consist of a panel of independent auditors that conduct an annual audit of the quality of data entered against claims across a large sample. NHS Resolution analysts also conduct their own quality checks, including checks for:
+
+ * Uniqueness – to make sure data is only counted once
+ * Data validity – excluding any invalid data 
+ * Data completeness – to make sure that all valid data is included
+ * Correct categorisation – to make sure data is categorised correctly
+ * Consistency – to make sure data is treated consistently over each year
+
+The [annual report that NHS Resolution publishes](https://resolution.nhs.uk/resources/annual-report-statistics/) is not designated as an Official Statistic but is produced in line with a voluntary application of the Code of Practice for Statistics, as is the data that is subsequently used in this publication.
+
+### 1.5 Geographies used in this publication {.toc-ignore}
+
+The geographies used in this publication are based upon NHSBSA administrative records, not geographical health boundaries as defined by the Office for National Statistics (ONS). These administrative records more closely reflect the operational organisation of dispensing contractors than other geographical data sources such as the National Statistics Postcode Lookup (NSPL).
+
+The NHS England Regions and 42 Integrated Care Boards (ICBs) shown in the statistical summary tables of this release are based on the NHS organisational structure at 1 July 2022.  Organisational changes implemented on 1 July 2022 have resulted in Sustainability and Transformation Plans (STPs) being replaced with ICBs. 
+
+Integrated Care Boards (ICBs) are a statutory organisation bringing the NHS together locally to improve population health and establish shared strategic priorities within the NHS. In these statistics the ICB given is that of the dispensing contractor and not the prescribing organisation. These geographies are taken from NHSBSA administrative records and relate to the commissioning of services for NHS patients, and not the physical location of a dispensing contractor, or the patient that has received the drug, appliance, or medical device.
+
+Some dispensing contractors are distance selling pharmacies or ‘online’ pharmacies. These contractors are required by regulation to provide a national service to NHS patients. However, they are only associated with a single ICB than expected volume of prescribing due to the existence of a distance selling or specialist pharmacy within their boundary.
+
+## 2. Methodology
+ 
+### 2.1 Counts of community pharmacies and appliance contractors {.toc-ignore}
+
+The figures shown in this release by NHSBSA are based on contractors that have been active at any point in the given year. This has been done to provide consistency with other figures given in the publication that do not exclude contractors that have closed during the year, and to more accurately reflect the level of activities carried out by contractors during a year. 
+
+Previous releases of these statistics by NHS Digital counted active contractors as those open at 31 March of the given year.  This change avoids the exclusion of contractors that have opened and closed in the same financial year.
+
+### 2.2 Average monthly items per contractor {.toc-ignore}
+
+This measure is calculated by, for each pharmacy, dividing the total items dispensed by the number of months the pharmacy was active in the year. The median of these figures is then calculated to give the final measure. A median is calculated by arranging all the available values into an ordered list and selecting the value that is in the middle. If there are 2 middle values, the median is halfway between them. 
+
+Previously this measure was calculated by dividing the total number of items dispensed by community pharmacies by the total number of community pharmacies, and then dividing this number by the number of months in the year (total items dispensed / number of community pharmacies / 12). This change means the average is no longer skewed by contractors who are not open for all months of the year or by outliers in the volume of dispensed items.
+
+### 2.3 Contractor attributes {.toc-ignore}
+
+Attributes belonging to community pharmacies and appliance contractors such as:
+
+ * Opened date
+ * Closed date
+ * Multiple or independent contractor
+ * Distance selling contractor
+ * Local Pharmaceutical Services (LPS) contractor
+ * Parent NHS England Region and Local Office
+
+Are all taken from the 31 March of the year. Therefore, if a community pharmacy was classed as an independent between April and February, and subsequently became a multiple contractor in March, they would be counted as a multiple contractor only. This ensures that counts are not duplicated for contractor attributes.
+
+### 2.4 Seasonal influenza vaccination advanced service {.toc-ignore}
+
+Previously known as the National Influenza Adult Vaccination Services (NIAVS). A distinct count has been done on the pharmacy’s dispenser code, which remains the same if a contractor changes trading address, to remove duplication and obtain a more accurate count. This differs from historical releases by NHS Digital where the count was done on trading address meaning a contractor could be counted multiple times if its trading address changed during the financial year.
+
+### 2.5 Monthly dispensing volume bands {.toc-ignore}
+
+The monthly dispensing volume bands calculates the items dispensed in the year for each contractor, then divides that figure by the number of months that contractor has been active throughout the year. Each contractor is then placed into a volume band. Two separate measures utilise this methodology, one which counts the number of contractors within each volume band, and one which counts the number of items dispensed by contractors that are within each of these volume bands. 
+
+Previously in historical releases by NHS Digital this measure was calculated by the number of months in the year. This change means data will not be skewed by contractors who are not open for all months of the year.
+
+## 3. Changes to this publication
+
+### 3.1 Summary tables {.toc-ignore}
+
+Data regarding the Smoking Cessation Service, an advanced service introduced in March 2022, has been added to the summary tables.
+
+### 3.2 Advanced and enhanced services {.toc-ignore}
+
+Many COVID-19 related services have begun to close. Information on Community Pharmacy Home Delivery Services and Community Pharmacy COVID-19 Lateral Flow Device Distribution Service, which were both decommissioned in March 2022, has been removed from the statistical summary narrative. Historical data for these services is available in the summary tables. COVID-19 vaccinations provided by community pharmacies have still been included in the narrative.
+
+### 3.3 Planned changes to this publication {.toc-ignore}
+
+NHSBSA plans to expand the scope of this publication in future releases to report on all fees that a contractor can claim for providing NHS services in order to provide a more complete picture of the total cost of community pharmacy to the public purse.
+
+## 4. Strengths and limitations
+
+### 4.1 Strengths {.toc-ignore}
+
+The main strength of these statistics is the completeness of prescription data relating to dispensing activity, and accuracy of information captured during processing activities carried out by the NHSBSA. This dataset covers all prescribing that has been dispensed in the community in England by a community pharmacy or appliance contractor, with consistency in the way data has been captured across the whole dataset. The data NHSBSA captures regarding advanced services provided to NHS patients is also captured in this same manner and has the same coverage. 
+
+Contractors are required to complete an accompanying submission document via the Manage Your Submission application, or the paper FP34C form to receive payment for any advanced services provided. This administrative data is required to be as accurate as possible as it is used for paying dispensing contractors for services provided to NHS patients.
+
+### 4.2 Limitations {.toc-ignore}
+
+#### 4.2.1 Additional fees {.toc-ignore}
+
+Only reimbursement of prescriptions and Single Activity Fees are included in cost calculations and summary narrative for these statistics. Pharmacies can claim payment for a range of fees including controlled drug fees and out of pocket expenses when dispensing a prescription item. These other fees are included in the summary tables and will be incorporated into the narrative in future releases.
+
+#### 4.2.2 Adjustments {.toc-ignore}
+
+Data relating to advanced services provided by contractors is reliant on the accurate submission of these figures by contractors. The NHSBSA carry out post payment verification checks relating to fees paid in relation to these services. However, this is carried out after payment and any adjustments that result from these checks are not included in these statistics.
+
+#### 4.2.3 Exclusions {.toc-ignore}
+
+These statistics exclude prescriptions that were issued but not presented for dispensing and prescriptions that were not submitted to the NHSBSA for processing and reimbursement. Prescriptions issued and dispensed in prisons, hospitals, by dispensing doctors, items personally administered by medical professionals and private prescriptions are also excluded, and so do not give a full picture of all prescribing in England.
+
+#### 4.2.4 PHS1 Pharmacy data collection {.toc-ignore}
+
+Data that has previously been obtained from the NHS Digital PHS1 Pharmacy Data collection is no longer available, as the collection exercise no longer takes place. Last year, we informed users that we were working with NHS England & Improvement and other partners to source this data from alternative sources. However, an alternative data source has not been identified, and so this information will not be included in this release. However, some information previously included on the PHS1, such as pharmacy openings and closures and some exempt categories, are available from the NHSBSA administrative records.
+
+## 4.3 Uses of GPhS {.toc-ignore}
+
+See our [Official Statistics guidance table](https://www.nhsbsa.nhs.uk/statistical-collections) for a short summary of the key criteria covered by GPhS. To expand on the points outlined in that document, see the below summaries for suitable/unsuitable uses for GPhS.
+
+### 4.3.1 GPhS can be used for: {.toc-ignore}
+
+ *	Analysis of trends in contractor openings and closures in England and at ICB or regional level 
+ *	Obtaining an overview of the current pharmacy/contractor landscape in England
+ *	Analysis of range and trends of advanced services provided by contractors, such as NMSs, AURs, SAC and influenza vaccinations in England and at ICB and regional level
+ * Analysis of amounts spent on advanced services provided by community pharmacies such as NMSs, AURs, SAC and influenza vaccinations in England and at ICB and regional level
+ * Additional data tables have also been supplied as part of the release which enable analysis of some key areas of interest
+
+### 4.3.2 GPhS cannot be used for: {.toc-ignore}
+
+ *	Providing breakdowns for more granular geographies than ICBs. 
+ *	Providing a final figure representative of the total cost to the NHS. The final cost measure used in this publication, net ingredient cost (NIC), does not consider all elements that contribute towards the final cost to the NHS, for example remuneration to contractors, discounts, advance payments, and patient charges. Additionally, the data only includes items prescribed in multiple health care settings including secondary care and subsequently dispensed in the community. Items issued and dispensed in secondary care are not included.
+ *	Viewing items dispensed outside of England. The GPhS dataset is limited to a view of items dispensed only in the community in England, regardless of whether they were prescribed in England, Scotland, Wales, Northern Ireland, and State authorities such as Guernsey, Jersey, Alderney, and Isle of Man.
+ *	Providing cost or volumes of all activities carried out by community pharmacies as part of the national response to the COVID-19 pandemic. This includes administering of COVID-19 vaccines.
+
+## 5. Revisions 
+
+Any revisions that we make to these statistics will be made in line with our [Revisions and Corrections policy](https://www.nhsbsa.nhs.uk/policies-and-procedures). Any significant errors that are identified within these statistics after their publication that would result in the contradiction of conclusions previously drawn from the data will be notified of prominently on our website and any other platforms that host these statistics, corrected as soon as possible, and communicated clearly to users and stakeholders.
+
+In line with principle Q2.5 – Sound methods, within the [Code of Practice of Statistics](https://code.statisticsauthority.gov.uk/the-code/) and our Revisions and Corrections policy we are releasing data from 2015/16 to 2019/20 with this publication to maintain as consistent a time series as possible for users after the changes in methodology have been applied to these statistics.
+
+## 6. Related statistics, comparability, and useful resources
+
+### 6.1 UK statistics {.toc-ignore}
+
+NHSBSA releases General Pharmaceutical Services (GPhS) – England, a publication with National Statistics designation. A similar release is produced by the devolved administration for Northern Ireland, whilst other statistics around dispensing contractor activity are released by the devolved administrations for Scotland and Wales.
+
+ * Northern Ireland – [Business Services Organisation – General Pharmaceutical Services and Prescribing Statistics](https://hscbusiness.hscni.net/services/3176.htm)
+ * Scotland – [Public Health Scotland – Community Pharmacy – Contractor Activity](https://www.opendata.nhs.scot/dataset/community-pharmacy-contractor-activity)
+ * Wales – [Welsh Government – Dispensing Contractor Activity](https://nwssp.nhs.wales/ourservices/primary-care-services/general-information/data-and-publications/dispensing-contractor-activity-by-service/)
+
+### 6.2 Comparisons over time {.toc-ignore}
+
+In order to allow for comparisons to be made over time these statistics cover from financial year 2015/16 onwards. Prior releases included previous time periods which are no longer available to NHSBSA. For consistency with other NHSBSA statistical publications, this version only contains data from April 2015 onwards, though [historic publications](https://digital.nhs.uk/data-and-information/publications/statistical/general-pharmaceutical-services) are available from NHS Digital.
+
+Changes to the figures displayed in these statistics over time should be interpreted in the context of the wider pharmaceutical landscape, including the availability of medicines, release of new medicines and their costs, introduction or decommissioning of Advanced Services, and changing national and regional prescribing guidelines.
+
+### 6.3 Drug Tariff for England and Wales {.toc-ignore}
+
+The Drug Tariff holds details on all the fees payable to community pharmacies and appliance contractors, as well as details on the costs to be reimbursed for the supply of drugs and appliances listed in parts VIII and IX. The Drug Tariff can be accessed from the [NHSBSA website](https://www.nhsbsa.nhs.uk/pharmacies-gp-practices-and-appliance-contractors/drug-tariff).
+
+### 6.4 Community Pharmacy England (CPE) {.toc-ignore}
+
+CPE promotes and supports the interests of all NHS community pharmacies in England. They are recognised by the Secretary of State for Health and Social Care as the body that represents NHS pharmacy contractors. The [CPE website](https://cpe.org.uk/) contains many useful resources for understanding the role of community pharmacy in the wider health and social care landscape. The organisation was previously known as the Pharmaceutical Services Negotiating Committee (PSNC).
+
+### 6.5 NHS Resolution {.toc-ignore}
+
+[NHS Resolution](https://resolution.nhs.uk/) handle primary care appeals and provide an impartial tribunal service for the fair handling of appeals and disputes between NHS England and primary care contractors such as GPs, dentists, opticians and pharmacists.
+
+### 6.6 The National Health Service (Pharmaceutical and Local Pharmaceutical Services) Regulations 2013 {.toc-ignore}
+
+The regulations came into effect on 1 April 2013 and replaced the 2012 regulations. They reflect the new NHS architecture, in which NHS England is responsible for maintaining pharmaceutical lists, and the [Health and Wellbeing Boards](https://www.kingsfund.org.uk/publications/health-wellbeing-boards-explained) (HWB) are responsible for developing and publishing the Pharmaceutical Needs Assessments, which are used in the determination of routine applications for new pharmacies.
+
+### 6.7 NHSBSA Open Data Portal {.toc-ignore}
+
+The NHSBSA [Open Data Portal](https://opendata.nhsbsa.net/) is the platform where we host our open data products, including data relating to other Official Statistics releases.
+
+### 6.8 Code of Practice for Statistics {.toc-ignore}
+
+These statistics have been produced in compliance with the Code of Practice for Statistics. You can find more on the code of practice and its pillars, principles, and practices from the [UK Statistics Authority website](https://code.statisticsauthority.gov.uk/the-code/).
+
+## 7. Quality of the Statistics
+
+We aim to provide users of this publication with an evidence-based assessment of its quality and the quality of the data from which it is produced. We do so to demonstrate our commitment to comply with the UK Statistics Authority’s (UKSA) Code of Practice for Statistics, particularly the pillar of Quality and its principles.
+
+**Q1 Suitable data sources** – Statistics should be based on the most appropriate data to meet intended uses. The impact of any data limitations for use should be assessed, minimised, and explained.
+
+**Q2 Sound methods** – Producers of statistics and data should use the best available methods and recognised standards and be open about their decisions.
+
+**Q3 Assured quality** – Producers of statistics and data should explain clearly how they assure themselves that statistics and data are accurate, reliable, coherent, and timely.
+
+Details of how we define statistical quality can be found in our [Statement on Quality Principles and Processes](https://www.nhsbsa.nhs.uk/policies-and-procedures). This is an assessment of the quality of these statistics against the European standard for quality reporting and its dimensions specific to statistical outputs, particularly:
+
+* Relevance
+* Accuracy and reliability
+* Timeliness and punctuality
+* Accessibility
+* Coherence and comparability
+
+These principles guide us and are complimented by the UKSA’s regulatory standard for the Quality Assurance of Administrative Data (QAAD). You can view our QAAD assessment of prescription data [on our website](https://www.nhsbsa.nhs.uk/statistical-collections).
+
+### 7.1. Relevance {.toc-ignore}
+
+***This dimension covers the degree to which the product meets user need in both coverage and content***
+
+The GPhS annual publication includes details on the activities of community pharmacies and appliance contractors. It allows scrutiny of essential services that are provided to the general public by dispensing contractors on behalf of the NHS. These statistics cover from financial year 2015/16 onwards, allowing the analysis of long-term trends in dispensing. We believe that they can be used to inform policy decisions at a national and local level, by the public to scrutinise dispensing habits, and by academia and applied health researchers for matters relating to public health. The NHSBSA also routinely receives Freedom of Information requests and parliamentary questions about this subject matter which we periodically review and use to inform the content of future releases of all our statistical publications. 
+
+We will be gathering feedback from users of these statistics on an on-going basis to help shape them and ensure that they remain relevant and of use.
+
+### 7.2 Accuracy and reliability {.toc-ignore}
+
+***This dimension covers the statistics' proximity between an estimate and the unknown true value***
+  
+#### 7.2.1. Accuracy  {.toc-ignore}
+
+These statistics are derived from data collected during processing activities carried out by the NHSBSA to reimburse dispensing contractors for providing services to NHS patients. Prescriptions are scanned and subject to rigorous automatic and manual validation processes to ensure accurate payments are made to dispensing contractors. Where electronic prescriptions are used the scope for manual intervention and input into data is reduced dramatically.
+
+The figures used are collected as an essential part of the process of reimbursing dispensing contractors (mainly pharmacists and dispensing doctors) for medicines supplied. All prescriptions which are dispensed in England need to be submitted to the NHSBSA if the dispenser is to be reimbursed, and so coverage should be complete. Due to the manual processes involved in the processing of prescriptions there may be random inaccuracies in capturing prescription information which are then reflected in the data. NHS Prescription Services, a division of NHSBSA, internally quality assures the data that is captured from prescriptions to a 99.70% level via a statistically valid random sample of 50,000 items that are reprocessed monthly. The latest reported [Prescription Processing Information Accuracy](https://www.nhsbsa.nhs.uk/pharmacies-gp-practices-and-appliance-contractors/payments-and-pricing/how-we-process-prescriptions) from NHS Prescriptions services, which covers the 12 month period July 2022 to June 2023 is 99.91%.
+
+Data supplied by NHS Resolution is collated with a voluntary application of the Code of Practice for Statistics. They are used within the NHS Resolution public annual report and are quality assured by NHS Resolution analysts, as well as being subject to internal and external (by NAO) audits.
+
+As an exercise during the transfer of this publication from NHS Digital to NHSBSA checks were carried out by NHSBSA statisticians to make sure that historical data supplied by NHS Resolution matched figures previously published by NHS Digital. For future releases a series of checks will be established to ensure data are accurate. This includes:
+
+*	Comparing historical values
+*	Testing if data supplied for a year is statistically significantly different from previous years (Statistical Process Control)
+*	Outlier detection and flagging this with NHS Resolution
+
+#### 7.2.2. Reliability {.toc-ignore}
+
+As there is a manual data entry element to this system then inevitably some small errors may occur in the data. The NHSBSA and NHS Prescription Services take measures to minimise these errors. This includes the presence of a permanent dedicated accuracy team within NHS Prescription services which provides feedback to operators around any errors identified to help prevent regular occurrence.
+
+Data transfer between NHS Resolution has historically been done by secure email via NHS Mail, during which it was possible that the excel spreadsheet that holds the data could become corrupted, or the manual process of extracting the data could lead to errors. NHSBSA have since established an agreement with NHS Resolution to send the data in a secure FTP transfer of files in machine readable format, allowing NHSBSA to programmatically manipulate data and reduce scope for errors.
+
+### 7.3. Timeliness and punctuality {.toc-ignore}
+
+***Timeliness refers to the time gap between publication and the reference period. Punctuality refers to the gap between planned and actual publication dates***
+
+The General Pharmaceutical Services publication is published annually. The publication date by NHS Digital has historically been in November, as continued by the first in series of this publication by the NHSBSA. The publication date has since been brought forward to October, starting with the 2021/22 release. Data is usually available around six weeks after the end of the month that the data relates to, and so there is scope for this publication to be moved to earlier in the publication calendar if there is a user need identified. 
+
+The NHSBSA understands that the long period of time between availability of data and publication needs to be addressed and we plan to do this as soon as possible. The date of release for the annual publication will be announced in advance in line with our [statistical release calendar](https://www.nhsbsa.nhs.uk/announcements/statistical-publication-calendar).
+
+### 7.4. Accessibility and clarity {.toc-ignore}
+
+***Accessibility is the ease with which users can access the data, also reflecting the format in which the data are available and the availability of supporting information. Clarity refers to the quality and sufficiency of the metadata, illustrations, and accompanying advice***
+
+The statistical summary narrative for this publication is presented as an HTML webpage, with supporting documentation now also released in HTML format. Summary data and additional analysis is presented in tables in Excel files. 
+
+***Clarity***
+  
+A glossary of terms is included in this document, and the supporting summary tables contain a metadata tab of fields used within them. 
+
+### 7.5. Coherence and comparability {.toc-ignore}
+
+***Coherence is the degree to which data have been derived from different sources or methods but refer to the same topic or similar. Comparability is the degree to which data can be compared over time and domain***
+
+The General Pharmaceutical Services publication is the only Official Statistics release available regarding pharmacy and appliance contractors in England. Comparable publications are not available for Scotland and Wales, but an Official Statistics publication is released by Northern Ireland. However, each devolved nation does publish administrative data around dispensing activities. Links to these datasets can be found in the resources section of this document. 
+
+The statistics contained in this release are from various data sources, including the NHSBSA Data Warehouse, and NHS Resolution. All data from the NHSBSA is subject to a consistent methodology used in the processing of data prior to it being made available in the warehouse.
+
+The data used in this publication are not directly comparable to other Official Statistics publications by NHSBSA. These statistics are based upon a subset of dispensing of prescription items in England carried out by community pharmacy and appliance contractors.
+
+Prescription Cost Analysis (PCA) along with our prescribing publications, Medicines Used in Mental Health (MUMH) and Prescribing for Diabetes (PfD) include data on prescription items dispensed by dispensing doctors and personal administration accounts. Therefore, the totals between these publications will not match.
+
+Comparability with other publications produced by the NHSBSA can be determined using the [Official Statistics guidance table](https://www.nhsbsa.nhs.uk/statistical-collections), which is maintained with the release of each new publication. This table shows how all of NHSBSA’s publications compare across a range of measures to help users identify the best publication for their needs or understand where differences in figures may occur.
+
+## 8. Glossary of terms used in these statistics
+
+#### Appliance Use Review (AUR) {.toc-ignore}
+
+Appliance Use Review (AUR) was the second Advanced Service to be introduced into the English Community Pharmacy Contractual Framework (CPCF). AURs can be carried out by a pharmacist or a specialist nurse in the pharmacy or at the patient’s home. AURs should improve the patient’s knowledge and use of any ‘specified appliance’ by:
+
+*	Establishing the correct way for the patient to use the appliance and the patient’s experience of such use
+*	identifying, discussing and assisting in the resolution of poor or ineffective use of the appliance by the patient
+*	advising the patient on the safe and appropriate storage of the appliance
+*	advising the patient on the safe and proper disposal of the appliances that are used or unwanted.
+
+#### Community Pharmacist Consultation Services (CPCS) {.toc-ignore}
+
+The NHS Community Pharmacist Consultation Service Advanced Service began on 29 October 2019 to allow patients having a same day community pharmacist appointment for minor illness or an urgent supply of a regular medicine.
+
+The service is intended to improve access to services and provide treatment closer to patients’ homes by harnessing the skills and medicines knowledge of pharmacists and relieving pressure on GP appointments and emergency departments.
+
+#### Community Pharmacy Covid-19 Lateral Flow Device Distribution Service {.toc-ignore}
+
+This Advanced Service was introduced in March 2021 and decommissioned on 31 March 2022. It made lateral flow device (LFD) test kits readily available at community pharmacies. The service was part of the Government’s offer of lateral flow testing to all people in England and it worked alongside NHS Test and Trace’s other COVID-19 testing routes.
+
+#### Community Pharmacy Home Delivery Service {.toc-ignore}
+
+The Community Pharmacy Home Delivery Service was introduced during the COVID-19 pandemic, and decommissioned on 31 March 2022. It was initially used to deliver prescriptions to patients who were extremely clinically vulnerable and then to self-isolating patients. The data held does not differentiate between delivery services for CEV and those in self-isolation.
+
+#### Cost {.toc-ignore}
+
+In British pound sterling (GBP). The amount that would be paid using the basic price of the prescribed drug or appliance and the quantity prescribed, sometimes called 'Net Ingredient Cost' (NIC). The basic price is given either in the Drug Tariff or is determined from prices published by manufacturers, wholesalers, or suppliers. Basic price is set out in Parts VIII and IX of the Drug Tariff. For any drugs or appliances not in Part VIII, the price is usually taken from the manufacturer, wholesaler, or supplier of the product.
+
+#### COVID-19 vaccination enhanced service {.toc-ignore}
+
+This enhanced service was introduced towards the end of 2020/21 allowing community pharmacies to provide COVID-19 vaccinations as part of the Phase 1 and Phase 2 cohorts of the Joint Committee on Vaccination and Immunisation (JCVI). A further enhanced service was commissioned to deliver Phase 3 alongside the seasonal influenza vaccination program.
+
+#### Discharge Medicines Service (DMS) {.toc-ignore}
+
+This essential service was introduced in February 2021 and allows patients discharged from NHS Trust hospitals who need extra support with their medicines to be referred to their community pharmacy.
+
+#### Dispensed in the community {.toc-ignore}
+
+When a prescription item is dispensed in the community this means that it has been dispensed by a community pharmacy, appliance contractor, dispensing doctor, or is a personally administered item.
+
+#### Dispensing contractor/dispenser {.toc-ignore}
+
+A dispensing contractor or dispenser can be a community pharmacy or appliance contractor (a dispenser that specialises in dispensing dressing, appliances, and medical devices).
+
+Prescriptions can also be dispensed by the dispensary of a dispensing practice or personally administered at a practice. Dispensing practices usually exist in more rural areas where the need for a dispenser is deemed necessary, but it is not deemed financially viable to establish a community pharmacy.
+
+#### Electronic Prescription Service (EPS) {.toc-ignore}
+
+The Electronic Prescription Service (EPS) allows prescribers to send prescriptions electronically to a dispenser, such as a pharmacy, of the patient's choice. This makes the prescribing and dispensing process more efficient and convenient for patients and staff.
+
+#### Fees {.toc-ignore}
+
+There are many fees that can be claimed by pharmacy and appliance contractors for providing essential and advanced services to NHS patients. A large proportion of these fees are made up of the dispensing fee, which is also known as a professional fee or single activity fee. This fee is paid to a pharmacy or appliance contractor when they dispense a prescription item. Some items can attract more than one dispensing fee. Details of what fees are payable to pharmacy and appliance contractors can be found in the Drug Tariff for England and Wales.
+
+#### Hepatitis C testing service {.toc-ignore}
+
+This is an Advanced Service introduced in March 2021. The service offers people who inject drugs (PWIDs), who are not engaged with community drug and alcohol treatment services, an opportunity to receive a point of care testing (POCT) HCV test from a community pharmacy.
+
+#### Hypertension Case-Finding {.toc-ignore}
+
+This is an Advanced Service introduced in October 2021 following a NHS England pilot where pharmacies offered blood pressure checks to people 40 years and over and 24 hour ambulatory blood pressure monitoring (ABPM) to some patient’s with elevated initial blood pressure readings.
+
+#### Integrated Care Board (ICB) {.toc-ignore}
+
+ICBs are a statutory organisation bringing the NHS together locally to improve population health and establish shared strategic priorities within the NHS. ICBs replaced Sustainability and transformation plans (STPs) on 1 July 2022.
+
+#### Items {.toc-ignore}
+
+The term Items refers to the number of times a product appears on a prescription form. Prescription forms include both paper prescriptions and electronic messages.
+
+#### Medicines Use Review (MUR) {.toc-ignore}
+
+The Medicines Use Review (MUR) and Prescription Intervention Service consisted of accredited pharmacists undertaking structured adherence-centred reviews with patients on multiple medicines, particularly those receiving medicines for long-term conditions. National target groups were agreed in order to guide the selection of patients the service was offered to. Both the MUR and Prescription Intervention Service were discontinued in March 2021.
+
+#### New Medicine Service (NMS) {.toc-ignore}
+
+The New Medicine Service (NMS) was the fourth Advanced Service to be added to the Community Pharmacy Contractual Framework and commenced on 1 October 2011. The service provides support for people with long-term conditions who are newly prescribed a medicine to help improve medicines adherence; it is focused on particular patient groups and conditions and can only be undertaken on patients from these specific groups. Details of the currently covered patient groups can be found in the [NHS England Service Specification](https://www.england.nhs.uk/publication/advanced-service-specification-nhs-new-medicine-service-nms/).
+
+#### Prescription/prescription form {.toc-ignore}
+
+A prescription, also referenced as a prescription form, has two incarnations: a paper form, and an electronic prescription available via EPS. A paper prescription can hold up to a maximum of ten items. A single electronic prescription can hold a maximum of four items.
+
+#### Seasonal influenza vaccination advanced service {.toc-ignore}
+
+In 2015 community pharmacies began providing seasonal influenza vaccinations under a nationally commissioned service by NHS England & Improvement. Each year from September through to March, pharmacy contractors can administer flu vaccines to patients and submit a claim to NHSBSA for payment. This includes reimbursement of the cost of the vaccine, plus a fee for providing the service to NHS patients.
+
+#### Single activity fee (SAF) {.toc-ignore}
+
+The single activity fee (SAF) is a fixed fee that applies to every prescription item that is dispensed. The SAF was introduced in December 2016 by the Department of Health and Social Care (DHSC) to consolidate a range of payments into one single fee. These payments were:
+
+*	The professional fee (also known as dispensing fee)
+*	Practice payment
+*	Repeat dispensing payment
+*	EPS monthly allowance
+
+The value of the SAF is set by DHSC and can fluctuate throughout the year. It is based upon the forecast of the total number of items dispensed to ensure that the fee delivery remains within the agreed funding envelope for the year.
+
+#### Smoking Cessation Service (SCS) {.toc-ignore}
+
+The Smoking Cessation service (SCS) is an Advanced Service introduced in March 2022. Patients are discharged with consent to the community pharmacy of their choice to continue smoking cessation treatment began under an NHS Trust.
+
+#### Stoma Appliance Customisation (SAC) {.toc-ignore}
+
+Stoma Appliance Customisation (SAC) is the third Advanced Service in the NHS community pharmacy contract. The service involves the customisation of a quantity of more than one stoma appliance, based on the patient’s measurements or a template. The aim of the service is to ensure proper use and comfortable fitting of the stoma appliance and to improve the duration of usage, thereby reducing waste. The stoma appliances that can be customised are listed in Part IXC of the Drug Tariff.
+
+## 9. Feedback and contact us
+
+Feedback is important to us; we welcome any questions and comments relating to these statistics. 
+
+Please quote ‘General Pharmaceutical Services England - Background Information and methodology’ in the subject title of any correspondence.
+
+You can complete a [short survey about this publication](https://online1.snapsurveys.com/Official_Statistics_Feedback) to help us improve the Official Statistics that we produce. All responses will remain anonymous, and individuals will not be identifiable in any report that we produce.
+
+You can view our [privacy policy](https://www.nhsbsa.nhs.uk/our-policies/privacy) on our website to see how your data is used and stored.
+
+You can contact us by:
+  
+**Email:** statistics@nhsbsa.nhs.uk
+
+**You can also write to us at:**
+  
+NHSBSA - Statistics  
+NHS Business Services Authority  
+Stella House  
+Goldcrest Way  
+Newburn Riverside  
+Newcastle upon Tyne  
+NE15 8NY
+
+</main>

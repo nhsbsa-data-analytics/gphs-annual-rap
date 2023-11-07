@@ -24,14 +24,15 @@ if (Sys.getenv("GITHUB_PAT") == "") {
 devtools::install_github("nhsbsa-data-analytics/nhsbsaUtils",
                          auth_token = Sys.getenv("GITHUB_PAT"), force = TRUE)
 #unload and reinstall gphsR if needed
-# devtools::install_github("nhsbsa-data-analytics/gphsR",
-#                          auth_token = Sys.getenv("GITHUB_PAT"), force = TRUE)
-# detach("package:gphsR", unload = TRUE)
+#detach("package:gphsR", unload = TRUE)
+#devtools::install_github("nhsbsa-data-analytics/gphsR",
+#                         auth_token = Sys.getenv("GITHUB_PAT"), force = TRUE)
+
 
 
 library(nhsbsaUtils)
 
-#1. install required packages
+#2. install required packages
 #double check required packages once full pipeline built eg. if maps used
 req_pkgs <- c("broom",
               "data.table",
@@ -85,35 +86,41 @@ log_print(config, hide_notes = TRUE)
 nhsbsaUtils::publication_options()
 log_print("Options loaded", hide_notes = TRUE)
 
-#2. data import
+#3. data import
 
 
+#connect to datawarehouse
 con <- nhsbsaR::con_nhsbsa(dsn = "FBS_8192k",
                            driver = "Oracle in OraClient19Home1",
                            "DWCP")
 
+#get schema name for dataimport
+username<- toupper(Sys.getenv("USERNAME"))
+
 # run functions for data and if needed write to csv
+
 
 national_extract <- national_extract(
   con = con,
-  schema = "KIGRA",
+  schema = username,
   table = "GPS_FINAL_202309_COMBINED"
 )
 #write.csv(national_extract,"national_extract.csv")
 national_month_extract <- national_month_extract(
   con = con,
-  schema = "KIGRA",
+  schema = username,
   table = "GPS_MONTH_202309"
 )
 #write.csv(national_month_extract,"national_month_extract.csv")
 icb_extract <- icb_extract(
   con = con,
-  schema = "KIGRA",
+  schema = username,
   table = "GPS_FINAL_202309_COMBINED"
 )
 #write.csv(icb_extract,"icb_extract.csv")
 
 
+#4. create ref and set up tables
 
 # create ref for flu
 ref_data <- list()
@@ -141,7 +148,7 @@ national_extract<- national_extract %>%
  )
 
 
-# set lastest financial year
+# set latest financial year
 max_fyr <- "2022/2023"
 
 #script for formatting the GPhS summary tables using openxlsx
@@ -178,6 +185,7 @@ table_20 <- table_20()
 
 
 
+# 5. write data to .xlsx -
 # create wb object
 # create list of sheetnames needed (overview and metadata created automatically)
 sheetNames <- c("Table_1",
@@ -997,12 +1005,7 @@ openxlsx::saveWorkbook(wb,
                        "outputs/gps_2223_summary_tables_v001.xlsx",
                        overwrite = TRUE)
 
-#save file into outputs folder
 
-# openxlsx::saveWorkbook(wb,
-#                        "Y:/Official Stats/GPhS/Outputs/summary_tables_v003.xlsx",
-#                        overwrite = TRUE)
-# 5. write data to .xlsx -
 
 # 6. data for chart and code for charts and tables
 
@@ -1036,7 +1039,7 @@ figure_1_data <- national_extract %>%
 #figure 1 chart
 figure_1 <- figure_1_data%>%
 
-  group_chart_hc_a(
+  group_chart_hc_unround(
     x = FINANCIAL_YEAR,
     y = VALUE,
     group = CONTRACTOR_TYPE,
@@ -1480,40 +1483,6 @@ figure_15 <- figure_15_data %>%
       ))
   )
 
-# figure 16 covid vaccine cost month
-
-# figure_16_data <-national_month_extract %>%
-#   dplyr::select(YEAR_MONTH,CVD_19_VACCINE) %>%
-#   summarise(CVD_19_VACCINE = sum(CVD_19_VACCINE))  %>%
-#   tidyr::pivot_longer(cols = CVD_19_VACCINE,
-#                       names_to = "MEASURE",
-#                       values_to = "VALUE") %>%
-#   dplyr::mutate(VALUE = signif(VALUE, 3)) %>%
-#   dplyr::arrange(desc(MEASURE)) %>%
-#   mutate(
-#     YEAR_MONTH = base::as.Date(as.character(paste0(YEAR_MONTH,"01")), format = "%Y%m%d")
-#   ) %>%
-#   dplyr::mutate(
-#     MEASURE = case_when(MEASURE == "CVD_19_VACCINE" ~ "Cost of vaccine fees")
-#   )
-# #figure 16 chart
-# figure_16 <- figure_16_data %>%
-#   nhsbsaVis::group_chart_hc(
-#     x = "FINANCIAL_YEAR",
-#     y = "VALUE",
-#     group = "MEASURE",
-#     type = "line",
-#     xLab = "Month",
-#     yLab = "Value (GBP)",
-#     title = "",
-#     currency = TRUE,
-#     dlOn = F
-#   ) %>%
-#   hc_tooltip(enabled = TRUE,
-#              shared = TRUE,
-#              sort = TRUE) %>%
-#   hc_xAxis(type = "datetime")
-
 # figure 16 covid vaccine cost year
 
 figure_16_data <-national_extract %>%
@@ -1557,9 +1526,9 @@ figure_16 <- figure_16_data %>%
         )
       ))
   )
-# 7. Automate Narrative - tba
 
-# 8. render markdown ------------------------------------------------------
+
+# 7. render markdown ------------------------------------------------------
   rmarkdown::render("gphs_annual_narrative_2223.Rmd",
                     output_format = "html_document",
                     output_file = "outputs/gphs_annual_2022_23_v001.html")

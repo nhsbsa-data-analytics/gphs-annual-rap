@@ -75,7 +75,6 @@ In England in 2022/23 for community pharmacies and appliance contractors:
 
 * the cost of drugs and appliances reimbursed totalled £9.7 billion. This is a 7.5% increase from 2021/22.
 
-<!-- * 5.01 million seasonal influenza vaccines were administered by community pharmacies. This was a 3.24% increase from the 4.85 million vaccines administered in  2021/22. -->
 
 
 ---
@@ -533,9 +532,6 @@ Source: [Summary Tables - General Pharmaceutical Services - Tables 7 and 11](`r 
 
 The total number of SACs has increased by 4.9% from 1.6 million to 1.7 million between 2021/22 and 2022/23. 
 
-<!-- The number of SACs provided by community pharmacies decreased by 28.0% from 11,600 to 8,330 between 2021/22 and 2022/23. This followed 5 consecutive years of decreases between 2015/16 and 2020/21. The number of SACs provided by appliance contractors between 2020/21 and 2022/23  went up by 5.23% from 1.52 million to 1.60 million. This followed 5 consecutive years of increases between 2015/16 and 2022/23. -->
-
-<!-- The majority of SACs are provided by appliance contractors, which means the reduction in those provided by community pharmacies has not prevented an overall increase. The total number of SACs has increased by 5.04% from 1.60 million to 1.68 million between 2021/22 and 2022/23. This is an increase of 30.2% from the 1.24 million provided in 2015/16. -->
 
 #### **`r paste0("Figure ",13,": Total Cost of Stoma Appliance Customisation (SAC) provided between 2015/16 and 2022/23")`** 
 ```{r advanced services sac cost, out.width="100%"}
@@ -691,10 +687,6 @@ The geographies used in this publication are based upon NHSBSA administrative re
 
 ### 3.6 Planned changes to this publication {.toc-ignore}
 
-
-<!-- The NHSBSA is currently developing an open data set public feed based on the monthly [Management Information Spreadsheet](https://www.nhsbsa.nhs.uk/access-our-data-products/information-services-portal-isp/isp-report-information) (MIS) report. This is intended for release by April 2023 and will compliment this National Statistic publication.  This new data set will not be an Official Statistic release. -->
-
-<!-- Following the release of this publication the NHSBSA will be launching a public consultation on the statistical methodology that is used in these statistics and will be seeking feedback from users and stakeholders. NHSBSA also plan to hold a user engagement event for this release in early 2021. Details of the event will be announced on the [Statistics section](https://www.nhsbsa.nhs.uk/announcements) of the NHSBSA website. -->
 
 NHSBSA plans to expand the scope of this publication in future releases to report on all fees that a contractor can claim for providing NHS services, in order to provide a more complete picture of the total cost of community pharmacy to the public purse. Next year's release will include the advanced service of Pharmacy Contraception Service which commenced in April 2023.
 
