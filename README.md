@@ -24,7 +24,7 @@ Click "Clone Git Repository" then enter the URL of the gphs-annual-rap GitHub re
 
 You will also need to create a [PAT key](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
 
-You can view the [source code for the PfD RAP](https://github.com/nhsbsa-data-analytics/gphs-annual-rap) on GitHub.
+You can view the [source code for the GphS RAP](https://github.com/nhsbsa-data-analytics/gphs-annual-rap) on GitHub.
 
 ## Running this RAP
 
