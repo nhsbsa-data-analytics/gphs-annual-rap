@@ -24,9 +24,9 @@ if (Sys.getenv("GITHUB_PAT") == "") {
 devtools::install_github("nhsbsa-data-analytics/nhsbsaUtils",
                          auth_token = Sys.getenv("GITHUB_PAT"), force = TRUE)
 #unload and reinstall gphsR if needed
-#detach("package:gphsR", unload = TRUE)
-#devtools::install_github("nhsbsa-data-analytics/gphsR",
-#                         auth_token = Sys.getenv("GITHUB_PAT"), force = TRUE)
+detach("package:gphsR", unload = TRUE)
+devtools::install_github("nhsbsa-data-analytics/gphsR",
+                         auth_token = Sys.getenv("GITHUB_PAT"), force = TRUE)
 
 
 
@@ -50,7 +50,6 @@ req_pkgs <- c("broom",
               "logr",
               "magrittr",
               "nhsbsa-data-analytics/nhsbsaR",
-              "nhsbsa-data-analytics/gphsR",
               "nhsbsa-data-analytics/nhsbsaExternalData",
               "nhsbsa-data-analytics/accessibleTables",
               "nhsbsa-data-analytics/nhsbsaDataExtract",
@@ -103,19 +102,19 @@ username<- toupper(Sys.getenv("USERNAME"))
 national_extract <- national_extract(
   con = con,
   schema = username,
-  table = "GPS_FINAL_202309_COMBINED"
+  table = "GPS_FINAL_202409_COMBINED"
 )
-#write.csv(national_extract,"national_extract.csv")
+write.csv(national_extract,"national_extract.csv")
 national_month_extract <- national_month_extract(
   con = con,
   schema = username,
-  table = "GPS_MONTH_202309"
+  table = "GPS_MONTH_202409"
 )
 #write.csv(national_month_extract,"national_month_extract.csv")
 icb_extract <- icb_extract(
   con = con,
   schema = username,
-  table = "GPS_FINAL_202309_COMBINED"
+  table = "GPS_FINAL_202409_COMBINED"
 )
 #write.csv(icb_extract,"icb_extract.csv")
 
@@ -149,7 +148,7 @@ national_extract<- national_extract %>%
 
 
 # set latest financial year
-max_fyr <- "2022/2023"
+max_fyr <- "2023/2024"
 
 #script for formatting the GPhS summary tables using openxlsx
 #and existing formatting functions
@@ -183,7 +182,7 @@ table_18 <- table_18(icb_extract)
 table_19 <- table_19(icb_extract)
 table_20 <- table_20()
 
-
+write.csv(table_6,"table_6.csv")
 
 # 5. write data to .xlsx -
 # create wb object
@@ -235,6 +234,8 @@ meta_fields <- c(
   "NHS England Region Name",
   "NHS England Region Code",
   "NMS",
+  "PCS",
+  "Pharmacy First",
   "SAC",
   "Seasonal influenza vaccination advanced service",
   "SCS"
@@ -246,32 +247,34 @@ meta_descs <-
 
 establishing the way the patient uses the appliance and the patient’s experience of such use;
 identifying, discussing and assisting in the resolution of poor or ineffective use of the appliance by the patient;
-advising the patient on the safe and appropriate storage of the appliance; and
+advising the patient on the safe and appropriate storage of the appliance
 advising the patient on the safe and proper disposal of the appliances that are used or unwanted.",
-"This is calculated for each pharmacy by dividing the total items dispensed by the number of months the pharmacy was active in the year. The median of these figures is then calculated to give the final measure. A median is calculated by arranging all of the available values into an ordered list and selecting the value that is in the middle. If there are 2 middle values, the median is halfway between them. We use the median because the distribution of number of items dispensed is skewed, with a small number of contractors responsible for large volumes of dispensing on a monthly basis. When using the mean to calculate the average of a skewed distribution, it is highly influenced by those values at the upper end of the distribution and thus may not be truly representative. By taking the middle value of the data after sorting in ascending order the median avoids this issue.",
-"Community Pharmacy Home Delivery Service was introduced during the COVID-19 pandemic. Initially used to deliver prescriptions to patients who were extremely clinically vulnerable and then to self-isolating patients. The data held does not differentiate between delivery services for CEV and those in self-isolation. The service ended on 31 March 2022.",
-"Community pharmacies are typically responsible for dispensing drugs and medicines, and include high street pharmacies such as Boots and Lloyds. Appliance contractors are specialists in dispensing medical devices and appliances. A community pharmacy may dispense both medicines and appliances. However, an appliance contractor may only dispense medical devices and appliances. The figures for each of these type of contractor have been split out. Where contractor type is 'Pharmacy + Appliance' the figures for both contractor types have been combined, and do not indicate a separate type of contractor.",
+"The average is calculated for each pharmacy by dividing the total items dispensed by the number of months the pharmacy was active in the year. The median of these figures is then calculated to give the final measure. A median is calculated by arranging all of the available values into an ordered list and selecting the value that is in the middle. If there are 2 middle values, the median is halfway between them. We use the median because the distribution of number of items dispensed is skewed, with a small number of contractors responsible for large volumes of dispensing on a monthly basis. When using the mean to calculate the average of a skewed distribution, it is highly influenced by those values at the upper end of the distribution and thus may not be truly representative. By taking the middle value of the data after sorting in ascending order the median avoids this issue.",
+"Community Pharmacy Home Delivery Service was introduced during the COVID-19 pandemic. Initially this service delivered prescriptions to patients who were clinically extremely vulnerable (CEV). It was then extended to include self-isolating patients. The data held does not differentiate between delivery services for CEV and those in self-isolation. The service ended on 31 March 2022.",
+"Community pharmacies are typically responsible for dispensing drugs and medicines, and include high street pharmacies such as Boots and Lloyds. Appliance contractors are specialists in dispensing medical devices and appliances. A community pharmacy may dispense both medicines and appliances. However, an appliance contractor only dispenses medical devices, appliances and accessories. The figures for each of these type of contractor have been split out. Where contractor type is 'Pharmacy + Appliance' the figures for both contractor types have been combined, and do not indicate a separate type of contractor.",
 "A controlled area is defined in the NHS Pharmaceutical and Local Pharmaceutical Regulations 2013 as one which NHS England has determined is rural in character. When NHS England receive applications to open a pharmacy in a controlled locality they consider whether granting the application would prejudice the provision of existing general medical or pharmaceutical services in the locality.",
 "There are many costs incurred when a dispensing contractor fulfils a prescription. The costs reported in this publication represent the basic price of the item and the quantity prescribed. This is sometimes called the ‘Net Ingredient Cost’ (NIC). This also known as reimbursement of costs to dispensing contractors.",
-"Covid-19 Lateral Flow Device Distribution Service - This Advanced Service was introduced in March 2021. It made lateral flow device (LFD) test kits readily available at community pharmacies. The service was part of the Government’s offer of lateral flow testing to all people in England and it worked alongside NHS Test and Trace’s other COVID-19 testing routes.",
-"COVID-19 vaccination enhanced service - This enhanced service was introduced towards the end of 2020/21 allowing community pharmacies to provide COVID-19 vaccinations as part of the Phase 1 and Phase 2 cohorts of the Joint Committee on Vaccination and Immunisation (JCVI). A further enhanced service was commissioned to deliver Phase 3 alongside the seasonal influenza vaccination program.",
-"Community Pharmacist Consultation Services - CPCS is an  Advanced Service introduced in October 2019 which allows general practices have been able to refer patients for a minor illness consultation via CPCS using an agreed local referral pathway.",
-"Discharge Medicines Service - DMS is an essential service that was introduced in February 2021 and allows patients discharged from NHS Trust hospitals who need extra support with their medicines to be referred to their community pharmacy.",
-"Electronic Prescription Service - EPS allows prescribers to send prescriptions electronically to a dispenser (such as a pharmacy) of the patient's choice. This makes the prescribing and dispensing process more efficient and convenient for patients and staff.",
-"There are many fees that can be claimed by pharmacy and appliance contractors for providing essential and advanced services to NHS patients. The primary of these is the dispensing fee, which is also known as a professional fee or single activity fee. This fee is paid to a pharmacy or appliance contractor when they dispense a prescription item. Some items can attract more than one dispensing fee. Details of what fees are payable to pharmacy and appliance contractors can be found in the Drug Tariff for England and Wales.",
+"Covid-19 Lateral Flow Device Distribution Service was an advanced service was introduced in March 2021. It made lateral flow device (LFD) test kits readily available at community pharmacies. The service was part of the Government’s offer of lateral flow testing to all people in England and it worked alongside NHS Test and Trace’s other COVID-19 testing routes.",
+"COVID-19 vaccination enhanced service was an enhanced service was introduced towards the end of 2020/21 towards the end of 2020/21 to allow community pharmacies to provide COVID-19 vaccinations as part of the Phase 1 and Phase 2 cohorts of the Joint Committee on Vaccination and Immunisation (JCVI). A further enhanced service was commissioned to deliver Phase 3 alongside the seasonal influenza vaccination program.",
+"Community Pharmacist Consultation Services (CPCS) is an advanced service introduced in October 2019 which allows general practices to refer patients for a minor illness consultation via CPCS using an agreed local referral pathway.",
+"Discharge Medicines Service (DMS) is an essential service that was introduced in February 2021 and allows patients discharged from NHS Trust hospitals who need extra support with their medicines to be referred to their community pharmacy.",
+"Electronic Prescription Service (EPS) allows prescribers to send prescriptions electronically to a dispenser (such as a pharmacy) of the patient's choice. This makes the prescribing and dispensing process more efficient and convenient for patients and staff.",
+"There are many fees that can be claimed by pharmacy and appliance contractors for providing essential and advanced services to NHS patients. The principal fee is the dispensing fee, which is also known as a professional fee or single activity fee. This fee is paid to a pharmacy or appliance contractor when they dispense a prescription item. Some items can attract more than one dispensing fee. Details of what fees are payable to pharmacy and appliance contractors can be found in the Drug Tariff for England and Wales.",
 "The financial year to which the data belongs.",
-"Hepatitis C testing service - This is an Advanced Service introduced in March 2021. The service offers people who inject drugs (PWIDs), who are not engaged with community drug and alcohol treatment services, opportunity to receive a point of care testing (POCT) HCV test from a community pharmacy.",
-"Hypertension Case-Finding - This is an Advanced Service introduced in October 2021 following a NHS England pilot where pharmacies offered blood pressure checks to people 40 years and over and 24 hour ambulatory blood pressure monitoring (ABPM) to some patient’s with elevated initial blood pressure readings.",
+"Hepatitis C testing service  was an advanced service introduced in March 2021 and discontinued from March 2023. The service offers people who inject drugs (PWIDs), who are not engaged with community drug and alcohol treatment services, the opportunity to receive a Point of Care Testing (POCT) HCV test from a community pharmacy.",
+"Hypertension Case-Finding is an advanced service introduced in October 2021.  It followed an NHS England pilot for patients aged over 40 years, in which pharmacies offered blood pressure checks and 24 hour ambulatory blood pressure monitoring (ABPM) to some patients with elevated initial blood pressure readings.",
 "The name given to the Integrated Care Board (ICB) that a prescribing organisation belongs to. This is based upon NHSBSA administrative records, not geographical boundaries and more closely reflect the operational organisation of practices than other geographical data sources.",
 "The unique code used to refer to an Integrated Care Board (ICB)",
 "The number of prescription items dispensed. 'Items' is the number of times a product appears on a prescription form. Prescription forms include both paper prescriptions and electronic messages.",
 "The Medicines Use Review (MUR) and Prescription Intervention Service was discontinued on 31 March 2021. It consisted of accredited pharmacists undertaking structured adherence-centred reviews with patients on multiple medicines, particularly those receiving medicines for long-term conditions. National target groups were agreed in order to guide the selection of patients the service was offered to.",
-"The name given to the NHS England Regional team a prescribing organisation belongs to. This is based upon NHSBSA administrative records, not geographical boundaries and more closely reflect the operational organisation of practices than other geographical data sources.",
+"The name given to the NHS England Regional team a prescribing organisation belongs to. This is based upon NHSBSA administrative records, not geographical boundaries, and more closely reflect the operational organisation of practices than other geographical data sources.",
 "The unique code used to refer to an NHS England Region.",
-"The New Medicine Service (NMS) was the fourth Advanced Service to be added to the Community Pharmacy Contractual Framework; it commenced on 1st October 2011. The service provides support for people with long-term conditions newly prescribed a medicine to help improve medicines adherence. It is focused on particular patient groups and conditions.",
-"Stoma Appliance Customisation (SAC) is the third Advanced service in the NHS community pharmacy contract. The service involves the customisation of a quantity of more than one stoma appliance, based on the patient’s measurements or a template. The aim of the service is to ensure proper use and comfortable fitting of the stoma appliance and to improve the duration of usage, thereby reducing waste. The stoma appliances that can be customised are listed in Part IXC of the Drug Tariff.",
+"The New Medicine Service (NMS) was the fourth advanced service to be added to the Community Pharmacy Contractual Framework.  It commenced on 1st October 2011. The service provides support for people with long-term conditions when they are newly prescribed a medicine, with the goal of improving medicines adherence. It is focused on particular patient groups and conditions.",
+"The Pharmacy Contraception Service (PCS) is an advanced service introduced in April 2023, allowing the on-going supply of oral contraception (OC) from community pharmacies.",
+"Pharmacy First is an Advanced Service introduced in January 2024 allowing pharmacists to providing advice and NHS-funded treatment, where clinically appropriate, for seven common conditions.",
+"Stoma Appliance Customisation (SAC) is the third Advanced service in the NHS community pharmacy contract. The service involves the customisation of a quantity of two or more stoma appliances, based on the patient’s measurements or a template. The aim of the service is to ensure proper use and comfortable fitting of the stoma appliance and to improve the duration of usage, thereby reducing waste. The stoma appliances that can be customised are listed in Part IXC of the Drug Tariff.",
 "In 2015 community pharmacies began providing seasonal influenza vaccinations under a nationally commissioned service by NHS England & Improvement. Each year from September through to March, pharmacy contractors can administer flu vaccines to patients and submit a claim to NHSBSA for payment. This includes reimbursement of the cost of the vaccine, plus a fee for providing the service to NHS patients.",
-"Smoking Cessation service (SCS) - This is an Advanced Service introduced in March 2022. Patients are discharged with consent to the community pharmacy of their choice to continue smoking cessation treatment began under an NHS Trust." )
+"Smoking Cessation service (SCS) is an advanced service introduced in March 2022. Patients are discharged with their consent to the community pharmacy of their choice to continue smoking cessation treatment began under an NHS Trust.")
 
 accessibleTables::create_metadata(wb,
                                   meta_fields,
@@ -281,7 +284,7 @@ accessibleTables::create_metadata(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_1",
-  "Table 1: General Pharmaceutical Services - 2015/16 to 2022/23 - Total number of Community pharmacies and appliance contractors",
+  "Table 1: General Pharmaceutical Services - 2015/16 to 2023/24 - Total number of Community pharmacies and appliance contractors",
   c(
     "1. Field definitions can be found on the 'Metadata' tab."
   ),
@@ -308,10 +311,10 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_2",
-  "Table 2: General Pharmaceutical Services - 2015/16 to 2022/23 - Number of Pharmacies by attribute",
+  "Table 2: General Pharmaceutical Services - 2015/16 to 2023/24 - Number of Pharmacies by attribute",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
-    "2. Data relates to community pharmacies that have submitted prescriptions to NHS Prescription Services for reimbursement at any point in the year",
+    "2. Data relates to community pharmacies that have submitted prescriptions to NHS Prescription Services for reimbursement at any point in the year.",
     "3. A multiple contractor is defined as consisting of 6 pharmacies or more. Contractors with 5 pharmacies or less are regarded as independent contractors.",
     "4. The following abbreviations have been used in this table: Local Pharmacy Scheme (LPS)."
   ),
@@ -338,7 +341,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_3",
-  "Table 3: General Pharmaceutical Services - 2015/16 to 2022/23 - Pharmacy activity items and cost",
+  "Table 3: General Pharmaceutical Services - 2015/16 to 2023/24 - Pharmacy activity items and cost",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. The following abbreviations have been used in this table: Electronic Prescription Service (EPS)."
@@ -373,7 +376,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_4",
-  "Table 4: General Pharmaceutical Services - 2015/16 to 2022/23 - Pharmacy activity by dispensing bands",
+  "Table 4: General Pharmaceutical Services - 2015/16 to 2023/24 - Pharmacy activity by dispensing bands",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. Data relates to community pharmacies that have submitted prescriptions to NHS Prescription Services for reimbursement at any point in the year.",
@@ -402,14 +405,14 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_5",
-  "Table 5: General Pharmaceutical Services - 2015/16 to 2022/23 - Pharmacy activity for essential services fees",
+  "Table 5: General Pharmaceutical Services - 2015/16 to 2023/24 - Pharmacy activity for essential services fees",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. Data relates to community pharmacies that have submitted prescriptions to NHS Prescription Services for reimbursement at any point in the year.",
-    "3. When a service was not available in a given financial year, these cells have been left blank.",
+    "3. When a service was not available in a given financial year, the cells in the table for that service have been left blank.",
     "4. The Discharge Medicines Service (DMS) is an essential service that was introduced in February 2021. More information on DMS can be found on the 'Metadata' tab.",
-    "5. The following abbreviations have been used in this table: Controlled Drug (CD), Discharge Medicines Service (DMS), Out Of Pocket Expenses fees (OOPE).",
-    "6. An error was identified in the 2021/22 release of these tables, so the figures for 2021/22 for Discharge Medicines Service costs have been revised."
+    "5. The following abbreviations have been used in this table: Controlled Drug (CD), Discharge Medicines Service (DMS), Out Of Pocket Expenses fees (OOPE)."
+
 
   ),
   table_5,
@@ -441,17 +444,18 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_6",
-  "Table 6: General Pharmaceutical Services - 2015/16 to 2022/23 - Pharmacy activity for advanced services - Other",
+  "Table 6: General Pharmaceutical Services - 2015/16 to 2023/24 - Pharmacy activity for advanced services - Other",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. Data relates to community pharmacies that have submitted prescriptions to NHS Prescription Services for reimbursement at any point in the year.",
     "3. When a service was not available in a given financial year, these cells have been left blank.",
-    "4. The Hepatitis C testing service is an Advanced Service introduced in March 2021. More information on this service can be found on the 'Metadata' tab.",
-    "5. The Hypertension Case-Finding service is an Advanced Service introduced in October 2021. More information on this service can be found on the 'Metadata' tab. ",
-    "6. The Smoking Cessation service (SCS) is an Advanced Service introduced in March 2022. More information on this service can be found on the 'Metadata' tab. ",
+    "4. The Hepatitis C testing service is an advanced service introduced in March 2021 and discontinued in March 2023. More information on this service can be found on the 'Metadata' tab.",
+    "5. The Hypertension Case-Finding service is an advanced service introduced in October 2021. More information on this service can be found on the 'Metadata' tab. ",
+    "6. The Smoking Cessation service (SCS) is an advanced service introduced in March 2022. More information on this service can be found on the 'Metadata' tab. ",
+    "7. Pharmacy Contraception Service (PCS) is an advanced service introduced in April 2023. More information on this service can be found on the 'Metadata' tab. ",
+    "8. Pharmacy First Service (PFS) is an advanced service introduced in January 2024. More information on this service can be found on the 'Metadata' tab. ",
     "7. The Medicines Use Review (MUR) and Prescription Intervention Service was discontinued on 31 March 2021. More information on MUR can be found on the 'Metadata' tab.",
-    "8. The following abbreviations have been used in this table: Hepatitis C (Hep C), Hypertension Case-Finding service (hypertension service), Medicines Use Review (MUR), New Medicine Service (NMS), Seasonal influenza vaccination advanced service (Flu vaccine), Smoking Cessation service (SCS).",
-    "9. An error was identified in the 2021/22 release of these tables, so the figures for 2021/22 for the Hypertension Case-Finding service and Hepatitis C testing and kit reimbursement service costs have been revised."
+    "8. The following abbreviations have been used in this table: Hepatitis C (Hep C), Hypertension Case-Finding service (hypertension service), Medicines Use Review (MUR), New Medicine Service (NMS), Seasonal influenza vaccination advanced service (Flu vaccine), Smoking Cessation service (SCS). Pharmacy Contraception Service (PCS), Pharmacy First Service (PFS), Urgent repeat Medicine Supply (UMS)."
 
       ),
   table_6,
@@ -468,14 +472,14 @@ accessibleTables::format_data(wb,
 #right align columns and round to whole numbers with thousand separator
 accessibleTables::format_data(wb,
             "Table_6",
-            c("B", "C", "D", "F", "G", "J", "M", "Q", "R", "U"),
+            c("B", "C", "D", "F", "G", "J", "N",  "R",  "V",  "AD", "AG"),
             "right",
             "#,##0")
 
 #right align column and round to 2dp with thousand separator
 accessibleTables::format_data(wb,
             "Table_6",
-            c("E", "H", "I", "K", "L", "N", "O", "P", "R", "S", "T", "V", "W"),
+            c("E", "H", "I", "K", "L", "M", "O", "P", "Q", "S", "T", "U", "W", "X","Y", "Z", "AA", "AB", "AC","AE", "AF", "AH", "AI"),
             "right",
             "#,##0.00")
 
@@ -484,13 +488,13 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_7",
-  "Table 7: General Pharmaceutical Services - 2015/16 to 2022/23 - Pharmacy activity for advanced services - AUR and SAC",
+  "Table 7: General Pharmaceutical Services - 2015/16 to 2023/24 - Pharmacy activity for advanced services - AUR and SAC",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. Data relates to community pharmacies that have submitted prescriptions to NHS Prescription Services for reimbursement at any point in the year.",
-    "3. Appliance Use Reviews (AUR) - AURs can be carried out at either the patients home address, or at the pharmacy premises. Both pharmacy and appliance contractors can conduct AURs. See 'Metadata' tab for full definition.",
-    "4. The following abbreviations have been used in this table: Appliance Use Review (AUR), Stoma Appliance Customisation (SAC).",
-    "5. An error was identified in the 2021/22 release of these tables, so the figures for 2021/22 for the number of Appliance Use Reviews have been revised."
+    "3. Appliance Use Reviews (AUR) can be carried be carried out at either the patients home address, or at the pharmacy premises. Both pharmacy and appliance contractors can conduct AURs. See 'Metadata' tab for full definition.",
+    "4. The following abbreviations have been used in this table: Appliance Use Review (AUR), Stoma Appliance Customisation (SAC)."
+
   ),
   table_7,
   14
@@ -522,15 +526,14 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_8",
-  "Table 8: General Pharmaceutical Services - 2015/16 to 2022/23 - Pharmacy activity for advanced services - CPCS",
+  "Table 8: General Pharmaceutical Services - 2015/16 to 2023/24 - Pharmacy activity for advanced services - CPCS",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. The Community Pharmacist Consultation Service (CPCS) was introduced on 29 October 2019.",
     "3. When a service was not available in a given financial year, these cells have been left blank.",
     "4. The GP referral path service was introduced on 1 November 2020 and had to be claimed by 30 June 2021.",
     "5. The NHS Urgent Medicine Service (NUMSAS) has been integrated into CPCS and is no longer a separate service.",
-    "6. The following abbreviations have been used in this table: Community Pharmacist Consultation Services (CPCS), GP referral pathway engagement fees (engagement fees), NHS Urgent Medicine Supply Advanced Service (NUMSAS).",
-    "7. An error was identified in the 2021/22 release of these tables, so the figures for 2021/22 for the cost of Community Pharmacist Consultation Services drugs and fees have been revised."
+    "6. The following abbreviations have been used in this table: Community Pharmacist Consultation Services (CPCS), GP referral pathway engagement fees (engagement fees), NHS Urgent Medicine Supply Advanced Service (NUMSAS)."
   ),
   table_8,
   14
@@ -563,7 +566,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_9",
-  "Table 9: General Pharmaceutical Services - 2015/16 to 2022/23 - Pharmacy activity for COVID-19 related services",
+  "Table 9: General Pharmaceutical Services - 2015/16 to 2023/24 - Pharmacy activity for COVID-19 related services",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. As these services were introduced in response to the COVID-19 pandemic, data is only available for financial year 2020/2021 onwards.",
@@ -601,7 +604,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_10",
-  "Table 10: General Pharmaceutical Services - 2015/16 to 2022/23 - Appliance contractor activity items, costs and essential fees",
+  "Table 10: General Pharmaceutical Services - 2015/16 to 2023/24 - Appliance contractor activity items, costs and essential fees",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. The following abbreviations have been used in this table: Electronic Prescription Service (EPS), Out Of Pocket Expenses (OOPE)."
@@ -636,12 +639,11 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_11",
-  "Table 11: General Pharmaceutical Services - 2015/16 to 2022/23 - Appliance contractor activity for advanced services - AUR and SAC",
+  "Table 11: General Pharmaceutical Services - 2015/16 to 2023/24 - Appliance contractor activity for advanced services - AUR and SAC",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
-    "2. The following abbreviations have been used in this table: Appliance Use Review (AUR), Stoma Appliance Customisation (SAC).",
-    "5. An error was identified in the 2021/22 release of these tables, so the figures for 2021/22 for the number of Appliance Use Reviews have been revised."
-  ),
+    "2. The following abbreviations have been used in this table: Appliance Use Review (AUR), Stoma Appliance Customisation (SAC)."
+    ),
   table_11,
   14
 )
@@ -672,7 +674,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_12",
-  "Table 12: General Pharmaceutical Services - 2015/16 to 2022/23 - Pharmacy and appliance contractor activity items, costs and essential fees",
+  "Table 12: General Pharmaceutical Services - 2015/16 to 2023/24 - Pharmacy and appliance contractor activity items, costs and essential fees",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. The following abbreviations have been used in this table: Electronic Prescription Service (EPS), Out Of Pocket Expenses (OOPE)."
@@ -707,11 +709,11 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_13",
-  "Table 13: General Pharmaceutical Services - 2015/16 to 2022/23 - Pharmacy and appliance contractor activity for advanced services",
+  "Table 13: General Pharmaceutical Services - 2015/16 to 2023/24 - Pharmacy and appliance contractor activity for advanced services",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
-    "2. The following abbreviations have been used in this table: Appliance Use Review (AUR), Stoma Appliance Customisation (SAC).",
-    "3. An error was identified in the 2021/22 release of these tables, so the figures for 2021/22 for the number of Appliance Use Reviews have been revised."
+    "2. The following abbreviations have been used in this table: Appliance Use Review (AUR), Stoma Appliance Customisation (SAC)."
+
   ),
   table_13,
   14
@@ -743,7 +745,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_14",
-  "Table 14: General Pharmaceutical Services - 2015/16 to 2022/23 - NHS England Regions - Community pharmacy contractors active during 2022/23",
+  "Table 14: General Pharmaceutical Services - 2015/16 to 2023/24 - NHS England Regions - Community pharmacy contractors active during 2023/24",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. The data in this table relates to community pharmacies only, and excludes appliance contractors.",
@@ -773,7 +775,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_15",
-  "Table 15: General Pharmaceutical Services - 2015/16 to 2022/23 - Integrated Care Boards- Community pharmacy contractors active during 2022/23",
+  "Table 15: General Pharmaceutical Services - 2015/16 to 2023/24 - Integrated Care Boards- Community pharmacy contractors active during 2023/24",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. The data in this table relates to community pharmacies only, and excludes appliance contractors.",
@@ -803,7 +805,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_16",
-  "Table 16: General Pharmaceutical Services - 2015/16 to 2022/23 - NHS England Regions - Services provided by community pharmacy contractors during 2022/23",
+  "Table 16: General Pharmaceutical Services - 2015/16 to 2023/24 - NHS England Regions - Services provided by community pharmacy contractors during 2023/24",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. The data in this table relates to community pharmacies only, and excludes appliance contractors.",
@@ -840,7 +842,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_17",
-  "Table 17: General Pharmaceutical Services - 2015/16 to 2022/23 - Integrated Care Boards - Services provided by community pharmacy contractors during 2022/23",
+  "Table 17: General Pharmaceutical Services - 2015/16 to 2023/24 - Integrated Care Boards - Services provided by community pharmacy contractors during 2023/24",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. The data in this table relates to community pharmacies only, and excludes appliance contractors.",
@@ -877,7 +879,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_18",
-  "Table 18: General Pharmaceutical Services - 2015/16 to 2022/23 - NHS England Regions -  Services provided by community pharmacies and appliance contractors during  2022/23",
+  "Table 18: General Pharmaceutical Services - 2015/16 to 2023/24 - NHS England Regions -  Services provided by community pharmacies and appliance contractors during  2023/24",
   c(
     "1. The data in this table relates to both community pharmacies and appliance contractors.",
     "2. The NHS England Regions shown here are reflective of the organisational structure as of 1 July 2022.",
@@ -911,11 +913,11 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_19",
-  "Table 19: General Pharmaceutical Services - 2015/16 to 2022/23 - Integrated Care Boards - Services provided by community pharmacies and appliance contractors during 2022/23",
+  "Table 19: General Pharmaceutical Services - 2015/16 to 2023/24 - Integrated Care Boards - Services provided by community pharmacies and appliance contractors during 2023/24",
   c(
     "1. The data in this table relates to both community pharmacies and appliance contractors.",
     "2. The Integrated Care Boards (ICBs) shown here are reflective of the organisational structure as of July 2022. ICBs succeeded Sustainability and Transformation Plans (STPs) in July 2022.",
-    "3. Appliance Use Reviews (AUR) - AURs can be carried out at either the patients home address, or at the pharmacy premises. Both pharmacy and appliance contractors can conduct AURs. See 'Metadata' tab for full definition.",
+    "3. Appliance Use Reviews (AUR) can be carried ou at either the patients home address, or at the pharmacy premises. Both pharmacy and appliance contractors can conduct AURs. See 'Metadata' tab for full definition.",
     "4. Both pharmacy and appliance contractors can provide Stoma Appliance Customisation (SAC) services. See 'Metadata' tab for full definition.",
     "5. The following abbreviations have been used in this table: Appliance Use Review (AUR), Stoma Appliance Customisation (SAC)."),
   table_19,
@@ -945,10 +947,10 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_20",
-  "Table 20: General Pharmaceutical Services - Decisions on applications on appeal by decision, England 2013/14 to 2022/23",
+  "Table 20: General Pharmaceutical Services - Decisions on applications on appeal by decision, England 2013/14 to 2023/24",
   c(
     "1. More information on NHS Resolution and the data supplied here is available in the 'Background Information and Methodology' note that accompanies this release.",
-    "2. Controlled / Non-controlled area - as defined in the NHS Pharmaceutical and Local Pharmaceutical Regulations 2013. See 'Metadata' tab for full definition."
+    "2. Controlled and Non-Controlled areas are defined in the NHS Pharmaceutical and Local Pharmaceutical Regulations 2013. See 'Metadata' tab for full definition."
   ),
 table_20,
 14
@@ -969,32 +971,32 @@ accessibleTables::format_data(wb,
 #create cover sheet
 accessibleTables::makeCoverSheet(
   "General Pharmaceutical Services - England ",
-  "Summary Statistics 2015/16 - 2022/23",
-  "Publication Date: 12 October 2023",
+  "Summary Statistics 2015/16 - 2023/24",
+  "Publication Date: 10 October 2024",
   wb,
   sheetNames,
   c(
     "Metadata",
-    "Table 1: Total number of Community pharmacies and appliance contractors between 2015/16 and 2022/23",
-    "Table 2: Number of Pharmacies by attribute between 2015/16 and 2022/23",
-    "Table 3: Pharmacy activity items and cost between 2015/16 and 2022/23",
-    "Table 4: Pharmacy activity by dispensing bands between 2015/16 and 2022/23",
-    "Table 5: Pharmacy activity for essential services fees between 2015/16 and 2022/23",
-    "Table 6: Pharmacy activity for advance services - Other between 2015/16 and 2022/23",
-    "Table 7: Pharmacy activity for advance services - AUR and SAC  between 2015/16 and 2022/23",
-    "Table 8: Pharmacy activity for advance services - CPCS between 2015/16 and 2022/23",
-    "Table 9: Pharmacy activity for COVID-19 related services between 2020/21 and 2022/23",
-    "Table 10: Appliance contractor activity items, cost and essential fees between 2015/16 and 2022/23",
-    "Table 11: Appliance contractor activity for advance services - AUR and SAC between 2015/16 and 2022/23",
-    "Table 12: Pharmacy and appliance contractor activity items, cost and essential fees between 2015/16 and 2022/23",
-    "Table 13: Pharmacy and appliance contractor activity for advance services - AUR and SAC between 2015/16 and 2022/23",
-    "Table 14: NHS England Regions - Community pharmacy contractors active during  2022/23",
-    "Table 15: Integrated Care Boards- Community pharmacy contractors active during  2022/23",
-    "Table 16: NHS England Regions -  Services provided by community pharmacy contractors during  2022/23",
-    "Table 17: Integrated Care Boards - Services provided by community pharmacy contractors during  2022/23",
-    "Table 18: NHS England Regions -  Services provided by community pharmacies and appliance contractors during  2022/23",
-    "Table 19: Integrated Care Boards - Services provided by community pharmacies and appliance contractors during  2022/23",
-    "Table 20: Decisions on applications on appeal by decision, England 2022/23"
+    "Table 1: Total number of Community pharmacies and appliance contractors between 2015/16 and 2023/24",
+    "Table 2: Number of Pharmacies by attribute between 2015/16 and 2023/24",
+    "Table 3: Pharmacy activity items and cost between 2015/16 and 2023/24",
+    "Table 4: Pharmacy activity by dispensing bands between 2015/16 and 2023/24",
+    "Table 5: Pharmacy activity for essential services fees between 2015/16 and 2023/24",
+    "Table 6: Pharmacy activity for advance services - Other between 2015/16 and 2023/24",
+    "Table 7: Pharmacy activity for advance services - AUR and SAC  between 2015/16 and 2023/24",
+    "Table 8: Pharmacy activity for advance services - CPCS between 2015/16 and 2023/24",
+    "Table 9: Pharmacy activity for COVID-19 related services between 2020/21 and 2023/24",
+    "Table 10: Appliance contractor activity items, cost and essential fees between 2015/16 and 2023/24",
+    "Table 11: Appliance contractor activity for advance services - AUR and SAC between 2015/16 and 2023/24",
+    "Table 12: Pharmacy and appliance contractor activity items, cost and essential fees between 2015/16 and 2023/24",
+    "Table 13: Pharmacy and appliance contractor activity for advance services - AUR and SAC between 2015/16 and 2023/24",
+    "Table 14: NHS England Regions - Community pharmacy contractors active during  2023/24",
+    "Table 15: Integrated Care Boards- Community pharmacy contractors active during  2023/24",
+    "Table 16: NHS England Regions -  Services provided by community pharmacy contractors during  2023/24",
+    "Table 17: Integrated Care Boards - Services provided by community pharmacy contractors during  2023/24",
+    "Table 18: NHS England Regions -  Services provided by community pharmacies and appliance contractors during  2023/24",
+    "Table 19: Integrated Care Boards - Services provided by community pharmacies and appliance contractors during  2023/24",
+    "Table 20: Decisions on applications on appeal by decision, England 2023/24"
 
   ),
   c("Metadata", sheetNames)
@@ -1002,7 +1004,7 @@ accessibleTables::makeCoverSheet(
 
 #save file into outputs folder
 openxlsx::saveWorkbook(wb,
-                       "outputs/gps_2223_summary_tables_v001.xlsx",
+                       "outputs/gps_2324_summary_tables_v001.xlsx",
                        overwrite = TRUE)
 
 
@@ -1014,11 +1016,11 @@ openxlsx::saveWorkbook(wb,
 table_1_saf_data <- data.frame(feeName = c("Professional fee","Single activity fee","Single activity fee","Single activity fee","Single activity fee","Single activity fee","Single activity fee","Single activity fee"),
                         feeValue = c(90,113,125,129,126,127,129,127),
                         feeStart = c("01 Jan 2001","01 Dec 2016","01 Apr 2017","01 Nov 2017","01 Nov 2018","01 Aug 2019","01 Aug 2021","01 Apr 2022"),
-                        feeEnd = c("30 Nov 2016","31 Mar 2017","31 Oct 2017","31 Oct 2018","31 Jul 2019","31 Jul 2021","31 Mar 2022","31 Mar 2023"))
+                        feeEnd = c("30 Nov 2016","31 Mar 2017","31 Oct 2017","31 Oct 2018","31 Jul 2019","31 Jul 2021","31 Mar 2022","31 Mar 2024"))
 table_1_data <- data.frame(FEE_NAME = c("Professional fee","Single activity fee","Single activity fee","Single activity fee","Single activity fee","Single activity fee","Single activity fee","Single activity fee"),
                            FEE_VALUE_PENCE = c(90,113,125,129,126,127,129,127),
                            FEE_START = c("01 Jan 2001","01 Dec 2016","01 Apr 2017","01 Nov 2017","01 Nov 2018","01 Aug 2019","01 Aug 2021","01 Apr 2022"),
-                           FEE_END = c("30 Nov 2016","31 Mar 2017","31 Oct 2017","31 Oct 2018","31 Jul 2019","31 Jul 2021","31 Mar 2022","31 Mar 2023"))
+                           FEE_END = c("30 Nov 2016","31 Mar 2017","31 Oct 2017","31 Oct 2018","31 Jul 2019","31 Jul 2021","31 Mar 2022","31 Mar 2024"))
 
 table_1_saf<- DT::datatable(data = table_1_saf_data,
               rownames = FALSE,
@@ -1035,6 +1037,14 @@ figure_1_data <- national_extract %>%
   pivot_longer(cols = c(`Number of contractors`),
                names_to = "MEASURE",
                values_to = "VALUE")
+#data for tables figure 1
+table_figure_1 <- figure_1_data |>
+  ungroup() |>
+  tidyr::pivot_wider(names_from = MEASURE, values_from = VALUE) |>
+  dplyr::mutate(`Number of contractors` = format(`Number of contractors`, big.mark = ",")) |>
+  dplyr::rename("Financial year" = 1,
+                "Contractor Type" = 2,
+                "Number of contractors" = 3)
 
 #figure 1 chart
 figure_1 <- figure_1_data%>%
@@ -1059,6 +1069,22 @@ figure_2_data <- national_extract %>%
   pivot_longer(cols = c(`Total items`),
                names_to = "MEASURE",
                values_to = "VALUE")
+figure_2_datat <- national_extract %>%
+  dplyr::mutate(CONTRACTOR_TYPE =  case_when(APPLIANCE_DISPENSER_HIST == "Y" ~ "Appliance contractors",
+                                             APPLIANCE_DISPENSER_HIST == "N" ~ "Community pharmacies")) %>%
+  dplyr::select(FINANCIAL_YEAR,`Total items` = items_total, CONTRACTOR_TYPE) %>%
+  group_by(FINANCIAL_YEAR, CONTRACTOR_TYPE) %>%
+  pivot_longer(cols = c(`Total items`),
+               names_to = "MEASURE",
+               values_to = "VALUE")
+#data for tables figure 2
+table_figure_2 <- figure_2_datat |>
+  ungroup() |>
+  tidyr::pivot_wider(names_from = MEASURE, values_from = VALUE) |>
+  dplyr::mutate(`Total items` = format(`Total items`, big.mark = ",")) |>
+  dplyr::rename("Financial year" = 1,
+                "Contractor Type" = 2,
+                "Total items" = 3)
 #figure 2 chart
 figure_2 <- figure_2_data %>%
   nhsbsaVis::group_chart_hc(
@@ -1084,6 +1110,15 @@ figure_3_data  <- national_extract %>%
                names_to = "MEASURE",
                values_to = "VALUE") %>%
   dplyr::mutate(VALUE = signif(VALUE, 3))
+
+#data for tables figure 3
+table_figure_3 <- figure_3_data |>
+  ungroup() |>
+  tidyr::pivot_wider(names_from = MEASURE, values_from = VALUE) |>
+  dplyr::mutate(`Average items` = format(`Average items`, big.mark = ",")) |>
+  dplyr::rename("Financial year" = 1,
+                "Contractor Type" = 2,
+                "Average items" = 3)
 
 # figure 3 chart
 
@@ -1118,7 +1153,32 @@ figure_4_data  <- national_extract %>%
                         MEASURE == "eps_items_total_pharm" ~ "Items dispensed by EPS",
                         MEASURE == "items_total" ~ "All items dispensed")
   )
-
+figure_4_data_table  <- national_extract %>%
+  dplyr::select(FINANCIAL_YEAR,items_total,eps_items_total_pharm) %>%
+  dplyr::mutate(paper_items_all_cont = items_total - eps_items_total_pharm) %>%
+  summarise(paper_items_all_cont = sum(paper_items_all_cont),
+            eps_items_total_pharm = sum(eps_items_total_pharm),
+            items_total = sum(items_total)) %>%
+  tidyr::pivot_longer(cols = c(paper_items_all_cont,eps_items_total_pharm,items_total),
+                      names_to = "MEASURE",
+                      values_to = "VALUE") %>%
+  dplyr::mutate(VALUE = signif(VALUE, 3)) %>%
+  dplyr::mutate(
+    MEASURE = case_when(MEASURE == "paper_items_all_cont" ~ "Paper",
+                        MEASURE == "eps_items_total_pharm" ~ "EPS",
+                        MEASURE == "items_total" ~ "All")
+  )
+#table data 4
+table_figure_4 <- figure_4_data_table |>
+  ungroup() |>
+  tidyr::pivot_wider(names_from = MEASURE, values_from = VALUE) |>
+  dplyr::mutate(`Paper` = format(`Paper`, big.mark = ","),
+                 `EPS` = format(`EPS`, big.mark = ","),
+                `All` = format(`All`, big.mark = ",") )|>
+  dplyr::rename("Financial year" = 1,
+                "Paper items dispensed" = 2,
+                "EPS items dispensed" = 3,
+                "All items dispensed" = 4)
 #figure 4 chart
 figure_4 <- figure_4_data %>%
   nhsbsaVis::group_chart_hc(
@@ -1146,6 +1206,16 @@ figure_5_data  <- national_extract %>%
     MEASURE = case_when(MEASURE == "costs_total" ~ "Total reimbursement",
                         MEASURE == "prof_fees_pharm" ~ "Value of single activity fees")
   )
+
+#table data
+table_figure_5 <- figure_5_data |>
+  ungroup() |>
+  tidyr::pivot_wider(names_from = MEASURE, values_from = VALUE) |>
+  dplyr::mutate(`Total reimbursement` = format(`Total reimbursement`, big.mark = ","),
+`Value of single activity fees` = format(`Value of single activity fees`, big.mark = ",") )|>
+  dplyr::rename("Financial year" = 1,
+                "Total reimbursement" = 2,
+                "Value of single activity fees" = 3)
 #figure 5 chart
 figure_5 <- figure_5_data %>%
   nhsbsaVis::group_chart_hc(
@@ -1164,6 +1234,13 @@ figure_6_data  <- national_extract %>%
   filter(APPLIANCE_DISPENSER_HIST == "N") %>%
   dplyr::select(FINANCIAL_YEAR,`FLU_VACCINES` = flu_items_total_csv) %>%
   summarise(`FLU_VACCINES` = sum(`FLU_VACCINES`))
+#table data
+table_figure_6 <- figure_6_data |>
+  ungroup() |>
+  dplyr::mutate(`FLU_VACCINES` = format(`FLU_VACCINES`, big.mark = ","))|>
+  dplyr::rename("Financial year" = 1,
+                "Number of Flu vaccines" = 2
+                )
 
 #figure 6 chart
 figure_6 <- figure_6_data %>%
@@ -1218,7 +1295,14 @@ figure_7_data  <- national_extract %>%
                         MEASURE == "flu_fees_total_csv" ~ "Value of Fees received")
   )
 
-
+table_figure_7 <- figure_7_data |>
+  ungroup() |>
+  tidyr::pivot_wider(names_from = MEASURE, values_from = VALUES) |>
+  dplyr::mutate(`Cost of vaccines` = format(`Cost of vaccines`, big.mark = ","),
+                `Value of Fees received` = format(`Value of Fees received`, big.mark = ",") )|>
+  dplyr::rename("Financial year" = 1,
+                "Cost of vaccines" = 2,
+                "Value of Fees received" = 3)
 #figure 7 chart
 figure_7 <- figure_7_data %>%
   nhsbsaVis::group_chart_hc(
@@ -1246,7 +1330,14 @@ figure_8_data  <- national_extract %>%
   dplyr::mutate(
     MEASURE = case_when(MEASURE == "num_nms_total" ~ "Total New Medicine Services undertaken - community pharmacies")
   )
-
+#table data
+table_figure_8 <- figure_8_data |>
+  ungroup() |>
+  tidyr::pivot_wider(names_from = MEASURE, values_from = VALUES) |>
+  dplyr::mutate(`Total New Medicine Services undertaken - community pharmacies` = format(`Total New Medicine Services undertaken - community pharmacies`, big.mark = ","))|>
+  dplyr::rename("Financial year" = 1,
+                "Total New Medicine Services undertaken - community pharmacies" = 2
+  )
 figure_8 <- figure_8_data %>%
   nhsbsaVis::group_chart_hc(
     x = "FINANCIAL_YEAR",
@@ -1270,7 +1361,13 @@ figure_9_data  <- national_extract %>%
   dplyr::mutate(
     MEASURE = case_when(MEASURE == "num_nms_fee_total" ~ "Total Cost of New Medicine Services undertaken - community pharmacies")
   )
-
+#table data
+table_figure_9 <- figure_9_data |>
+  ungroup() |>
+  tidyr::pivot_wider(names_from = MEASURE, values_from = VALUES) |>
+  dplyr::mutate(`Total Cost of New Medicine Services undertaken - community pharmacies` = format(`Total Cost of New Medicine Services undertaken - community pharmacies`, big.mark = ","))|>
+  dplyr::rename("Financial year" = 1,
+                "Total Cost of New Medicine Services undertaken - community pharmacies" = 2)
 #figure 9 chart
 figure_9 <- figure_9_data %>%
   nhsbsaVis::group_chart_hc(
@@ -1304,7 +1401,16 @@ national_extract %>%
     MEASURE = case_when(MEASURE == "num_aur_home_total_pharm" ~ "Total Home Appliance Use Reviews (AUR)",MEASURE == "num_aur_prem_total_pharm" ~ "Total Premises Appliance Use Reviews (AUR)",MEASURE == "num_aur_all_total_pharm" ~ "Total All Appliance Use Reviews (AUR)"
     )
   )
-
+table_figure_10 <- figure_10_data |>
+  ungroup() |>
+  tidyr::pivot_wider(names_from = MEASURE, values_from = VALUES) |>
+  dplyr::mutate(`Total Home Appliance Use Reviews (AUR)` = format(`Total Home Appliance Use Reviews (AUR)`, big.mark = ","),
+                `Total Premises Appliance Use Reviews (AUR)` = format(`Total Premises Appliance Use Reviews (AUR)`, big.mark = ","),
+                `Total All Appliance Use Reviews (AUR)` = format(`Total All Appliance Use Reviews (AUR)`, big.mark = ","))|>
+  dplyr::rename("Financial year" = 1,
+                "Total Home Appliance Use Reviews (AUR)" = 2,
+                "Total Premises Appliance Use Reviews (AUR)" = 3,
+                "Total All Appliance Use Reviews (AUR)" =4)
 #figure 10 chart
 figure_10 <- figure_10_data %>%
   nhsbsaVis::group_chart_hc(
@@ -1335,7 +1441,16 @@ figure_11_data <- national_extract %>%
     MEASURE = case_when(MEASURE == "num_aur_home_total_fee_pharm" ~ "Total Home Appliance Use Reviews (AUR)",MEASURE == "num_aur_prem_total_fee_pharm" ~ "Total Premises Appliance Use Reviews (AUR)",MEASURE == "num_aur_all_total_fee_pharm" ~ "Total All Appliance Use Reviews (AUR)"
     )
   )
-
+table_figure_11 <- figure_11_data |>
+  ungroup() |>
+  tidyr::pivot_wider(names_from = MEASURE, values_from = VALUES) |>
+  dplyr::mutate(`Total Home Appliance Use Reviews (AUR)` = format(`Total Home Appliance Use Reviews (AUR)`, big.mark = ","),
+                `Total Premises Appliance Use Reviews (AUR)` = format(`Total Premises Appliance Use Reviews (AUR)`, big.mark = ","),
+                `Total All Appliance Use Reviews (AUR)` = format(`Total All Appliance Use Reviews (AUR)`, big.mark = ","))|>
+  dplyr::rename("Financial year" = 1,
+                "Total Cost of Home Appliance Use Reviews (AUR) (GBP)" = 2,
+                "Total Cost of Premises Appliance Use Reviews (AUR) (GBP)" = 3,
+                "Total Cost of All Appliance Use Reviews (AUR) (GBP)" =4)
 #figure 11 chart
 figure_11 <- figure_11_data %>%
   nhsbsaVis::group_chart_hc(
@@ -1361,7 +1476,21 @@ figure_12_data <- national_extract %>%
     cols = c(`Total Advance Services`),
     names_to = "MEASURE",
     values_to = "VALUES")
-
+figure_12_datatable <- national_extract %>%
+  dplyr::mutate(CONTRACTOR_TYPE =  case_when(APPLIANCE_DISPENSER_HIST == "Y" ~ "Appliance contractors",
+                                             APPLIANCE_DISPENSER_HIST == "N" ~ "Community pharmacies")) %>%
+  dplyr::select(FINANCIAL_YEAR,`Total Stoma Appliance Customisation (SAC)` = num_stoma_total_pharm, CONTRACTOR_TYPE) %>%
+  group_by(FINANCIAL_YEAR, CONTRACTOR_TYPE) %>%
+  pivot_longer(cols = c(`Total Stoma Appliance Customisation (SAC)`),
+               names_to = "MEASURE",
+               values_to = "VALUE")
+table_figure_12 <- figure_12_datatable |>
+  ungroup() |>
+  tidyr::pivot_wider(names_from = MEASURE, values_from = VALUE) |>
+  dplyr::mutate(`Total Stoma Appliance Customisation (SAC)` = format(`Total Stoma Appliance Customisation (SAC)`, big.mark = ","))|>
+  dplyr::rename("Financial year" = 1,
+                "Contractor Type" = 2,
+                "Total Stoma Appliance Customisation (SAC)" = 3)
 #figure 12 chart
 figure_12 <- figure_12_data %>%
   nhsbsaVis::group_chart_hc(
@@ -1384,7 +1513,21 @@ figure_13_data <- national_extract %>%
     cols = c(`Cost of Advance Services fees`),
     names_to = "MEASURE",
     values_to = "VALUES")
-
+figure_13_datatable <- national_extract %>%
+  dplyr::mutate(CONTRACTOR_TYPE =  case_when(APPLIANCE_DISPENSER_HIST == "Y" ~ "Appliance contractors",
+                                             APPLIANCE_DISPENSER_HIST == "N" ~ "Community pharmacies")) %>%
+  dplyr::select(FINANCIAL_YEAR,`Total Cost of Stoma Appliance Customisation (SAC)` = num_stoma_total_fee_pharm, CONTRACTOR_TYPE) %>%
+  group_by(FINANCIAL_YEAR, CONTRACTOR_TYPE) %>%
+  pivot_longer(cols = c(`Total Cost of Stoma Appliance Customisation (SAC)`),
+               names_to = "MEASURE",
+               values_to = "VALUE")
+table_figure_13 <- figure_13_datatable |>
+  ungroup() |>
+  tidyr::pivot_wider(names_from = MEASURE, values_from = VALUE) |>
+  dplyr::mutate(`Total Cost of Stoma Appliance Customisation (SAC)` = format(`Total Cost of Stoma Appliance Customisation (SAC)`, big.mark = ","))|>
+  dplyr::rename("Financial year" = 1,
+                "Contractor Type" = 2,
+                "Total Cost of Stoma Appliance Customisation (SAC)" = 3)
 #figure 13 chart
 figure_13 <- figure_13_data %>%
   nhsbsaVis::group_chart_hc(
@@ -1411,7 +1554,13 @@ figure_14_data <- national_extract %>%
   dplyr::mutate(
     MEASURE = case_when(MEASURE == "cpcs_fees_pharm" ~ "Total Cost of Community Pharmacy Consultation Services")
   )
-
+#table data
+table_figure_14 <- figure_14_data |>
+  ungroup() |>
+  tidyr::pivot_wider(names_from = MEASURE, values_from = VALUES) |>
+  dplyr::mutate(`Total Cost of Community Pharmacy Consultation Services` = format(`Total Cost of Community Pharmacy Consultation Services`, big.mark = ","))|>
+  dplyr::rename("Financial year" = 1,
+                "Total Cost of Community Pharmacy Consultation Services" = 2)
 #figure 14 chart
 figure_14 <- figure_14_data %>%
   nhsbsaVis::group_chart_hc(
@@ -1454,7 +1603,13 @@ figure_15_data <- national_extract %>%
   dplyr::mutate(
     MEASURE = case_when(MEASURE == "cpcs_drugs_pharm" ~ "Total Cost of Drugs provided during Community Pharmacy Consultation Services")
   )
-
+#table data
+table_figure_15 <- figure_15_data |>
+  ungroup() |>
+  tidyr::pivot_wider(names_from = MEASURE, values_from = VALUES) |>
+  dplyr::mutate(`Total Cost of Drugs provided during Community Pharmacy Consultation Services` = format(`Total Cost of Drugs provided during Community Pharmacy Consultation Services`, big.mark = ","))|>
+  dplyr::rename("Financial year" = 1,
+                "Total Cost of Drugs provided during Pharmacy Consultation Services" = 2)
 #figure 15 chart
 figure_15 <- figure_15_data %>%
   nhsbsaVis::group_chart_hc(
@@ -1483,9 +1638,83 @@ figure_15 <- figure_15_data %>%
       ))
   )
 
-# figure 16 covid vaccine cost year
 
 figure_16_data <-national_extract %>%
+  filter(FINANCIAL_YEAR  %in% c("2022/2023","2023/2024")) %>%
+  dplyr::select(FINANCIAL_YEAR,SCS_CNSLT,	SCS_NRTPROD_COST)%>%
+  summarise(SCS_CNSLT = sum(SCS_CNSLT), SCS_NRTPROD_COST = sum(SCS_NRTPROD_COST) )  %>%
+  tidyr::pivot_longer(cols = c(SCS_CNSLT, SCS_NRTPROD_COST),
+                      names_to = "measure",
+                      values_to = "values") %>%
+  dplyr::arrange(desc(measure)) %>%
+
+  dplyr::mutate(
+    measure = case_when(measure == "SCS_CNSLT" ~ "Cost of Smoking Cessation Service (SCS) consultation fees",
+                        measure == "SCS_NRTPROD_COST" ~ "Cost of Nicotine Replacement Therapy (NRT) products provided during SCS consultations")
+  )
+table_figure_16 <- figure_16_data |>
+  ungroup() |>
+  tidyr::pivot_wider(names_from = measure, values_from = values) |>
+  dplyr::mutate(`Cost of Smoking Cessation Service (SCS) consultation fees` = format(`Cost of Smoking Cessation Service (SCS) consultation fees`, big.mark = ","),
+                `Cost of Nicotine Replacement Therapy (NRT) products provided during SCS consultations` = format(`Cost of Nicotine Replacement Therapy (NRT) products provided during SCS consultations`, big.mark = ","))|>
+  dplyr::rename("Financial year" = 1,
+                "Cost of Smoking Cessation Service (SCS) consultation fees (GBP)" = 2,
+                "Cost of Nicotine Replacement Therapy (NRT) products provided during SCS consultations (GBP)" = 3)
+figure_16 <- figure_16_data %>%
+  nhsbsaVis::group_chart_hc(
+    x = "FINANCIAL_YEAR",
+    y = "values",
+    group = "measure",
+    type = "line",
+    xLab = "Financial Year",
+    yLab = "Value (GBP)",
+    title = "",
+    currency = TRUE
+  )
+
+figure_17_data <-national_month_extract %>%
+  filter(YEAR_MONTH> 202303) %>%
+  dplyr::select(YEAR_MONTH,t1c_consult,	t1c_prod_cost)%>%
+  summarise(t1c_consult = sum(t1c_consult), t1c_prod_cost = sum(t1c_prod_cost) )  %>%
+  tidyr::pivot_longer(cols = c(t1c_consult, t1c_prod_cost),
+                      names_to = "measure",
+                      values_to = "values") %>%
+  dplyr::arrange(desc(measure)) %>%
+  mutate(
+    YEAR_MONTH = base::as.Date(as.character(paste0(YEAR_MONTH,"01")), format = "%Y%m%d")
+  ) %>%
+  dplyr::mutate(
+    measure = case_when(measure == "t1c_consult" ~ "Cost of Pharmacy Contraception Service (PCS) consultation fees",
+                        measure == "t1c_prod_cost" ~ "Cost of oral contraception (OC) products provided during PCS consultations")
+  )
+table_figure_17 <- figure_17_data |>
+  ungroup() |>
+  tidyr::pivot_wider(names_from = measure, values_from = values) |>
+  dplyr::mutate(`Cost of Pharmacy Contraception Service (PCS) consultation fees` = format(`Cost of Pharmacy Contraception Service (PCS) consultation fees`, big.mark = ","),
+                `Cost of oral contraception (OC) products provided during PCS consultations` = format(`Cost of oral contraception (OC) products provided during PCS consultations`, big.mark = ","))|>
+  dplyr::rename("Year Month" = 1,
+                "Cost of oral contraception (OC) products provided during PCS consultations" = 2,
+                "Cost of Pharmacy Contraception Service (PCS) consultation fees (GBP)" = 3)
+figure_17<- figure_17_data %>%
+  nhsbsaVis::group_chart_hc(
+    x = "YEAR_MONTH",
+    y = "values",
+    group = "measure",
+    type = "line",
+    xLab = "Month",
+    yLab = "Value (GBP)",
+    title = "",
+    currency = TRUE
+  ) %>%
+  hc_xAxis(type = "datetime")
+
+
+
+
+
+# figure 18 covid vaccine cost year
+
+figure_18_data <-national_extract %>%
   filter(APPLIANCE_DISPENSER_HIST == "N",
          FINANCIAL_YEAR  %!in% c("2015/2016","2016/2017","2017/2018","2018/2019","2019/2020")) %>%
   dplyr::select(FINANCIAL_YEAR, CVD_19_VACCINE) %>%
@@ -1499,8 +1728,16 @@ figure_16_data <-national_extract %>%
                   dplyr::mutate(
                     MEASURE = case_when(MEASURE == "CVD_19_VACCINE" ~ "Cost of vaccine fees")
                   )
-#figure 16 chart
-figure_16 <- figure_16_data %>%
+#table data
+table_figure_18 <- figure_18_data |>
+  ungroup() |>
+  tidyr::pivot_wider(names_from = MEASURE, values_from = VALUES) |>
+  dplyr::mutate(`Cost of vaccine fees` = format(`Cost of vaccine fees`, big.mark = ","))|>
+  dplyr::rename("Financial year" = 1,
+                "Cost of vaccine fees" = 2)
+
+#figure 18 chart
+figure_18 <- figure_18_data %>%
   nhsbsaVis::group_chart_hc(
     x = "FINANCIAL_YEAR",
     y = "VALUES",
@@ -1529,11 +1766,11 @@ figure_16 <- figure_16_data %>%
 
 
 # 7. render markdown ------------------------------------------------------
-  rmarkdown::render("gphs_annual_narrative_2223.Rmd",
+  rmarkdown::render("gphs_annual_narrative_2324.Rmd",
                     output_format = "html_document",
-                    output_file = "outputs/gphs_annual_2022_23_v001.html")
+                    output_file = "outputs/gphs_annual_2023_24_v001.html")
 
-  rmarkdown::render("gphs_annual_narrative_2223.Rmd",
+  rmarkdown::render("gphs_annual_narrative_2324.Rmd",
                     output_format = "word_document",
-                    output_file = "outputs/gphs_annual_2022_23_v001.docx")
+                    output_file = "outputs/gphs_annual_2023_24_v001.docx")
 
