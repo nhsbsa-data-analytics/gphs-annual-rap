@@ -4,43 +4,45 @@ always_allow_html: true
 output:
   word_document:
     toc: yes
-    toc_depth: '3'
+    toc_depth: '2'
   html_document:
     anchor_sections: no
-    css: www/style.css
+    css: 
+      - www/style.css
+      - www/nhs-min.css
     toc: yes
     toc_depth: 3
     toc_float:
       collapsed: no
 ---
-  
-  <script>
-    $(document).ready(function() {
-      $('#header').prepend('<img src=`r knitr::image_uri("www/bsa_logo.svg")` alt=\"NHSBSA logo\" style=\"position:relative; float: right; top: 0; right: 0; padding: 10px; width: 25%;\">');
-  });
-</script>
-  
-  <style type="text/css">
-  
-  body, td {
-    font-size: 16px;
-    font-family: sans-serif;
-  }
-</style>
-  <html lang="en">
-  
+
 ```{r setup, include=FALSE}
+
 # set code chunk options to disable echo by default
 knitr::opts_chunk$set(echo = FALSE,
                       warning = FALSE,
                       message = FALSE)
+
+
 ```
+
+<div class = "quartoheader", id = "fixed-header">
+        <header class="nhsuk-header" role="banner">
+    <div class="nhsuk-width-container nhsuk-header__container">
+      <div class="nhsuk-header__logo nhsuk-header__logo--only">
+        <a class="nhsuk-header__link" href="https://www.nhsbsa.nhs.uk/" aria-label="NHSBSA home" target="_blank">
+          <img class="nhsuk-logo" src="www/logo-nhsbsa.svg"" name="NHSBSA logo" alt="NHS Business Services Authority">
+        </a>
+      </div>
+    </div>
+    </div>
+
 
 <main>
   
 # Background Information and Methodology {.toc-ignore}
   
-## October 2023 {.toc-ignore}
+## October 2024 {.toc-ignore}
   
   
 ---
@@ -71,7 +73,9 @@ From 1 April 2013, NHS England became responsible for the commissioning of NHS p
 
 Changes to the CPCF are negotiated between NHS England and Community Pharmacy England (CPE), who are the representative body of community pharmacists. The role of the Department of Health and Social Care (DHSC) from April 2013 is to make any necessary changes to the legislative framework.
 
-In order to be able to provide pharmaceutical services for the NHS, the 2013 regulations state that a person (other than doctors or dentists) must be included in a pharmaceutical list. NHS England are required to prepare and maintain lists of those who have been granted applications. The list specifies both the premises and the named contractor. Community pharmacies can dispense both drugs and appliances, but appliance contractors are limited to the supply of appliances as listed in Part IXA, IXB and IXC of the Drug Tariff.  The Drug Tariff is published by NHSBSA on behalf of the DHSC and Wales.
+The 2013 regulations state that a person who is not a doctor or dentist must be included in a pharmaceutical list in order to be permitted to provide pharmaceutical services for the NHS. NHS England are required to prepare and maintain lists of those whose applications have been granted to be listed as a pharmaceutical provider for both community pharmacy and appliance contractors. The lists specify both the premises and the named contractor.
+
+Community pharmacies can dispense both drugs and appliances, but appliance contractors are limited to the supply of appliances as listed in Part IXA, IXB and IXC of the Drug Tariff.  The Drug Tariff is published by NHSBSA on behalf of the DHSC and Wales.
 
 To receive payment for the costs and fees incurred while providing services to the general public on behalf of the NHS, community pharmacies and appliance contractors must submit their prescriptions to NHSBSA along with a submission document, known as the FP34C. This has recently been digitised by the Manage Your Submission (MYS) application but was historically done via a paper form that accompanied paper prescription batches. The processing applied to individual prescriptions is discussed as part of ‘The prescription journey’ later in this document. 
 
@@ -83,9 +87,9 @@ Data regarding advanced services is taken from the FP34C submission document, or
 
 Prescription data is a long-standing administrative source of data that has been used by commissioners, providers, government, academia, industry, and media to inform local and national policy, in academic research, to monitor medicine uptake, and allow public scrutiny of prescribing habits. It is collected by the NHSBSA for the operational purpose of reimbursing and remunerating dispensing contractors for the costs of supplying drugs and devices, along with essential and advanced services, to NHS patients. All prescribing data that forms the basis of the statistics in this publication is collected as a by-product of this process.
 
-Data is collected from the submission of prescriptions by dispensing contractors to the NHSBSA. These prescriptions can be issued by GPs and other authorised prescribers such as nurses, dentists, and allied health professionals. Prescriptions that are issued by hospitals can also be dispensed in the community and submitted for reimbursement. Prescriptions that are issued in hospitals and fulfilled by the hospital pharmacy or dispensary are not included in this data.
+Data is collected from prescriptions submitted to the NHSBSA by dispensing contractors (community pharmacies and appliance contractors). These prescriptions are issued by GPs or other authorised prescribers such as nurses, dentists, and allied health professionals. Prescriptions that are issued by hospitals may also be dispensed in the community and submitted for reimbursement. Prescriptions that are issued in hospitals and fulfilled by the hospital pharmacy or dispensary are not included in this data.
 
-Prescriptions can be issued as either a paper form or as an electronic message using the Electronic Prescription Service (EPS). EPS prescriptions make up most of prescribing and dispensing activity carried out in England, accounting for 88%<sup>1</sup> of all prescriptions dispensed in England during 2021. EPS messages are submitted by the dispensing contractor once the prescription has been fulfilled and issued to the patient. The message is initially sent to the NHS Spine, maintained by NHS Digital, and then sent to the NHSBSA for processing. 
+Prescriptions can be issued as either a paper form or as an electronic message using the Electronic Prescription Service (EPS). EPS prescriptions make up most of prescribing and dispensing activity carried out in England, accounting for 96%<sup>1</sup> of all prescriptions dispensed in England during 2023/24. EPS messages are submitted by the dispensing contractor once the prescription has been fulfilled and issued to the patient. The message is initially sent to the NHS Spine, maintained by NHS Digital, and then sent to the NHSBSA for processing. 
 
 Paper prescriptions are compiled by the dispensing contractor and sent to the NHSBSA at the end of each month by secure courier. These paper prescriptions are then scanned and transformed into digital images, which are passed through intelligent character recognition (ICR) to extract the relevant data from them. Most paper forms go through ICR without any manual intervention. However, there are cases where operator intervention is required to accurately capture information from the prescription form. This manual intervention can be required for many reasons, such as if a form is handwritten or information is obscured by a pharmacy stamp.
 
@@ -164,15 +168,28 @@ Previously in historical releases by NHS Digital this measure was calculated by 
 
 ### 3.1 Summary tables {.toc-ignore}
 
-Data regarding the Smoking Cessation Service, an advanced service introduced in March 2022, has been added to the summary tables.
+Data regarding the Pharmacy First Service, an advanced service introduced in Janaury 2024, has been added to the summary tables.
 
-### 3.2 Advanced and enhanced services {.toc-ignore}
+### 3.2 Statistical narrative  {.toc-ignore}
 
-Many COVID-19 related services have begun to close. Information on Community Pharmacy Home Delivery Services and Community Pharmacy COVID-19 Lateral Flow Device Distribution Service, which were both decommissioned in March 2022, has been removed from the statistical summary narrative. Historical data for these services is available in the summary tables. COVID-19 vaccinations provided by community pharmacies have still been included in the narrative.
+The advanced services Smoking Cessation Service (SCS) and Pharmacy Contraceptive Service (PCS) have been added to the narrative.
+
 
 ### 3.3 Planned changes to this publication {.toc-ignore}
 
-NHSBSA plans to expand the scope of this publication in future releases to report on all fees that a contractor can claim for providing NHS services in order to provide a more complete picture of the total cost of community pharmacy to the public purse.
+NHSBSA plans to expand the scope of this publication in future releases to report on all fees that a contractor can claim for providing NHS services in order to provide a more complete picture of the total cost of community pharmacy to the public purse. Future releases will include the below:
+
+The Pharmacy First Service (PFS) is a new advanced service which commenced in January 2024. It will replace the CPCS. The full service will consist of three elements:
+
+* Pharmacy First (clinical pathways), a new element
+
+* Pharmacy First (urgent repeat medicine supply), previously commissioned as the CPCS
+
+* Pharmacy First (NHS referrals for minor illness), previously commissioned as the CPCS
+
+It will be included in this release from the 2024/2025 publication.
+
+The NHS Pharmacy First - Clinical Pathway consultation advanced service was introduced from 31 January 2024. Figures for items issued by through the Clinical Pathway service have been included in the overall counts for dispensed items and drug costs for pharmacies in this publication.  Further work to exclude these items will be undertaken for future iterations of this publication. 
 
 ## 4. Strengths and limitations
 
@@ -427,6 +444,22 @@ The Medicines Use Review (MUR) and Prescription Intervention Service consisted o
 #### New Medicine Service (NMS) {.toc-ignore}
 
 The New Medicine Service (NMS) was the fourth Advanced Service to be added to the Community Pharmacy Contractual Framework and commenced on 1 October 2011. The service provides support for people with long-term conditions who are newly prescribed a medicine to help improve medicines adherence; it is focused on particular patient groups and conditions and can only be undertaken on patients from these specific groups. Details of the currently covered patient groups can be found in the [NHS England Service Specification](https://www.england.nhs.uk/publication/advanced-service-specification-nhs-new-medicine-service-nms/).
+
+#### Pharmacy Contraceptive Service (PCS) {.toc-ignore}
+
+The Pharmacy Contraceptive Services (PCS) is an advanced service that commenced in April 2023, allowing the ongoing supply of oral contraception (OC) from community pharmacies.
+
+From December 2023, the service included both initiation and ongoing supply of OC.
+
+#### Pharmacy First Service (PFS) {.toc-ignore}
+
+The Pharmacy First Service (PFS) is a new advanced service which commenced in January 2024. It will replace the CPCS. The full service will consist of three elements:
+
+* Pharmacy First (clinical pathways), a new element
+
+* Pharmacy First (urgent repeat medicine supply), previously commissioned as the CPCS
+
+* Pharmacy First (NHS referrals for minor illness), previously commissioned as the CPCS
 
 #### Prescription/prescription form {.toc-ignore}
 

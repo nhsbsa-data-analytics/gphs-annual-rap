@@ -195,7 +195,7 @@ icb_extract <- function(con,
       # # total cost of  hep_c_service
       hep_c_service_pharm = sum(HEP_C_SERVICE, na.rm=TRUE),
       # # num of contractors providing hypertension incentives
-      NUM_HYPTEN_INC= sum(HYPTEN_INC>0, na.rm=TRUE),
+      NUM_HYPTEN_INC= sum(HYPTENCHECK_FEES>0, na.rm=TRUE),
       # # total cost of  hypertension check fees
       HYPTENCHECK_FEES= sum(HYPTENCHECK_FEES, na.rm=TRUE),
       # # total cost of  hypertension set up fees
@@ -484,7 +484,7 @@ national_month_extract <- function(con,
       # # total cost of  hep_c_service
       hep_c_service_pharm = sum(HEP_C_SERVICE, na.rm=TRUE),
       # # num of contractors providing hypertension incentives
-      NUM_HYPTEN_INC= sum(HYPTEN_INC>0, na.rm=TRUE),
+      NUM_HYPTEN_INC= sum(HYPTENCHECK_FEES>0, na.rm=TRUE),
       # # total cost of  hypertension check fees
       HYPTENCHECK_FEES= sum(HYPTENCHECK_FEES, na.rm=TRUE),
       # # total cost of  hypertension set up fees
@@ -774,7 +774,7 @@ national_extract <- function(con,
       # # total cost of  hep_c_service
       hep_c_service_pharm = sum(HEP_C_SERVICE, na.rm=TRUE),
       # # num of contractors providing hypertension incentives
-      NUM_HYPTEN_INC= sum(HYPTEN_INC>0, na.rm=TRUE),
+      NUM_HYPTEN_INC= sum(HYPTENCHECK_FEES>0, na.rm=TRUE),
       # # total cost of  hypertension check fees
       HYPTENCHECK_FEES= sum(HYPTENCHECK_FEES, na.rm=TRUE),
       # # total cost of  hypertension set up fees

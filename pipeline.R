@@ -24,9 +24,9 @@ if (Sys.getenv("GITHUB_PAT") == "") {
 devtools::install_github("nhsbsa-data-analytics/nhsbsaUtils",
                          auth_token = Sys.getenv("GITHUB_PAT"), force = TRUE)
 #unload and reinstall gphsR if needed
-detach("package:gphsR", unload = TRUE)
-devtools::install_github("nhsbsa-data-analytics/gphsR",
-                         auth_token = Sys.getenv("GITHUB_PAT"), force = TRUE)
+# detach("package:gphsR", unload = TRUE)
+# devtools::install_github("nhsbsa-data-analytics/gphsR",
+#                          auth_token = Sys.getenv("GITHUB_PAT"), force = TRUE)
 
 
 
@@ -76,6 +76,7 @@ lf <-
     ".log"
   ))
 
+
 # load config
 config <- yaml::yaml.load_file("config.yml")
 log_print("Config loaded", hide_notes = TRUE)
@@ -104,7 +105,7 @@ national_extract <- national_extract(
   schema = username,
   table = "GPS_FINAL_202409_COMBINED"
 )
-write.csv(national_extract,"national_extract.csv")
+#write.csv(national_extract,"national_extract.csv")
 national_month_extract <- national_month_extract(
   con = con,
   schema = username,
@@ -1110,9 +1111,19 @@ figure_3_data  <- national_extract %>%
                names_to = "MEASURE",
                values_to = "VALUE") %>%
   dplyr::mutate(VALUE = signif(VALUE, 3))
+figure_3_data_t  <- national_extract %>%
+  dplyr::mutate(CONTRACTOR_TYPE =  case_when(APPLIANCE_DISPENSER_HIST == "Y" ~ "Appliance contractor",
+                                             APPLIANCE_DISPENSER_HIST == "N" ~ "Community pharmacy"),
+                avg_items = items_total/num_contractors) %>%
+  dplyr::select(FINANCIAL_YEAR,`Average items` = avg_items, CONTRACTOR_TYPE) %>%
+  group_by(FINANCIAL_YEAR, `Average items`) %>%
+  pivot_longer(cols = c(`Average items`),
+               names_to = "MEASURE",
+               values_to = "VALUE") %>%
+  dplyr::mutate(VALUE = round(VALUE, 0))
 
 #data for tables figure 3
-table_figure_3 <- figure_3_data |>
+table_figure_3 <- figure_3_data_t |>
   ungroup() |>
   tidyr::pivot_wider(names_from = MEASURE, values_from = VALUE) |>
   dplyr::mutate(`Average items` = format(`Average items`, big.mark = ",")) |>
@@ -1162,8 +1173,7 @@ figure_4_data_table  <- national_extract %>%
   tidyr::pivot_longer(cols = c(paper_items_all_cont,eps_items_total_pharm,items_total),
                       names_to = "MEASURE",
                       values_to = "VALUE") %>%
-  dplyr::mutate(VALUE = signif(VALUE, 3)) %>%
-  dplyr::mutate(
+   dplyr::mutate(
     MEASURE = case_when(MEASURE == "paper_items_all_cont" ~ "Paper",
                         MEASURE == "eps_items_total_pharm" ~ "EPS",
                         MEASURE == "items_total" ~ "All")
@@ -1234,12 +1244,25 @@ figure_6_data  <- national_extract %>%
   filter(APPLIANCE_DISPENSER_HIST == "N") %>%
   dplyr::select(FINANCIAL_YEAR,`FLU_VACCINES` = flu_items_total_csv) %>%
   summarise(`FLU_VACCINES` = sum(`FLU_VACCINES`))
+# table 2 average flu per pharmacy
+table_2_data <- national_extract %>%
+  filter(APPLIANCE_DISPENSER_HIST == "N")%>%
+  dplyr::select(FINANCIAL_YEAR,flu_items_total_csv,num_flu_pharm_csv) %>%
+  summarise(flu_items_total_csv = sum(flu_items_total_csv),
+            num_flu_pharm_csv = sum(num_flu_pharm_csv)) %>%
+  dplyr::mutate(avg_flu_items = round(flu_items_total_csv/num_flu_pharm_csv,0))%>%
+  dplyr::select(-flu_items_total_csv,-num_flu_pharm_csv)
+
+table_2_flu <- figure_6_data%>%
+  inner_join(table_2_data, by = join_by(FINANCIAL_YEAR))
 #table data
-table_figure_6 <- figure_6_data |>
+table_figure_6 <- table_2_flu |>
   ungroup() |>
-  dplyr::mutate(`FLU_VACCINES` = format(`FLU_VACCINES`, big.mark = ","))|>
+  dplyr::mutate(`FLU_VACCINES` = format(`FLU_VACCINES`, big.mark = ","),
+                `avg_flu_items` = format(`avg_flu_items`, big.mark = ","))|>
   dplyr::rename("Financial year" = 1,
-                "Number of Flu vaccines" = 2
+                "Number of Flu vaccines" = 2,
+                "Average number of flu vaccines per community pharmacy"=3
                 )
 
 #figure 6 chart
@@ -1252,34 +1275,15 @@ figure_6 <- figure_6_data %>%
     yLab = "Flu vaccines",
     title = ""
   )
-# table 2 average flu per pharmacy
-table_2_data <- national_extract %>%
-  filter(APPLIANCE_DISPENSER_HIST == "N")%>%
-  dplyr::select(FINANCIAL_YEAR,flu_items_total_csv,num_flu_pharm_csv) %>%
-  summarise(flu_items_total_csv = sum(flu_items_total_csv),
-            num_flu_pharm_csv = sum(num_flu_pharm_csv)) %>%
-  dplyr::mutate(avg_flu_items = round(flu_items_total_csv/num_flu_pharm_csv,0)) %>%
-  tidyr::pivot_longer(
-    cols = c(flu_items_total_csv,num_flu_pharm_csv,avg_flu_items),
-    names_to = "MEASURE",
-    values_to = "VALUES"
-  ) %>%
-  filter(MEASURE == "avg_flu_items") %>%
-  dplyr::mutate(
-    MEASURE = case_when(MEASURE == "avg_flu_items" ~ "Average number of flu vaccines per community pharmacy")
-  ) %>%
-  pivot_wider(
-    names_from = FINANCIAL_YEAR,
-    values_from = VALUES
-  )
 
 
-table_2_flu <- DT::datatable(data = table_2_data,
-              rownames = FALSE,
-              colnames = c("Measure"="MEASURE"),
-              options = list(dom = "t",
-                             columnDefs = list(list(orderable = FALSE,
-                                                    targets = '_all'))))
+
+# table_2_flu <- DT::datatable(data = table_2_data,
+#               rownames = FALSE,
+#               colnames = c("Measure"="MEASURE"),
+#               options = list(dom = "t",
+#                              columnDefs = list(list(orderable = FALSE,
+#                                                     targets = '_all'))))
 #figure 7 flu costs and fees
 
 figure_7_data  <- national_extract %>%
@@ -1301,8 +1305,8 @@ table_figure_7 <- figure_7_data |>
   dplyr::mutate(`Cost of vaccines` = format(`Cost of vaccines`, big.mark = ","),
                 `Value of Fees received` = format(`Value of Fees received`, big.mark = ",") )|>
   dplyr::rename("Financial year" = 1,
-                "Cost of vaccines" = 2,
-                "Value of Fees received" = 3)
+                "Cost of vaccines (GBP)" = 2,
+                "Value of Fees received (GBP)" = 3)
 #figure 7 chart
 figure_7 <- figure_7_data %>%
   nhsbsaVis::group_chart_hc(
@@ -1367,7 +1371,7 @@ table_figure_9 <- figure_9_data |>
   tidyr::pivot_wider(names_from = MEASURE, values_from = VALUES) |>
   dplyr::mutate(`Total Cost of New Medicine Services undertaken - community pharmacies` = format(`Total Cost of New Medicine Services undertaken - community pharmacies`, big.mark = ","))|>
   dplyr::rename("Financial year" = 1,
-                "Total Cost of New Medicine Services undertaken - community pharmacies" = 2)
+                "Total Cost of New Medicine Services undertaken - community pharmacies (GBP)" = 2)
 #figure 9 chart
 figure_9 <- figure_9_data %>%
   nhsbsaVis::group_chart_hc(
@@ -1774,3 +1778,10 @@ figure_18 <- figure_18_data %>%
                     output_format = "word_document",
                     output_file = "outputs/gphs_annual_2023_24_v001.docx")
 
+  rmarkdown::render("gphs_background.Rmd",
+                    output_format = "html_document",
+                    output_file = "outputs/gphs_background_v001.html")
+
+  rmarkdown::render("gphs_background.Rmd",
+                    output_format = "word_document",
+                    output_file = "outputs/gphs_background_v001.docx")
