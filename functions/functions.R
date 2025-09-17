@@ -1858,7 +1858,7 @@ table_20 <- function(){
   #import previous years' data from previous years GPhS summary tables table 9
   #code assumes data is kept in R folder in GPhS project directory
   #change file path if stored elsewhere
-  prev_resolution_data <- readxl::read_xlsx("Ref/Resolutions/gps_2223_summary_tables_v001.xlsx",
+  prev_resolution_data <- readxl::read_xlsx("Ref/Resolutions/gps_2324_summary_tables_v001.xlsx",
                                             sheet = 22,
                                             range = "A5:D155",
                                             col_names = TRUE)
@@ -1866,7 +1866,7 @@ table_20 <- function(){
   prev_resolution_data <- prev_resolution_data %>%
     dplyr::mutate(across(where(is.numeric), ~ ifelse(is.na(.), 0, .)))
   #import new data for 2022/23
-  cur_resolution_data <- readxl::read_xlsx("Ref/Resolutions/2023-24 Pharmacy data.xlsx",
+  cur_resolution_data <- readxl::read_xlsx("Ref/Resolutions/2024-25 Pharmacy statistics.xlsx",
                                            col_names = TRUE)
   #change missing values from NA back to 0
   cur_resolution_data <- cur_resolution_data %>%

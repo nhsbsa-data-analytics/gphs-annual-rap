@@ -31,6 +31,7 @@ devtools::install_github("nhsbsa-data-analytics/nhsbsaUtils",
 
 
 library(nhsbsaUtils)
+library(dplyr)
 
 #2. install required packages
 #double check required packages once full pipeline built eg. if maps used
@@ -95,27 +96,28 @@ con <- nhsbsaR::con_nhsbsa(dsn = "FBS_8192k",
                            "DWCP")
 
 #get schema name for dataimport
-username<- toupper(Sys.getenv("USERNAME"))
+schema <-
+  as.character(svDialogs::dlgInput("Enter schema name: ")$res)
 
 # run functions for data and if needed write to csv
 
 
 national_extract <- national_extract(
   con = con,
-  schema = username,
-  table = "GPS_FINAL_202409_COMBINED"
+  schema = schema,
+  table = "GPS_FINAL_202508_COMBINED"
 )
 #write.csv(national_extract,"national_extract.csv")
 national_month_extract <- national_month_extract(
   con = con,
-  schema = username,
-  table = "GPS_MONTH_202409"
+  schema = schema,
+  table = "GPS_MONTH_202508"
 )
 #write.csv(national_month_extract,"national_month_extract.csv")
 icb_extract <- icb_extract(
   con = con,
-  schema = username,
-  table = "GPS_FINAL_202409_COMBINED"
+  schema = schema,
+  table = "GPS_FINAL_202508_COMBINED"
 )
 #write.csv(icb_extract,"icb_extract.csv")
 
@@ -149,7 +151,7 @@ national_extract<- national_extract %>%
 
 
 # set latest financial year
-max_fyr <- "2023/2024"
+max_fyr <- "2024/2025"
 
 #script for formatting the GPhS summary tables using openxlsx
 #and existing formatting functions
@@ -285,7 +287,7 @@ accessibleTables::create_metadata(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_1",
-  "Table 1: General Pharmaceutical Services - 2015/16 to 2023/24 - Total number of Community pharmacies and appliance contractors",
+  "Table 1: General Pharmaceutical Services - 2015/16 to 2024/25 - Total number of Community pharmacies and appliance contractors",
   c(
     "1. Field definitions can be found on the 'Metadata' tab."
   ),
@@ -312,7 +314,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_2",
-  "Table 2: General Pharmaceutical Services - 2015/16 to 2023/24 - Number of Pharmacies by attribute",
+  "Table 2: General Pharmaceutical Services - 2015/16 to 2024/25 - Number of Pharmacies by attribute",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. Data relates to community pharmacies that have submitted prescriptions to NHS Prescription Services for reimbursement at any point in the year.",
@@ -342,7 +344,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_3",
-  "Table 3: General Pharmaceutical Services - 2015/16 to 2023/24 - Pharmacy activity items and cost",
+  "Table 3: General Pharmaceutical Services - 2015/16 to 2024/25 - Pharmacy activity items and cost",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. The following abbreviations have been used in this table: Electronic Prescription Service (EPS)."
@@ -377,7 +379,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_4",
-  "Table 4: General Pharmaceutical Services - 2015/16 to 2023/24 - Pharmacy activity by dispensing bands",
+  "Table 4: General Pharmaceutical Services - 2015/16 to 2024/25 - Pharmacy activity by dispensing bands",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. Data relates to community pharmacies that have submitted prescriptions to NHS Prescription Services for reimbursement at any point in the year.",
@@ -406,7 +408,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_5",
-  "Table 5: General Pharmaceutical Services - 2015/16 to 2023/24 - Pharmacy activity for essential services fees",
+  "Table 5: General Pharmaceutical Services - 2015/16 to 2024/25 - Pharmacy activity for essential services fees",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. Data relates to community pharmacies that have submitted prescriptions to NHS Prescription Services for reimbursement at any point in the year.",
@@ -445,7 +447,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_6",
-  "Table 6: General Pharmaceutical Services - 2015/16 to 2023/24 - Pharmacy activity for advanced services - Other",
+  "Table 6: General Pharmaceutical Services - 2015/16 to 2024/25 - Pharmacy activity for advanced services - Other",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. Data relates to community pharmacies that have submitted prescriptions to NHS Prescription Services for reimbursement at any point in the year.",
@@ -489,7 +491,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_7",
-  "Table 7: General Pharmaceutical Services - 2015/16 to 2023/24 - Pharmacy activity for advanced services - AUR and SAC",
+  "Table 7: General Pharmaceutical Services - 2015/16 to 2024/25 - Pharmacy activity for advanced services - AUR and SAC",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. Data relates to community pharmacies that have submitted prescriptions to NHS Prescription Services for reimbursement at any point in the year.",
@@ -527,7 +529,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_8",
-  "Table 8: General Pharmaceutical Services - 2015/16 to 2023/24 - Pharmacy activity for advanced services - CPCS",
+  "Table 8: General Pharmaceutical Services - 2015/16 to 2024/25 - Pharmacy activity for advanced services - CPCS",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. The Community Pharmacist Consultation Service (CPCS) was introduced on 29 October 2019.",
@@ -567,7 +569,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_9",
-  "Table 9: General Pharmaceutical Services - 2015/16 to 2023/24 - Pharmacy activity for COVID-19 related services",
+  "Table 9: General Pharmaceutical Services - 2015/16 to 2024/25 - Pharmacy activity for COVID-19 related services",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. As these services were introduced in response to the COVID-19 pandemic, data is only available for financial year 2020/2021 onwards.",
@@ -605,7 +607,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_10",
-  "Table 10: General Pharmaceutical Services - 2015/16 to 2023/24 - Appliance contractor activity items, costs and essential fees",
+  "Table 10: General Pharmaceutical Services - 2015/16 to 2024/25 - Appliance contractor activity items, costs and essential fees",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. The following abbreviations have been used in this table: Electronic Prescription Service (EPS), Out Of Pocket Expenses (OOPE)."
@@ -640,7 +642,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_11",
-  "Table 11: General Pharmaceutical Services - 2015/16 to 2023/24 - Appliance contractor activity for advanced services - AUR and SAC",
+  "Table 11: General Pharmaceutical Services - 2015/16 to 2024/25 - Appliance contractor activity for advanced services - AUR and SAC",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. The following abbreviations have been used in this table: Appliance Use Review (AUR), Stoma Appliance Customisation (SAC)."
@@ -675,7 +677,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_12",
-  "Table 12: General Pharmaceutical Services - 2015/16 to 2023/24 - Pharmacy and appliance contractor activity items, costs and essential fees",
+  "Table 12: General Pharmaceutical Services - 2015/16 to 2024/25 - Pharmacy and appliance contractor activity items, costs and essential fees",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. The following abbreviations have been used in this table: Electronic Prescription Service (EPS), Out Of Pocket Expenses (OOPE)."
@@ -710,7 +712,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_13",
-  "Table 13: General Pharmaceutical Services - 2015/16 to 2023/24 - Pharmacy and appliance contractor activity for advanced services",
+  "Table 13: General Pharmaceutical Services - 2015/16 to 2024/25 - Pharmacy and appliance contractor activity for advanced services",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. The following abbreviations have been used in this table: Appliance Use Review (AUR), Stoma Appliance Customisation (SAC)."
@@ -746,7 +748,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_14",
-  "Table 14: General Pharmaceutical Services - 2015/16 to 2023/24 - NHS England Regions - Community pharmacy contractors active during 2023/24",
+  "Table 14: General Pharmaceutical Services - 2015/16 to 2024/25 - NHS England Regions - Community pharmacy contractors active during 2024/25",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. The data in this table relates to community pharmacies only, and excludes appliance contractors.",
@@ -776,7 +778,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_15",
-  "Table 15: General Pharmaceutical Services - 2015/16 to 2023/24 - Integrated Care Boards- Community pharmacy contractors active during 2023/24",
+  "Table 15: General Pharmaceutical Services - 2015/16 to 2024/25 - Integrated Care Boards- Community pharmacy contractors active during 2024/25",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. The data in this table relates to community pharmacies only, and excludes appliance contractors.",
@@ -806,7 +808,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_16",
-  "Table 16: General Pharmaceutical Services - 2015/16 to 2023/24 - NHS England Regions - Services provided by community pharmacy contractors during 2023/24",
+  "Table 16: General Pharmaceutical Services - 2015/16 to 2024/25 - NHS England Regions - Services provided by community pharmacy contractors during 2024/25",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. The data in this table relates to community pharmacies only, and excludes appliance contractors.",
@@ -843,7 +845,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_17",
-  "Table 17: General Pharmaceutical Services - 2015/16 to 2023/24 - Integrated Care Boards - Services provided by community pharmacy contractors during 2023/24",
+  "Table 17: General Pharmaceutical Services - 2015/16 to 2024/25 - Integrated Care Boards - Services provided by community pharmacy contractors during 2024/25",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. The data in this table relates to community pharmacies only, and excludes appliance contractors.",
@@ -880,7 +882,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_18",
-  "Table 18: General Pharmaceutical Services - 2015/16 to 2023/24 - NHS England Regions -  Services provided by community pharmacies and appliance contractors during  2023/24",
+  "Table 18: General Pharmaceutical Services - 2015/16 to 2024/25 - NHS England Regions -  Services provided by community pharmacies and appliance contractors during  2024/25",
   c(
     "1. The data in this table relates to both community pharmacies and appliance contractors.",
     "2. The NHS England Regions shown here are reflective of the organisational structure as of 1 July 2022.",
@@ -914,7 +916,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_19",
-  "Table 19: General Pharmaceutical Services - 2015/16 to 2023/24 - Integrated Care Boards - Services provided by community pharmacies and appliance contractors during 2023/24",
+  "Table 19: General Pharmaceutical Services - 2015/16 to 2024/25 - Integrated Care Boards - Services provided by community pharmacies and appliance contractors during 2024/25",
   c(
     "1. The data in this table relates to both community pharmacies and appliance contractors.",
     "2. The Integrated Care Boards (ICBs) shown here are reflective of the organisational structure as of July 2022. ICBs succeeded Sustainability and Transformation Plans (STPs) in July 2022.",
@@ -948,7 +950,7 @@ accessibleTables::format_data(wb,
 accessibleTables::write_sheet(
   wb,
   "Table_20",
-  "Table 20: General Pharmaceutical Services - Decisions on applications on appeal by decision, England 2013/14 to 2023/24",
+  "Table 20: General Pharmaceutical Services - Decisions on applications on appeal by decision, England 2013/14 to 2024/25",
   c(
     "1. More information on NHS Resolution and the data supplied here is available in the 'Background Information and Methodology' note that accompanies this release.",
     "2. Controlled and Non-Controlled areas are defined in the NHS Pharmaceutical and Local Pharmaceutical Regulations 2013. See 'Metadata' tab for full definition."
@@ -972,32 +974,32 @@ accessibleTables::format_data(wb,
 #create cover sheet
 accessibleTables::makeCoverSheet(
   "General Pharmaceutical Services - England ",
-  "Summary Statistics 2015/16 - 2023/24",
-  "Publication Date: 10 October 2024",
+  "Summary Statistics 2015/16 - 2024/25",
+  "Publication Date: 16 October 2025",
   wb,
   sheetNames,
   c(
     "Metadata",
-    "Table 1: Total number of Community pharmacies and appliance contractors between 2015/16 and 2023/24",
-    "Table 2: Number of Pharmacies by attribute between 2015/16 and 2023/24",
-    "Table 3: Pharmacy activity items and cost between 2015/16 and 2023/24",
-    "Table 4: Pharmacy activity by dispensing bands between 2015/16 and 2023/24",
-    "Table 5: Pharmacy activity for essential services fees between 2015/16 and 2023/24",
-    "Table 6: Pharmacy activity for advance services - Other between 2015/16 and 2023/24",
-    "Table 7: Pharmacy activity for advance services - AUR and SAC  between 2015/16 and 2023/24",
-    "Table 8: Pharmacy activity for advance services - CPCS between 2015/16 and 2023/24",
-    "Table 9: Pharmacy activity for COVID-19 related services between 2020/21 and 2023/24",
-    "Table 10: Appliance contractor activity items, cost and essential fees between 2015/16 and 2023/24",
-    "Table 11: Appliance contractor activity for advance services - AUR and SAC between 2015/16 and 2023/24",
-    "Table 12: Pharmacy and appliance contractor activity items, cost and essential fees between 2015/16 and 2023/24",
-    "Table 13: Pharmacy and appliance contractor activity for advance services - AUR and SAC between 2015/16 and 2023/24",
-    "Table 14: NHS England Regions - Community pharmacy contractors active during  2023/24",
-    "Table 15: Integrated Care Boards- Community pharmacy contractors active during  2023/24",
-    "Table 16: NHS England Regions -  Services provided by community pharmacy contractors during  2023/24",
-    "Table 17: Integrated Care Boards - Services provided by community pharmacy contractors during  2023/24",
-    "Table 18: NHS England Regions -  Services provided by community pharmacies and appliance contractors during  2023/24",
-    "Table 19: Integrated Care Boards - Services provided by community pharmacies and appliance contractors during  2023/24",
-    "Table 20: Decisions on applications on appeal by decision, England 2023/24"
+    "Table 1: Total number of Community pharmacies and appliance contractors between 2015/16 and 2024/25",
+    "Table 2: Number of Pharmacies by attribute between 2015/16 and 2024/25",
+    "Table 3: Pharmacy activity items and cost between 2015/16 and 2024/25",
+    "Table 4: Pharmacy activity by dispensing bands between 2015/16 and 2024/25",
+    "Table 5: Pharmacy activity for essential services fees between 2015/16 and 2024/25",
+    "Table 6: Pharmacy activity for advance services - Other between 2015/16 and 2024/25",
+    "Table 7: Pharmacy activity for advance services - AUR and SAC  between 2015/16 and 2024/25",
+    "Table 8: Pharmacy activity for advance services - CPCS between 2015/16 and 2024/25",
+    "Table 9: Pharmacy activity for COVID-19 related services between 2020/21 and 2024/25",
+    "Table 10: Appliance contractor activity items, cost and essential fees between 2015/16 and 2024/25",
+    "Table 11: Appliance contractor activity for advance services - AUR and SAC between 2015/16 and 2024/25",
+    "Table 12: Pharmacy and appliance contractor activity items, cost and essential fees between 2015/16 and 2024/25",
+    "Table 13: Pharmacy and appliance contractor activity for advance services - AUR and SAC between 2015/16 and 2024/25",
+    "Table 14: NHS England Regions - Community pharmacy contractors active during  2024/25",
+    "Table 15: Integrated Care Boards- Community pharmacy contractors active during  2024/25",
+    "Table 16: NHS England Regions -  Services provided by community pharmacy contractors during 2024/25",
+    "Table 17: Integrated Care Boards - Services provided by community pharmacy contractors during 2024/25",
+    "Table 18: NHS England Regions -  Services provided by community pharmacies and appliance contractors during 2024/25",
+    "Table 19: Integrated Care Boards - Services provided by community pharmacies and appliance contractors during  2024/25",
+    "Table 20: Decisions on applications on appeal by decision, England 2024/25"
 
   ),
   c("Metadata", sheetNames)
@@ -1005,7 +1007,7 @@ accessibleTables::makeCoverSheet(
 
 #save file into outputs folder
 openxlsx::saveWorkbook(wb,
-                       "outputs/gps_2324_summary_tables_v001.xlsx",
+                       "outputs/gps_2425_summary_tables_v001.xlsx",
                        overwrite = TRUE)
 
 
@@ -1021,7 +1023,7 @@ table_1_saf_data <- data.frame(feeName = c("Professional fee","Single activity f
 table_1_data <- data.frame(FEE_NAME = c("Professional fee","Single activity fee","Single activity fee","Single activity fee","Single activity fee","Single activity fee","Single activity fee","Single activity fee"),
                            FEE_VALUE_PENCE = c(90,113,125,129,126,127,129,127),
                            FEE_START = c("01 Jan 2001","01 Dec 2016","01 Apr 2017","01 Nov 2017","01 Nov 2018","01 Aug 2019","01 Aug 2021","01 Apr 2022"),
-                           FEE_END = c("30 Nov 2016","31 Mar 2017","31 Oct 2017","31 Oct 2018","31 Jul 2019","31 Jul 2021","31 Mar 2022","31 Mar 2024"))
+                           FEE_END = c("30 Nov 2016","31 Mar 2017","31 Oct 2017","31 Oct 2018","31 Jul 2019","31 Jul 2021","31 Mar 2022","31 Mar 2025"))
 
 table_1_saf<- DT::datatable(data = table_1_saf_data,
               rownames = FALSE,

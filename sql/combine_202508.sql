@@ -8,12 +8,12 @@
 
 	<CREATED BY>	 KIGRA
 
-    <AMENDED> 20/08/2025 to add 2018/2019 filter 
+    <AMENDED> 20/08/2025 to add 2018/2019 filter
 */
 drop table gps_final_202508_combined;
 CREATE TABLE gps_final_202508_combined as
-SELECT * FROM gps_final_202508_blank 
+SELECT * FROM gps_final_202409_combined gps_final_202508
 WHERE FINANCIAL_YEAR in ('2015/2016','2016/2017','2017/2018','2018/2019')
-UNION ALL 
-SELECT * FROM gps_final_202409_combined
+UNION ALL
+SELECT * FROM gps_final_202508
 WHERE FINANCIAL_YEAR not in ('2015/2016','2016/2017','2017/2018','2018/2019');

@@ -52,7 +52,7 @@ select
 	,dorg.close_date_hist
 	,dorg.start_date_hist
 	,pd1.month_count
-	,sum(fact.fact_itemss)						as	items
+	,sum(fact.fact_items)						as	items
 	,sum(fact.fact_items)/pd1.month_count		as	avg_monthly_items
 	,case	when	round(sum(fact.fact_items)/pd1.month_count,0)		between	0		and	2000	then	'0 - 2000'
 			when	round(sum(fact.fact_items)/pd1.month_count,0)		between	2001	and	4000	then	'2001 - 4000'
