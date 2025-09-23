@@ -185,7 +185,7 @@ table_18 <- table_18(icb_extract)
 table_19 <- table_19(icb_extract)
 table_20 <- table_20()
 
-write.csv(table_6,"table_6.csv")
+#write.csv(table_6,"table_6.csv")
 
 # 5. write data to .xlsx -
 # create wb object
@@ -1646,7 +1646,7 @@ figure_15 <- figure_15_data %>%
 
 
 figure_16_data <-national_extract %>%
-  filter(FINANCIAL_YEAR  %in% c("2022/2023","2023/2024")) %>%
+  filter(FINANCIAL_YEAR  %in% c("2022/2023","2023/2024","2024/2025")) %>%
   dplyr::select(FINANCIAL_YEAR,SCS_CNSLT,	SCS_NRTPROD_COST)%>%
   summarise(SCS_CNSLT = sum(SCS_CNSLT), SCS_NRTPROD_COST = sum(SCS_NRTPROD_COST) )  %>%
   tidyr::pivot_longer(cols = c(SCS_CNSLT, SCS_NRTPROD_COST),
@@ -1769,6 +1769,45 @@ figure_18 <- figure_18_data %>%
         )
       ))
   )
+
+#figure 19 pfs
+figure_19_data <-national_month_extract %>%
+  filter(YEAR_MONTH> 202402) %>%
+  dplyr::select(YEAR_MONTH,pfcp_fees,
+                pfcp_payment)%>%
+  summarise(pfcp_fees = sum(pfcp_fees), pfcp_payment = sum(pfcp_payment) )  %>%
+  tidyr::pivot_longer(cols = c(pfcp_fees, pfcp_payment),
+                      names_to = "measure",
+                      values_to = "values") %>%
+  dplyr::arrange(desc(measure)) %>%
+  mutate(
+    YEAR_MONTH = base::as.Date(as.character(paste0(YEAR_MONTH,"01")), format = "%Y%m%d")
+  ) %>%
+  dplyr::mutate(
+    measure = case_when(measure == "pfcp_fees" ~ "Cost of Pharmacy First Service (PFS) consultation fees",
+                        measure == "pfcp_payment" ~ "Cost of items dispensed during PFS consultations")
+  )
+table_figure_19 <- figure_19_data |>
+  ungroup() |>
+  tidyr::pivot_wider(names_from = measure, values_from = values) |>
+  dplyr::mutate(`Cost of Pharmacy First Service (PFS) consultation fees` = format(`Cost of Pharmacy First Service (PFS) consultation fees`, big.mark = ","),
+                `Cost of items dispensed during PFS consultations` = format(`Cost of items dispensed during PFS consultations`, big.mark = ","))|>
+  dplyr::rename("Year Month" = 1,
+                "`Cost of items dispensed during PFS consultations" = 2,
+                "Cost of Pharmacy First Service (PFS) consultation fees" = 3)
+figure_19 <- figure_19_data %>%
+  nhsbsaVis::group_chart_hc(
+    x = "YEAR_MONTH",
+    y = "values",
+    group = "measure",
+    type = "line",
+    xLab = "Month",
+    yLab = "Value (GBP)",
+    title = "",
+    currency = TRUE
+  ) %>%
+  hc_xAxis(type = "datetime")
+
 
 
 # 7. render markdown ------------------------------------------------------

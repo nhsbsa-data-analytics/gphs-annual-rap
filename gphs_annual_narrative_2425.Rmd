@@ -796,7 +796,7 @@ The CPCS is being replaced with the NHS Referrals for Minor Illness & Urgent Med
 ###### Figure 14: The total Cost of Community Pharmacy Consultation Services (CPCS) increased in 2023/24
 
 ```{r advanced services cpcs, out.width="100%"}
-figure_14
+figure_19
 
 get_download_button(title = "Download chart data", data = table_figure_14, filename = "figure 14")
 ```
@@ -805,7 +805,7 @@ get_download_button(title = "Download chart data", data = table_figure_14, filen
 ###### Table 14: The total Cost of Community Pharmacy Consultation Services (CPCS) increased in 2023/24
 
 ```{r advanced services cpcs_table}
-knitr::kable(table_figure_14, align = "lr")
+knitr::kable(table_figure_19, align = "lr")
 
 get_download_button(title = "Download chart data", data = table_figure_14, filename = "figure 14")
 ```
@@ -879,7 +879,7 @@ Further information including which NRT products can be supplied as part of the 
 
 ##### Chart
 
-###### Figure 16: The total Cost of Consultations and Drugs provided during Smoking Cessation Services (SCS) increased in 2023/24
+###### Figure 16: The total Cost of Consultations and Drugs provided during Smoking Cessation Services (SCS) increased in 2024/25
 
 ```{r advanced services scs, out.width="100%"}
 figure_16
@@ -888,7 +888,7 @@ get_download_button(title = "Download chart data", data = table_figure_16, filen
 ```
 ##### Table
 
-###### Table 16: The total Cost of Consultations and Drugs provided during Smoking Cessation Services (SCS) increased in 2023/24
+###### Table 16: The total Cost of Consultations and Drugs provided during Smoking Cessation Services (SCS) increased in 2024/25
 
 ```{r advanced services scs_table}
 knitr::kable(table_figure_16, align = "lrr")
@@ -907,7 +907,7 @@ Source: [Summary tables - General Pharmaceutical Services - Table 6](`r config$f
 <!-- ::: -->
 <!-- :::: -->
 
-The cost of consultations for SCS provided in  2023/24 was £127,000 with the cost of NRT products provided for SCS in 2023/24 being  £180,000. These are both a seven fold increase on the 2022/23 figures when the SCS was introduced.
+The cost of consultations for SCS provided in  2024/25 was £241,000, an increase of 89.5% from the previous year. The  cost of NRT products provided for SCS in 2024/25 was £369,000, a 105% increase from 2023/24. 
 
 ::::{.row style="display: flex; padding-bottom: 10px;"} 
 :::{.col-md-12}
@@ -927,7 +927,7 @@ No data prior to April 2023 is available for Pharmacy Contraceptive Services.", 
 
 ##### Chart
 
-###### Figure 17:The total Cost of Consultations and Drugs provided during Pharmacy Contraceptive Services in 2023/24
+###### Figure 17:The total Cost of Consultations and Drugs provided during Pharmacy Contraceptive Services increased in 2024/25
 
 ```{r advanced services pcs, out.width="100%"}
 figure_17
@@ -936,7 +936,7 @@ get_download_button(title = "Download chart data", data = table_figure_17, filen
 ```
 ##### Table
 
-###### Table 17: The total Cost of Consultations and Drugs provided during Pharmacy Contraceptive Services in 2023/24
+###### Table 17: The total Cost of Consultations and Drugs provided during Pharmacy Contraceptive Services increased in 2024/25
 
 ```{r advanced services pcs_table}
 knitr::kable(table_figure_17, align = "lrr")
@@ -979,7 +979,7 @@ The figures in these statistics for COVID-19 vaccinations only relate to those a
 
 ##### Chart
 
-###### Figure 18: The total Costs for COVID-19 vaccinations fees provided by contractors decreased in 2023/24
+###### Figure 18: The total Costs for COVID-19 vaccinations fees provided by contractors decreased in 2024/25
 
 ```{r covidvaccine_costs_and_fees, out.width="100%"}
 figure_18
@@ -988,7 +988,7 @@ get_download_button(title = "Download chart data", data = table_figure_18, filen
 ```
 ##### Table
 
-###### Table 18: The total Costs for COVID-19 vaccinations fees provided by contractors decreased in 2023/24
+###### Table 18: The total Costs for COVID-19 vaccinations fees provided by contractors decreased in 2024/25
 
 ```{r covidvaccine_costs_and_fees_table}
 knitr::kable(table_figure_18, align = "lr")
@@ -1000,10 +1000,10 @@ Source: [Summary tables - General Pharmaceutical Services - Table 9](`r config$f
 
 ::::{.row style="display: flex; padding-bottom: 15px;"}
 :::{.col-md-6}
-`r infoBox_no_border("", text = "<b> The costs of COVID-19 vaccines fees in 2023/24 were £75 million.</b>", width = "100%")`
+`r infoBox_no_border("", text = "<b> The costs of COVID-19 vaccines fees in 2024/25 were £54 million.</b>", width = "100%")`
 :::
 :::{.col-md-6}
-`r infoBox_no_border("", text = "<b> The costs of COVID-19 vaccines fees have decreased by 30% between 2022/23 and 2023/24.</b>", width = "100%")`
+`r infoBox_no_border("", text = "<b> The costs of COVID-19 vaccines fees have decreased by 28% between 2023/24 and 2024/25.</b>", width = "100%")`
 :::
 ::::
 
