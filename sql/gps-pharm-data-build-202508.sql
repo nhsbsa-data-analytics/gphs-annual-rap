@@ -37,16 +37,16 @@
 	<AMENDED> 18/09/2024 KIGRA for 2023/24 release
 				added Pharmacy first intial fees, consultation fees, payment, months, vat, umsmi deductions, umsmi remuneration and umsmi reimbursent
 	<AMENDED> 10/08/2025 KIGRA for 2024/25 release
-				correct PD1 to remove consultation only items  
+				correct PD1 to remove consultation only items
 
 
 */
 
 /*	create staging tables in own schema to aid performance, build time dim first	*/
 /*	</TDIM_DROP/>	*/
-drop table 		gps_tdim_202508	cascade constraints	purge;
+drop table 		gps_tdim_202509	cascade constraints	purge;
 /*	</TDIM_CREATE/>	*/
-create table	gps_tdim_202508	compress for		query high	as
+create table	gps_tdim_202509	compress for		query high	as
 
 with
 
@@ -67,9 +67,9 @@ select	*	from	tdim	where	month_count	=	12
 
 /*	build org dim, need latest indicator in the year. may need to add getting latest STP/Region	*/
 /*	</DORG_DROP/>	*/
-drop table 		gps_dorg_202508	cascade constraints	purge;
+drop table 		gps_dorg_202509	cascade constraints	purge;
 /*	</DORG_CREATE/>	*/
-create table	gps_dorg_202508	compress for		query high	as
+create table	gps_dorg_202509	compress for		query high	as
 
 with
 
@@ -101,7 +101,7 @@ dorg	as	(
 	from
 		dim.hs_dy_level_5_flat_dim	l5
 	inner join
-		gps_tdim_202508	tdim
+		gps_tdim_202509	tdim
 		on	l5.year_month	=	tdim.year_month
 	where	1	=	1
 		and l5.pharm_app_hist_ind_desc	!=	'UNKNOWN'	/*	give all L5 records with pharmacy or appliance */
@@ -146,9 +146,9 @@ from
 
 /*	build PD1 dim. this is basically just going to PD1 table and pulling data out	*/
 /*	</PD1_DROP/>	*/
-drop table 		gps_pd1_202508	cascade constraints	purge;
+drop table 		gps_pd1_202509	cascade constraints	purge;
 /*	</PD1_CREATE/>	*/
-create table	gps_pd1_202508	compress for		query high	as
+create table	gps_pd1_202509	compress for		query high	as
 
 with
 
@@ -186,7 +186,7 @@ pd1	as	(
 	from
 		aml.bsa_disp_pd1_fact	pd1
 	inner join
-		gps_tdim_202508	tdim
+		gps_tdim_202509	tdim
 		on	pd1.year_month	=	tdim.year_month
 	where	1	=	1
 		and	pd1.country_code	=	1
@@ -238,9 +238,9 @@ where	1	=	1
 
 /*	go to LLF to pull out stoma fees and EPS items. can also pull out other fields as a cross check	*/
 /*	</FACT_DROP/>	*/
-drop table 		gps_fact_202508	cascade constraints	purge;
+drop table 		gps_fact_202509	cascade constraints	purge;
 /*	</FACT_CREATE/>	*/
-create table	gps_fact_202508	compress for		query high	as
+create table	gps_fact_202509	compress for		query high	as
 
 with
 
@@ -266,7 +266,7 @@ fact	as	(
 	from
 		aml.px_form_item_elem_comb_fact_av	fact
 	inner join
-		gps_tdim_202508	tdim
+		gps_tdim_202509	tdim
 		on	fact.year_month	=	tdim.year_month
 	where	1	=	1
 		and	fact.dispenser_country_ou	=	1
@@ -294,9 +294,9 @@ select	*	from	fact
 
 /*	create flu dim. not every contractor will have a flu claim, and only exist for flu months	*/
 /*	</FLU_DROP/>	*/
-drop table 		gps_flu_202508	cascade constraints	purge;
+drop table 		gps_flu_202509	cascade constraints	purge;
 /*	</FLU_CREATE/>	*/
-create table	gps_flu_202508	compress for		query high	as
+create table	gps_flu_202509	compress for		query high	as
 
 with
 
@@ -311,7 +311,7 @@ flu	as	(
 	from
 		aml.vf_pb_data_fact flu
 	inner join
-		gps_tdim_202508	tdim
+		gps_tdim_202509	tdim
 		on	flu.year_month	=	tdim.year_month
 	where	1	=	1
 	group by
@@ -325,9 +325,9 @@ select	*	from	flu
 
 /*	query scd2 dpc tables to pull out number of aur home and prem, along with some check columns	*/
 /*	</DPC_DROP/>	*/
-drop table 		gps_dpc_202508	cascade constraints	purge;
+drop table 		gps_dpc_202509	cascade constraints	purge;
 /*	</DPC_CREATE/>	*/
-create table	gps_dpc_202508	compress for		query high	as
+create table	gps_dpc_202509	compress for		query high	as
 
 with
 
@@ -704,7 +704,7 @@ dpc	as	(
         and ilp313.dw_end_date    is null
         and ilp313.expense_head   = 313
 	inner join
-		gps_tdim_202508							tdim
+		gps_tdim_202509							tdim
 		on	pr.schedule_date	=	tdim.year_month
 	where	1	=	1
 		and	pay.active							in	('Y','R')

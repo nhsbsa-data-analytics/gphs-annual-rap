@@ -1,30 +1,16 @@
-/*	<TITLE>	gps-final-202509.sql
+/*	<TITLE>	gps-month-202509.sql
 
 	<DESCRIPTION>	outputs data for the General Pharmaceutical Services National Statistic publication
 
 	<DETAILS>	code joins the individual staging tables for GPS together to give one final output tables
-				at financial year and account level.
+				at monthly and account level.
 
-	<CREATED>	03/11/2020
+	<CREATED>	06/10/2022
 
-	<CREATED BY>	MAWIL
-	<AMENDED> 12/10/2021 KIGRA for 2020/21 release
+	<CREATED BY>	 KIGRA
 
-				added home delivery to dpc
-				removed local office from dorg and amended at to stp
-			-- 15/10/2021 KIGRA
-				added Urgent Medicine Supply drugs, Urgent Medicine Supply fees, Urgent Medicine charges, Community Pharmacist Consultation Service drugs,
-				Community Pharmacist Consultation Service fees, Community Pharmacist Consultation Service charges, Community Pharmacist Consultation Service Sign-Up fees,
-				Hep C Provision of Testing Service, Hep C Test Kit Reimbursement, Methadone Fees, CD Schedule 2 Fees, CD Schedule 3 Fees, 2A - extemporaneously dispensed preparations,
-				measure and fit, Expensive Item fees, No of Expensive Item fees, No of Out of pocket expenses, Out of pocket expenses and code for Serious Shortage Protocol Fees
-
-	<AMENDED> 06/10/2022 KIGRA for 2021/22 release
-				amended stp to icb
-				added Discharge Medicines Services, Hypertension Case-Finding service, COVID-19 Test Kit Registration Fees,COVID-19 Test Kit Set up Fees, COVID-19 Testing Kits,
-				COVID-19 related costs, COVID-19 vaccinations, COVID-19 premises and refrigeration costs,
-				COVID-19 related PPE, home deliveries, code for smoking cessation was added though no data for this period
 	<AMENDED> 19/09/2023 KIGRA for 2022/23 release
-				added tier 1 contraception set up (both expense heads), tier 1 contraception product cost, tier 1 contraception consultation
+				added tier 1 contraception set up (both expense heads), tier 1 contraception product cost, tier 1 contraception consultations
 				27/09/2023
 				added rounding to average pd1 items to prevent data loss with between
 	<AMENDED> 18/09/2024 KIGRA for 2023/24 release
@@ -33,14 +19,62 @@
 */
 
 /*	final select that joins all staging tables together	*/
-drop table gps_final_202509;
-create table gps_final_202509 as
+drop table gps_month_202509;
+create table gps_month_202509 as
 select
-	pd1.financial_year
-	,dorg.region_name
+	pd1.year_month
+    ,case
+when pd1.year_month =  '202104' then 'Apr-21'
+when pd1.year_month =  '202105' then 'May-21'
+when pd1.year_month =  '202106' then 'Jun-21'
+when pd1.year_month =  '202107' then 'Jul-21'
+when pd1.year_month =  '202108' then 'Aug-21'
+when pd1.year_month =  '202109' then 'Sep-21'
+when pd1.year_month =  '202110' then 'Oct-21'
+when pd1.year_month =  '202111' then 'Nov-21'
+when pd1.year_month =  '202112' then 'Dec-21'
+when pd1.year_month =  '202201' then 'Jan-22'
+when pd1.year_month =  '202202' then 'Feb-22'
+when pd1.year_month =  '202203' then 'Mar-22'
+when pd1.year_month =  '202204' then 'Apr-22'
+when pd1.year_month =  '202205' then 'May-22'
+when pd1.year_month =  '202206' then 'Jun-22'
+when pd1.year_month =  '202207' then 'Jul-22'
+when pd1.year_month =  '202208' then 'Aug-22'
+when pd1.year_month =  '202209' then 'Sep-22'
+when pd1.year_month =  '202210' then 'Oct-22'
+when pd1.year_month =  '202211' then 'Nov-22'
+when pd1.year_month =  '202212' then 'Dec-22'
+when pd1.year_month =  '202301' then 'Jan-23'
+when pd1.year_month =  '202302' then 'Feb-23'
+when pd1.year_month =  '202303' then 'Mar-23'
+when pd1.year_month =  '202304' then 'Apr-23'
+when pd1.year_month =  '202305' then 'May-23'
+when pd1.year_month =  '202306' then 'Jun-23'
+when pd1.year_month =  '202307' then 'Jul-23'
+when pd1.year_month =  '202308' then 'Aug-23'
+when pd1.year_month =  '202309' then 'Sep-23'
+when pd1.year_month =  '202310' then 'Oct-23'
+when pd1.year_month =  '202311' then 'Nov-23'
+when pd1.year_month =  '202312' then 'Dec-23'
+when pd1.year_month =  '202401' then 'Jan-24'
+when pd1.year_month =  '202402' then 'Feb-24'
+when pd1.year_month =  '202403' then 'Mar-24'
+when pd1.year_month =  '202404' then 'Apr-24'
+when pd1.year_month =  '202405' then 'May-24'
+when pd1.year_month =  '202406' then 'Jun-24'
+when pd1.year_month =  '202407' then 'Jul-24'
+when pd1.year_month =  '202408' then 'Aug-24'
+when pd1.year_month =  '202409' then 'Sep-24'
+when pd1.year_month =  '202410' then 'Oct-24'
+when pd1.year_month =  '202411' then 'Nov-24'
+when pd1.year_month =  '202412' then 'Dec-24'
+when pd1.year_month =  '202501' then 'Jan-25'
+when pd1.year_month =  '202502' then 'Feb-25'
+when pd1.year_month =  '202503' then 'Mar-25'
+else null end as pd1_month
+    ,dorg.region_name
 	,dorg.region_code
-	--,dorg.local_office_name
-	--,dorg.local_office_code
 	,dorg.icb_name
 	,dorg.icb_code
 	,dorg.dispenser_code
@@ -52,14 +86,14 @@ select
 	,dorg.close_date_hist
 	,dorg.start_date_hist
 	,pd1.month_count
-	,sum(fact.fact_items)						as	items
-	,sum(fact.fact_items)/pd1.month_count		as	avg_monthly_items
-	,case	when	round(sum(fact.fact_items)/pd1.month_count,0)		between	0		and	2000	then	'0 - 2000'
-			when	round(sum(fact.fact_items)/pd1.month_count,0)		between	2001	and	4000	then	'2001 - 4000'
-			when	round(sum(fact.fact_items)/pd1.month_count,0)		between	4001	and	6000	then	'4001 - 6000'
-			when	round(sum(fact.fact_items)/pd1.month_count,0)		between	6001	and	8000	then	'6001 - 8000'
-			when	round(sum(fact.fact_items)/pd1.month_count,0)		between	8001	and	10000	then	'8001 - 10000'
-			when	round(sum(fact.fact_items)/pd1.month_count,0)		>		10000				then	'10000+'
+	,sum(pd1.pd1_items)						as	items
+	,sum(pd1.pd1_items)/pd1.month_count		as	avg_monthly_items
+	,case	when	round(sum(pd1.pd1_items)/pd1.month_count,0)		between	0		and	2000	then	'0 - 2000'
+			when	round(sum(pd1.pd1_items)/pd1.month_count,0)		between	2001	and	4000	then	'2001 - 4000'
+			when	round(sum(pd1.pd1_items)/pd1.month_count,0)		between	4001	and	6000	then	'4001 - 6000'
+			when	round(sum(pd1.pd1_items)/pd1.month_count,0)		between	6001	and	8000	then	'6001 - 8000'
+			when	round(sum(pd1.pd1_items)/pd1.month_count,0)		between	8001	and	10000	then	'8001 - 10000'
+			when	round(sum(pd1.pd1_items)/pd1.month_count,0)		>		10000				then	'10000+'
 			else	'N/A'
 	end	as	monthly_disp_vol_band
 	,sum(pd1.pd1_nic)						as	nic
@@ -81,7 +115,7 @@ select
 	,sum(pd1.pd1_oope_item_count) 			as oope_item_count
 	,sum(pd1.pd1_oope_val) 					as oope_val
 	,sum(pd1.pd1_ssp_fees) 				as ssp_fees
-	,sum(pd1.pd1_items)					as	check_items
+	,sum(fact.fact_items)					as	check_items
 	,sum(fact.fact_dr_nic)					as	check_dr_nic
 	,sum(fact.fact_nic)						as	check_nic
 	,sum(fact.fact_num_prof_fees)			as	check_num_prof_fees
@@ -107,7 +141,7 @@ select
 	,sum(dpc.dpc_cpcs_fees) 				as cpcs_fees
 	,sum(dpc.dpc_cpcs_charges) 				as cpcs_charges
 	,sum(dpc.dpc_cpcs_signup) 				as cpcs_signup
-	,sum(dpc.dpc_hep_c_service) 				as hep_c_service
+	,sum(dpc.dpc_hep_c_service) 			as hep_c_service
 	,sum(dpc.dpc_hep_c_kit) 				as hep_c_kit
 	,sum(dpc.dpc_ppe_claims) 				as ppe_claims
 	,sum(dpc.dpc_discharge_meds) 			as discharge_meds
@@ -128,14 +162,15 @@ select
 	,sum(dpc.dpc_t1c_set_up) 				as t1c_set_up
 	,sum(dpc.dpc_t1c_prod_cost) 			as t1c_prod_cost
 	,sum(dpc.dpc_t1c_consult) 				as t1c_consult
-    ,sum(dpc.dpc_pfcp_optin)                as dpc_pfcp_optin
-	,sum(dpc.dpc_pfcp_fees) 	        	as dpc_pfcp_fees
-	,sum(dpc.dpc_pfcp_payment) 		        as dpc_pfcp_payment
-	,sum(dpc.dpc_pfcp_months) 		        as dpc_pfcp_months
-	,sum(dpc.dpc_pfcp_vat) 		            as dpc_pfcp_vat
-	,sum(dpc_pfcp_umsmideduct) 		        as dpc_pfcp_umsmideduct
-	,sum(dpc.dpc_pfcp_umsmiremuneration) 	as dpc_pfcp_umsmiremuneration
-	,sum(dpc.dpc_pfcp_umsmireimbursement) 	as dpc_pfcp_umsmireimbursement
+	,sum(dpc.dpc_pfcp_optin)                as pfcp_optin
+	,sum(dpc.dpc_pfcp_fees) 	        	as pfcp_fees
+	,sum(dpc.dpc_pfcp_payment) 		        as pfcp_payment
+	,sum(dpc.dpc_pfcp_months) 		        as pfcp_months
+	,sum(dpc.dpc_pfcp_vat) 		            as pfcp_vat
+	,sum(dpc_pfcp_umsmideduct) 		        as pfcp_umsmideduct
+	,sum(dpc.dpc_pfcp_umsmiremuneration) 	as pfcp_umsmiremuneration
+	,sum(dpc.dpc_pfcp_umsmireimbursement) 	as pfcp_umsmireimbursement
+
 
 from
 	gps_pd1_202509		pd1
@@ -154,13 +189,14 @@ inner join
 	on	pd1.disp_oupdt_type	=	dorg.lvl_5_oupdt
 	and	pd1.disp_id			=	dorg.lvl_5_ou
 	and	pd1.year_month		=	dorg.year_month
-inner join
+left outer join
 	gps_dpc_202509		dpc
 	on	dorg.dispenser_code	=	dpc.dispenser_code
 	and	dorg.year_month		=	dpc.year_month
 where	1	=	1
+and pd1.financial_year in('2021/2022', '2022/2023','2023/2024','2024/2025')
 group by
-	pd1.financial_year
+	pd1.year_month
 	,dorg.region_name
 	,dorg.region_code
 	,dorg.icb_name
@@ -175,5 +211,5 @@ group by
 	,dorg.start_date_hist
 	,pd1.month_count
 order by
-	pd1.financial_year
+	pd1.year_month
 	,dispenser_code
