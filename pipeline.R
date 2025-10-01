@@ -91,7 +91,7 @@ log_print("Options loaded", hide_notes = TRUE)
 
 
 #connect to datawarehouse
-con <- nhsbsaR::con_nhsbsa(dsn = "FBS_8192k",
+con <- nhsbsaR::con_nhsbsa(dsn = NULL,
                            driver = "Oracle in OraClient19Home1",
                            "DWCP")
 
@@ -101,23 +101,24 @@ schema <-
 
 # run functions for data and if needed write to csv
 
+#rm(national_extract)
 
 national_extract <- national_extract(
   con = con,
   schema = schema,
-  table = "GPS_FINAL_202508_COMBINED"
+  table = "GPS_FINAL_202509_COMBINED"
 )
 #write.csv(national_extract,"national_extract.csv")
 national_month_extract <- national_month_extract(
   con = con,
   schema = schema,
-  table = "GPS_MONTH_202508"
+  table = "GPS_MONTH_202509"
 )
 #write.csv(national_month_extract,"national_month_extract.csv")
 icb_extract <- icb_extract(
   con = con,
   schema = schema,
-  table = "GPS_FINAL_202508_COMBINED"
+  table = "GPS_FINAL_202509_COMBINED"
 )
 #write.csv(icb_extract,"icb_extract.csv")
 
@@ -475,14 +476,14 @@ accessibleTables::format_data(wb,
 #right align columns and round to whole numbers with thousand separator
 accessibleTables::format_data(wb,
             "Table_6",
-            c("B", "C", "D", "F", "G", "J", "N",  "R",  "V",  "AD", "AG"),
+            c("B", "C", "D", "F", "G", "J", "N",  "R",  "V",  "AD", "AF", "AI"),
             "right",
             "#,##0")
 
 #right align column and round to 2dp with thousand separator
 accessibleTables::format_data(wb,
             "Table_6",
-            c("E", "H", "I", "K", "L", "M", "O", "P", "Q", "S", "T", "U", "W", "X","Y", "Z", "AA", "AB", "AC","AE", "AF", "AH", "AI"),
+            c("E", "H", "I", "K", "L", "M", "O", "P", "Q", "S", "T", "U", "W", "X","Y", "Z", "AA", "AB", "AC","AE", "AG", "AH", "AJ", "AK"),
             "right",
             "#,##0.00")
 
@@ -1548,102 +1549,102 @@ figure_13 <- figure_13_data %>%
 
 # figure 14 CSPC fee cost
 
-figure_14_data <- national_extract %>%
-  filter(APPLIANCE_DISPENSER_HIST == "N",
-         FINANCIAL_YEAR  %!in% c("2015/2016","2016/2017","2017/2018","2018/2019")) %>%
-  dplyr::select(FINANCIAL_YEAR, cpcs_fees_pharm) %>%
-  tidyr::pivot_longer(
-    cols = c(cpcs_fees_pharm),
-    names_to = "MEASURE",
-    values_to = "VALUES"
-  ) %>%
-  dplyr::mutate(
-    MEASURE = case_when(MEASURE == "cpcs_fees_pharm" ~ "Total Cost of Community Pharmacy Consultation Services")
-  )
-#table data
-table_figure_14 <- figure_14_data |>
-  ungroup() |>
-  tidyr::pivot_wider(names_from = MEASURE, values_from = VALUES) |>
-  dplyr::mutate(`Total Cost of Community Pharmacy Consultation Services` = format(`Total Cost of Community Pharmacy Consultation Services`, big.mark = ","))|>
-  dplyr::rename("Financial year" = 1,
-                "Total Cost of Community Pharmacy Consultation Services" = 2)
-#figure 14 chart
-figure_14 <- figure_14_data %>%
-  nhsbsaVis::group_chart_hc(
-    x = "FINANCIAL_YEAR",
-    y = "VALUES",
-    group = "MEASURE",
-    type = "line",
-    xLab = "Financial Year",
-    yLab = "Value (GBP)",
-    title ="",
-    currency = TRUE) %>%
-  hc_xAxis(
-    plotLines = list(
-      list(
-        value= 0,
-        color = "grey",
-        width = 1,
-        dashStyle = "dash",
-        label = list(
-          rotation = 0,
-          text = "<b>Note:</b> The figures <br>at this point <br> do not represent<br> the full financial year<br> and are for <br>October 2019 to <br>March 2020 only",
-          style = list(
-            fontSize = "10px"
-          )
-        )
-      ))
-  )
+# figure_14_data <- national_extract %>%
+#   filter(APPLIANCE_DISPENSER_HIST == "N",
+#          FINANCIAL_YEAR  %!in% c("2015/2016","2016/2017","2017/2018","2018/2019")) %>%
+#   dplyr::select(FINANCIAL_YEAR, cpcs_fees_pharm) %>%
+#   tidyr::pivot_longer(
+#     cols = c(cpcs_fees_pharm),
+#     names_to = "MEASURE",
+#     values_to = "VALUES"
+#   ) %>%
+#   dplyr::mutate(
+#     MEASURE = case_when(MEASURE == "cpcs_fees_pharm" ~ "Total Cost of Community Pharmacy Consultation Services")
+#   )
+# #table data
+# table_figure_14 <- figure_14_data |>
+#   ungroup() |>
+#   tidyr::pivot_wider(names_from = MEASURE, values_from = VALUES) |>
+#   dplyr::mutate(`Total Cost of Community Pharmacy Consultation Services` = format(`Total Cost of Community Pharmacy Consultation Services`, big.mark = ","))|>
+#   dplyr::rename("Financial year" = 1,
+#                 "Total Cost of Community Pharmacy Consultation Services" = 2)
+# #figure 14 chart
+# figure_14 <- figure_14_data %>%
+#   nhsbsaVis::group_chart_hc(
+#     x = "FINANCIAL_YEAR",
+#     y = "VALUES",
+#     group = "MEASURE",
+#     type = "line",
+#     xLab = "Financial Year",
+#     yLab = "Value (GBP)",
+#     title ="",
+#     currency = TRUE) %>%
+#   hc_xAxis(
+#     plotLines = list(
+#       list(
+#         value= 0,
+#         color = "grey",
+#         width = 1,
+#         dashStyle = "dash",
+#         label = list(
+#           rotation = 0,
+#           text = "<b>Note:</b> The figures <br>at this point <br> do not represent<br> the full financial year<br> and are for <br>October 2019 to <br>March 2020 only",
+#           style = list(
+#             fontSize = "10px"
+#           )
+#         )
+#       ))
+#   )
 
-# figure 15 CSPC drug cost
-
-figure_15_data <- national_extract %>%
-  filter(APPLIANCE_DISPENSER_HIST == "N",
-         FINANCIAL_YEAR  %!in% c("2015/2016","2016/2017","2017/2018","2018/2019")) %>%
-  dplyr::select(FINANCIAL_YEAR, cpcs_drugs_pharm) %>%
-  tidyr::pivot_longer(
-    cols = c(cpcs_drugs_pharm),
-    names_to = "MEASURE",
-    values_to = "VALUES"
-  ) %>%
-  dplyr::mutate(
-    MEASURE = case_when(MEASURE == "cpcs_drugs_pharm" ~ "Total Cost of Drugs provided during Community Pharmacy Consultation Services")
-  )
-#table data
-table_figure_15 <- figure_15_data |>
-  ungroup() |>
-  tidyr::pivot_wider(names_from = MEASURE, values_from = VALUES) |>
-  dplyr::mutate(`Total Cost of Drugs provided during Community Pharmacy Consultation Services` = format(`Total Cost of Drugs provided during Community Pharmacy Consultation Services`, big.mark = ","))|>
-  dplyr::rename("Financial year" = 1,
-                "Total Cost of Drugs provided during Pharmacy Consultation Services" = 2)
-#figure 15 chart
-figure_15 <- figure_15_data %>%
-  nhsbsaVis::group_chart_hc(
-    x = "FINANCIAL_YEAR",
-    y = "VALUES",
-    group = "MEASURE",
-    type = "line",
-    xLab = "Financial Year",
-    yLab = "Value (GBP)",
-    title ="",
-    currency = TRUE) %>%
-  hc_xAxis(
-    plotLines = list(
-      list(
-        value= 0,
-        color = "grey",
-        width = 1,
-        dashStyle = "dash",
-        label = list(
-          rotation = 0,
-          text = "<b>Note:</b> The figures <br>at this point <br> do not represent<br> the full financial year<br> and are for <br>October 2019 to <br>March 2020 only",
-          style = list(
-            fontSize = "10px"
-          )
-        )
-      ))
-  )
-
+# # figure 15 CSPC drug cost
+#
+# figure_15_data <- national_extract %>%
+#   filter(APPLIANCE_DISPENSER_HIST == "N",
+#          FINANCIAL_YEAR  %!in% c("2015/2016","2016/2017","2017/2018","2018/2019")) %>%
+#   dplyr::select(FINANCIAL_YEAR, cpcs_drugs_pharm) %>%
+#   tidyr::pivot_longer(
+#     cols = c(cpcs_drugs_pharm),
+#     names_to = "MEASURE",
+#     values_to = "VALUES"
+#   ) %>%
+#   dplyr::mutate(
+#     MEASURE = case_when(MEASURE == "cpcs_drugs_pharm" ~ "Total Cost of Drugs provided during Community Pharmacy Consultation Services")
+#   )
+# #table data
+# table_figure_15 <- figure_15_data |>
+#   ungroup() |>
+#   tidyr::pivot_wider(names_from = MEASURE, values_from = VALUES) |>
+#   dplyr::mutate(`Total Cost of Drugs provided during Community Pharmacy Consultation Services` = format(`Total Cost of Drugs provided during Community Pharmacy Consultation Services`, big.mark = ","))|>
+#   dplyr::rename("Financial year" = 1,
+#                 "Total Cost of Drugs provided during Pharmacy Consultation Services" = 2)
+# #figure 15 chart
+# figure_15 <- figure_15_data %>%
+#   nhsbsaVis::group_chart_hc(
+#     x = "FINANCIAL_YEAR",
+#     y = "VALUES",
+#     group = "MEASURE",
+#     type = "line",
+#     xLab = "Financial Year",
+#     yLab = "Value (GBP)",
+#     title ="",
+#     currency = TRUE) %>%
+#   hc_xAxis(
+#     plotLines = list(
+#       list(
+#         value= 0,
+#         color = "grey",
+#         width = 1,
+#         dashStyle = "dash",
+#         label = list(
+#           rotation = 0,
+#           text = "<b>Note:</b> The figures <br>at this point <br> do not represent<br> the full financial year<br> and are for <br>October 2019 to <br>March 2020 only",
+#           style = list(
+#             fontSize = "10px"
+#           )
+#         )
+#       ))
+#   )
+#
 
 figure_16_data <-national_extract %>%
   filter(FINANCIAL_YEAR  %in% c("2022/2023","2023/2024","2024/2025")) %>%
@@ -1770,13 +1771,14 @@ figure_18 <- figure_18_data %>%
       ))
   )
 
-#figure 19 pfs
-figure_19_data <-national_month_extract %>%
-  filter(YEAR_MONTH> 202402) %>%
+#figure 14a pfs
+figure_14_data <-national_month_extract %>%
+  filter(APPLIANCE_DISPENSER_HIST == "N",
+  YEAR_MONTH> 202401) %>%
   dplyr::select(YEAR_MONTH,pfcp_fees,
-                pfcp_payment)%>%
-  summarise(pfcp_fees = sum(pfcp_fees), pfcp_payment = sum(pfcp_payment) )  %>%
-  tidyr::pivot_longer(cols = c(pfcp_fees, pfcp_payment),
+                pfcp_payment,pfcp_umsmiremuneration)%>%
+  summarise(pfcp_fees = sum(pfcp_fees), pfcp_payment = sum(pfcp_payment),pfcp_umsmiremuneration=sum(pfcp_umsmiremuneration) )  %>%
+  tidyr::pivot_longer(cols = c(pfcp_fees, pfcp_payment,pfcp_umsmiremuneration),
                       names_to = "measure",
                       values_to = "values") %>%
   dplyr::arrange(desc(measure)) %>%
@@ -1784,18 +1786,21 @@ figure_19_data <-national_month_extract %>%
     YEAR_MONTH = base::as.Date(as.character(paste0(YEAR_MONTH,"01")), format = "%Y%m%d")
   ) %>%
   dplyr::mutate(
-    measure = case_when(measure == "pfcp_fees" ~ "Cost of Pharmacy First Service (PFS) consultation fees",
-                        measure == "pfcp_payment" ~ "Cost of items dispensed during PFS consultations")
+    measure = case_when(measure == "pfcp_fees" ~ "Cost of Pharmacy First Service (PFS) clinical pathway consultation fees",
+                        measure == "pfcp_payment" ~ "Cost of Pharmacy First Service (PFS) clinical pathway fixed monthly payments",
+                        measure == "pfcp_umsmiremuneration" ~ "Cost of Pharmacy First Service (PFS) Minor Illness and Urgent Medicines Supply fees")
   )
-table_figure_19 <- figure_19_data |>
+table_figure_14 <- figure_14_data |>
   ungroup() |>
   tidyr::pivot_wider(names_from = measure, values_from = values) |>
-  dplyr::mutate(`Cost of Pharmacy First Service (PFS) consultation fees` = format(`Cost of Pharmacy First Service (PFS) consultation fees`, big.mark = ","),
-                `Cost of items dispensed during PFS consultations` = format(`Cost of items dispensed during PFS consultations`, big.mark = ","))|>
+  dplyr::mutate(`Cost of Pharmacy First Service (PFS) clinical pathway consultation fees` = format(`Cost of Pharmacy First Service (PFS) clinical pathway consultation fees`, big.mark = ","),
+                `Cost of Pharmacy First Service (PFS) clinical pathway fixed monthly payments` = format(`Cost of Pharmacy First Service (PFS) clinical pathway fixed monthly payments`, big.mark = ","),
+                `Cost of Pharmacy First Service (PFS) Minor Illness and Urgent Medicines Supply fees` = format(`Cost of Pharmacy First Service (PFS) Minor Illness and Urgent Medicines Supply fees`, big.mark = ","))|>
   dplyr::rename("Year Month" = 1,
-                "`Cost of items dispensed during PFS consultations" = 2,
-                "Cost of Pharmacy First Service (PFS) consultation fees" = 3)
-figure_19 <- figure_19_data %>%
+                "Cost of Pharmacy First Service (PFS) clinical pathways consultation fees" = 2,
+                "Cost of Pharmacy First Service (PFS) clinical pathway fixed monthly payments" = 3,
+                "Cost of Pharmacy First Service (PFS) Minor Illness and Urgent Medicines Supply fees" = 4)
+figure_14 <- figure_14_data %>%
   nhsbsaVis::group_chart_hc(
     x = "YEAR_MONTH",
     y = "values",
@@ -1808,16 +1813,59 @@ figure_19 <- figure_19_data %>%
   ) %>%
   hc_xAxis(type = "datetime")
 
+# figure 15a PFS UMS drug cost
+
+figure_15_data <- national_month_extract %>%
+  filter(APPLIANCE_DISPENSER_HIST == "N",YEAR_MONTH> 202401) %>%
+  dplyr::select(YEAR_MONTH, pf_nic, pfcp_umsmireimbursement) %>%
+  summarise(pf_nic =sum(pf_nic), pfcp_umsmireimbursement = sum(pfcp_umsmireimbursement)) %>%
+  tidyr::pivot_longer(
+    cols = c(pfcp_umsmireimbursement,pf_nic),
+    names_to = "MEASURE",
+    values_to = "VALUES"
+  ) %>%
+  mutate(
+    YEAR_MONTH = base::as.Date(as.character(paste0(YEAR_MONTH,"01")), format = "%Y%m%d")
+  ) %>%
+  dplyr::mutate(
+    MEASURE = case_when(MEASURE == "pfcp_umsmireimbursement" ~ "Total Cost of Drugs provided during Pharmacy First Service (PFS) Minor Illness and Urgent Medicines Supply",
+                        MEASURE == "pf_nic" ~ "Total Cost of Drugs provided during Pharmacy First Service (PFS) Clinical Pathways")
+  )
+#table data
+table_figure_15 <- figure_15_data |>
+  ungroup() |>
+  tidyr::pivot_wider(names_from = MEASURE, values_from = VALUES) |>
+  dplyr::mutate(`Total Cost of Drugs provided during Pharmacy First Service (PFS) Minor Illness and Urgent Medicines Supply` = format(`Total Cost of Drugs provided during Pharmacy First Service (PFS) Minor Illness and Urgent Medicines Supply`, big.mark = ","),
+                 `Total Cost of Drugs provided during Pharmacy First Service (PFS) Clinical Pathways` = format(`Total Cost of Drugs provided during Pharmacy First Service (PFS) Clinical Pathways`, big.mark = ","))|>
+  dplyr::rename("Financial year" = 1,
+                "Total Cost of Drugs provided during Pharmacy First Service (PFS) Minor Illness and Urgent Medicines Supply" = 2,
+                "Total Cost of Drugs provided during Pharmacy First Service (PFS) Clinical Pathways" = 3)
+#figure 15 chart
+figure_15 <- figure_15_data %>%
+  nhsbsaVis::group_chart_hc(
+    x = "YEAR_MONTH",
+    y = "VALUES",
+    group = "MEASURE",
+    type = "line",
+    xLab = "Month",
+    yLab = "Value (GBP)",
+    title = "",
+    currency = TRUE
+  ) %>%
+  hc_xAxis(type = "datetime")
+
+
+
 
 
 # 7. render markdown ------------------------------------------------------
-  rmarkdown::render("gphs_annual_narrative_2324.Rmd",
+  rmarkdown::render("gphs_annual_narrative_2425w.Rmd",
                     output_format = "html_document",
-                    output_file = "outputs/gphs_annual_2023_24_v001.html")
+                    output_file = "outputs/gphs_annual_2024_25_v001.html")
 
-  rmarkdown::render("gphs_annual_narrative_2324.Rmd",
+  rmarkdown::render("gphs_annual_narrative_2425w.Rmd",
                     output_format = "word_document",
-                    output_file = "outputs/gphs_annual_2023_24_v001.docx")
+                    output_file = "outputs/gphs_annual_2024_25_v001.docx")
 
   rmarkdown::render("gphs_background.Rmd",
                     output_format = "html_document",

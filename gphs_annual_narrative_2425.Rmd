@@ -61,15 +61,15 @@ Published `r config$publication_date`
 
 In England in 2024/25 for community pharmacies and appliance contractors:
 
-* there were 12,009 active community pharmacies and 112 active appliance contractors.For important information about interpreting this figure please see [section 3](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gphs_annual_2023_24_v001.html#about-these-statistics)
+* there were 11,098 active community pharmacies and 111 active appliance contractors.For important information about interpreting this figure please see [section 3](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gphs_annual_2023_24_v001.html#about-these-statistics)
 
-* 1.1 billion prescription items were dispensed by community pharmacies. This was a 3% increase from 2022/23
+* 1.2 billion prescription items were dispensed by community pharmacies. This was a 4% increase from 2023/24
 
-* 12 million prescription items were dispensed by appliance contractors. This was a 5% increase from 2022/23
+* 13 million prescription items were dispensed by appliance contractors. This was a 7% increase from 2023/24
 
-* 1.08 billion prescription items were dispensed via the Electronic Prescription Service (EPS). This was 96% of all items dispensed, and a small percentage increase from 2022/23
+* 1.13 billion prescription items were dispensed via the Electronic Prescription Service (EPS). This was 97% of all items dispensed, and a less than 1% percent increase from 2023/24
 
-* the cost of drugs and appliances reimbursed totalled £10 billion. This was a 5% increase from 2022/23
+* the cost of drugs and appliances reimbursed totalled £10.4 billion. This was a 2% increase from 2023/24
 
 
 
@@ -178,15 +178,15 @@ The charts in these statistics are interactive and allow you to isolate the aspe
 
 ### 2.1 Essential services for contractors {.toc-ignore}
 
-#### `r paste0("The number of community pharmacies and appliance contractors between 2015/16 and 2023/24")` {.tabset}
+#### `r paste0("The number of community pharmacies and appliance contractors between 2015/16 and 2024/25")` {.tabset}
 
 <div class = "tabset">
 
 ##### Chart
 
-###### Figure 1: The number of active community pharmacies and appliance contractors reached a high in 2023/24
+###### Figure 1: The number of active community pharmacies and appliance contractors decreased in 2024/25
 
-```{r total_contractors_chart, out.width="100%"}
+```{r total_contractors_chart, }
 figure_1
 
 get_download_button(title = "Download chart data", data = table_figure_1, filename = "figure 1")
@@ -194,7 +194,7 @@ get_download_button(title = "Download chart data", data = table_figure_1, filena
 ```
 ##### Table
 
-###### Table 1: The number of active community pharmacies and appliance contractors reached a high in 2023/24
+###### Table 1: The number of active community pharmacies and appliance contractors decreased in 2024/25
 
 ```{r total_contractors_table}
 knitr::kable(table_figure_1, align = "llr")
@@ -207,40 +207,40 @@ Source: [Summary tables - General Pharmaceutical Services - Table 1](`r config$f
 
 ::::{.row style="display: flex; padding-bottom: 15px;"}
 :::{.col-md-6}
-`r infoBox_no_border("", text = "<b> There were 12,009 active community pharmacies in 2023/24.</b>", width = "100%")`
+`r infoBox_no_border("", text = "<b> There were 11,098 active community pharmacies in 2024/25.</b>", width = "100%")`
 :::
 :::{.col-md-6}
-`r infoBox_no_border("", text = "<b>There were 112 active appliance contractors in 2023/24.</b>", width = "100%")`
+`r infoBox_no_border("", text = "<b>There were 111 active appliance contractors in 2024/25.</b>", width = "100%")`
 :::
 ::::
 
-In 2023/24, there were 12,009 active community pharmacies, 595 more than in 2022/23 and the highest since 2015/16. 
+In 2024/25, there were 11,098 active community pharmacies, 911 less than in 2023/24 and the lowest since 2015/16. 
 
-The number of active appliance contractors in 2023/24 in England was 112, an increase by one compared to 2022/23.
+The number of active appliance contractors in 2024/25 in England was 111, a decrease by one compared to 2023/24.
 
 An active community pharmacy or appliance contractor is one that has submitted prescriptions to the NHSBSA for processing in the specified time period. If a pharmacy has opened, submitted a prescription to the NHSBSA and then closed again in the same year, it would still be classed as an active pharmacy.
 
-When a pharmacy contract changes providers it can remain in the same premises but may be given a new organisation code. This measure uses the pharmacy organisation code to determine active pharmacies. In 2023/24 an increased number of pharmacy contracts changed providers compared to previous years. This may inflate the number of active pharmacies in the year compared to the number of pharmacy premises.
+When a pharmacy contract changes providers it can remain in the same premises but may be given a new organisation code. This measure uses the pharmacy organisation code to determine active pharmacies. In the previous year 2023/24 an increased number of pharmacy contracts changed providers compared to previous years. This may have inflated the number of active pharmacies in 2023/24 compared to the number of pharmacy premises. However the active pharmacies is at is lowest since 2015/16.
 
 Monthly data relating to Dispensing Contractors can be accessed via the [NHSBSA Open Data Portal.](https://opendata.nhsbsa.net/theme/dispensing-contractors)
 
 
-#### `r paste0("The total items dispensed by community pharmacies and appliance contractors between 2015/16 and 2023/24")` {.tabset}
+#### `r paste0("The total items dispensed by community pharmacies and appliance contractors between 2015/16 and 2024/25")` {.tabset}
 
 <div class = "tabset">
 
 ##### Chart
 
-###### Figure 2: The number of items dispensed by community pharmacies and appliance contractors increased in 2023/24
+###### Figure 2: The number of items dispensed by community pharmacies and appliance contractors increased in 2024/25
 
-```{r items_dispensed, out.width="100%"}
+```{r items_dispensed, }
 figure_2
 
 get_download_button(title = "Download chart data", data = table_figure_2, filename = "figure 2")
 ```
 ##### Table
 
-###### Table 2: The number of items dispensed by community pharmacies and appliance contractors increased in 2023/24
+###### Table 2: The number of items dispensed by community pharmacies and appliance contractors increased in 2024/25
 
 ```{r items_dispensed_table}
 knitr::kable(table_figure_2, align = "llr")
@@ -252,36 +252,36 @@ Source: [Summary tables - General Pharmaceutical Services - Tables 3 and 10](`r 
 
 ::::{.row style="display: flex; padding-bottom: 15px;"}
 :::{.col-md-4}
-`r infoBox_no_border("", text = "<b> There were 1.1 billion items dispensed by community pharmacies in 2023/24.</b>", width = "100%")`
+`r infoBox_no_border("", text = "<b> There were 1.2 billion items dispensed by community pharmacies in 2024/25.</b>", width = "100%")`
 :::
 :::{.col-md-4}
-`r infoBox_no_border("", text = "<b>There were 12 million items dispensed by appliance contractors in 2023/24.</b>", width = "100%")`
+`r infoBox_no_border("", text = "<b>There were 13 million items dispensed by appliance contractors in 2024/25.</b>", width = "100%")`
 :::
 :::{.col-md-4}
-`r infoBox_no_border("", text = "<b> Total items for community pharmacies have trended upwards for the last three years.</b>", width = "100%")`
+`r infoBox_no_border("", text = "<b> Total items for community pharmacies have trended upwards for the last four years.</b>", width = "100%")`
 :::
 ::::
 
-The number of items dispensed by community pharmacies in England between 2022/23 and 2023/24 increased by 3.15% from 1.08 billion to 1.11 billion. Overall, the number of items dispensed is 11.8% higher than the 995 million items dispensed in 2015/16.
+The number of items dispensed by community pharmacies in England between 2023/24 and 2024/25 increased by 3.93% from 1.11 billion to 1.16 billion. Overall, the number of items dispensed by community pharmacies is 16.2% higher than the 995 million items dispensed in 2015/16.
 
-The number of items dispensed by appliance contractors in 2023/24 increased by 4.89% from 2022/23. This has increased each year since 2015/16, from 7.91 million to 11.7 million items. This is an increase of 47.5%.
+The number of items dispensed by appliance contractors in 2024/25 increased by 7.18% from 2023/24. This has increased each year since 2015/16, from 7.91 million to 12.5 million items. This is an increase of 58.1%.
 
-#### `r paste0("The average number of items dispensed per contractor between 2015/16 and 2023/24")` {.tabset}
+#### `r paste0("The average number of items dispensed per contractor between 2015/16 and 2024/25")` {.tabset}
 
 <div class = "tabset">
 
 ##### Chart
 
-###### Figure 3: The average number of items dispensed decreased for community pharmacies and increased for appliance contractors in 2023/24
+###### Figure 3: The average number of items dispensed increased for both community pharmacies and appliance contractors in 2024/25
 
-```{r avg_items_dispensed, out.width="100%"}
+```{r avg_items_dispensed}
 figure_3
 
 get_download_button(title = "Download chart data", data = table_figure_3, filename = "figure 3")
 ```
 ##### Table
 
-###### Table 3: The average number of items dispensed decreased for community pharmacies and increased for appliance contractors in 2023/24
+###### Table 3: The average number of items dispensed increased for community pharmacies and appliance contractors in 2024/25
 
 ```{r avg_items_dispensed_table}
 knitr::kable(table_figure_3, align = "llr")
@@ -293,35 +293,35 @@ Source: [Summary tables - General Pharmaceutical Services - Tables 3 and 10](`r 
 
 ::::{.row style="display: flex; padding-bottom: 15px;"}
 :::{.col-md-6}
-`r infoBox_no_border("", text = "<b> On average, there were 93,000 items dispensed per contractor by community pharmacies in 2023/24.</b>", width = "100%")`
+`r infoBox_no_border("", text = "<b> On average, there were 104,000 items dispensed per contractor by community pharmacies in 2024/25.</b>", width = "100%")`
 :::
 :::{.col-md-6}
-`r infoBox_no_border("", text = "<b>On average, there were 100,000 items dispensed per contractor by appliance contractors in 2023/24.</b>", width = "100%")`
+`r infoBox_no_border("", text = "<b>On average, there were 113,000 items dispensed per contractor by appliance contractors in 2024/25.</b>", width = "100%")`
 :::
 ::::
 
-The yearly average number of items dispensed per contractor has been calculated by dividing the total number of items dispensed by the total number of active contractors. This average is a mean. For important information about interpreting this figure please see [section 3](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gphs_annual_2023_24_v001.html#about-these-statistics)
+The yearly average number of items dispensed per contractor has been calculated by dividing the total number of items dispensed by the total number of active contractors. This average is a mean. For important information about interpreting this figure please see [section 3](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gphs_annual_2024_25_v001.html#about-these-statistics)
 
-The average number of items dispensed per community pharmacy has decreased by 1.97% from 94,500 in 2022/23 to 92,700 in 2023/24.  This is an increase of 11.3% from the average of 83,300 in 2015/16.
+The average number of items dispensed per community pharmacy has increased by 12.5% from 92,700 in 2023/24 to 104,000 in 2024/25.  This is an increase of 25.1% from the average of 83,300 in 2015/16.
 
-The average yearly items dispensed for appliance contractors has increased each year since 2015/16 and was higher than the average items dispensed for community pharmacies since 2020/21. The average is 104,000 in 2023/24, a 52.8% increase from 2015/16.
+The average yearly items dispensed for appliance contractors has increased each year since 2015/16 and was higher than the average items dispensed for community pharmacies since 2020/21. The average is 113,000 in 2024/25, a 65.2% increase from 2015/16.
 
-#### `r paste0("The number of items dispensed via the Electronic Prescription Service (EPS) for community pharmacies and appliance contractors between 2015/16 and 2023/24")` {.tabset}
+#### `r paste0("The number of items dispensed via the Electronic Prescription Service (EPS) for community pharmacies and appliance contractors between 2015/16 and 2024/25")` {.tabset}
 
 <div class = "tabset">
 
 ##### Chart
 
-###### Figure 4: The percentage of items dispensed via EPS increased for community pharmacies and appliance contractors in 2023/24
+###### Figure 4: The percentage of items dispensed via EPS increased in 2024/25
 
-```{r eps_items_dispensed, out.width="100%"}
+```{r eps_items_dispensed}
 figure_4
 
 get_download_button(title = "Download chart data", data = table_figure_4, filename = "figure 4")
 ```
 ##### Table
 
-###### Table 4: The percentage of items dispensed via EPS increased for community pharmacies and appliance contractors in 2023/24
+###### Table 4: The percentage of items dispensed via EPS increased for community pharmacies and appliance contractors in 2024/25
 
 ```{r eps_items_dispensed_table}
 knitr::kable(table_figure_4, align = "lrrr")
@@ -334,36 +334,36 @@ Source: [Summary tables - General Pharmaceutical Services - Tables 3 and 10](`r 
 
 ::::{.row style="display: flex; padding-bottom: 15px;"}
 :::{.col-md-6}
-`r infoBox_no_border("", text = "<b> There were 1.08 billion prescription items dispensed via EPS in  2023/24.</b>", width = "100%")`
+`r infoBox_no_border("", text = "<b> There were 1.13 billion prescription items dispensed via EPS in  2024/25.</b>", width = "100%")`
 :::
 :::{.col-md-6}
-`r infoBox_no_border("", text = "<b>99.7% of contractors dispensed at least one item via EPS in  2023/24.</b>", width = "100%")`
+`r infoBox_no_border("", text = "<b>99.2% of contractors dispensed at least one item via EPS in  2024/25.</b>", width = "100%")`
 :::
 ::::
 
 An NHS prescription may take the form of either a paper form presented to a contractor by a patient, or an electronic message sent via the EPS.
 
-In 2023/24, 1.08 billion prescription items were submitted for dispensed by community pharmacies and appliance contractors via EPS. This was 96.1% of all items dispensed in the year. This was an increase of 60.7 percentage points from 2015/16, when 355 million items were dispensed via EPS, 35.4% of all items.
+In 2024/25, 1.13 billion prescription items were dispensed by community pharmacies and appliance contractors via EPS. This was 96.7% of all items dispensed in the year. This was an increase of 61.3 percentage points from 2015/16, when 355 million items were dispensed via EPS, 35.4% of all items.
 
-Additionally in 2023/24, 99.7% of all contractors dispensed at least one prescription item submitted via EPS, an increase from 97.5% in 2015/16.
+Additionally in 2024/25, 99.2% of all contractors dispensed at least one prescription item submitted via EPS, an increase from 97.5% in 2015/16.
 
 
-#### `r paste0("The total costs and value of fees received for contractors between 2015/16 and 2023/24")` {.tabset}
+#### `r paste0("The total costs and value of fees received for contractors between 2015/16 and 2024/25")` {.tabset}
 
 <div class = "tabset">
 
 ##### Chart
 
-###### Figure 5: The total costs and value of fees received for contractors increased in 2023/24
+###### Figure 5: The total costs and value of fees received for contractors increased in 2024/25
 
-```{r costs_and_fees, out.width="100%"}
+```{r costs_and_fees}
 figure_5
 
 get_download_button(title = "Download chart data", data = table_figure_5, filename = "figure 5")
 ```
 ##### Table
 
-###### Table 5: The total costs and value of fees received for contractors increased in 2023/24
+###### Table 5: The total costs and value of fees received for contractors increased in 2024/25
 
 ```{r costs_and_fees_table}
 knitr::kable(table_figure_5, align = "lrr")
@@ -375,18 +375,18 @@ Source: [Summary tables - General Pharmaceutical Services - Tables 3, 5 and 10](
 
 ::::{.row style="display: flex; padding-bottom: 15px;"}
 :::{.col-md-6}
-`r infoBox_no_border("", text = "<b> The total for drugs and appliance reimbursement costs paid to contractors was £10.2 billion in 2023/24.</b>", width = "100%")`
+`r infoBox_no_border("", text = "<b> The total for drugs and appliance reimbursement costs paid to contractors was £10.4 billion in 2024/25.</b>", width = "100%")`
 :::
 :::{.col-md-6}
-`r infoBox_no_border("", text = "<b>The value of single activity fees paid to contractors was £1.4 billion in 2023/24.</b>", width = "100%")`
+`r infoBox_no_border("", text = "<b>The value of single activity fees paid to contractors was £1.5 billion in 2024/25.</b>", width = "100%")`
 :::
 ::::
 
 Figure 5 shows the total value of costs for drugs and appliances reimbursed to contractors, along with the value of all single activity fees (SAF) that have been claimed. This is not the total amount paid to contractors for dispensing an item as many fees are not included in these figures, such as additional fees that apply to controlled drugs. 
 
-Costs reimbursed to contractors increased in 2023/24, for the fifth consecutive year. Costs increased by 4.97% between 2022/23 and 2023/24 from £9.72 billion to £10.2 billion, the highest costs in 9 years.
+Costs reimbursed to contractors increased in 2024/25, for the sixth consecutive year. Costs increased by 2.14% between 2023/24 and 2024/25 from £10.2 billion to £10.4 billion, the highest costs in 10 years.
 
-The value of SAFs received by contractors increased in 2023/24 by 3.04% to £1.44 billion from £1.40 billion in 2022/23. 
+The value of SAFs received by contractors increased in 2024/25 by 3.90% to £1.50 billion from £1.44 billion in 2023/24. 
 
 It should be noted, prior to December 2016 the figures reported are for professional fees only, and do not include the three additional payments that the SAF consists of.
 
@@ -406,7 +406,7 @@ The value of the SAF is set by DHSC and can fluctuate throughout the year. It is
 ::::
 
 #### **`r paste0("Table ",1,": Dispensing fees, their value, and when they came into effect")`**
-``` {r saf_values, out.width="100%"}
+``` {r saf_values}
 
 table_1_saf
 get_download_button(title = "Download data table", data = table_1_data, filename = "table_1")
@@ -425,7 +425,7 @@ The figures in these statistics for flu vaccinations only relate to those admini
 :::
 ::::
 
-#### `r paste0("The number of flu vaccinations provided by contractors between 2015/16 and 2023/24")` {.tabset}
+#### `r paste0("The number of flu vaccinations provided by contractors between 2015/16 and 2024/25")` {.tabset}
 
 <div class = "tabset">
 
@@ -433,7 +433,7 @@ The figures in these statistics for flu vaccinations only relate to those admini
 
 ###### Figure 6: The number of flu vaccinations provided by contractors increased in 2024/25
 
-```{r flu_items, out.width="100%"}
+```{r flu_items}
 figure_6
 
 get_download_button(title = "Download chart data", data = table_figure_6, filename = "figure 6")
@@ -452,14 +452,14 @@ Source: [Summary tables - General Pharmaceutical Services - Table 6](`r config$f
 
 ::::{.row style="display: flex; padding-bottom: 15px;"}
 :::{.col-md-6}
-`r infoBox_no_border("", text = "<b> There were 3.0 million flu vaccines administered by community pharmacies  in  2024/25.</b>", width = "100%")`
+`r infoBox_no_border("", text = "<b> There were 4.1 million flu vaccines administered by community pharmacies  in  2024/25.</b>", width = "100%")`
 :::
 :::{.col-md-6}
 `r infoBox_no_border("", text = "<b>There were 9,300 community pharmacies administering flu vaccines in 2024/25.</b>", width = "100%")`
 :::
 ::::
 
-The number of vaccines administered by pharmacies as part of the Flu Vaccination advanced service increased in 2024/25 after a decrease in in 2023/24 compared to the previous consistent increase year on year since 2015/16. In 2024/25 there were 4.07 million vaccines administered by 9,300 community pharmacies, at an average of 437 vaccines per pharmacy. This was a increase of 7.8% on the 5.01 million vaccines administered in 2023/24.
+The number of vaccines administered by pharmacies as part of the Flu Vaccination advanced service increased in 2024/25 after a decrease in in 2023/24 compared to the previous consistent increase year on year since 2015/16. In 2024/25 there were 4.07 million vaccines administered by 9,300 community pharmacies, at an average of 437 vaccines per pharmacy. This was a increase of 7.8% on the 3.77 million vaccines administered in 2023/24.
 
 
 
@@ -478,9 +478,9 @@ The average number of flu vaccines administered per community pharmacy that prov
 
 ##### Chart
 
-###### Figure  7: The cost and fees for flu vaccinations decreased in 2023/24
+###### Figure  7: The cost and fees for flu vaccinations increased in 2024/25
 
-```{r flu_costs_and_fees, out.width="100%"}
+```{r flu_costs_and_fees}
 figure_7
 
 get_download_button(title = "Download chart data", data = table_figure_7, filename = "figure 7")
@@ -506,9 +506,9 @@ Source: [Summary tables - General Pharmaceutical Services - Table 6](`r config$f
 :::
 ::::
 
-In line with the increase in the number of flu vaccines administered each year, the costs reimbursed and fees paid to community pharmacies as part of the advanced service have increased dramatically. The cost of vaccines administered was 15 times higher in 2024/25 than 2015/16, increasing from £3.75 million to £48.5 million.
+In line with the increase in the number of flu vaccines administered each year, the costs reimbursed and fees paid to community pharmacies as part of the advanced service have increased dramatically. The cost of vaccines administered in 2024/25 was nearly 15 times that of 2015/16, increasing from £3.75 million to £55.2 million.
 
-The value of fees paid to pharmacies for delivering the flu vaccination service was over 7 times higher in 2024/25 than 2015/16, increasing from £5.44 million to £38.9 million.
+The value of fees paid to pharmacies for delivering the flu vaccination service was over 7 times higher in 2024/25 than 2015/16, increasing from £5.44 million to £39.0 million.
 
 ::::{.row style="display: flex; padding-bottom: 10px;"} 
 :::{.col-md-12}
@@ -527,7 +527,7 @@ The fee for NMS varies between £20 and £28 depending on the volume of prescrip
 
 ###### Figure  8: The total New Medicine Services undertaken by community pharmacies increased in 2024/25
 
-```{r advanced services nms, out.width="100%"}
+```{r advanced services nms}
 figure_8
 
 get_download_button(title = "Download chart data", data = table_figure_8, filename = "figure 8")
@@ -549,11 +549,11 @@ Source: [Summary tables - General Pharmaceutical Services - Table 6](`r config$f
 `r infoBox_no_border("", text = "<b> There were 5.6 million NMSs claimed in 2024/25.</b>", width = "100%")`
 :::
 :::{.col-md-6}
-`r infoBox_no_border("", text = "<b> The number of NMSs claimed in 2024/25 has increased by 39% from 2023/24.</b>", width = "100%")`
+`r infoBox_no_border("", text = "<b> The number of NMSs claimed in 2024/25 has increased by 40% from 2023/24.</b>", width = "100%")`
 :::
 ::::
 
-NMSs have shown sizable increases for the last three financial years. Thirteen additional conditions were added to the specification list in September 2021.
+NMSs have shown sizable increases for the last four financial years. Thirteen additional conditions were added to the specification list in September 2021.
 
 <!-- During 2021/2022 a catch-up NMS was introduced for patients who were prescribed a new medicine but did not receive an NMS or any additional support during the COVID-19 pandemic. This catch-up service was offered to eligible patients between 1st September 2021 and 31st March 2022. -->
 
@@ -565,7 +565,7 @@ NMSs have shown sizable increases for the last three financial years. Thirteen a
 
 ###### Figure  9: The total Cost of New Medicine Services undertaken by community pharmacies increased in 2024/25
 
-```{r advanced services nms cost, out.width="100%"}
+```{r advanced services nms cost}
 figure_9
 
 get_download_button(title = "Download chart data", data = table_figure_9, filename = "figure 9")
@@ -614,7 +614,7 @@ The total number of AURs that an appliance or pharmacy contractor may claim fees
 :::
 ::::
 
-#### `r paste0("The total Appliance Use Reviews (AUR) provided between 2015/16 and 2023/24")` {.tabset}
+#### `r paste0("The total Appliance Use Reviews (AUR) provided between 2015/16 and 2024/")` {.tabset}
 
 <div class = "tabset">
 
@@ -622,7 +622,7 @@ The total number of AURs that an appliance or pharmacy contractor may claim fees
 
 ###### Figure 10: The total Appliance Use Reviews (AUR) increased in 2024/25
 
-```{r advanced services aur, out.width="100%"}
+```{r advanced services aur}
 figure_10
 
 get_download_button(title = "Download chart data", data = table_figure_10, filename = "figure 10")
@@ -648,7 +648,7 @@ Source: [Summary tables - General Pharmaceutical Services - Tables 7 and 11](`r 
 :::
 ::::
 
-There were 111,000 AURs provided in 2024/25, an increase of 9.7% on the 101,700 provided in 2023/24.
+There were 111,000 AURs provided in 2024/25, an increase of 9.7% on the 101,000 provided in 2023/24.
 
 Both community pharmacies and appliance contractors may offer this advanced service. A breakdown by contractor type and AUR type can be found in Tables 7 and 11 in the accompanying summary tables.
 
@@ -660,7 +660,7 @@ Both community pharmacies and appliance contractors may offer this advanced serv
 
 ###### Figure 11: The total Cost of Appliance Use Reviews (AUR) increased in 2024/25
 
-```{r advanced services aur cost, out.width="100%"}
+```{r advanced services aur cost}
 figure_11
 
 get_download_button(title = "Download chart data", data = table_figure_11, filename = "figure 11")
@@ -696,7 +696,7 @@ A fee of £4.32 is payable for every Part IXC prescription item that can be cust
 :::
 ::::
 
-#### `r paste0("The total Stoma Appliance Customisation (SAC) provided between 2015/16 and 2023/24")` {.tabset}
+#### `r paste0("The total Stoma Appliance Customisation (SAC) provided between 2015/16 and 2024/25")` {.tabset}
 
 <div class = "tabset">
 
@@ -704,7 +704,7 @@ A fee of £4.32 is payable for every Part IXC prescription item that can be cust
 
 ###### Figure 12: The total Stoma Appliance Customisation (SAC) increased in 2024/25
 
-```{r advanced services sac, out.width="100%"}
+```{r advanced services sac}
 figure_12
 
 get_download_button(title = "Download chart data", data = table_figure_12, filename = "figure 12")
@@ -738,9 +738,9 @@ The total number of SACs has increased by 6.17% from 1.78 million to 1.88 millio
 
 ##### Chart
 
-###### Figure 13: The total Cost of Stoma Appliance Customisation (SAC) increased in 2023/24
+###### Figure 13: The total Cost of Stoma Appliance Customisation (SAC) increased in 2024/25
 
-```{r advanced services sac cost, out.width="100%"}
+```{r advanced services sac cost}
 figure_13
 
 get_download_button(title = "Download chart data", data = table_figure_13, filename = "figure 13")
@@ -771,46 +771,62 @@ As the SAC is a set payment that has not changed since its introduction, the per
 
 ::::{.row style="display: flex; padding-bottom: 10px;"} 
 :::{.col-md-12}
-`r infoBox_border("Community Pharmacist Consultation Services", text = "The NHS Community Pharmacist Consultation Service (CPCS) Advanced Service began on 29 October 2019 to allow patients to have a same day community pharmacist appointment for a minor illness or an urgent supply of a regular medicine.
+`r infoBox_border("Pharmacy First Service", text = "The Pharmacy First Service (PFS) Advanced Servicewas introduced from 31 January 2024. It replaced the Community Pharmacy Consultation Services (CPCS).
+
+The full service will consist of three elements:
+
+* Pharmacy First (clinical pathways), a new element
+
+* Pharmacy First (urgent repeat medicine supply), previously commissioned as the CPCS
+
+* Pharmacy First (NHS referrals for minor illness), previously commissioned as the CPCS
+
+The Pharmacy First (clinical pathways)  allows involves pharmacists to provide advice and NHS-funded treatment, for seven common conditions: 
+
+* Acute otitis media	
+* Impetigo	
+* Infected insect bites	
+* Shingles	
+* Sinusitis	
+* Sore throat	
+* Uncomplicated urinary tract infections	
+
+
 
 The service is intended to improve access to services and provide  treatment closer to patients’ homes by harnessing the skills and medicines knowledge of pharmacists, and relieve pressure on GP appointments and emergency departments. 
 
-From 1 November 2020, general practices have been able to refer patients for a minor illness consultation via CPCS, once a local referral pathway has been agreed. 
+The fee for providing the PFS is £15 (including VAT) per consultation.
 
-From April 2023, referrals from other urgent and emergency (UEC) settings are now included as part of the NHS CPCS.
+In addition to the consultation fee, a monthly fixed payment of £1,000 will be paid to pharmacies who meet a minimum activity threshold of clinical pathways consultations
 
-The fee for providing the CPCS is £14 (including VAT) per consultation.
-
-No data prior to 2019/20 is available for Community Pharmacy Consultation Services.
-
-The CPCS is being replaced with the NHS Referrals for Minor Illness & Urgent Medicines Supply element of the Pharmacy First Service (PFS) which commenced in January 2024.", width = "100%")`
+No data prior to January 2024 is available for Pharmacy First Services.", width = "100%")`
 :::
 ::::
 
-#### `r paste0("The total Cost of Community Pharmacy Consultation Services 2019/20 to 2023/24")` {.tabset}
+#### `r paste0("The total Cost of Pharmacy First Service (PFS) fees from introduction to 2024/25")` {.tabset}
 
 <div class = "tabset">
 
 ##### Chart
 
-###### Figure 14: The total Cost of Community Pharmacy Consultation Services (CPCS) increased in 2023/24
+###### Figure 14: The total Cost of Pharmacy First Service (PFS) fees in 2024/25
 
-```{r advanced services cpcs, out.width="100%"}
-figure_19
+```{r advanced services pfd}
+figure_14
 
 get_download_button(title = "Download chart data", data = table_figure_14, filename = "figure 14")
 ```
 ##### Table
 
-###### Table 14: The total Cost of Community Pharmacy Consultation Services (CPCS) increased in 2023/24
+###### Table 14: The total Cost of Pharmacy First Service (PFS) fees in 2024/25
 
-```{r advanced services cpcs_table}
-knitr::kable(table_figure_19, align = "lr")
+```{r advanced services pfs_table}
+knitr::kable(table_figure_14, align = "lr")
 
 get_download_button(title = "Download chart data", data = table_figure_14, filename = "figure 14")
 ```
 </div>
-Source: [Summary tables - General Pharmaceutical Services - Table 8](`r config$fy_excel_link`)
+Source: [Summary tables - General Pharmaceutical Services - Table 6](`r config$fy_excel_link`)
 
 <!-- ::::{.row style="display: flex; padding-bottom: 15px;"} -->
 <!-- :::{.col-md-6} -->
@@ -820,24 +836,24 @@ Source: [Summary tables - General Pharmaceutical Services - Table 8](`r config$f
 <!-- `r infoBox_no_border("", text = "<b> The cost of CSPCs has increased by 48% between 2022/23 and 2023/24.</b>", width = "100%")` -->
 <!-- ::: -->
 <!-- :::: -->
-The cost of CPCSs provided in  2023/24 was £26.3 million, a 48% increased on the cost of £17.8 million in 2022/23.
+The cost of PFS fees  provided in  2024/25 was £151 million.
 
-#### `r paste0("The total Cost of Drugs provided during Community Pharmacy Consultation Services 2019/20 to 2023/24")` {.tabset}
+#### `r paste0("The total Cost of Drugs provided duringPharmacy First Service (PFS) from introduction to 2024/25")` {.tabset}
 
 <div class = "tabset">
 
 ##### Chart
 
-###### Figure 15: The total Cost of Drugs provided during Community Pharmacy Consultation Services (CPCS) increased in 2023/24
+###### Figure 15: The total Cost of Drugs provided during Pharmacy First Service (PFS) in 2024/25
 
-```{r advanced services cpcscost, out.width="100%"}
+```{r advanced services pfsdrug}
 figure_15
 
 get_download_button(title = "Download chart data", data = table_figure_15, filename = "figure 15")
 ```
 ##### Table
 
-###### Table 15: The total Cost of Drugs provided during Community Pharmacy Consultation Services (CPCS) increased in 2023/24
+###### Table 15: The total Cost of Drugs provided during Pharmacy First Service (PFS) in 2024/25
 
 ```{r advanced services cpcscost_table}
 knitr::kable(table_figure_15, align = "lr")
@@ -845,7 +861,7 @@ knitr::kable(table_figure_15, align = "lr")
 get_download_button(title = "Download chart data", data = table_figure_15, filename = "figure 15")
 ```
 </div>
-Source: [Summary tables - General Pharmaceutical Services - Table 8](`r config$fy_excel_link`)
+Source: [Summary tables - General Pharmaceutical Services - Table 6](`r config$fy_excel_link`)
 
 <!-- ::::{.row style="display: flex; padding-bottom: 15px;"} -->
 <!-- :::{.col-md-6} -->
@@ -855,7 +871,9 @@ Source: [Summary tables - General Pharmaceutical Services - Table 8](`r config$f
 <!-- `r infoBox_no_border("", text = "<b> The cost of drugs provided for CSPCs has increased by 71% between 2022/23 and 2023/24.</b>", width = "100%")` -->
 <!-- ::: -->
 <!-- :::: -->
-The cost of drugs provided for CPCSs provided in  2023/24 was £5.34 million, a 71.4% increase on the £3.12 million in 2022/23.
+The cost of drugs for PFS Minor Illness and Urgent Medicines Supply provided in  2024/25 was £10.0 million.
+
+The cost of drugs provided for PFS Clinical Pathways in  2024/25 was £7.26 million.
 
 ::::{.row style="display: flex; padding-bottom: 10px;"} 
 :::{.col-md-12}
@@ -873,7 +891,7 @@ Further information including which NRT products can be supplied as part of the 
 :::
 ::::
 
-#### `r paste0("The total Cost of Consultations and Drugs provided during Smoking Cessation Services 2022/23 to 2023/24")` {.tabset}
+#### `r paste0("The total Cost of Consultations and Drugs provided during Smoking Cessation Services 2022/23 to 2024/25")` {.tabset}
 
 <div class = "tabset">
 
@@ -881,7 +899,7 @@ Further information including which NRT products can be supplied as part of the 
 
 ###### Figure 16: The total Cost of Consultations and Drugs provided during Smoking Cessation Services (SCS) increased in 2024/25
 
-```{r advanced services scs, out.width="100%"}
+```{r advanced services scs}
 figure_16
 
 get_download_button(title = "Download chart data", data = table_figure_16, filename = "figure 16")
@@ -907,7 +925,7 @@ Source: [Summary tables - General Pharmaceutical Services - Table 6](`r config$f
 <!-- ::: -->
 <!-- :::: -->
 
-The cost of consultations for SCS provided in  2024/25 was £241,000, an increase of 89.5% from the previous year. The  cost of NRT products provided for SCS in 2024/25 was £369,000, a 105% increase from 2023/24. 
+The cost of consultations for SCS provided in  2024/25 was £369,000, an increase of 105% from the previous year. The  cost of NRT products provided for SCS in 2024/25 was £241,000, a 89.5% increase from 2023/24. 
 
 ::::{.row style="display: flex; padding-bottom: 10px;"} 
 :::{.col-md-12}
@@ -921,7 +939,7 @@ No data prior to April 2023 is available for Pharmacy Contraceptive Services.", 
 :::
 ::::
 
-#### `r paste0("The total Cost of Consultations and Drugs provided during Pharmacy Contraceptive Services 2023/24")` {.tabset}
+#### `r paste0("The total Cost of Consultations and Drugs provided during Pharmacy Contraceptive Services 2024/25")` {.tabset}
 
 <div class = "tabset">
 
@@ -929,7 +947,7 @@ No data prior to April 2023 is available for Pharmacy Contraceptive Services.", 
 
 ###### Figure 17:The total Cost of Consultations and Drugs provided during Pharmacy Contraceptive Services increased in 2024/25
 
-```{r advanced services pcs, out.width="100%"}
+```{r advanced services pcs}
 figure_17
 
 get_download_button(title = "Download chart data", data = table_figure_17, filename = "figure 17")
@@ -957,9 +975,9 @@ Source: [Summary tables - General Pharmaceutical Services - Table 6](`r config$f
 <!-- `r infoBox_no_border("", text = "<b>Uptake has trended upwards across the year and the spike in December 2023 is in line with the PCS expansion to include intiation as well as ongoing contraception.</b>", width = "100%")` -->
 <!-- ::: -->
 <!-- :::: -->
-The cost of consultations for PCS provided in 2023/24 was £1.25 million and the cost of OC products provided for PCS in 2023/24 was £374,000.
+The cost of consultations for PCS provided in 2024/25 was £7.43 million and the cost of OC products provided for PCS in 2024/25 was £2.75  million.
 
-Figure 17 shows an upwards trend in uptake after November 2023 in line with the PCS expansion to include initiation as well as ongoing contraception. However in the same time period an error was made in December and January payments. These payments were later reclaimed by the NHSBSA. This has not been reflected in this data and therefore the increase in uptake in December and January was not as significant as shown here.
+<!-- Figure 17 shows an upwards trend in uptake after November 2023 in line with the PCS expansion to include initiation as well as ongoing contraception. However in the same time period an error was made in December and January payments. These payments were later reclaimed by the NHSBSA. This has not been reflected in this data and therefore the increase in uptake in December and January was not as significant as shown here. -->
 
 ### 2.3 Enhanced Services for Contractors {.toc-ignore} 
 
@@ -973,7 +991,7 @@ The figures in these statistics for COVID-19 vaccinations only relate to those a
 :::
 ::::
 
-#### `r paste0("The total Costs for COVID-19 vaccinations fees provided by contractors in 2020/21 to 2023/24")` {.tabset}
+#### `r paste0("The total Costs for COVID-19 vaccinations fees provided by contractors in 2020/21 to 2024/25")` {.tabset}
 
 <div class = "tabset">
 
@@ -981,7 +999,7 @@ The figures in these statistics for COVID-19 vaccinations only relate to those a
 
 ###### Figure 18: The total Costs for COVID-19 vaccinations fees provided by contractors decreased in 2024/25
 
-```{r covidvaccine_costs_and_fees, out.width="100%"}
+```{r covidvaccine_costs_and_fees}
 figure_18
 
 get_download_button(title = "Download chart data", data = table_figure_18, filename = "figure 18")
@@ -1022,11 +1040,8 @@ These official statistics were independently reviewed by the (OSR) in December 2
 
 #### Changes to the statistical narrative 
 
-The advanced services Smoking Cessation Service (SCS) and Pharmacy Contraceptive Service (PCS) have been added to the narrative.
+The advanced service Pharmacy First Service (PFS) has been added to the narrative.
 
-#### Additions to the summary tables
-
-Data regarding the advanced services Pharmacy Contraceptive Service (PCS) and Pharmacy First Service (PFS) have been added to the summary tables.
 
 
 ### 3.2. Accuracy of these statistics {.toc-ignore}
@@ -1055,19 +1070,6 @@ Monthly data relating to Dispensing Contractors can be accessed via the [NHSBSA 
 ### 3.6 Planned changes to this publication {.toc-ignore}
 
 
-NHSBSA plans to expand the scope of this publication in future releases to report on all fees that a contractor can claim for providing NHS services, in order to provide a more complete picture of the total cost of community pharmacy to the public purse. Next year's release will include the below:
-
-The Pharmacy First Service (PFS) is a new advanced service which commenced in January 2024. It will replace the CPCS. The full service will consist of three elements:
-
-* Pharmacy First (clinical pathways), a new element
-
-* Pharmacy First (urgent repeat medicine supply), previously commissioned as the CPCS
-
-* Pharmacy First (NHS referrals for minor illness), previously commissioned as the CPCS
-
-It will be included in this release from the 2024/2025 publication.
-
-The NHS Pharmacy First - Clinical Pathway consultation advanced service was introduced from 31 January 2024. Figures for items issued by through the Clinical Pathway service have been included in the overall counts for dispensed items and drug costs for pharmacies in this publication.  Further work to exclude these items will be undertaken for future iterations of this publication. 
 
 ---
 

@@ -277,7 +277,19 @@ icb_extract <- function(con,
       # # total cost of pharmacy first remuneration
       pfcp_umsmiremuneration = sum(PFCP_UMSMIREMUNERATION,na.rm=TRUE),
       # # total cost of pharmacy first reimbursent
-      pfcp_umsmireimbursement = sum(PFCP_UMSMIREIMBURSEMENT,na.rm=TRUE)
+      pfcp_umsmireimbursement = sum(PFCP_UMSMIREIMBURSEMENT,na.rm=TRUE),
+      #number of items dispensed under pharmacy first clinical pathways
+      pf_items = sum(PF_ITEMS,na.rm=TRUE),
+      #total of NIC dispensed under pharmacy first clinical pathways
+      pf_nic = sum(PF_NIC,na.rm=TRUE),
+      #number of items dispensed under pharmacy first contraception
+      cont_items = sum(CONT_ITEMS,na.rm=TRUE),
+      #total of NIC dispensed under pharmacy first contraception
+      cont_nic = sum(CONT_NIC,na.rm=TRUE),
+      #number of items dispensed under pharmacy first hypertension
+      hyp_items = sum(HYP_ITEMS,na.rm=TRUE),
+      #total of NIC dispensed under pharmacy first hypertension
+      hyp_nic = sum(HYP_NIC,na.rm=TRUE)
     ) %>%
     dplyr::arrange(FINANCIAL_YEAR, APPLIANCE_DISPENSER_HIST) %>%
     collect()
@@ -566,7 +578,19 @@ national_month_extract <- function(con,
       # # total cost of pharmacy first remuneration
       pfcp_umsmiremuneration = sum(PFCP_UMSMIREMUNERATION,na.rm=TRUE),
       # # total cost of pharmacy first reimbursent
-      pfcp_umsmireimbursement = sum(PFCP_UMSMIREIMBURSEMENT,na.rm=TRUE)
+      pfcp_umsmireimbursement = sum(PFCP_UMSMIREIMBURSEMENT,na.rm=TRUE),
+      #number of items dispensed under pharmacy first clinical pathways
+      pf_items = sum(PF_ITEMS,na.rm=TRUE),
+      #total of NIC dispensed under pharmacy first clinical pathways
+      pf_nic = sum(PF_NIC,na.rm=TRUE),
+      #number of items dispensed under pharmacy first contraception
+      cont_items = sum(CONT_ITEMS,na.rm=TRUE),
+      #total of NIC dispensed under pharmacy first contraception
+      cont_nic = sum(CONT_NIC,na.rm=TRUE),
+      #number of items dispensed under pharmacy first hypertension
+      hyp_items = sum(HYP_ITEMS,na.rm=TRUE),
+      #total of NIC dispensed under pharmacy first hypertension
+      hyp_nic = sum(HYP_NIC,na.rm=TRUE)
       ) %>%
 
     dplyr::arrange(YEAR_MONTH, APPLIANCE_DISPENSER_HIST) %>%
@@ -856,7 +880,19 @@ national_extract <- function(con,
       # # total cost of pharmacy first remuneration
       pfcp_umsmiremuneration = sum(PFCP_UMSMIREMUNERATION,na.rm=TRUE),
       # # total cost of pharmacy first reimbursent
-      pfcp_umsmireimbursement = sum(PFCP_UMSMIREIMBURSEMENT,na.rm=TRUE)
+      pfcp_umsmireimbursement = sum(PFCP_UMSMIREIMBURSEMENT,na.rm=TRUE),
+      #number of items dispensed under pharmacy first clinical pathways
+      pf_items = sum(PF_ITEMS,na.rm=TRUE),
+      #total of NIC dispensed under pharmacy first clinical pathways
+      pf_nic = sum(PF_NIC,na.rm=TRUE),
+      #number of items dispensed under pharmacy first contraception
+      cont_items = sum(CONT_ITEMS,na.rm=TRUE),
+      #total of NIC dispensed under pharmacy first contraception
+      cont_nic = sum(CONT_NIC,na.rm=TRUE),
+      #number of items dispensed under pharmacy first hypertension
+      hyp_items = sum(HYP_ITEMS,na.rm=TRUE),
+      #total of NIC dispensed under pharmacy first hypertension
+      hyp_nic = sum(HYP_NIC,na.rm=TRUE)
 
     ) %>%
     dplyr::arrange(FINANCIAL_YEAR, APPLIANCE_DISPENSER_HIST) %>%
@@ -1125,7 +1161,7 @@ table_6 <- function(national_extract){
                   HYPTEN_INC, num_mur_pharm, num_mur_total, num_mur_fee_total,
                   NUM_SCS_CNSLT, SCS_CNSLT, SCS_NRTPROD_COST, SCS_SETUP,num_t1c_cnslt,t1c_set_up,t1c_prod_cost,
                   t1c_consult,num_pfcp_payment, pfcp_optin, pfcp_fees, pfcp_payment,pfcp_months,
-                  pfcp_vat,pfcp_umsmideduct, pfcp_umsmiremuneration, pfcp_umsmireimbursement
+                  pfcp_vat,pfcp_umsmideduct, pfcp_umsmiremuneration, pfcp_umsmireimbursement,, pf_items, pf_nic
 
 
     ) %>%
@@ -1183,6 +1219,10 @@ table_6 <- function(national_extract){
                        sum(pfcp_umsmiremuneration),
                      `Total cost of  PFS UMS Reimbursement (GBP)` =
                        sum(pfcp_umsmireimbursement),
+                     `Total items using PFS Clinical Pathways` =
+                     sum(pf_items),
+                     `Total cost of items using PFS Clinical Pathways` =
+                       sum(pf_nic),
                      `Pharmacies providing Hep C testing service` =
                        sum(num_hep_c_service_pharm),
                      `Total cost of provision of Hep C testing service (GBP)` =
@@ -1860,7 +1900,7 @@ table_20 <- function(){
   #change file path if stored elsewhere
   prev_resolution_data <- readxl::read_xlsx("Ref/Resolutions/gps_2324_summary_tables_v001.xlsx",
                                             sheet = 22,
-                                            range = "A5:D155",
+                                            range = "A5:D170",
                                             col_names = TRUE)
   #change missing values from NA back to 0
   prev_resolution_data <- prev_resolution_data %>%
