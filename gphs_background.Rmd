@@ -2,9 +2,6 @@
 title: "General Pharmaceutical Services – England"
 always_allow_html: true
 output:
-  word_document:
-    toc: yes
-    toc_depth: '2'
   html_document:
     anchor_sections: no
     css: 
@@ -14,20 +11,17 @@ output:
     toc_depth: 3
     toc_float:
       collapsed: no
+  word_document:
+    toc: yes
+    toc_depth: '3'
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
-```{r setup, include=FALSE}
-
-# set code chunk options to disable echo by default
-knitr::opts_chunk$set(echo = FALSE,
-                      warning = FALSE,
-                      message = FALSE)
-
-
-```
-
+```{=html}
 <div class = "quartoheader", id = "fixed-header">
-        <header class="nhsuk-header" role="banner">
+  <header class="nhsuk-header" role="banner">
     <div class="nhsuk-width-container nhsuk-header__container">
       <div class="nhsuk-header__logo nhsuk-header__logo--only">
         <a class="nhsuk-header__link" href="https://www.nhsbsa.nhs.uk/" aria-label="NHSBSA home" target="_blank">
@@ -35,14 +29,66 @@ knitr::opts_chunk$set(echo = FALSE,
         </a>
       </div>
     </div>
-    </div>
+</div>
+```
 
+<!-- JS to handle hiding the header on scroll -->
 
+```{=html}
+<script>
+  document.addEventListener("scroll", function() {
+    var header = document.getElementById("fixed-header");
+    var toc = document.getElementById("TOC");
+    var BackTopButton = document.getElementById("backtop-button");
+    var scrollPosition = window.scrollY || document.documentElement.scrollTop;
+  if(scrollPosition > 88) {
+    header.style.top = "-200px";
+    toc.style.setProperty('margin-top', '24px', 'important');
+    BackTopButton.style.setProperty('visibility', 'visible', 'important');
+  } else
+  {
+    header.style.top = "0";
+    toc.style.setProperty('margin-top', '140px', 'important');
+    BackTopButton.style.setProperty('visibility', 'hidden', 'important');
+  }
+}
+);
+</script>
+```
+
+<!-- JS to handle back to top button -->
+
+```{=html}
+<script>
+       function BackTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
+```
+
+<button onclick="BackTop()" id="backtop-button" style="opacity: 0.7; pointer-events: initial; visibility: visible;">
+
+[▲]{aria-hidden="true"}Back to top
+
+</button>
+
+<html lang="en">
+
+```{r setup, include=FALSE}
+# set code chunk options to disable echo by default
+library(glue)
+library(lubridate)
+
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE)
+```
 <main>
   
 # Background Information and Methodology {.toc-ignore}
   
-## October 2024 {.toc-ignore}
+## October 2025 {.toc-ignore}
   
   
 ---
@@ -89,7 +135,7 @@ Prescription data is a long-standing administrative source of data that has been
 
 Data is collected from prescriptions submitted to the NHSBSA by dispensing contractors (community pharmacies and appliance contractors). These prescriptions are issued by GPs or other authorised prescribers such as nurses, dentists, and allied health professionals. Prescriptions that are issued by hospitals may also be dispensed in the community and submitted for reimbursement. Prescriptions that are issued in hospitals and fulfilled by the hospital pharmacy or dispensary are not included in this data.
 
-Prescriptions can be issued as either a paper form or as an electronic message using the Electronic Prescription Service (EPS). EPS prescriptions make up most of prescribing and dispensing activity carried out in England, accounting for 96%<sup>1</sup> of all prescriptions dispensed in England during 2023/24. EPS messages are submitted by the dispensing contractor once the prescription has been fulfilled and issued to the patient. The message is initially sent to the NHS Spine, maintained by NHS Digital, and then sent to the NHSBSA for processing. 
+Prescriptions can be issued as either a paper form or as an electronic message using the Electronic Prescription Service (EPS). EPS prescriptions make up most of prescribing and dispensing activity carried out in England, accounting for 96% of all prescriptions dispensed in England during 2023/24. EPS messages are submitted by the dispensing contractor once the prescription has been fulfilled and issued to the patient. The message is initially sent to the NHS Spine, maintained by NHS Digital, and then sent to the NHSBSA for processing. 
 
 Paper prescriptions are compiled by the dispensing contractor and sent to the NHSBSA at the end of each month by secure courier. These paper prescriptions are then scanned and transformed into digital images, which are passed through intelligent character recognition (ICR) to extract the relevant data from them. Most paper forms go through ICR without any manual intervention. However, there are cases where operator intervention is required to accurately capture information from the prescription form. This manual intervention can be required for many reasons, such as if a form is handwritten or information is obscured by a pharmacy stamp.
 
@@ -99,13 +145,11 @@ Data is limited in this publication to only prescription items that have been di
 
 Data on advanced services provided by community pharmacies and appliance contractors is limited to where a claim has been submitted to NHSBSA in relation to performing one of those services. Counts around the number of services provided are based upon the number of times a fee has been paid to a contractor. The figures of the number of contractors that provide a service are based upon the number of contractors that have received payment of at least one fee for that service.
 
-<small><sup>1</sup> Source – NHSBSA Enterprise Data Warehouse.</small>
-
 #### 1.4.2 Primary care appeals data {.toc-ignore}
 
 Primary care appeals data is provided by NHS Resolution (previously known as the NHS Litigation Authority) on an annual basis. If an application for market entry for a pharmacy is refused, it can be appealed to NHS Resolution under the [NHS Pharmaceutical and Local Pharmaceutical Services Regulations 2013](https://www.legislation.gov.uk/uksi/2013/349/contents/made). 
 
-The NHSBSA receive this data by secure transfer from NHS Resolution on an annual basis. However, an [aggregated version of this data](https://resolution.nhs.uk/resources/factsheet-6-primary-care-appeals-statistics-2022-23/) is already available in the public domain, published by NHS Resolution as part of their annual report. This published data is not as granular as the data included in this publication and does not contain breakdowns by appeal types or the locality of the appeals.
+The NHSBSA receive this data by secure transfer from NHS Resolution on an annual basis. However, an [aggregated version of this data](https://resolution.nhs.uk/resources/factsheet-6-primary-care-appeals-statistics-2024-25/) is already available in the public domain, published by NHS Resolution as part of their annual report. This published data is not as granular as the data included in this publication and does not contain breakdowns by appeal types or the locality of the appeals.
 
 The data is generated from NHS Resolution’s claims management system. This system is subject to internal audit and external audit by the National Audit Office (NAO). Internal checks consist of a panel of independent auditors that conduct an annual audit of the quality of data entered against claims across a large sample. NHS Resolution analysts also conduct their own quality checks, including checks for:
 
@@ -115,7 +159,7 @@ The data is generated from NHS Resolution’s claims management system. This sys
  * Correct categorisation – to make sure data is categorised correctly
  * Consistency – to make sure data is treated consistently over each year
 
-The [annual report that NHS Resolution publishes](https://resolution.nhs.uk/resources/annual-report-statistics/) is not designated as an Official Statistic but is produced in line with a voluntary application of the Code of Practice for Statistics, as is the data that is subsequently used in this publication.
+The [annual report that NHS Resolution publishes](https://resolution.nhs.uk/resources/annual-statistics/) is not designated as an Official Statistic but is produced in line with a voluntary application of the Code of Practice for Statistics, as is the data that is subsequently used in this publication.
 
 ### 1.5 Geographies used in this publication {.toc-ignore}
 
@@ -168,12 +212,11 @@ Previously in historical releases by NHS Digital this measure was calculated by 
 
 ### 3.1 Summary tables {.toc-ignore}
 
-Data regarding the Pharmacy First Service, an advanced service introduced in Janaury 2024, has been added to the summary tables.
+Data regarding the Pharmacy First Service, an advanced service introduced in January 2024, has been added to the summary tables.
 
 ### 3.2 Statistical narrative  {.toc-ignore}
 
 The advanced services Smoking Cessation Service (SCS) and Pharmacy Contraceptive Service (PCS) have been added to the narrative.
-
 
 ### 3.3 Planned changes to this publication {.toc-ignore}
 
@@ -215,7 +258,7 @@ These statistics exclude prescriptions that were issued but not presented for di
 
 #### 4.2.4 PHS1 Pharmacy data collection {.toc-ignore}
 
-Data that has previously been obtained from the NHS Digital PHS1 Pharmacy Data collection is no longer available, as the collection exercise no longer takes place. Last year, we informed users that we were working with NHS England & Improvement and other partners to source this data from alternative sources. However, an alternative data source has not been identified, and so this information will not be included in this release. However, some information previously included on the PHS1, such as pharmacy openings and closures and some exempt categories, are available from the NHSBSA administrative records.
+Data that has previously been obtained from the NHS Digital PHS1 Pharmacy Data collection is no longer available, as the collection exercise no longer takes place. We previously informed users that we were working with NHS England & Improvement and other partners to source this data from alternative sources. However, an alternative data source has not been identified, and so this information will not be included in this release. However, some information previously included on the PHS1, such as pharmacy openings and closures and some exempt categories, are available from the NHSBSA administrative records.
 
 ## 4.3 Uses of GPhS {.toc-ignore}
 
@@ -248,7 +291,7 @@ In line with principle Q2.5 – Sound methods, within the [Code of Practice of S
 
 NHSBSA releases General Pharmaceutical Services (GPhS) – England, a publication with National Statistics designation. A similar release is produced by the devolved administration for Northern Ireland, whilst other statistics around dispensing contractor activity are released by the devolved administrations for Scotland and Wales.
 
- * Northern Ireland – [Business Services Organisation – General Pharmaceutical Services and Prescribing Statistics](https://hscbusiness.hscni.net/services/3176.htm)
+ * Northern Ireland – [Business Services Organisation – General Pharmaceutical Services and Prescribing Statistics](https://bso.hscni.net/directorates/operations/family-practitioner-services/directorates-operations-family-practitioner-services-information-unit/general-pharmaceutical-services-and-prescribing-statistics/)
  * Scotland – [Public Health Scotland – Community Pharmacy – Contractor Activity](https://www.opendata.nhs.scot/dataset/community-pharmacy-contractor-activity)
  * Wales – [Welsh Government – Dispensing Contractor Activity](https://nwssp.nhs.wales/ourservices/primary-care-services/general-information/data-and-publications/dispensing-contractor-activity-by-service/)
 
@@ -318,7 +361,7 @@ We will be gathering feedback from users of these statistics on an on-going basi
 
 These statistics are derived from data collected during processing activities carried out by the NHSBSA to reimburse dispensing contractors for providing services to NHS patients. Prescriptions are scanned and subject to rigorous automatic and manual validation processes to ensure accurate payments are made to dispensing contractors. Where electronic prescriptions are used the scope for manual intervention and input into data is reduced dramatically.
 
-The figures used are collected as an essential part of the process of reimbursing dispensing contractors (mainly pharmacists and dispensing doctors) for medicines supplied. All prescriptions which are dispensed in England need to be submitted to the NHSBSA if the dispenser is to be reimbursed, and so coverage should be complete. Due to the manual processes involved in the processing of prescriptions there may be random inaccuracies in capturing prescription information which are then reflected in the data. NHS Prescription Services, a division of NHSBSA, internally quality assures the data that is captured from prescriptions to a 99.70% level via a statistically valid random sample of 50,000 items that are reprocessed monthly. The latest reported [Prescription Processing Information Accuracy](https://www.nhsbsa.nhs.uk/pharmacies-gp-practices-and-appliance-contractors/payments-and-pricing/how-we-process-prescriptions) from NHS Prescriptions services, which covers the 12 month period July 2022 to June 2023 is 99.91%.
+The figures used are collected as an essential part of the process of reimbursing dispensing contractors (mainly pharmacists and dispensing doctors) for medicines supplied. All prescriptions which are dispensed in England need to be submitted to the NHSBSA if the dispenser is to be reimbursed, and so coverage should be complete. Due to the manual processes involved in the processing of prescriptions there may be random inaccuracies in capturing prescription information which are then reflected in the data. NHS Prescription Services, a division of NHSBSA, internally quality assures the data that is captured from prescriptions to a 99.70% level via a statistically valid random sample of 50,000 items that are reprocessed monthly. The latest reported [Prescription Processing Information Accuracy](https://www.nhsbsa.nhs.uk/pharmacies-gp-practices-and-appliance-contractors/payments-and-pricing/how-we-process-prescriptions) from NHS Prescriptions services, which covers the 12 month period April 2024 to March 2025 is 99.90%.
 
 Data supplied by NHS Resolution is collated with a voluntary application of the Code of Practice for Statistics. They are used within the NHS Resolution public annual report and are quality assured by NHS Resolution analysts, as well as being subject to internal and external (by NAO) audits.
 
@@ -356,15 +399,15 @@ A glossary of terms is included in this document, and the supporting summary tab
 
 ***Coherence is the degree to which data have been derived from different sources or methods but refer to the same topic or similar. Comparability is the degree to which data can be compared over time and domain***
 
-The General Pharmaceutical Services publication is the only Official Statistics release available regarding pharmacy and appliance contractors in England. Comparable publications are not available for Scotland and Wales, but an Official Statistics publication is released by Northern Ireland. However, each devolved nation does publish administrative data around dispensing activities. Links to these datasets can be found in the resources section of this document. 
+The General Pharmaceutical Services publication is the only Official Statistics release available regarding pharmacy and appliance contractors in England. Comparable publications are not available for Scotland and Wales, but an Official Statistics publication is released by Northern Ireland. However, each devolved nation does publish administrative data around dispensing activities. Links to these datasets can be found in section '6.1 UK statistics' of this document. 
 
 The statistics contained in this release are from various data sources, including the NHSBSA Data Warehouse, and NHS Resolution. All data from the NHSBSA is subject to a consistent methodology used in the processing of data prior to it being made available in the warehouse.
 
 The data used in this publication are not directly comparable to other Official Statistics publications by NHSBSA. These statistics are based upon a subset of dispensing of prescription items in England carried out by community pharmacy and appliance contractors.
 
-Prescription Cost Analysis (PCA) along with our prescribing publications, Medicines Used in Mental Health (MUMH) and Prescribing for Diabetes (PfD) include data on prescription items dispensed by dispensing doctors and personal administration accounts. Therefore, the totals between these publications will not match.
+Prescription Cost Analysis (PCA) along with our other prescribing publications, Medicines Used in Mental Health (MUMH), Hormone Replacement Therapy (HRT), Dependency Forming Medicines (DFM), and Prescribing for Diabetes (PfD) include data on prescription items dispensed by dispensing doctors and personal administration accounts. Therefore, the totals between these publications will not match.
 
-Comparability with other publications produced by the NHSBSA can be determined using the [Official Statistics guidance table](https://www.nhsbsa.nhs.uk/statistical-collections), which is maintained with the release of each new publication. This table shows how all of NHSBSA’s publications compare across a range of measures to help users identify the best publication for their needs or understand where differences in figures may occur.
+Comparability with other publications produced by the NHSBSA can be determined using the [Official Statistics guidance table](https://www.nhsbsa.nhs.uk/statistical-collections). This table shows how all of NHSBSA’s statistical publications compare across a range of measures to help users identify the best publication for their needs or understand where differences in figures may occur.
 
 ## 8. Glossary of terms used in these statistics
 
