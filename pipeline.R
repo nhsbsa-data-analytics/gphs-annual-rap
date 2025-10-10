@@ -533,7 +533,7 @@ accessibleTables::write_sheet(
   "Table 8: General Pharmaceutical Services - 2015/16 to 2024/25 - Pharmacy activity for advanced services - CPCS",
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
-    "2. The Community Pharmacist Consultation Service (CPCS) was introduced on 29 October 2019.",
+    "2. The Community Pharmacist Consultation Service (CPCS) was introduced on 29 October 2019  and replaced by the The Pharmacy First Service urgent repeat medicine supply and NHS referrals for minor illness  in January 2024. This table contains historical data only. Pharmacy First data is included on Table 6.",
     "3. When a service was not available in a given financial year, these cells have been left blank.",
     "4. The GP referral path service was introduced on 1 November 2020 and had to be claimed by 30 June 2021.",
     "5. The NHS Urgent Medicine Service (NUMSAS) has been integrated into CPCS and is no longer a separate service.",
@@ -1855,15 +1855,15 @@ figure_15 <- figure_15_data %>%
   hc_xAxis(type = "datetime")
 
 
-
+#save.image("gps2425filename.RData")
 
 
 # 7. render markdown ------------------------------------------------------
-  rmarkdown::render("gphs_annual_narrative_2425w.Rmd",
+  rmarkdown::render("gphs_annual_narrative_2425.Rmd",
                     output_format = "html_document",
                     output_file = "outputs/gphs_annual_2024_25_v001.html")
 
-  rmarkdown::render("gphs_annual_narrative_2425w.Rmd",
+  rmarkdown::render("gphs_annual_narrative_2425.Rmd",
                     output_format = "word_document",
                     output_file = "outputs/gphs_annual_2024_25_v001.docx")
 

@@ -1,4 +1,4 @@
-/*	<TITLE>	gps-combine-202508.sql
+/*	<TITLE>	gps-combine-202509.sql
 
 	<DESCRIPTION>	joins data from current file and previous combined file
 
@@ -10,10 +10,10 @@
 
     <AMENDED> 20/08/2025 to add 2018/2019 filter
 */
-drop table gps_final_202508_combined;
-CREATE TABLE gps_final_202508_combined as
-SELECT * FROM gps_final_202409_combined gps_final_202508
+drop table gps_final_202509_combined;
+CREATE TABLE gps_final_202509_combined as
+SELECT * FROM gps_final_202409_combined
 WHERE FINANCIAL_YEAR in ('2015/2016','2016/2017','2017/2018','2018/2019')
 UNION ALL
-SELECT * FROM gps_final_202508
+SELECT * FROM gps_final_202509
 WHERE FINANCIAL_YEAR not in ('2015/2016','2016/2017','2017/2018','2018/2019');
