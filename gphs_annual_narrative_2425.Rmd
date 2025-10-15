@@ -926,7 +926,7 @@ get_download_button(title = "Download chart data", data = table_figure_16, filen
 ###### Table 16: The total cost of drugs provided under Pharmacy First Service (PFS) in 2024/25
 
 ```{r advanced services pfscost_table}
-knitr::kable(table_figure_16, align = "lr")
+knitr::kable(table_figure_16, align = "lrr")
 
 get_download_button(title = "Download chart data", data = table_figure_16, filename = "figure 16")
 ```

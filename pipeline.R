@@ -1666,8 +1666,8 @@ table_figure_17 <- figure_17_data |>
   dplyr::mutate(`Cost of Smoking Cessation Service (SCS) consultation fees` = format(`Cost of Smoking Cessation Service (SCS) consultation fees`, big.mark = ","),
                 `Cost of Nicotine Replacement Therapy (NRT) products provided during SCS consultations` = format(`Cost of Nicotine Replacement Therapy (NRT) products provided during SCS consultations`, big.mark = ","))|>
   dplyr::rename("Financial year" = 1,
-                "Cost of Smoking Cessation Service (SCS) consultation fees (GBP)" = 2,
-                "Cost of Nicotine Replacement Therapy (NRT) products provided during SCS consultations (GBP)" = 3)
+                "Cost of Smoking Cessation Service (SCS) consultation fees (GBP)" = 3,
+                "Cost of Nicotine Replacement Therapy (NRT) products provided during SCS consultations (GBP)" = 2)
 figure_17 <- figure_17_data %>%
   nhsbsaVis::group_chart_hc(
     x = "FINANCIAL_YEAR",
@@ -1736,8 +1736,22 @@ figure_19_data <-national_extract %>%
   dplyr::mutate(
     MEASURE = case_when(MEASURE == "CVD_19_VACCINE" ~ "Cost of vaccine fees")
   )
+figure_19_datat <-national_extract %>%
+  filter(APPLIANCE_DISPENSER_HIST == "N",
+         FINANCIAL_YEAR  %!in% c("2015/2016","2016/2017","2017/2018","2018/2019","2019/2020")) %>%
+  dplyr::select(FINANCIAL_YEAR, CVD_19_VACCINE) %>%
+  summarise(CVD_19_VACCINE = sum(CVD_19_VACCINE))  %>%
+  tidyr::pivot_longer(cols = CVD_19_VACCINE,
+                      names_to = "MEASURE",
+                      values_to = "VALUES") %>%
+
+  dplyr::arrange(desc(MEASURE)) %>%
+
+  dplyr::mutate(
+    MEASURE = case_when(MEASURE == "CVD_19_VACCINE" ~ "Cost of vaccine fees")
+  )
 #table data
-table_figure_19 <- figure_19_data |>
+table_figure_19 <- figure_19_datat |>
   ungroup() |>
   tidyr::pivot_wider(names_from = MEASURE, values_from = VALUES) |>
   dplyr::mutate(`Cost of vaccine fees` = format(`Cost of vaccine fees`, big.mark = ","))|>
@@ -1820,6 +1834,7 @@ figure_16_data <- national_month_extract %>%
   dplyr::select(YEAR_MONTH, pf_nic, pfcp_umsmireimbursement) %>%
   summarise(pf_nic =sum(pf_nic), pfcp_umsmireimbursement = sum(pfcp_umsmireimbursement)) %>%
   mutate(pfcp_umsmireimbursement=case_when(YEAR_MONTH==202402~ NA,.default=pfcp_umsmireimbursement))%>%
+  mutate(across(c('pf_nic', 'pfcp_umsmireimbursement'), round, 2))%>%
   tidyr::pivot_longer(
     cols = c(pfcp_umsmireimbursement,pf_nic),
     names_to = "MEASURE",
@@ -1838,7 +1853,7 @@ table_figure_16 <- figure_16_data |>
   tidyr::pivot_wider(names_from = MEASURE, values_from = VALUES) |>
   dplyr::mutate(`Total Cost of Drugs provided during Pharmacy First Service (PFS) Minor Illness and Urgent Medicines Supply` = format(`Total Cost of Drugs provided during Pharmacy First Service (PFS) Minor Illness and Urgent Medicines Supply`, big.mark = ","),
                 `Total Cost of Drugs provided during Pharmacy First Service (PFS) Clinical Pathways` = format(`Total Cost of Drugs provided during Pharmacy First Service (PFS) Clinical Pathways`, big.mark = ","))|>
-  dplyr::rename("Year Monthr" = 1,
+  dplyr::rename("Year Month" = 1,
                 "Total Cost of Drugs provided during Pharmacy First Service (PFS) Minor Illness and Urgent Medicines Supply" = 2,
                 "Total Cost of Drugs provided during Pharmacy First Service (PFS) Clinical Pathways" = 3)
 #figure 16 chart
