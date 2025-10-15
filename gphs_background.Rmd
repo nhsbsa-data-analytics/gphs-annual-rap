@@ -25,7 +25,7 @@ editor_options:
     <div class="nhsuk-width-container nhsuk-header__container">
       <div class="nhsuk-header__logo nhsuk-header__logo--only">
         <a class="nhsuk-header__link" href="https://www.nhsbsa.nhs.uk/" aria-label="NHSBSA home" target="_blank">
-          <img class="nhsuk-logo" src="www/logo-nhsbsa.svg"" name="NHSBSA logo" alt="NHS Business Services Authority">
+          <img class="nhsuk-logo" src="www/logo-nhsbsa.svg"" name="NHSBSA logo" alt="NHS Business Services Authority" height=auto>
         </a>
       </div>
     </div>

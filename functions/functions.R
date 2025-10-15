@@ -277,7 +277,19 @@ icb_extract <- function(con,
       # # total cost of pharmacy first remuneration
       pfcp_umsmiremuneration = sum(PFCP_UMSMIREMUNERATION,na.rm=TRUE),
       # # total cost of pharmacy first reimbursent
-      pfcp_umsmireimbursement = sum(PFCP_UMSMIREIMBURSEMENT,na.rm=TRUE)
+      pfcp_umsmireimbursement = sum(PFCP_UMSMIREIMBURSEMENT,na.rm=TRUE),
+      #number of items dispensed under pharmacy first clinical pathways
+      pf_items = sum(PF_ITEMS,na.rm=TRUE),
+      #total of NIC dispensed under pharmacy first clinical pathways
+      pf_nic = sum(PF_NIC,na.rm=TRUE),
+      #number of items dispensed under pharmacy first contraception
+      cont_items = sum(CONT_ITEMS,na.rm=TRUE),
+      #total of NIC dispensed under pharmacy first contraception
+      cont_nic = sum(CONT_NIC,na.rm=TRUE),
+      #number of items dispensed under pharmacy first hypertension
+      hyp_items = sum(HYP_ITEMS,na.rm=TRUE),
+      #total of NIC dispensed under pharmacy first hypertension
+      hyp_nic = sum(HYP_NIC,na.rm=TRUE)
     ) %>%
     dplyr::arrange(FINANCIAL_YEAR, APPLIANCE_DISPENSER_HIST) %>%
     collect()
@@ -566,8 +578,20 @@ national_month_extract <- function(con,
       # # total cost of pharmacy first remuneration
       pfcp_umsmiremuneration = sum(PFCP_UMSMIREMUNERATION,na.rm=TRUE),
       # # total cost of pharmacy first reimbursent
-      pfcp_umsmireimbursement = sum(PFCP_UMSMIREIMBURSEMENT,na.rm=TRUE)
-      ) %>%
+      pfcp_umsmireimbursement = sum(PFCP_UMSMIREIMBURSEMENT,na.rm=TRUE),
+      #number of items dispensed under pharmacy first clinical pathways
+      pf_items = sum(PF_ITEMS,na.rm=TRUE),
+      #total of NIC dispensed under pharmacy first clinical pathways
+      pf_nic = sum(PF_NIC,na.rm=TRUE),
+      #number of items dispensed under pharmacy first contraception
+      cont_items = sum(CONT_ITEMS,na.rm=TRUE),
+      #total of NIC dispensed under pharmacy first contraception
+      cont_nic = sum(CONT_NIC,na.rm=TRUE),
+      #number of items dispensed under pharmacy first hypertension
+      hyp_items = sum(HYP_ITEMS,na.rm=TRUE),
+      #total of NIC dispensed under pharmacy first hypertension
+      hyp_nic = sum(HYP_NIC,na.rm=TRUE)
+    ) %>%
 
     dplyr::arrange(YEAR_MONTH, APPLIANCE_DISPENSER_HIST) %>%
     collect()
@@ -856,7 +880,19 @@ national_extract <- function(con,
       # # total cost of pharmacy first remuneration
       pfcp_umsmiremuneration = sum(PFCP_UMSMIREMUNERATION,na.rm=TRUE),
       # # total cost of pharmacy first reimbursent
-      pfcp_umsmireimbursement = sum(PFCP_UMSMIREIMBURSEMENT,na.rm=TRUE)
+      pfcp_umsmireimbursement = sum(PFCP_UMSMIREIMBURSEMENT,na.rm=TRUE),
+      #number of items dispensed under pharmacy first clinical pathways
+      pf_items = sum(PF_ITEMS,na.rm=TRUE),
+      #total of NIC dispensed under pharmacy first clinical pathways
+      pf_nic = sum(PF_NIC,na.rm=TRUE),
+      #number of items dispensed under pharmacy first contraception
+      cont_items = sum(CONT_ITEMS,na.rm=TRUE),
+      #total of NIC dispensed under pharmacy first contraception
+      cont_nic = sum(CONT_NIC,na.rm=TRUE),
+      #number of items dispensed under pharmacy first hypertension
+      hyp_items = sum(HYP_ITEMS,na.rm=TRUE),
+      #total of NIC dispensed under pharmacy first hypertension
+      hyp_nic = sum(HYP_NIC,na.rm=TRUE)
 
     ) %>%
     dplyr::arrange(FINANCIAL_YEAR, APPLIANCE_DISPENSER_HIST) %>%
@@ -1072,7 +1108,7 @@ table_5 <- function(national_extract){
                      `Total value of dispensing fees received (GBP)` = sum(prof_fees_pharm),
                      `Average number of fees per pharmacy` = (`Total number of dispensing fees received`/`Community pharmacies`),
                      `Average cost per fee (GBP)` = (round(costs_total/`Total number of dispensing fees received`,2)),
-                     `Pharmacies receiving Methodone fees` = sum(num_cd_fee),
+                     `Pharmacies receiving Methadone fees` = sum(num_cd_fee),
                      `Total cost of Methadone fees (GBP)` = sum(cd_fee),
                      `Pharmacies receiving Schedule 2 CD fees` = sum(num_cd_sched2_fee),
                      `Total cost of Schedule 2 CD fees (GBP)` = sum(cd_sched2_fee),
@@ -1125,7 +1161,7 @@ table_6 <- function(national_extract){
                   HYPTEN_INC, num_mur_pharm, num_mur_total, num_mur_fee_total,
                   NUM_SCS_CNSLT, SCS_CNSLT, SCS_NRTPROD_COST, SCS_SETUP,num_t1c_cnslt,t1c_set_up,t1c_prod_cost,
                   t1c_consult,num_pfcp_payment, pfcp_optin, pfcp_fees, pfcp_payment,pfcp_months,
-                  pfcp_vat,pfcp_umsmideduct, pfcp_umsmiremuneration, pfcp_umsmireimbursement
+                  pfcp_vat,pfcp_umsmideduct, pfcp_umsmiremuneration, pfcp_umsmireimbursement,, pf_items, pf_nic
 
 
     ) %>%
@@ -1143,7 +1179,7 @@ table_6 <- function(national_extract){
                        sum(flu_cost_total_csv),
                      `Total amount of fees received for Flu vaccine service (GBP)` =
                        sum(flu_fees_total_csv),
-                      `Pharmacies providing Hypertension service` =
+                     `Pharmacies providing Hypertension service` =
                        sum(NUM_HYPTEN_INC),
                      `Total cost of set up of Hypertension service (GBP)` =
                        sum(HYPTENSET_FEES),
@@ -1183,6 +1219,10 @@ table_6 <- function(national_extract){
                        sum(pfcp_umsmiremuneration),
                      `Total cost of  PFS UMS Reimbursement (GBP)` =
                        sum(pfcp_umsmireimbursement),
+                     `Total items using PFS Clinical Pathways` =
+                       sum(pf_items),
+                     `Total cost of items using PFS Clinical Pathways` =
+                       sum(pf_nic),
                      `Pharmacies providing Hep C testing service` =
                        sum(num_hep_c_service_pharm),
                      `Total cost of provision of Hep C testing service (GBP)` =
@@ -1858,15 +1898,15 @@ table_20 <- function(){
   #import previous years' data from previous years GPhS summary tables table 9
   #code assumes data is kept in R folder in GPhS project directory
   #change file path if stored elsewhere
-  prev_resolution_data <- readxl::read_xlsx("Ref/Resolutions/gps_2223_summary_tables_v001.xlsx",
+  prev_resolution_data <- readxl::read_xlsx("Ref/Resolutions/gps_2324_summary_tables_v001.xlsx",
                                             sheet = 22,
-                                            range = "A5:D155",
+                                            range = "A5:D170",
                                             col_names = TRUE)
   #change missing values from NA back to 0
   prev_resolution_data <- prev_resolution_data %>%
     dplyr::mutate(across(where(is.numeric), ~ ifelse(is.na(.), 0, .)))
   #import new data for 2022/23
-  cur_resolution_data <- readxl::read_xlsx("Ref/Resolutions/2023-24 Pharmacy data.xlsx",
+  cur_resolution_data <- readxl::read_xlsx("Ref/Resolutions/2024-25 Pharmacy statistics.xlsx",
                                            col_names = TRUE)
   #change missing values from NA back to 0
   cur_resolution_data <- cur_resolution_data %>%
@@ -2081,31 +2121,22 @@ infoBox_border <- function(
     borderColour = "#005EB8",
     width = "31%",
     fontColour = "black") {
-
-  #set handling for when header is blank
-  display <- "block"
-
-  if(header == "") {
-    display <- "none"
-  }
-
   paste(
     "<div class='infobox_border' style = 'border: 1px solid ", borderColour,"!important;
   border-left: 5px solid ", borderColour,"!important;
   background-color: ", backgroundColour,"!important;
   padding: 10px;
+  margin-bottom: 20px;
   width: ", width,"!important;
   display: inline-block;
   vertical-align: top;
   flex: 1;
   height: 100%;'>
-  <p style = 'color: ", fontColour, ";
+  <h4 style = 'color: ", fontColour, ";
   font-weight: bold;
   font-size: 18px;
   margin-top: 0px;
-  margin-bottom: 10px;
-  display: ", display,";'>",
-  header, "</p>
+  margin-bottom: 10px;'>", header, "</h4>
   <p style = 'color: ", fontColour, ";
   font-size: 16px;
   margin-top: 0px;
@@ -2118,40 +2149,50 @@ infoBox_border <- function(
 #function to create info box in NHS colour scheme without border
 #example: infoBox_no_border("", text = "<b>Text goes here.</b>", width = "100%")
 
-infoBox_no_border <- function(
-    header = "Header here",
-    text = "More text here",
-    backgroundColour = "#005EB8",
-    width = "31%",
-    fontColour = "white") {
-
+infoBox_no_border <- function(header = "Header here",
+                              text = "More text here",
+                              backgroundColour = "#005EB8",
+                              width = "31%",
+                              fontColour = "white") {
   #set handling for when header is blank
   display <- "block"
 
-  if(header == "") {
+  if (header == "") {
     display <- "none"
   }
 
   paste(
     "<div class='infobox_no_border',
-    style = 'background-color: ",backgroundColour,
+    style = 'background-color: ",
+    backgroundColour,
     "!important;padding: 10px;
-    width: ",width,";
+    width: ",
+    width,
+    ";
     display: inline-block;
     vertical-align: top;
     flex: 1;
     height: 100%;'>
-  <p style = 'color: ", fontColour, ";
+  <h4 style = 'color: ",
+    fontColour,
+    ";
   font-weight: bold;
   font-size: 18px;
   margin-top: 0px;
   margin-bottom: 10px;
-  display: ", display,";'>",
-  header, "</p>
-  <p style = 'color: ", fontColour, ";
+  display: ",
+    display,
+    ";'>",
+    header,
+    "</h4>
+  <p style = 'color: ",
+    fontColour,
+    ";
   font-size: 16px;
   margin-top: 0px;
-  margin-bottom: 0px;'>", text, "</p>
+  margin-bottom: 0px;'>",
+    text,
+    "</p>
 </div>"
   )
 }

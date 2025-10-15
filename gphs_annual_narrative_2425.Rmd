@@ -16,16 +16,16 @@ output:
     toc_float:
       collapsed: no
 ---
-
 <script>
 
   
     $(document).ready(function() {
-    $('#header').prepend('<img src=`r knitr::image_uri("www/Accredited Official Statistics Logo English.svg")` alt=\"NHSBSA logo\" style=\"position:absolute; top: 0; right: 0; padding: 10px; width: 25%;  margin-top:140px;\">');
+    $('#header').prepend('<img src=`r knitr::image_uri("www/Accredited Official Statistics Logo English.svg")` alt=\"NHSBSA logo\" style=\"position:absolute; top: 0; right: 0; padding: 10px; width: 25%; margin-top:140px;\">');
   });
 </script>
 
 <html lang="en">
+
 
 ```{r setup, include=FALSE}
 
@@ -42,7 +42,7 @@ knitr::opts_chunk$set(echo = FALSE,
     <div class="nhsuk-width-container nhsuk-header__container">
       <div class="nhsuk-header__logo nhsuk-header__logo--only">
         <a class="nhsuk-header__link" href="https://www.nhsbsa.nhs.uk/" aria-label="NHSBSA home" target="_blank">
-          <img class="nhsuk-logo" src="www/logo-nhsbsa.svg"" name="NHSBSA logo" alt="NHS Business Services Authority">
+          <img class="nhsuk-logo" src="www/logo-nhsbsa.svg"" name="NHSBSA logo" alt="NHS Business Services Authority" height=auto>
         </a>
       </div>
     </div>
@@ -61,17 +61,17 @@ Published `r config$publication_date`
 
 In England in 2024/25 for community pharmacies and appliance contractors:
 
-* there were 11,098 active community pharmacies and 111 active appliance contractors. For important information about interpreting this figure see [section 3](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gphs_annual_2023_24_v001.html#about-these-statistics)
+* there were 11,098 active community pharmacies and 111 active appliance contractors. For important information about interpreting this figure see [section 3](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gphs_annual_2024_25_v001.html#active-pharmacies)
 
-* 1.16 billion prescription items were dispensed by community pharmacies. This was a 4% increase from 2023/24
+* 1.16 billion prescription items were dispensed by community pharmacies - this was a 4% increase from 2023/24
 
-* 13 million prescription items were dispensed by appliance contractors. This was a 7% increase from 2023/24
+* 1.9 million items were issued following Pharmacy First clinical pathways consultations
 
-* 1.13 billion prescription items were dispensed via the Electronic Prescription Service (EPS). This was 97% of all items dispensed, and a less than 1% percent increase from 2023/24
+* 13 million prescription items were dispensed by appliance contractors - this was a 7% increase from 2023/24
 
-* the cost of drugs and appliances reimbursed totalled £10.4 billion. This was a 2% increase from 2023/24
+* 1.13 billion prescription items were dispensed via the Electronic Prescription Service (EPS)) - this was 97% of all items dispensed, and a less than 1% percent increase from 2023/24
 
-
+* the cost of drugs and appliances reimbursed totalled £10.4 billion - this was a 2% increase from 2023/24
 
 ---
 
@@ -104,7 +104,6 @@ Data is limited in this publication to only prescription items that have been di
 
 Data on advanced services provided by community pharmacies and appliance contractors is limited to where a claim has been submitted to NHSBSA in relation to performing one of those services. Counts around the number of services provided are based upon the number of times a fee has been paid to a contractor. The figures of the number of contractors that provide a service are based upon the number of contractors that have received payment of at least one fee for that service.
 
-
 This publication aims to describe the activity of community pharmacies and appliance contractors in England across the whole financial year.
 
 These statistics detail:
@@ -122,7 +121,7 @@ These statistics cover the financial years between April 2015 and March 2025.
 ### 1.4 Definitions {.toc-ignore} 
 ::::{.row style="display: flex; padding-bottom: 10px;"} 
 :::{.col-md-12} 
-`r infoBox_border("Item", text = "A single unit of medication listed separately on a prescription form. In this publication, an example of an item would be Fluoxetine 20mg tables x56.", width = "100%")`
+`r infoBox_border("Item", text = "A single unit of medication listed separately on a prescription form. In this publication, an example of an item would be Fluoxetine 20mg tablets x56.", width = "100%")`
 ::: 
 ::::
 ::::{.row style="display: flex; padding-bottom: 10px;"} 
@@ -362,6 +361,7 @@ The SAF is a fixed fee that applies to every prescription item that is dispensed
 * EPS monthly allowance
 
 The value of the SAF is set by DHSC and can fluctuate throughout the year. It is based upon the forecast of the total number of items dispensed to ensure that the fee delivery remains within the agreed funding envelope for the year. Table 5a displays the value of the SAF and the dates that it has changed.", width = "100%")`
+
 :::
 ::::
 
@@ -408,6 +408,7 @@ It should be noted, prior to December 2016 the figures reported are for professi
 <div class = "tabset">
 
 #### **`r paste0("Table ",5,"a: Dispensing fees, their value, and when they came into effect")`**
+
 ``` {r saf_values}
 
 table_1_saf
@@ -462,6 +463,7 @@ Source: [Summary tables - General Pharmaceutical Services - Table 6](`r config$f
 ::::
 
 The number of vaccines administered by pharmacies as part of the flu vaccination advanced service increased in 2024/25 following a decrease in 2023/24 compared to the previous consistent upwards trend since 2015/16. In 2024/25 there were 4.07 million vaccines administered by 9,300 community pharmacies. This was an increase of 7.8% on the 3.77 million vaccines administered in 2023/24.
+
 
 
 
@@ -821,7 +823,7 @@ get_download_button(title = "Download chart data", data = table_figure_14, filen
 ###### Table 14: The total cost of Pharmacy First Service (PFS) fees in 2024/25
 
 ```{r advanced services pfs_table}
-knitr::kable(table_figure_14, align = "lr")
+knitr::kable(table_figure_14, align = "lrr")
 
 get_download_button(title = "Download chart data", data = table_figure_14, filename = "figure 14")
 ```
@@ -836,7 +838,35 @@ Source: [Summary tables - General Pharmaceutical Services - Table 6](`r config$f
 <!-- `r infoBox_no_border(header = "", text = htmltools::HTML("<b> The cost of CSPCs has increased by 48% between 2022/23 and 2023/24.</b>"), width = "100%")`  -->
 <!-- ::: -->
 <!-- :::: -->
+
 The total cost of PFS fees provided in 2024/25 was £151 million.This was the first complete financial year the service was offered and in the partial year 2023/24 the cost was £24.8 million.
+
+#### `r paste0("The total number of items for Pharmacy First Service (PFS)  clinical pathways from introduction to 2024/25")` {.tabset}
+
+<div class = "tabset">
+
+##### Chart
+
+###### Figure 15: The total number of items for Pharmacy First Service clinical pathways in 2024/25
+
+```{r advanced services pfsitems}
+figure_15
+
+get_download_button(title = "Download chart data", data = table_figure_15, filename = "figure 15")
+```
+##### Table
+
+###### Table 15: The total number of items for Pharmacy First Service clinical pathways in 2024/25
+
+```{r advanced services pfs_items_table}
+knitr::kable(table_figure_15, align = "lr")
+
+get_download_button(title = "Download chart data", data = table_figure_15, filename = "figure 15")
+```
+</div>
+Source: [Summary tables - General Pharmaceutical Services - Table 6](`r config$fy_excel_link`)
+
+There were 1.89 million items issued during Pharmacy First Service clinical pathway consultations in 2024/25. The monthly amount of items has doubled since the service was introduced in January 2024.
 
 #### `r paste0("The total cost of drugs provided under Pharmacy First Service (PFS) from introduction to 2024/25")` {.tabset}
 
@@ -844,21 +874,21 @@ The total cost of PFS fees provided in 2024/25 was £151 million.This was the fi
 
 ##### Chart
 
-###### Figure 15: The total cost of drugs provided under Pharmacy First Service (PFS) in 2024/25
+###### Figure 16: The total cost of drugs provided under Pharmacy First Service (PFS) in 2024/25
 
 ```{r advanced services pfsdrug,}
-figure_15
+figure_16
 
-get_download_button(title = "Download chart data", data = table_figure_15, filename = "figure 15")
+get_download_button(title = "Download chart data", data = table_figure_16, filename = "figure 16")
 ```
 ##### Table
 
-###### Table 15: The total cost of drugs provided under Pharmacy First Service (PFS) in 2024/25
+###### Table 16: The total cost of drugs provided under Pharmacy First Service (PFS) in 2024/25
 
 ```{r advanced services pfscost_table}
-knitr::kable(table_figure_15, align = "lr")
+knitr::kable(table_figure_16, align = "lr")
 
-get_download_button(title = "Download chart data", data = table_figure_15, filename = "figure 15")
+get_download_button(title = "Download chart data", data = table_figure_16, filename = "figure 16")
 ```
 </div>
 Source: [Summary tables - General Pharmaceutical Services - Table 6](`r config$fy_excel_link`)
@@ -871,7 +901,7 @@ Source: [Summary tables - General Pharmaceutical Services - Table 6](`r config$f
 <!-- `r infoBox_no_border(header = "", text = htmltools::HTML("<b> The cost of drugs provided for CSPCs has increased by 71% between 2022/23 and 2023/24.</b>"), width = "100%")`  -->
 <!-- ::: -->
 <!-- :::: -->
-The cost of drugs provided through PFS Minor Illness and Urgent Medicines Supply in  2024/25 was £10.0 million.
+The cost of drugs provided through PFS Minor Illness and Urgent Medicines Supply in 2024/25 was £10.0 million.
 
 The cost of drugs provided for PFS Clinical Pathways in  2024/25 was £7.27 million.
 
@@ -897,19 +927,19 @@ Further information including which NRT products can be supplied as part of the 
 
 ##### Chart
 
-###### Figure 16: The total cost of consultations and drugs provided during Smoking Cessation Services (SCS) increased in 2024/25
+###### Figure 17: The total cost of consultations and drugs provided during Smoking Cessation Services (SCS) increased in 2024/25
 
 ```{r advanced services scs}
-figure_16
+figure_17
 
 get_download_button(title = "Download chart data", data = table_figure_16, filename = "figure 16")
 ```
 ##### Table
 
-###### Table 16: The total cost of Consultations and drugs provided during Smoking Cessation Services (SCS) increased in 2024/25
+###### Table 17: The total cost of Consultations and drugs provided during Smoking Cessation Services (SCS) increased in 2024/25
 
 ```{r advanced services scs_table}
-knitr::kable(table_figure_16, align = "lrr")
+knitr::kable(table_figure_17, align = "lrr")
 
 get_download_button(title = "Download chart data", data = table_figure_16, filename = "figure 16")
 ```
@@ -945,21 +975,21 @@ No data prior to April 2023 is available for PCS.", width = "100%")`
 
 ##### Chart
 
-###### Figure 17:The total cost of consultations and drugs provided during Pharmacy Contraceptive Services increased in 2024/25
+###### Figure 18:The total cost of consultations and drugs provided during Pharmacy Contraceptive Services increased in 2024/25
 
 ```{r advanced services pcs}
-figure_17
+figure_18
 
-get_download_button(title = "Download chart data", data = table_figure_17, filename = "figure 17")
+get_download_button(title = "Download chart data", data = table_figure_18, filename = "figure 18")
 ```
 ##### Table
 
-###### Table 17: The total cost of consultations and drugs provided during Pharmacy Contraceptive Services increased in 2024/25
+###### Table 18: The total cost of consultations and drugs provided during Pharmacy Contraceptive Services increased in 2024/25
 
 ```{r advanced services pcs_table}
-knitr::kable(table_figure_17, align = "lrr")
+knitr::kable(table_figure_18, align = "lrr")
 
-get_download_button(title = "Download chart data", data = table_figure_17, filename = "figure 17")
+get_download_button(title = "Download chart data", data = table_figure_18, filename = "figure 18")
 ```
 </div>
 Source: [Summary tables - General Pharmaceutical Services - Table 6](`r config$fy_excel_link`)
@@ -997,21 +1027,21 @@ The figures in these statistics for COVID-19 vaccinations only relate to those a
 
 ##### Chart
 
-###### Figure 18: The total Costs for COVID-19 vaccinations fees provided by contractors decreased in 2024/25
+###### Figure 19: The total Costs for COVID-19 vaccinations fees provided by contractors decreased in 2024/25
 
 ```{r covidvaccine_costs_and_fees}
-figure_18
+figure_19
 
-get_download_button(title = "Download chart data", data = table_figure_18, filename = "figure 18")
+get_download_button(title = "Download chart data", data = table_figure_19, filename = "figure 19")
 ```
 ##### Table
 
-###### Table 18: The total Costs for COVID-19 vaccinations fees provided by contractors decreased in 2024/25
+###### Table 19: The total Costs for COVID-19 vaccinations fees provided by contractors decreased in 2024/25
 
 ```{r covidvaccine_costs_and_fees_table}
-knitr::kable(table_figure_18, align = "lr")
+knitr::kable(table_figure_19, align = "lr")
 
-get_download_button(title = "Download chart data", data = table_figure_18, filename = "figure 18")
+get_download_button(title = "Download chart data", data = table_figure_19, filename = "figure 19")
 ```
 </div>
 Source: [Summary tables - General Pharmaceutical Services - Table 9](`r config$fy_excel_link`)
@@ -1044,7 +1074,7 @@ The advanced service Pharmacy First Service (PFS) has been added to the narrativ
 
 #### Changes to the summary tables
 
-The NHS Pharmacy First - Clinical Pathway consultation advanced service was introduced from 31 January 2024. Figures for items issued by through the Clinical Pathway service were in included in the overall counts for dispensed items and drug costs for pharmacies previously but have now been excluded from overall counts.
+The NHS Pharmacy First - Clinical Pathway consultation advanced service was introduced from 31 January 2024. Figures for items issued through the Clinical Pathway service were included in the overall counts for dispensed items and drug costs for pharmacies previously but have now been excluded from overall counts.
 
 ### 3.2. Accuracy of these statistics {.toc-ignore}
 
@@ -1074,10 +1104,6 @@ Monthly data relating to dispensing contractors can be accessed via the [NHSBSA 
 NHSBSA plans to expand the scope of this publication in future releases to report on all fees that a contractor can claim for providing NHS services, in order to provide a more complete picture of the total cost of community pharmacy to the public purse. 
 
 Next year’s release will include any additional services that are introduced and refinement of reporting on existing services where required.
-
-
-
-
 
 ---
 
