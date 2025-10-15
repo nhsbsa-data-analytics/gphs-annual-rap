@@ -1797,8 +1797,8 @@ table_figure_14 <- figure_14_data |>
   dplyr::mutate(`Cost of Pharmacy First Service (PFS) clinical pathway consultation fees and fixed monthly payments` = format(`Cost of Pharmacy First Service (PFS) clinical pathway consultation fees and fixed monthly payments`, big.mark = ","),
                 `Cost of Pharmacy First Service (PFS) Minor Illness and Urgent Medicines Supply fees` = format(`Cost of Pharmacy First Service (PFS) Minor Illness and Urgent Medicines Supply fees`, big.mark = ","))|>
   dplyr::rename("Year Month" = 1,
-                "Cost of Pharmacy First Service (PFS) clinical pathways consultation fees and fixed monthly payments" = 2,
-                "Cost of Pharmacy First Service (PFS) Minor Illness and Urgent Medicines Supply fees" = 3)
+                "Cost of Pharmacy First Service (PFS) clinical pathways consultation fees and fixed monthly payments" = 3,
+                "Cost of Pharmacy First Service (PFS) Minor Illness and Urgent Medicines Supply fees" = 2)
 
 figure_14 <- figure_14_data %>%
   nhsbsaVis::group_chart_hc(
