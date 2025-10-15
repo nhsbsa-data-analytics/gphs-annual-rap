@@ -59,17 +59,19 @@ Published `r config$publication_date`
 
 ## Key findings
 
-In England in 2024/25 for community pharmacies and appliance contractors:
+In England in 2024/25:
 
-* there were 11,098 active community pharmacies and 111 active appliance contractors. For important information about interpreting this figure see [section 3](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gphs_annual_2024_25_v001.html#active-pharmacies)
+* there were 11,098 community pharmacies that submitted prescriptions for processing. For important information about interpreting this figure see  [section 3](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gphs_annual_2024_25_v001.html#active-pharmacies). At 31 March 2025, [there were 10,407 community pharmacies open in England.](https://opendata.nhsbsa.net/dataset/pharmacy-openings-and-closures/resource/033346c7-eaf9-4ca4-8d0c-8a8a07958d8e)
+
+* there were 111 appliance contractors that submitted prescriptions for processing
 
 * 1.16 billion prescription items were dispensed by community pharmacies - this was a 4% increase from 2023/24
 
-* 1.9 million items were issued following Pharmacy First clinical pathways consultations
+* an additional 1.9 million items were issued following Pharmacy First clinical pathways consultations
 
 * 13 million prescription items were dispensed by appliance contractors - this was a 7% increase from 2023/24
 
-* 1.13 billion prescription items were dispensed via the Electronic Prescription Service (EPS)) - this was 97% of all items dispensed, and a less than 1% percent increase from 2023/24
+* 1.13 billion prescription items were dispensed via the Electronic Prescription Service (EPS) - this was 97% of all items dispensed, and a less than 1% percent increase from 2023/24
 
 * the cost of drugs and appliances reimbursed totalled £10.4 billion - this was a 2% increase from 2023/24
 
@@ -127,6 +129,23 @@ These statistics cover the financial years between April 2015 and March 2025.
 ::::{.row style="display: flex; padding-bottom: 10px;"} 
 :::{.col-md-12} 
 `r infoBox_border("Dispensing contractor", text = "A dispensing contractor is either a  community pharmacy or appliance contractor. Community pharmacies can dispense both drugs and appliances. Appliance contractors are limited to the supply of appliances as listed in Part IXA, IXB and IXC of the Drug Tariff.", width = "100%")`
+::: 
+::::
+::::{.row style="display: flex; padding-bottom: 10px;"} 
+:::{.col-md-12} 
+`r infoBox_border("Active pharmacies and appliance contractors", text = "An active community pharmacy or appliance contractor is one that has submitted prescriptions to the NHSBSA for processing in the reporting period. Even if a pharmacy opens, submits prescriptions, and closes in the same year, it is still counted as active for that year.
+
+Pharmacy contracts can change providers while staying at the same location. When this happens a new organisation code may be assigned. This measure counts active pharmacies based on organisation codes, not physical premises.
+
+You can use the statistics in this release to understand how many pharmacy and appliance contracts have submitted prescriptions for processing to the NHSBSA each year.
+
+You cannot use these statistics to:
+
+* monitor pharmacy and appliance contractor openings and closures
+* understand how many community pharmacies are open at a point in time
+* understand how many physical community pharmacy premises there are and their locations
+
+", width = "100%")`
 ::: 
 ::::
 ::::{.row style="display: flex; padding-bottom: 10px;"} 
@@ -217,9 +236,11 @@ In 2024/25, there were 11,098 active community pharmacies, 911 less than in 2023
 
 The number of active appliance contractors in 2024/25 in England was 111, a decrease by one compared to 2023/24.
 
-An active community pharmacy or appliance contractor is one that has submitted prescriptions to the NHSBSA for processing in the specified time period. If a pharmacy has opened, submitted a prescription to the NHSBSA and then closed again in the same year, it would still be classed as an active pharmacy in that year.
+<!-- An active community pharmacy or appliance contractor is one that has submitted prescriptions to the NHSBSA for processing in the specified time period. If a pharmacy has opened, submitted a prescription to the NHSBSA and then closed again in the same year, it would still be classed as an active pharmacy in that year. -->
 
-When a pharmacy contract changes providers it can remain in the same premises but may be given a new organisation code. This measure uses the pharmacy organisation code to determine  determine the number of active pharmacies, not the number of pharmacy premises available. In the previous year 2023/24 an increased number of pharmacy contracts changed providers compared to previous years. This may have inflated the number of active pharmacies in 2023/24 compared to the number of pharmacy premises. However the number of active pharmacies is now at it's lowest since 2015/16.
+<!-- When a pharmacy contract changes providers it can remain in the same premises but may be given a new organisation code. This measure uses the pharmacy organisation code to determine  determine the number of active pharmacies, not the number of pharmacy premises available. -->
+
+In 2023/24, an increased number of pharmacy contracts changed providers compared to previous years. This inflated the number of active pharmacies in 2023/24 compared to the number of pharmacy premises. However the number of active pharmacies is now at it's lowest since 2015/16.
 
 Monthly data relating to dispensing contractors can be accessed via the [NHSBSA Open Data Portal.](https://opendata.nhsbsa.net/theme/dispensing-contractors)
 
@@ -260,10 +281,16 @@ Source: [Summary tables - General Pharmaceutical Services - Tables 3 and 10](`r 
 `r infoBox_no_border(header = "", text = htmltools::HTML("<b> Total items for community pharmacies have trended upwards for the last four years.</b>"), width = "100%")` 
 :::
 ::::
-
+::::{.row style="display: flex; padding-bottom: 1px;"} 
+:::{.col-md-12} 
+`r infoBox_border("", text = "The data in this section excludes items issued under the Pharmacy First Clinical Pathways advanced service.
+", width = "100%")`
+:::
+::::
 The number of items dispensed by community pharmacies in England between 2023/24 and 2024/25 increased by 3.93% from 1.11 billion to 1.16 billion. Overall, the number of items dispensed by community pharmacies is 16.2% higher than the 995 million items dispensed in 2015/16.
 
 The number of items dispensed by appliance contractors in 2024/25 increased by 7.18% from 2023/24. This has increased each year since 2015/16, from 7.91 million to 12.5 million items. This is an increase of 58.1%.
+
 
 #### `r paste0("The average number of items dispensed per contractor between 2015/16 and 2024/25")` {.tabset}
 
@@ -298,12 +325,19 @@ Source: [Summary tables - General Pharmaceutical Services - Tables 3 and 10](`r 
 `r infoBox_no_border(header = "", text = htmltools::HTML("<b>On average, there were 113,000 items dispensed per contractor by appliance contractors in 2024/25.</b>"), width = "100%")` 
 :::
 ::::
+::::{.row style="display: flex; padding-bottom: 1px;"} 
+:::{.col-md-12} 
+`r infoBox_border("", text = "The data in this section excludes items issued under the Pharmacy First Clinical Pathways advanced service.
+", width = "100%")`
+:::
+::::
 
 The yearly average number of items dispensed per contractor has been calculated by dividing the total number of items dispensed by the total number of active contractors. This average is a mean. For important information about interpreting this figure please see [section 3.](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gphs_annual_2024_25_v001.html#about-these-statistics)
 
 The average number of items dispensed per community pharmacy has increased by 12.5% from 92,700 in 2023/24 to 104,000 in 2024/25.  This is an increase of 25.1% from the average of 83,300 in 2015/16.
 
 The average yearly items dispensed for appliance contractors has increased each year since 2015/16 and was higher than the average items dispensed for community pharmacies since 2020/21. The average is 113,000 in 2024/25, a 65.2% increase from 2015/16.
+
 
 #### `r paste0("Total items dispensed by Electronic Prescription Service (EPS) for dispensing contractors between 2015/16 and 2024/25")` {.tabset}
 
@@ -337,6 +371,12 @@ Source: [Summary tables - General Pharmaceutical Services - Tables 3 and 10](`r 
 :::
 :::{.col-md-6}
 `r infoBox_no_border(header = "", text = htmltools::HTML("<b>99.2% of contractors dispensed at least one item by EPS in  2024/25.</b>"), width = "100%")` 
+:::
+::::
+::::{.row style="display: flex; padding-bottom: 1px;"} 
+:::{.col-md-12} 
+`r infoBox_border("", text = "The data in this section excludes items issued under the Pharmacy First Clinical Pathways advanced service.
+", width = "100%")`
 :::
 ::::
 
@@ -462,7 +502,7 @@ Source: [Summary tables - General Pharmaceutical Services - Table 6](`r config$f
 :::
 ::::
 
-The number of vaccines administered by pharmacies as part of the flu vaccination advanced service increased in 2024/25 following a decrease in 2023/24 compared to the previous consistent upwards trend since 2015/16. In 2024/25 there were 4.07 million vaccines administered by 9,300 community pharmacies. This was an increase of 7.8% on the 3.77 million vaccines administered in 2023/24.
+The number of vaccines administered by pharmacies as part of the flu vaccination advanced service increased in 2024/25 following a decrease in 2023/24 compared to the previous consistent upwards trend since 2015/16. In 2024/25 there were 4.07 million flu vaccines administered by 9,300 community pharmacies. This was an increase of 7.8% on the 3.77 million flu vaccines administered in 2023/24.
 
 
 
@@ -470,7 +510,7 @@ The number of vaccines administered by pharmacies as part of the flu vaccination
 
 ::::{.row style="display: flex; padding-bottom: 10px;"} 
 :::{.col-md-12}
-`r infoBox_border("Average number of vaccines", text = "The average number of flu vaccines administered per community pharmacy was calculated by dividing the total number of flu vaccines administered for each year by the total number of community pharmacies that have provided the service. This average is a mean.", width = "100%")`
+`r infoBox_border("Average number of flu vaccines", text = "The average number of flu vaccines administered per community pharmacy was calculated by dividing the total number of flu vaccines administered for each year by the total number of community pharmacies that have provided the service. This average is a mean.", width = "100%")`
 :::
 ::::
 
@@ -932,7 +972,7 @@ Further information including which NRT products can be supplied as part of the 
 ```{r advanced services scs}
 figure_17
 
-get_download_button(title = "Download chart data", data = table_figure_16, filename = "figure 16")
+get_download_button(title = "Download chart data", data = table_figure_17, filename = "figure 17")
 ```
 ##### Table
 
@@ -941,7 +981,7 @@ get_download_button(title = "Download chart data", data = table_figure_16, filen
 ```{r advanced services scs_table}
 knitr::kable(table_figure_17, align = "lrr")
 
-get_download_button(title = "Download chart data", data = table_figure_16, filename = "figure 16")
+get_download_button(title = "Download chart data", data = table_figure_17, filename = "figure 17")
 ```
 </div>
 Source: [Summary tables - General Pharmaceutical Services - Table 6](`r config$fy_excel_link`)
@@ -1068,13 +1108,11 @@ These official statistics were independently reviewed by the (OSR) in December 2
 
 ### 3.1. Changes made to this publication {.toc-ignore}
 
-#### Changes to the statistical narrative 
+The NHS Pharmacy First Service was introduced from 31 January 2024. 
 
-The advanced service Pharmacy First Service (PFS) has been added to the narrative.
+Data relating to the advanced services under the pharmacy first service umbrella - clinical pathways and referrals for minor illness & urgent medicines supply - has been included in the statistical narrative.
 
-#### Changes to the summary tables
-
-The NHS Pharmacy First - Clinical Pathway consultation advanced service was introduced from 31 January 2024. Figures for items issued through the Clinical Pathway service were included in the overall counts for dispensed items and drug costs for pharmacies previously but have now been excluded from overall counts.
+Data reported in the 2023/24 statistical narrative and summary tables of this publication included item counts and drugs costs for the pharmacy first clinical pathway service in the overall counts for dispensed prescriptions items and drugs costs. This has now been separated and reported independently. 
 
 ### 3.2. Accuracy of these statistics {.toc-ignore}
 
