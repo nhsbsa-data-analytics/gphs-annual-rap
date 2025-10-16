@@ -2121,22 +2121,31 @@ infoBox_border <- function(
     borderColour = "#005EB8",
     width = "31%",
     fontColour = "black") {
+
+  #set handling for when header is blank
+  display <- "block"
+
+  if(header == "") {
+    display <- "none"
+  }
+
   paste(
     "<div class='infobox_border' style = 'border: 1px solid ", borderColour,"!important;
   border-left: 5px solid ", borderColour,"!important;
   background-color: ", backgroundColour,"!important;
   padding: 10px;
-  margin-bottom: 20px;
   width: ", width,"!important;
   display: inline-block;
   vertical-align: top;
   flex: 1;
   height: 100%;'>
-  <h4 style = 'color: ", fontColour, ";
+  <p style = 'color: ", fontColour, ";
   font-weight: bold;
   font-size: 18px;
   margin-top: 0px;
-  margin-bottom: 10px;'>", header, "</h4>
+  margin-bottom: 10px;
+  display: ", display,";'>",
+    header, "</p>
   <p style = 'color: ", fontColour, ";
   font-size: 16px;
   margin-top: 0px;

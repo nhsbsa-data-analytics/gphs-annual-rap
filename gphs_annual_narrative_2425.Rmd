@@ -47,7 +47,46 @@ knitr::opts_chunk$set(echo = FALSE,
       </div>
     </div>
     </div>
+<!-- JS to handle hiding the header on scroll -->
 
+```{=html}
+<script>
+  document.addEventListener("scroll", function() {
+    var header = document.getElementById("fixed-header");
+    var toc = document.getElementById("TOC");
+    var BackTopButton = document.getElementById("backtop-button");
+    var scrollPosition = window.scrollY || document.documentElement.scrollTop;
+  if(scrollPosition > 88) {
+    header.style.top = "-200px";
+    toc.style.setProperty('margin-top', '24px', 'important');
+    BackTopButton.style.setProperty('visibility', 'visible', 'important');
+  } else
+  {
+    header.style.top = "0";
+    toc.style.setProperty('margin-top', '140px', 'important');
+    BackTopButton.style.setProperty('visibility', 'hidden', 'important');
+  }
+}
+);
+</script>
+```
+
+<!-- JS to handle back to top button -->
+
+```{=html}
+<script>
+       function BackTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
+```
+
+<button onclick="BackTop()" id="backtop-button" style="opacity: 0.7; pointer-events: initial; visibility: visible;">
+
+[▲]{aria-hidden="true"}Back to top
+
+</button>
 <main>
 
 # `r config$publication_sub_name` {.toc-ignore}
@@ -281,7 +320,7 @@ Source: [Summary tables - General Pharmaceutical Services - Tables 3 and 10](`r 
 `r infoBox_no_border(header = "", text = htmltools::HTML("<b> Total items for community pharmacies have trended upwards for the last four years.</b>"), width = "100%")` 
 :::
 ::::
-::::{.row style="display: flex; padding-bottom: 1px;"} 
+::::{.row style="display: flex; padding-bottom: 10px;"} 
 :::{.col-md-12} 
 `r infoBox_border("", text = "The data in this section excludes items issued under the Pharmacy First Clinical Pathways advanced service.
 ", width = "100%")`
@@ -325,7 +364,7 @@ Source: [Summary tables - General Pharmaceutical Services - Tables 3 and 10](`r 
 `r infoBox_no_border(header = "", text = htmltools::HTML("<b>On average, there were 113,000 items dispensed per contractor by appliance contractors in 2024/25.</b>"), width = "100%")` 
 :::
 ::::
-::::{.row style="display: flex; padding-bottom: 1px;"} 
+::::{.row style="display: flex; padding-bottom: 10px;"} 
 :::{.col-md-12} 
 `r infoBox_border("", text = "The data in this section excludes items issued under the Pharmacy First Clinical Pathways advanced service.
 ", width = "100%")`
@@ -373,7 +412,7 @@ Source: [Summary tables - General Pharmaceutical Services - Tables 3 and 10](`r 
 `r infoBox_no_border(header = "", text = htmltools::HTML("<b>99.2% of contractors dispensed at least one item by EPS in  2024/25.</b>"), width = "100%")` 
 :::
 ::::
-::::{.row style="display: flex; padding-bottom: 1px;"} 
+::::{.row style="display: flex; padding-bottom: 10px;"} 
 :::{.col-md-12} 
 `r infoBox_border("", text = "The data in this section excludes items issued under the Pharmacy First Clinical Pathways advanced service.
 ", width = "100%")`
@@ -995,7 +1034,7 @@ Source: [Summary tables - General Pharmaceutical Services - Table 6](`r config$f
 <!-- ::: -->
 <!-- :::: -->
 
-The cost of consultations for SCS provided in  2024/25 was £369,000, an increase of more than double the previous year. The  cost of NRT products provided for SCS in 2024/25 was £241,000, an 89.5% increase from 2023/24. 
+The cost of NRT products provided for SCS in  2024/25 was £369,000, an increase of more than double the previous year. The  cost of consultations for SCS provided in 2024/25 was £241,000, an 89.5% increase from 2023/24. 
 
 ::::{.row style="display: flex; padding-bottom: 10px;"} 
 :::{.col-md-12}
