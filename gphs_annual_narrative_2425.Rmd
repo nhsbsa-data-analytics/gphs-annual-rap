@@ -61,9 +61,9 @@ Published `r config$publication_date`
 
 In England in 2024/25 for community pharmacies and appliance contractors:
 
-* there were 11,098 active community pharmacies and 111 active appliance contractors.For important information about interpreting this figure see [section 3](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gphs_annual_2023_24_v001.html#about-these-statistics)
+* there were 11,098 active community pharmacies and 111 active appliance contractors. For important information about interpreting this figure see [section 3](https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/gphs/gphs_annual_2023_24_v001.html#about-these-statistics)
 
-* 1.2 billion prescription items were dispensed by community pharmacies. This was a 4% increase from 2023/24
+* 1.16 billion prescription items were dispensed by community pharmacies. This was a 4% increase from 2023/24
 
 * 13 million prescription items were dispensed by appliance contractors. This was a 7% increase from 2023/24
 
@@ -102,7 +102,7 @@ Data is collected from prescriptions submitted to the NHSBSA by dispensing contr
 
 Data is limited in this publication to only prescription items that have been dispensed by a community pharmacy or appliance contractor in England. Items dispensed by dispensing doctors, hospitals or prisons, or submitted for reimbursement via a personal administration account have been excluded.
 
-Data on advanced services provided by community pharmacies and appliance contractors is limited to where a claim has been submitted to NHSBSA in relation to performing one of those services. Counts of the number of services provided are based on the number of times a fee has been paid to a contractor. Figures for the number of services provided are counts of the number of times a fee has been paid to a contractor for that service.
+Data on advanced services provided by community pharmacies and appliance contractors is limited to where a claim has been submitted to NHSBSA in relation to performing one of those services.Figures for the number of services provided are counts of the number of times a fee has been paid to a contractor for that service.
 
 
 This publication aims to describe the activity of community pharmacies and appliance contractors in England across the whole financial year.
@@ -252,7 +252,7 @@ Source: [Summary tables - General Pharmaceutical Services - Tables 3 and 10](`r 
 
 ::::{.row style="display: flex; padding-bottom: 15px;"}
 :::{.col-md-4}
-`r infoBox_no_border(header = "", text = htmltools::HTML("<b> There were 1.2 billion items dispensed by community pharmacies in 2024/25.</b>"), width = "100%")` 
+`r infoBox_no_border(header = "", text = htmltools::HTML("<b> There were 1.16 billion items dispensed by community pharmacies in 2024/25.</b>"), width = "100%")` 
 :::
 :::{.col-md-4}
 `r infoBox_no_border(header = "", text = htmltools::HTML("<b>There were 13 million items dispensed by appliance contractors in 2024/25.</b>"), width = "100%")` 
@@ -361,7 +361,7 @@ The SAF is a fixed fee that applies to every prescription item that is dispensed
 * repeat dispensing payment
 * EPS monthly allowance
 
-The value of the SAF is set by DHSC and can fluctuate throughout the year. It is based upon the forecast of the total number of items dispensed to ensure that the fee delivery remains within the agreed funding envelope for the year. Table 1 displays the value of the SAF and the dates that it has changed.", width = "100%")`
+The value of the SAF is set by DHSC and can fluctuate throughout the year. It is based upon the forecast of the total number of items dispensed to ensure that the fee delivery remains within the agreed funding envelope for the year. Table 5 displays the value of the SAF and the dates that it has changed.", width = "100%")`
 :::
 ::::
 
@@ -405,15 +405,15 @@ In 2024/25 the value of SAFs received by contractors increased by 3.90% to £1.5
 
 It should be noted, prior to December 2016 the figures reported are for professional fees only, and do not include the 3 additional payments that the SAF consists of.
 
+<div class = "tabset">
 
-
-#### **`r paste0("Table ",1,": Dispensing fees, their value, and when they came into effect")`**
+#### **`r paste0("Table ",5a,": Dispensing fees, their value, and when they came into effect")`**
 ``` {r saf_values}
 
 table_1_saf
-get_download_button(title = "Download data table", data = table_1_data, filename = "table_1")
+get_download_button(title = "Download data table", data = table_1_data, filename = "table_5a")
 ```
-
+</div>
 Source: [The Drug Tariff for England and Wales](https://www.nhsbsa.nhs.uk/pharmacies-gp-practices-and-appliance-contractors/drug-tariff)
 
 ### 2.2 Advanced Services for contractors {.toc-ignore} 

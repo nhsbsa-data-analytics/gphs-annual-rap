@@ -158,6 +158,10 @@ width: 50%;
 margin-top: 20px;
 }
 
+#Layer_1 {
+height: 80px;
+}
+
 /* BUTTON */
 
 .code-folding-btn:focus {
@@ -254,7 +258,7 @@ font-size:16px!important;
     color: white;
     pointer-events: none;
     transition: opacity 1s;
-    height: 70px!important;
+    height: 50px!important;
 }
 
 button {
