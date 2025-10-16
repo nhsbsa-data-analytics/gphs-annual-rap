@@ -4,6 +4,7 @@
 
 #clear environment
 rm(list = ls())
+load("gps2425filename.Rdata")
 
 #source functions
 source("./functions/functions.R")
@@ -106,7 +107,7 @@ schema <-
 national_extract <- national_extract(
   con = con,
   schema = schema,
-  table = "GPS_FINAL_202509_COMBINED"
+  table = "GPS_FINAL_202510_COMBINED"
 )
 #write.csv(national_extract,"national_extract.csv")
 national_month_extract <- national_month_extract(
@@ -142,13 +143,13 @@ national_extract<- national_extract %>%
     by = c("FINANCIAL_YEAR","APPLIANCE_DISPENSER_HIST"),
     suffix = c("_dwh","_csv")
   ) %>%
-# # compute final flu columns, replacing NAs with 0
- mutate(
-   num_flu_pharm = num_flu_pharm_csv,
-   flu_items_total =  flu_items_total_csv,
-   flu_cost_total = flu_cost_total_csv,
-   flu_fees_total = flu_fees_total_csv
- )
+  # # compute final flu columns, replacing NAs with 0
+  mutate(
+    num_flu_pharm = num_flu_pharm_csv,
+    flu_items_total =  flu_items_total_csv,
+    flu_cost_total = flu_cost_total_csv,
+    flu_fees_total = flu_fees_total_csv
+  )
 
 
 # set latest financial year
@@ -253,32 +254,32 @@ establishing the way the patient uses the appliance and the patient’s experien
 identifying, discussing and assisting in the resolution of poor or ineffective use of the appliance by the patient;
 advising the patient on the safe and appropriate storage of the appliance
 advising the patient on the safe and proper disposal of the appliances that are used or unwanted.",
-"The average is calculated for each pharmacy by dividing the total items dispensed by the number of months the pharmacy was active in the year. The median of these figures is then calculated to give the final measure. A median is calculated by arranging all of the available values into an ordered list and selecting the value that is in the middle. If there are 2 middle values, the median is halfway between them. We use the median because the distribution of number of items dispensed is skewed, with a small number of contractors responsible for large volumes of dispensing on a monthly basis. When using the mean to calculate the average of a skewed distribution, it is highly influenced by those values at the upper end of the distribution and thus may not be truly representative. By taking the middle value of the data after sorting in ascending order the median avoids this issue.",
-"Community Pharmacy Home Delivery Service was introduced during the COVID-19 pandemic. Initially this service delivered prescriptions to patients who were clinically extremely vulnerable (CEV). It was then extended to include self-isolating patients. The data held does not differentiate between delivery services for CEV and those in self-isolation. The service ended on 31 March 2022.",
-"Community pharmacies are typically responsible for dispensing drugs and medicines, and include high street pharmacies such as Boots and Lloyds. Appliance contractors are specialists in dispensing medical devices and appliances. A community pharmacy may dispense both medicines and appliances. However, an appliance contractor only dispenses medical devices, appliances and accessories. The figures for each of these type of contractor have been split out. Where contractor type is 'Pharmacy + Appliance' the figures for both contractor types have been combined, and do not indicate a separate type of contractor.",
-"A controlled area is defined in the NHS Pharmaceutical and Local Pharmaceutical Regulations 2013 as one which NHS England has determined is rural in character. When NHS England receive applications to open a pharmacy in a controlled locality they consider whether granting the application would prejudice the provision of existing general medical or pharmaceutical services in the locality.",
-"There are many costs incurred when a dispensing contractor fulfils a prescription. The costs reported in this publication represent the basic price of the item and the quantity prescribed. This is sometimes called the ‘Net Ingredient Cost’ (NIC). This also known as reimbursement of costs to dispensing contractors.",
-"Covid-19 Lateral Flow Device Distribution Service was an advanced service was introduced in March 2021. It made lateral flow device (LFD) test kits readily available at community pharmacies. The service was part of the Government’s offer of lateral flow testing to all people in England and it worked alongside NHS Test and Trace’s other COVID-19 testing routes.",
-"COVID-19 vaccination enhanced service was an enhanced service was introduced towards the end of 2020/21 towards the end of 2020/21 to allow community pharmacies to provide COVID-19 vaccinations as part of the Phase 1 and Phase 2 cohorts of the Joint Committee on Vaccination and Immunisation (JCVI). A further enhanced service was commissioned to deliver Phase 3 alongside the seasonal influenza vaccination program.",
-"Community Pharmacist Consultation Services (CPCS) is an advanced service introduced in October 2019 which allows general practices to refer patients for a minor illness consultation via CPCS using an agreed local referral pathway.",
-"Discharge Medicines Service (DMS) is an essential service that was introduced in February 2021 and allows patients discharged from NHS Trust hospitals who need extra support with their medicines to be referred to their community pharmacy.",
-"Electronic Prescription Service (EPS) allows prescribers to send prescriptions electronically to a dispenser (such as a pharmacy) of the patient's choice. This makes the prescribing and dispensing process more efficient and convenient for patients and staff.",
-"There are many fees that can be claimed by pharmacy and appliance contractors for providing essential and advanced services to NHS patients. The principal fee is the dispensing fee, which is also known as a professional fee or single activity fee. This fee is paid to a pharmacy or appliance contractor when they dispense a prescription item. Some items can attract more than one dispensing fee. Details of what fees are payable to pharmacy and appliance contractors can be found in the Drug Tariff for England and Wales.",
-"The financial year to which the data belongs.",
-"Hepatitis C testing service  was an advanced service introduced in March 2021 and discontinued from March 2023. The service offers people who inject drugs (PWIDs), who are not engaged with community drug and alcohol treatment services, the opportunity to receive a Point of Care Testing (POCT) HCV test from a community pharmacy.",
-"Hypertension Case-Finding is an advanced service introduced in October 2021.  It followed an NHS England pilot for patients aged over 40 years, in which pharmacies offered blood pressure checks and 24 hour ambulatory blood pressure monitoring (ABPM) to some patients with elevated initial blood pressure readings.",
-"The name given to the Integrated Care Board (ICB) that a prescribing organisation belongs to. This is based upon NHSBSA administrative records, not geographical boundaries and more closely reflect the operational organisation of practices than other geographical data sources.",
-"The unique code used to refer to an Integrated Care Board (ICB)",
-"The number of prescription items dispensed. 'Items' is the number of times a product appears on a prescription form. Prescription forms include both paper prescriptions and electronic messages.",
-"The Medicines Use Review (MUR) and Prescription Intervention Service was discontinued on 31 March 2021. It consisted of accredited pharmacists undertaking structured adherence-centred reviews with patients on multiple medicines, particularly those receiving medicines for long-term conditions. National target groups were agreed in order to guide the selection of patients the service was offered to.",
-"The name given to the NHS England Regional team a prescribing organisation belongs to. This is based upon NHSBSA administrative records, not geographical boundaries, and more closely reflect the operational organisation of practices than other geographical data sources.",
-"The unique code used to refer to an NHS England Region.",
-"The New Medicine Service (NMS) was the fourth advanced service to be added to the Community Pharmacy Contractual Framework.  It commenced on 1st October 2011. The service provides support for people with long-term conditions when they are newly prescribed a medicine, with the goal of improving medicines adherence. It is focused on particular patient groups and conditions.",
-"The Pharmacy Contraception Service (PCS) is an advanced service introduced in April 2023, allowing the on-going supply of oral contraception (OC) from community pharmacies.",
-"Pharmacy First is an Advanced Service introduced in January 2024 allowing pharmacists to providing advice and NHS-funded treatment, where clinically appropriate, for seven common conditions.",
-"Stoma Appliance Customisation (SAC) is the third Advanced service in the NHS community pharmacy contract. The service involves the customisation of a quantity of two or more stoma appliances, based on the patient’s measurements or a template. The aim of the service is to ensure proper use and comfortable fitting of the stoma appliance and to improve the duration of usage, thereby reducing waste. The stoma appliances that can be customised are listed in Part IXC of the Drug Tariff.",
-"In 2015 community pharmacies began providing seasonal influenza vaccinations under a nationally commissioned service by NHS England & Improvement. Each year from September through to March, pharmacy contractors can administer flu vaccines to patients and submit a claim to NHSBSA for payment. This includes reimbursement of the cost of the vaccine, plus a fee for providing the service to NHS patients.",
-"Smoking Cessation service (SCS) is an advanced service introduced in March 2022. Patients are discharged with their consent to the community pharmacy of their choice to continue smoking cessation treatment began under an NHS Trust.")
+    "The average is calculated for each pharmacy by dividing the total items dispensed by the number of months the pharmacy was active in the year. The median of these figures is then calculated to give the final measure. A median is calculated by arranging all of the available values into an ordered list and selecting the value that is in the middle. If there are 2 middle values, the median is halfway between them. We use the median because the distribution of number of items dispensed is skewed, with a small number of contractors responsible for large volumes of dispensing on a monthly basis. When using the mean to calculate the average of a skewed distribution, it is highly influenced by those values at the upper end of the distribution and thus may not be truly representative. By taking the middle value of the data after sorting in ascending order the median avoids this issue.",
+    "Community Pharmacy Home Delivery Service was introduced during the COVID-19 pandemic. Initially this service delivered prescriptions to patients who were clinically extremely vulnerable (CEV). It was then extended to include self-isolating patients. The data held does not differentiate between delivery services for CEV and those in self-isolation. The service ended on 31 March 2022.",
+    "Community pharmacies are typically responsible for dispensing drugs and medicines, and include high street pharmacies such as Boots and Lloyds. Appliance contractors are specialists in dispensing medical devices and appliances. A community pharmacy may dispense both medicines and appliances. However, an appliance contractor only dispenses medical devices, appliances and accessories. The figures for each of these type of contractor have been split out. Where contractor type is 'Pharmacy + Appliance' the figures for both contractor types have been combined, and do not indicate a separate type of contractor.",
+    "A controlled area is defined in the NHS Pharmaceutical and Local Pharmaceutical Regulations 2013 as one which NHS England has determined is rural in character. When NHS England receive applications to open a pharmacy in a controlled locality they consider whether granting the application would prejudice the provision of existing general medical or pharmaceutical services in the locality.",
+    "There are many costs incurred when a dispensing contractor fulfils a prescription. The costs reported in this publication represent the basic price of the item and the quantity prescribed. This is sometimes called the ‘Net Ingredient Cost’ (NIC). This also known as reimbursement of costs to dispensing contractors.",
+    "Covid-19 Lateral Flow Device Distribution Service was an advanced service was introduced in March 2021. It made lateral flow device (LFD) test kits readily available at community pharmacies. The service was part of the Government’s offer of lateral flow testing to all people in England and it worked alongside NHS Test and Trace’s other COVID-19 testing routes.",
+    "COVID-19 vaccination enhanced service was an enhanced service was introduced towards the end of 2020/21 towards the end of 2020/21 to allow community pharmacies to provide COVID-19 vaccinations as part of the Phase 1 and Phase 2 cohorts of the Joint Committee on Vaccination and Immunisation (JCVI). A further enhanced service was commissioned to deliver Phase 3 alongside the seasonal influenza vaccination program.",
+    "Community Pharmacist Consultation Services (CPCS) is an advanced service introduced in October 2019 which allows general practices to refer patients for a minor illness consultation via CPCS using an agreed local referral pathway.",
+    "Discharge Medicines Service (DMS) is an essential service that was introduced in February 2021 and allows patients discharged from NHS Trust hospitals who need extra support with their medicines to be referred to their community pharmacy.",
+    "Electronic Prescription Service (EPS) allows prescribers to send prescriptions electronically to a dispenser (such as a pharmacy) of the patient's choice. This makes the prescribing and dispensing process more efficient and convenient for patients and staff.",
+    "There are many fees that can be claimed by pharmacy and appliance contractors for providing essential and advanced services to NHS patients. The principal fee is the dispensing fee, which is also known as a professional fee or single activity fee. This fee is paid to a pharmacy or appliance contractor when they dispense a prescription item. Some items can attract more than one dispensing fee. Details of what fees are payable to pharmacy and appliance contractors can be found in the Drug Tariff for England and Wales.",
+    "The financial year to which the data belongs.",
+    "Hepatitis C testing service  was an advanced service introduced in March 2021 and discontinued from March 2023. The service offers people who inject drugs (PWIDs), who are not engaged with community drug and alcohol treatment services, the opportunity to receive a Point of Care Testing (POCT) HCV test from a community pharmacy.",
+    "Hypertension Case-Finding is an advanced service introduced in October 2021.  It followed an NHS England pilot for patients aged over 40 years, in which pharmacies offered blood pressure checks and 24 hour ambulatory blood pressure monitoring (ABPM) to some patients with elevated initial blood pressure readings.",
+    "The name given to the Integrated Care Board (ICB) that a prescribing organisation belongs to. This is based upon NHSBSA administrative records, not geographical boundaries and more closely reflect the operational organisation of practices than other geographical data sources.",
+    "The unique code used to refer to an Integrated Care Board (ICB)",
+    "The number of prescription items dispensed. 'Items' is the number of times a product appears on a prescription form. Prescription forms include both paper prescriptions and electronic messages.",
+    "The Medicines Use Review (MUR) and Prescription Intervention Service was discontinued on 31 March 2021. It consisted of accredited pharmacists undertaking structured adherence-centred reviews with patients on multiple medicines, particularly those receiving medicines for long-term conditions. National target groups were agreed in order to guide the selection of patients the service was offered to.",
+    "The name given to the NHS England Regional team a prescribing organisation belongs to. This is based upon NHSBSA administrative records, not geographical boundaries, and more closely reflect the operational organisation of practices than other geographical data sources.",
+    "The unique code used to refer to an NHS England Region.",
+    "The New Medicine Service (NMS) was the fourth advanced service to be added to the Community Pharmacy Contractual Framework.  It commenced on 1st October 2011. The service provides support for people with long-term conditions when they are newly prescribed a medicine, with the goal of improving medicines adherence. It is focused on particular patient groups and conditions.",
+    "The Pharmacy Contraception Service (PCS) is an advanced service introduced in April 2023, allowing the on-going supply of oral contraception (OC) from community pharmacies.",
+    "Pharmacy First is an Advanced Service introduced in January 2024 allowing pharmacists to providing advice and NHS-funded treatment, where clinically appropriate, for seven common conditions.",
+    "Stoma Appliance Customisation (SAC) is the third Advanced service in the NHS community pharmacy contract. The service involves the customisation of a quantity of two or more stoma appliances, based on the patient’s measurements or a template. The aim of the service is to ensure proper use and comfortable fitting of the stoma appliance and to improve the duration of usage, thereby reducing waste. The stoma appliances that can be customised are listed in Part IXC of the Drug Tariff.",
+    "In 2015 community pharmacies began providing seasonal influenza vaccinations under a nationally commissioned service by NHS England & Improvement. Each year from September through to March, pharmacy contractors can administer flu vaccines to patients and submit a claim to NHSBSA for payment. This includes reimbursement of the cost of the vaccine, plus a fee for providing the service to NHS patients.",
+    "Smoking Cessation service (SCS) is an advanced service introduced in March 2022. Patients are discharged with their consent to the community pharmacy of their choice to continue smoking cessation treatment began under an NHS Trust.")
 
 accessibleTables::create_metadata(wb,
                                   meta_fields,
@@ -298,17 +299,17 @@ accessibleTables::write_sheet(
 
 #left align columns A (Financial Year)
 accessibleTables::format_data(wb,
-            "Table_1",
-            c("A"),
-            "left",
-            "")
+                              "Table_1",
+                              c("A"),
+                              "left",
+                              "")
 
 #right align columns B to D and round to whole numbers with thousand separator
 accessibleTables::format_data(wb,
-            "Table_1",
-            c("B", "C", "D"),
-            "right",
-            "#,##0")
+                              "Table_1",
+                              c("B", "C", "D"),
+                              "right",
+                              "#,##0")
 
 #### Table 2 pharmacy types
 # write data to sheet
@@ -328,17 +329,17 @@ accessibleTables::write_sheet(
 
 #left align columns A
 accessibleTables::format_data(wb,
-            "Table_2",
-            c("A"),
-            "left",
-            "")
+                              "Table_2",
+                              c("A"),
+                              "left",
+                              "")
 
 #right align columns B to H and round to whole numbers with thousand separator
 accessibleTables::format_data(wb,
-            "Table_2",
-            c("B", "C", "D", "E", "F", "G", "H"),
-            "right",
-            "#,##0")
+                              "Table_2",
+                              c("B", "C", "D", "E", "F", "G", "H"),
+                              "right",
+                              "#,##0")
 
 #### Table 3
 # write data to sheet
@@ -356,24 +357,24 @@ accessibleTables::write_sheet(
 
 #left align columns A
 accessibleTables::format_data(wb,
-            "Table_3",
-            c("A"),
-            "left",
-            "")
+                              "Table_3",
+                              c("A"),
+                              "left",
+                              "")
 
 #right align columns and round to whole numbers with thousand separator
 accessibleTables::format_data(wb,
-            "Table_3",
-            c("B", "C", "F", "G"),
-            "right",
-            "#,##0")
+                              "Table_3",
+                              c("B", "C", "F", "G"),
+                              "right",
+                              "#,##0")
 
 #right align column and round to 2dp with thousand separator
 accessibleTables::format_data(wb,
-            "Table_3",
-            c("D", "E", "H"),
-            "right",
-            "#,##0.00")
+                              "Table_3",
+                              c("D", "E", "H"),
+                              "right",
+                              "#,##0.00")
 
 #### Table 4
 # write data to sheet
@@ -392,17 +393,17 @@ accessibleTables::write_sheet(
 
 #left align columns A
 accessibleTables::format_data(wb,
-            "Table_4",
-            c("A", "B"),
-            "left",
-            "")
+                              "Table_4",
+                              c("A", "B"),
+                              "left",
+                              "")
 
 #right align columns and round to whole numbers with thousand separator
 accessibleTables::format_data(wb,
-            "Table_4",
-            c("C", "D"),
-            "right",
-            "#,##0")
+                              "Table_4",
+                              c("C", "D"),
+                              "right",
+                              "#,##0")
 
 #### Table 5
 # write data to sheet
@@ -425,24 +426,24 @@ accessibleTables::write_sheet(
 
 #left align columns A
 accessibleTables::format_data(wb,
-            "Table_5",
-            c("A"),
-            "left",
-            "")
+                              "Table_5",
+                              c("A"),
+                              "left",
+                              "")
 
 #right align columns and round to whole numbers with thousand separator
 accessibleTables::format_data(wb,
-            "Table_5",
-            c("B", "C", "G", "I", "K", "M", "O", "Q", "R", "T", "U", "W"),
-            "right",
-            "#,##0")
+                              "Table_5",
+                              c("B", "C", "G", "I", "K", "M", "O", "Q", "R", "T", "U", "W"),
+                              "right",
+                              "#,##0")
 
 #right align column and round to 2dp with thousand separator
 accessibleTables::format_data(wb,
-            "Table_5",
-            c("D", "E", "F", "H", "J", "L", "N", "P", "S", "V", "X"),
-            "right",
-            "#,##0.00")
+                              "Table_5",
+                              c("D", "E", "F", "H", "J", "L", "N", "P", "S", "V", "X"),
+                              "right",
+                              "#,##0.00")
 
 #### Table 6
 accessibleTables::write_sheet(
@@ -461,31 +462,31 @@ accessibleTables::write_sheet(
     "7. The Medicines Use Review (MUR) and Prescription Intervention Service was discontinued on 31 March 2021. More information on MUR can be found on the 'Metadata' tab.",
     "8. The following abbreviations have been used in this table: Hepatitis C (Hep C), Hypertension Case-Finding service (hypertension service), Medicines Use Review (MUR), New Medicine Service (NMS), Seasonal influenza vaccination advanced service (Flu vaccine), Smoking Cessation service (SCS). Pharmacy Contraception Service (PCS), Pharmacy First Service (PFS), Urgent repeat Medicine Supply (UMS)."
 
-      ),
+  ),
   table_6,
   14
 )
 
 #left align columns A
 accessibleTables::format_data(wb,
-            "Table_6",
-            c("A"),
-            "left",
-            "")
+                              "Table_6",
+                              c("A"),
+                              "left",
+                              "")
 
 #right align columns and round to whole numbers with thousand separator
 accessibleTables::format_data(wb,
-            "Table_6",
-            c("B", "C", "D", "F", "G", "J", "N",  "R",  "V",  "AD", "AF", "AI"),
-            "right",
-            "#,##0")
+                              "Table_6",
+                              c("B", "C", "D", "F", "G", "J", "N",  "R",  "V",  "AD", "AF", "AI"),
+                              "right",
+                              "#,##0")
 
 #right align column and round to 2dp with thousand separator
 accessibleTables::format_data(wb,
-            "Table_6",
-            c("E", "H", "I", "K", "L", "M", "O", "P", "Q", "S", "T", "U", "W", "X","Y", "Z", "AA", "AB", "AC","AE", "AG", "AH", "AJ", "AK"),
-            "right",
-            "#,##0.00")
+                              "Table_6",
+                              c("E", "H", "I", "K", "L", "M", "O", "P", "Q", "S", "T", "U", "W", "X","Y", "Z", "AA", "AB", "AC","AE", "AG", "AH", "AJ", "AK"),
+                              "right",
+                              "#,##0.00")
 
 #### Table 7
 # write data to sheet
@@ -506,24 +507,24 @@ accessibleTables::write_sheet(
 
 #left align columns A
 accessibleTables::format_data(wb,
-            "Table_7",
-            c("A"),
-            "left",
-            "")
+                              "Table_7",
+                              c("A"),
+                              "left",
+                              "")
 
 #right align columns and round to whole numbers with thousand separator
 accessibleTables::format_data(wb,
-            "Table_7",
-            c("B", "C", "D", "F", "G", "I", "J", "L"),
-            "right",
-            "#,##0")
+                              "Table_7",
+                              c("B", "C", "D", "F", "G", "I", "J", "L"),
+                              "right",
+                              "#,##0")
 
 #right align column and round to 2dp with thousand separator
 accessibleTables::format_data(wb,
-            "Table_7",
-            c("E", "H", "K", "M", "N"),
-            "right",
-            "#,##0.00")
+                              "Table_7",
+                              c("E", "H", "K", "M", "N"),
+                              "right",
+                              "#,##0.00")
 
 #### Table 8
 # write data to sheet
@@ -545,24 +546,24 @@ accessibleTables::write_sheet(
 
 #left align columns A
 accessibleTables::format_data(wb,
-            "Table_8",
-            c("A"),
-            "left",
-            "")
+                              "Table_8",
+                              c("A"),
+                              "left",
+                              "")
 
 #right align columns and round to whole numbers with thousand separator
 accessibleTables::format_data(wb,
-            "Table_8",
-            c("B", "C", "D", "F", "H"),
-            "right",
-            "#,##0")
+                              "Table_8",
+                              c("B", "C", "D", "F", "H"),
+                              "right",
+                              "#,##0")
 
 #right align column and round to 2dp with thousand separator
 accessibleTables::format_data(wb,
-            "Table_8",
-            c("D", "E", "G", "I", "J"),
-            "right",
-            "#,##0.00")
+                              "Table_8",
+                              c("D", "E", "G", "I", "J"),
+                              "right",
+                              "#,##0.00")
 
 
 #### Table 9
@@ -584,24 +585,24 @@ accessibleTables::write_sheet(
 
 #left align columns A
 accessibleTables::format_data(wb,
-            "Table_9",
-            c("A"),
-            "left",
-            "")
+                              "Table_9",
+                              c("A"),
+                              "left",
+                              "")
 
 #right align columns and round to whole numbers with thousand separator
 accessibleTables::format_data(wb,
-            "Table_9",
-            c("B", "C", "D", "F", "G", "I", "M", "Q", "R"),
-            "right",
-            "#,##0")
+                              "Table_9",
+                              c("B", "C", "D", "F", "G", "I", "M", "Q", "R"),
+                              "right",
+                              "#,##0")
 
 #right align column and round to 2dp with thousand separator
 accessibleTables::format_data(wb,
-            "Table_9",
-            c("E", "H", "J", "K", "L", "N", "O", "P", "S"),
-            "right",
-            "#,##0.00")
+                              "Table_9",
+                              c("E", "H", "J", "K", "L", "N", "O", "P", "S"),
+                              "right",
+                              "#,##0.00")
 
 #### Table 10
 # write data to sheet
@@ -619,24 +620,24 @@ accessibleTables::write_sheet(
 
 #left align columns A
 accessibleTables::format_data(wb,
-            "Table_10",
-            c("A"),
-            "left",
-            "")
+                              "Table_10",
+                              c("A"),
+                              "left",
+                              "")
 
 #right align columns and round to whole numbers with thousand separator
 accessibleTables::format_data(wb,
-            "Table_10",
-            c("B", "C", "E", "F", "G", "I", "L", "K", "O", "N","Q"),
-            "right",
-            "#,##0")
+                              "Table_10",
+                              c("B", "C", "E", "F", "G", "I", "L", "K", "O", "N","Q"),
+                              "right",
+                              "#,##0")
 
 #right align column and round to 2dp with thousand separator
 accessibleTables::format_data(wb,
-            "Table_10",
-            c("D", "H", "J", "M", "P", "R", "S"),
-            "right",
-            "#,##0.00")
+                              "Table_10",
+                              c("D", "H", "J", "M", "P", "R", "S"),
+                              "right",
+                              "#,##0.00")
 
 #### Table 11
 # write data to sheet
@@ -647,31 +648,31 @@ accessibleTables::write_sheet(
   c(
     "1. Field definitions can be found on the 'Metadata' tab.",
     "2. The following abbreviations have been used in this table: Appliance Use Review (AUR), Stoma Appliance Customisation (SAC)."
-    ),
+  ),
   table_11,
   14
 )
 
 #left align columns A
 accessibleTables::format_data(wb,
-            "Table_11",
-            c("A"),
-            "left",
-            "")
+                              "Table_11",
+                              c("A"),
+                              "left",
+                              "")
 
 #right align columns and round to whole numbers with thousand separator
 accessibleTables::format_data(wb,
-            "Table_11",
-            c("B", "C", "D", "F", "G", "I", "J", "L", "M"),
-            "right",
-            "#,##0")
+                              "Table_11",
+                              c("B", "C", "D", "F", "G", "I", "J", "L", "M"),
+                              "right",
+                              "#,##0")
 
 #right align column and round to 2dp with thousand separator
 accessibleTables::format_data(wb,
-            "Table_11",
-            c("E", "H", "K", "N"),
-            "right",
-            "#,##0.00")
+                              "Table_11",
+                              c("E", "H", "K", "N"),
+                              "right",
+                              "#,##0.00")
 
 #### Table 12
 # write data to sheet
@@ -689,24 +690,24 @@ accessibleTables::write_sheet(
 
 #left align columns A
 accessibleTables::format_data(wb,
-            "Table_12",
-            c("A"),
-            "left",
-            "")
+                              "Table_12",
+                              c("A"),
+                              "left",
+                              "")
 
 #right align columns and round to whole numbers with thousand separator
 accessibleTables::format_data(wb,
-            "Table_12",
-            c("B", "C", "E", "F", "H", "J", "L", "M", "N", "O", "P"),
-            "right",
-            "#,##0")
+                              "Table_12",
+                              c("B", "C", "E", "F", "H", "J", "L", "M", "N", "O", "P"),
+                              "right",
+                              "#,##0")
 
 #right align column and round to 2dp with thousand separator
 accessibleTables::format_data(wb,
-            "Table_12",
-            c("D", "G", "I", "K", "N", "Q"),
-            "right",
-            "#,##0.00")
+                              "Table_12",
+                              c("D", "G", "I", "K", "N", "Q"),
+                              "right",
+                              "#,##0.00")
 
 #### Table 13
 # write data to sheet
@@ -725,24 +726,24 @@ accessibleTables::write_sheet(
 
 #left align columns A
 accessibleTables::format_data(wb,
-            "Table_13",
-            c("A"),
-            "left",
-            "")
+                              "Table_13",
+                              c("A"),
+                              "left",
+                              "")
 
 #right align columns and round to whole numbers with thousand separator
 accessibleTables::format_data(wb,
-            "Table_13",
-            c("B", "C", "D", "F", "G", "I", "J", "L", "M"),
-            "right",
-            "#,##0")
+                              "Table_13",
+                              c("B", "C", "D", "F", "G", "I", "J", "L", "M"),
+                              "right",
+                              "#,##0")
 
 #right align column and round to 2dp with thousand separator
 accessibleTables::format_data(wb,
-            "Table_13",
-            c("E", "H", "K", "N"),
-            "right",
-            "#,##0.00")
+                              "Table_13",
+                              c("E", "H", "K", "N"),
+                              "right",
+                              "#,##0.00")
 
 #### Table 14
 # write data to sheet
@@ -762,17 +763,17 @@ accessibleTables::write_sheet(
 
 #left align columns A, B, C
 accessibleTables::format_data(wb,
-            "Table_14",
-            c("A", "B", "C"),
-            "left",
-            "")
+                              "Table_14",
+                              c("A", "B", "C"),
+                              "left",
+                              "")
 
 #right align columns and round to whole numbers with thousand separator
 accessibleTables::format_data(wb,
-            "Table_14",
-            c("D", "E", "F", "G", "H", "I", "J"),
-            "right",
-            "#,##0")
+                              "Table_14",
+                              c("D", "E", "F", "G", "H", "I", "J"),
+                              "right",
+                              "#,##0")
 
 #### Table 15
 # write data to sheet
@@ -792,17 +793,17 @@ accessibleTables::write_sheet(
 
 #left align columns A, B, C
 accessibleTables::format_data(wb,
-            "Table_15",
-            c("A", "B", "C"),
-            "left",
-            "")
+                              "Table_15",
+                              c("A", "B", "C"),
+                              "left",
+                              "")
 
 #right align columns and round to whole numbers with thousand separator
 accessibleTables::format_data(wb,
-            "Table_15",
-            c("D", "E", "F", "G", "H", "I", "J"),
-            "right",
-            "#,##0")
+                              "Table_15",
+                              c("D", "E", "F", "G", "H", "I", "J"),
+                              "right",
+                              "#,##0")
 
 #### Table 16
 # write data to sheet
@@ -822,24 +823,24 @@ accessibleTables::write_sheet(
 
 #left align columns A, B, C
 accessibleTables::format_data(wb,
-            "Table_16",
-            c("A", "B", "C"),
-            "left",
-            "")
+                              "Table_16",
+                              c("A", "B", "C"),
+                              "left",
+                              "")
 
 #right align columns and round to whole numbers with thousand separator
 accessibleTables::format_data(wb,
-            "Table_16",
-            c("D", "E", "F", "G", "I", "J", "L", "M", "P", "Q", "S", "V", "Z", "AD"),
-            "right",
-            "#,##0")
+                              "Table_16",
+                              c("D", "E", "F", "G", "I", "J", "L", "M", "P", "Q", "S", "V", "Z", "AD"),
+                              "right",
+                              "#,##0")
 
 #right align column and round to 2dp with thousand separator
 accessibleTables::format_data(wb,
-            "Table_16",
-            c("H", "K", "N", "O", "R", "T", "U", "W", "X", "Y", "AA", "AB", "AC"),
-            "right",
-            "#,##0.00")
+                              "Table_16",
+                              c("H", "K", "N", "O", "R", "T", "U", "W", "X", "Y", "AA", "AB", "AC"),
+                              "right",
+                              "#,##0.00")
 
 #### Table 17
 # write data to sheet
@@ -859,24 +860,24 @@ accessibleTables::write_sheet(
 
 #left align columns A, B, C
 accessibleTables::format_data(wb,
-            "Table_17",
-            c("A", "B", "C"),
-            "left",
-            "")
+                              "Table_17",
+                              c("A", "B", "C"),
+                              "left",
+                              "")
 
 #right align columns and round to whole numbers with thousand separator
 accessibleTables::format_data(wb,
-            "Table_17",
-            c("D", "E", "F", "G", "I", "J", "L", "M", "P", "Q", "S", "V", "Z", "AD"),
-            "right",
-            "#,##0")
+                              "Table_17",
+                              c("D", "E", "F", "G", "I", "J", "L", "M", "P", "Q", "S", "V", "Z", "AD"),
+                              "right",
+                              "#,##0")
 
 #right align column and round to 2dp with thousand separator
 accessibleTables::format_data(wb,
-            "Table_17",
-            c("H", "K", "N", "O", "R", "T", "U", "W", "X", "Y", "AA", "AB", "AC"),
-            "right",
-            "#,##0.00")
+                              "Table_17",
+                              c("H", "K", "N", "O", "R", "T", "U", "W", "X", "Y", "AA", "AB", "AC"),
+                              "right",
+                              "#,##0.00")
 
 #### Table 18
 # write data to sheet
@@ -895,22 +896,22 @@ accessibleTables::write_sheet(
 )
 #left align columns A to C C
 accessibleTables::format_data(wb,
-            "Table_18",
-            c("A","B","C"),
-            "left",
-            "")
+                              "Table_18",
+                              c("A","B","C"),
+                              "left",
+                              "")
 #right align columns and round to whole numbers with thousand separator
 accessibleTables::format_data(wb,
-            "Table_18",
-            c("D", "E", "F", "G", "H", "I", "J", "N", "O"),
-            "right",
-            "#,##0")
+                              "Table_18",
+                              c("D", "E", "F", "G", "H", "I", "J", "N", "O"),
+                              "right",
+                              "#,##0")
 #right align column and round to 2dp with thousand separator
 accessibleTables::format_data(wb,
-            "Table_18",
-            c("K", "L", "M", "P"),
-            "right",
-            "#,##0.00")
+                              "Table_18",
+                              c("K", "L", "M", "P"),
+                              "right",
+                              "#,##0.00")
 
 #### Table 19
 # write data to sheet
@@ -929,22 +930,22 @@ accessibleTables::write_sheet(
 )
 #left align columns A to C
 accessibleTables::format_data(wb,
-            "Table_19",
-            c("A","B","C"),
-            "left",
-            "")
+                              "Table_19",
+                              c("A","B","C"),
+                              "left",
+                              "")
 #right align columns and round to whole numbers with thousand separator
 accessibleTables::format_data(wb,
-            "Table_19",
-            c("D", "E", "F", "G", "H", "I", "J", "N", "O"),
-            "right",
-            "#,##0")
+                              "Table_19",
+                              c("D", "E", "F", "G", "H", "I", "J", "N", "O"),
+                              "right",
+                              "#,##0")
 #right align column and round to 2dp with thousand separator
 accessibleTables::format_data(wb,
-            "Table_19",
-            c("K", "L", "M", "P"),
-            "right",
-            "#,##0.00")
+                              "Table_19",
+                              c("K", "L", "M", "P"),
+                              "right",
+                              "#,##0.00")
 
 #### Table 20
 # write data to sheet
@@ -956,21 +957,21 @@ accessibleTables::write_sheet(
     "1. More information on NHS Resolution and the data supplied here is available in the 'Background Information and Methodology' note that accompanies this release.",
     "2. Controlled and Non-Controlled areas are defined in the NHS Pharmaceutical and Local Pharmaceutical Regulations 2013. See 'Metadata' tab for full definition."
   ),
-table_20,
-14
+  table_20,
+  14
 )
 #left align columns A to C
 accessibleTables::format_data(wb,
-            "Table_20",
-            c("A","B","C"),
-            "left",
-            "")
+                              "Table_20",
+                              c("A","B","C"),
+                              "left",
+                              "")
 #right align columns and round to whole numbers with thousand separator
 accessibleTables::format_data(wb,
-            "Table_20",
-            c("D"),
-            "right",
-            "#,##0")
+                              "Table_20",
+                              c("D"),
+                              "right",
+                              "#,##0")
 
 #create cover sheet
 accessibleTables::makeCoverSheet(
@@ -1018,20 +1019,20 @@ openxlsx::saveWorkbook(wb,
 #table 1 saf fees
 
 table_1_saf_data <- data.frame(feeName = c("Professional fee","Single activity fee","Single activity fee","Single activity fee","Single activity fee","Single activity fee","Single activity fee","Single activity fee"),
-                        feeValue = c(90,113,125,129,126,127,129,127),
-                        feeStart = c("01 Jan 2001","01 Dec 2016","01 Apr 2017","01 Nov 2017","01 Nov 2018","01 Aug 2019","01 Aug 2021","01 Apr 2022"),
-                        feeEnd = c("30 Nov 2016","31 Mar 2017","31 Oct 2017","31 Oct 2018","31 Jul 2019","31 Jul 2021","31 Mar 2022","31 Mar 2024"))
+                               feeValue = c(90,113,125,129,126,127,129,127),
+                               feeStart = c("01 Jan 2001","01 Dec 2016","01 Apr 2017","01 Nov 2017","01 Nov 2018","01 Aug 2019","01 Aug 2021","01 Apr 2022"),
+                               feeEnd = c("30 Nov 2016","31 Mar 2017","31 Oct 2017","31 Oct 2018","31 Jul 2019","31 Jul 2021","31 Mar 2022","31 Mar 2024"))
 table_1_data <- data.frame(FEE_NAME = c("Professional fee","Single activity fee","Single activity fee","Single activity fee","Single activity fee","Single activity fee","Single activity fee","Single activity fee"),
                            FEE_VALUE_PENCE = c(90,113,125,129,126,127,129,127),
                            FEE_START = c("01 Jan 2001","01 Dec 2016","01 Apr 2017","01 Nov 2017","01 Nov 2018","01 Aug 2019","01 Aug 2021","01 Apr 2022"),
                            FEE_END = c("30 Nov 2016","31 Mar 2017","31 Oct 2017","31 Oct 2018","31 Jul 2019","31 Jul 2021","31 Mar 2022","31 Mar 2025"))
 
 table_1_saf<- DT::datatable(data = table_1_saf_data,
-              rownames = FALSE,
-              colnames = c("Fee name" = "feeName","Fee value (pence)" = "feeValue","Fee start date" = "feeStart","Fee end date" = "feeEnd"),
-              options = list(dom = "t",
-                             columnDefs = list(list(orderable = FALSE,
-                                                    targets = '_all'))))
+                            rownames = FALSE,
+                            colnames = c("Fee name" = "feeName","Fee value (pence)" = "feeValue","Fee start date" = "feeStart","Fee end date" = "feeEnd"),
+                            options = list(dom = "t",
+                                           columnDefs = list(list(orderable = FALSE,
+                                                                  targets = '_all'))))
 #figure 1 data - no of pharmacies
 figure_1_data <- national_extract %>%
   dplyr::mutate(CONTRACTOR_TYPE =  case_when(APPLIANCE_DISPENSER_HIST == "Y" ~ "Appliance contractors",
@@ -1176,7 +1177,7 @@ figure_4_data_table  <- national_extract %>%
   tidyr::pivot_longer(cols = c(paper_items_all_cont,eps_items_total_pharm,items_total),
                       names_to = "MEASURE",
                       values_to = "VALUE") %>%
-   dplyr::mutate(
+  dplyr::mutate(
     MEASURE = case_when(MEASURE == "paper_items_all_cont" ~ "Paper",
                         MEASURE == "eps_items_total_pharm" ~ "EPS",
                         MEASURE == "items_total" ~ "All")
@@ -1186,7 +1187,7 @@ table_figure_4 <- figure_4_data_table |>
   ungroup() |>
   tidyr::pivot_wider(names_from = MEASURE, values_from = VALUE) |>
   dplyr::mutate(`Paper` = format(`Paper`, big.mark = ","),
-                 `EPS` = format(`EPS`, big.mark = ","),
+                `EPS` = format(`EPS`, big.mark = ","),
                 `All` = format(`All`, big.mark = ",") )|>
   dplyr::rename("Financial year" = 1,
                 "Paper items dispensed" = 2,
@@ -1225,7 +1226,7 @@ table_figure_5 <- figure_5_data |>
   ungroup() |>
   tidyr::pivot_wider(names_from = MEASURE, values_from = VALUE) |>
   dplyr::mutate(`Total reimbursement` = format(`Total reimbursement`, big.mark = ","),
-`Value of single activity fees` = format(`Value of single activity fees`, big.mark = ",") )|>
+                `Value of single activity fees` = format(`Value of single activity fees`, big.mark = ",") )|>
   dplyr::rename("Financial year" = 1,
                 "Total reimbursement" = 2,
                 "Value of single activity fees" = 3)
@@ -1266,7 +1267,7 @@ table_figure_6 <- table_2_flu |>
   dplyr::rename("Financial year" = 1,
                 "Number of Flu vaccines" = 2,
                 "Average number of flu vaccines per community pharmacy"=3
-                )
+  )
 
 #figure 6 chart
 figure_6 <- figure_6_data %>%
@@ -1392,7 +1393,7 @@ figure_9 <- figure_9_data %>%
 #figure 10 aur volume
 
 figure_10_data  <-
-national_extract %>%
+  national_extract %>%
   dplyr::select(FINANCIAL_YEAR, num_aur_home_total_pharm,num_aur_prem_total_pharm,num_aur_all_total_pharm
   ) %>%
   summarise(num_aur_home_total_pharm = sum(num_aur_home_total_pharm),
@@ -1646,7 +1647,7 @@ figure_13 <- figure_13_data %>%
 #   )
 #
 
-figure_16_data <-national_extract %>%
+figure_17_data <-national_extract %>%
   filter(FINANCIAL_YEAR  %in% c("2022/2023","2023/2024","2024/2025")) %>%
   dplyr::select(FINANCIAL_YEAR,SCS_CNSLT,	SCS_NRTPROD_COST)%>%
   summarise(SCS_CNSLT = sum(SCS_CNSLT), SCS_NRTPROD_COST = sum(SCS_NRTPROD_COST) )  %>%
@@ -1659,15 +1660,15 @@ figure_16_data <-national_extract %>%
     measure = case_when(measure == "SCS_CNSLT" ~ "Cost of Smoking Cessation Service (SCS) consultation fees",
                         measure == "SCS_NRTPROD_COST" ~ "Cost of Nicotine Replacement Therapy (NRT) products provided during SCS consultations")
   )
-table_figure_16 <- figure_16_data |>
+table_figure_17 <- figure_17_data |>
   ungroup() |>
   tidyr::pivot_wider(names_from = measure, values_from = values) |>
   dplyr::mutate(`Cost of Smoking Cessation Service (SCS) consultation fees` = format(`Cost of Smoking Cessation Service (SCS) consultation fees`, big.mark = ","),
                 `Cost of Nicotine Replacement Therapy (NRT) products provided during SCS consultations` = format(`Cost of Nicotine Replacement Therapy (NRT) products provided during SCS consultations`, big.mark = ","))|>
   dplyr::rename("Financial year" = 1,
-                "Cost of Smoking Cessation Service (SCS) consultation fees (GBP)" = 2,
-                "Cost of Nicotine Replacement Therapy (NRT) products provided during SCS consultations (GBP)" = 3)
-figure_16 <- figure_16_data %>%
+                "Cost of Smoking Cessation Service (SCS) consultation fees (GBP)" = 3,
+                "Cost of Nicotine Replacement Therapy (NRT) products provided during SCS consultations (GBP)" = 2)
+figure_17 <- figure_17_data %>%
   nhsbsaVis::group_chart_hc(
     x = "FINANCIAL_YEAR",
     y = "values",
@@ -1679,7 +1680,7 @@ figure_16 <- figure_16_data %>%
     currency = TRUE
   )
 
-figure_17_data <-national_month_extract %>%
+figure_18_data <-national_month_extract %>%
   filter(YEAR_MONTH> 202303) %>%
   dplyr::select(YEAR_MONTH,t1c_consult,	t1c_prod_cost)%>%
   summarise(t1c_consult = sum(t1c_consult), t1c_prod_cost = sum(t1c_prod_cost) )  %>%
@@ -1694,7 +1695,7 @@ figure_17_data <-national_month_extract %>%
     measure = case_when(measure == "t1c_consult" ~ "Cost of Pharmacy Contraception Service (PCS) consultation fees",
                         measure == "t1c_prod_cost" ~ "Cost of oral contraception (OC) products provided during PCS consultations")
   )
-table_figure_17 <- figure_17_data |>
+table_figure_18 <- figure_18_data |>
   ungroup() |>
   tidyr::pivot_wider(names_from = measure, values_from = values) |>
   dplyr::mutate(`Cost of Pharmacy Contraception Service (PCS) consultation fees` = format(`Cost of Pharmacy Contraception Service (PCS) consultation fees`, big.mark = ","),
@@ -1702,7 +1703,7 @@ table_figure_17 <- figure_17_data |>
   dplyr::rename("Year Month" = 1,
                 "Cost of oral contraception (OC) products provided during PCS consultations" = 2,
                 "Cost of Pharmacy Contraception Service (PCS) consultation fees (GBP)" = 3)
-figure_17<- figure_17_data %>%
+figure_18<- figure_18_data %>%
   nhsbsaVis::group_chart_hc(
     x = "YEAR_MONTH",
     y = "values",
@@ -1719,24 +1720,38 @@ figure_17<- figure_17_data %>%
 
 
 
-# figure 18 covid vaccine cost year
+# figure 19 covid vaccine cost year
 
-figure_18_data <-national_extract %>%
+figure_19_data <-national_extract %>%
   filter(APPLIANCE_DISPENSER_HIST == "N",
          FINANCIAL_YEAR  %!in% c("2015/2016","2016/2017","2017/2018","2018/2019","2019/2020")) %>%
   dplyr::select(FINANCIAL_YEAR, CVD_19_VACCINE) %>%
-                  summarise(CVD_19_VACCINE = sum(CVD_19_VACCINE))  %>%
-                  tidyr::pivot_longer(cols = CVD_19_VACCINE,
-                                      names_to = "MEASURE",
-                                      values_to = "VALUES") %>%
-                  dplyr::mutate(VALUES = signif(VALUES, 3)) %>%
-                  dplyr::arrange(desc(MEASURE)) %>%
+  summarise(CVD_19_VACCINE = sum(CVD_19_VACCINE))  %>%
+  tidyr::pivot_longer(cols = CVD_19_VACCINE,
+                      names_to = "MEASURE",
+                      values_to = "VALUES") %>%
+  dplyr::mutate(VALUES = signif(VALUES, 3)) %>%
+  dplyr::arrange(desc(MEASURE)) %>%
 
-                  dplyr::mutate(
-                    MEASURE = case_when(MEASURE == "CVD_19_VACCINE" ~ "Cost of vaccine fees")
-                  )
+  dplyr::mutate(
+    MEASURE = case_when(MEASURE == "CVD_19_VACCINE" ~ "Cost of vaccine fees")
+  )
+figure_19_datat <-national_extract %>%
+  filter(APPLIANCE_DISPENSER_HIST == "N",
+         FINANCIAL_YEAR  %!in% c("2015/2016","2016/2017","2017/2018","2018/2019","2019/2020")) %>%
+  dplyr::select(FINANCIAL_YEAR, CVD_19_VACCINE) %>%
+  summarise(CVD_19_VACCINE = sum(CVD_19_VACCINE))  %>%
+  tidyr::pivot_longer(cols = CVD_19_VACCINE,
+                      names_to = "MEASURE",
+                      values_to = "VALUES") %>%
+
+  dplyr::arrange(desc(MEASURE)) %>%
+
+  dplyr::mutate(
+    MEASURE = case_when(MEASURE == "CVD_19_VACCINE" ~ "Cost of vaccine fees")
+  )
 #table data
-table_figure_18 <- figure_18_data |>
+table_figure_19 <- figure_19_datat |>
   ungroup() |>
   tidyr::pivot_wider(names_from = MEASURE, values_from = VALUES) |>
   dplyr::mutate(`Cost of vaccine fees` = format(`Cost of vaccine fees`, big.mark = ","))|>
@@ -1744,7 +1759,7 @@ table_figure_18 <- figure_18_data |>
                 "Cost of vaccine fees" = 2)
 
 #figure 18 chart
-figure_18 <- figure_18_data %>%
+figure_19 <- figure_19_data %>%
   nhsbsaVis::group_chart_hc(
     x = "FINANCIAL_YEAR",
     y = "VALUES",
@@ -1774,11 +1789,12 @@ figure_18 <- figure_18_data %>%
 #figure 14a pfs
 figure_14_data <-national_month_extract %>%
   filter(APPLIANCE_DISPENSER_HIST == "N",
-  YEAR_MONTH> 202401) %>%
+         YEAR_MONTH> 202401) %>%
   dplyr::select(YEAR_MONTH,pfcp_fees,
                 pfcp_payment,pfcp_umsmiremuneration)%>%
-  summarise(pfcp_fees = sum(pfcp_fees), pfcp_payment = sum(pfcp_payment),pfcp_umsmiremuneration=sum(pfcp_umsmiremuneration) )  %>%
-  tidyr::pivot_longer(cols = c(pfcp_fees, pfcp_payment,pfcp_umsmiremuneration),
+  summarise(pfcp_total = sum(pfcp_fees+pfcp_payment),pfcp_umsmiremuneration=sum(pfcp_umsmiremuneration) )  %>%
+  mutate(pfcp_umsmiremuneration=case_when(YEAR_MONTH==202402~ NA,.default=pfcp_umsmiremuneration))%>%
+  tidyr::pivot_longer(cols = c(pfcp_total,,pfcp_umsmiremuneration),
                       names_to = "measure",
                       values_to = "values") %>%
   dplyr::arrange(desc(measure)) %>%
@@ -1786,20 +1802,18 @@ figure_14_data <-national_month_extract %>%
     YEAR_MONTH = base::as.Date(as.character(paste0(YEAR_MONTH,"01")), format = "%Y%m%d")
   ) %>%
   dplyr::mutate(
-    measure = case_when(measure == "pfcp_fees" ~ "Cost of Pharmacy First Service (PFS) clinical pathway consultation fees",
-                        measure == "pfcp_payment" ~ "Cost of Pharmacy First Service (PFS) clinical pathway fixed monthly payments",
+    measure = case_when(measure == "pfcp_total" ~ "Cost of Pharmacy First Service (PFS) clinical pathway consultation fees and fixed monthly payments",
                         measure == "pfcp_umsmiremuneration" ~ "Cost of Pharmacy First Service (PFS) Minor Illness and Urgent Medicines Supply fees")
   )
 table_figure_14 <- figure_14_data |>
   ungroup() |>
   tidyr::pivot_wider(names_from = measure, values_from = values) |>
-  dplyr::mutate(`Cost of Pharmacy First Service (PFS) clinical pathway consultation fees` = format(`Cost of Pharmacy First Service (PFS) clinical pathway consultation fees`, big.mark = ","),
-                `Cost of Pharmacy First Service (PFS) clinical pathway fixed monthly payments` = format(`Cost of Pharmacy First Service (PFS) clinical pathway fixed monthly payments`, big.mark = ","),
+  dplyr::mutate(`Cost of Pharmacy First Service (PFS) clinical pathway consultation fees and fixed monthly payments` = format(`Cost of Pharmacy First Service (PFS) clinical pathway consultation fees and fixed monthly payments`, big.mark = ","),
                 `Cost of Pharmacy First Service (PFS) Minor Illness and Urgent Medicines Supply fees` = format(`Cost of Pharmacy First Service (PFS) Minor Illness and Urgent Medicines Supply fees`, big.mark = ","))|>
   dplyr::rename("Year Month" = 1,
-                "Cost of Pharmacy First Service (PFS) clinical pathways consultation fees" = 2,
-                "Cost of Pharmacy First Service (PFS) clinical pathway fixed monthly payments" = 3,
-                "Cost of Pharmacy First Service (PFS) Minor Illness and Urgent Medicines Supply fees" = 4)
+                "Cost of Pharmacy First Service (PFS) clinical pathways consultation fees and fixed monthly payments" = 3,
+                "Cost of Pharmacy First Service (PFS) Minor Illness and Urgent Medicines Supply fees" = 2)
+
 figure_14 <- figure_14_data %>%
   nhsbsaVis::group_chart_hc(
     x = "YEAR_MONTH",
@@ -1815,10 +1829,12 @@ figure_14 <- figure_14_data %>%
 
 # figure 15a PFS UMS drug cost
 
-figure_15_data <- national_month_extract %>%
+figure_16_data <- national_month_extract %>%
   filter(APPLIANCE_DISPENSER_HIST == "N",YEAR_MONTH> 202401) %>%
   dplyr::select(YEAR_MONTH, pf_nic, pfcp_umsmireimbursement) %>%
   summarise(pf_nic =sum(pf_nic), pfcp_umsmireimbursement = sum(pfcp_umsmireimbursement)) %>%
+  mutate(pfcp_umsmireimbursement=case_when(YEAR_MONTH==202402~ NA,.default=pfcp_umsmireimbursement))%>%
+  mutate(across(c('pf_nic', 'pfcp_umsmireimbursement'), round, 2))%>%
   tidyr::pivot_longer(
     cols = c(pfcp_umsmireimbursement,pf_nic),
     names_to = "MEASURE",
@@ -1832,16 +1848,16 @@ figure_15_data <- national_month_extract %>%
                         MEASURE == "pf_nic" ~ "Total Cost of Drugs provided during Pharmacy First Service (PFS) Clinical Pathways")
   )
 #table data
-table_figure_15 <- figure_15_data |>
+table_figure_16 <- figure_16_data |>
   ungroup() |>
   tidyr::pivot_wider(names_from = MEASURE, values_from = VALUES) |>
   dplyr::mutate(`Total Cost of Drugs provided during Pharmacy First Service (PFS) Minor Illness and Urgent Medicines Supply` = format(`Total Cost of Drugs provided during Pharmacy First Service (PFS) Minor Illness and Urgent Medicines Supply`, big.mark = ","),
-                 `Total Cost of Drugs provided during Pharmacy First Service (PFS) Clinical Pathways` = format(`Total Cost of Drugs provided during Pharmacy First Service (PFS) Clinical Pathways`, big.mark = ","))|>
-  dplyr::rename("Financial year" = 1,
+                `Total Cost of Drugs provided during Pharmacy First Service (PFS) Clinical Pathways` = format(`Total Cost of Drugs provided during Pharmacy First Service (PFS) Clinical Pathways`, big.mark = ","))|>
+  dplyr::rename("Year Month" = 1,
                 "Total Cost of Drugs provided during Pharmacy First Service (PFS) Minor Illness and Urgent Medicines Supply" = 2,
                 "Total Cost of Drugs provided during Pharmacy First Service (PFS) Clinical Pathways" = 3)
-#figure 15 chart
-figure_15 <- figure_15_data %>%
+#figure 16 chart
+figure_16 <- figure_16_data %>%
   nhsbsaVis::group_chart_hc(
     x = "YEAR_MONTH",
     y = "VALUES",
@@ -1854,23 +1870,61 @@ figure_15 <- figure_15_data %>%
   ) %>%
   hc_xAxis(type = "datetime")
 
+# figure 15a PFS items
 
-#save.image("gps2425filename.RData")
+figure_15_data <- national_month_extract %>%
+  filter(APPLIANCE_DISPENSER_HIST == "N",YEAR_MONTH> 202401) %>%
+  dplyr::select(YEAR_MONTH, pf_items) %>%
+  summarise(pf_items =sum(pf_items)) %>%
+  tidyr::pivot_longer(
+    cols = c(pf_items),
+    names_to = "MEASURE",
+    values_to = "VALUES"
+  ) %>%
+  mutate(
+    YEAR_MONTH = base::as.Date(as.character(paste0(YEAR_MONTH,"01")), format = "%Y%m%d")
+  ) %>%
+  dplyr::mutate(
+    MEASURE = case_when(MEASURE == "pf_items" ~ "Total Number of Items provided during Pharmacy First Service (PFS) Clinical Pathways")
+  )
+#table data
+table_figure_15 <- figure_15_data |>
+  ungroup() |>
+  tidyr::pivot_wider(names_from = MEASURE, values_from = VALUES) |>
+  dplyr::mutate(`Total Number of Items provided during Pharmacy First Service (PFS) Clinical Pathways` = format(`Total Number of Items provided during Pharmacy First Service (PFS) Clinical Pathways`, big.mark = ","))|>
+  dplyr::rename("Year Month" = 1,
+                "Total Number of Items provided during Pharmacy First Service (PFS) Clinical Pathways" = 2)
+
+
+#figure 16 chart
+figure_15 <- figure_15_data %>%
+  nhsbsaVis::group_chart_hc(
+    x = "YEAR_MONTH",
+    y = "VALUES",
+    group = "MEASURE",
+    type = "line",
+    xLab = "Month",
+    yLab = "Value (GBP)",
+    title = ""
+  ) %>%
+  hc_xAxis(type = "datetime")
+
+save.image("gps2425.RData")
 
 
 # 7. render markdown ------------------------------------------------------
-  rmarkdown::render("gphs_annual_narrative_2425.Rmd",
-                    output_format = "html_document",
-                    output_file = "outputs/gphs_annual_2024_25_v001.html")
+rmarkdown::render("gphs_annual_narrative_2425.Rmd",
+                  output_format = "html_document",
+                  output_file = "outputs/gphs_annual_2024_25_v001.html")
 
-  rmarkdown::render("gphs_annual_narrative_2425.Rmd",
-                    output_format = "word_document",
-                    output_file = "outputs/gphs_annual_2024_25_v001.docx")
+rmarkdown::render("gphs_annual_narrative_2425.Rmd",
+                  output_format = "word_document",
+                  output_file = "outputs/gphs_annual_2024_25_v001.docx")
 
-  rmarkdown::render("gphs_background.Rmd",
-                    output_format = "html_document",
-                    output_file = "outputs/gphs_background_v001.html")
+rmarkdown::render("gphs_background.Rmd",
+                  output_format = "html_document",
+                  output_file = "outputs/gphs_background_v001.html")
 
-  rmarkdown::render("gphs_background.Rmd",
-                    output_format = "word_document",
-                    output_file = "outputs/gphs_background_v001.docx")
+rmarkdown::render("gphs_background.Rmd",
+                  output_format = "word_document",
+                  output_file = "outputs/gphs_background_v001.docx")

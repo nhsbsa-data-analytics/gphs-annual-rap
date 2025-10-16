@@ -591,7 +591,7 @@ national_month_extract <- function(con,
       hyp_items = sum(HYP_ITEMS,na.rm=TRUE),
       #total of NIC dispensed under pharmacy first hypertension
       hyp_nic = sum(HYP_NIC,na.rm=TRUE)
-      ) %>%
+    ) %>%
 
     dplyr::arrange(YEAR_MONTH, APPLIANCE_DISPENSER_HIST) %>%
     collect()
@@ -1179,7 +1179,7 @@ table_6 <- function(national_extract){
                        sum(flu_cost_total_csv),
                      `Total amount of fees received for Flu vaccine service (GBP)` =
                        sum(flu_fees_total_csv),
-                      `Pharmacies providing Hypertension service` =
+                     `Pharmacies providing Hypertension service` =
                        sum(NUM_HYPTEN_INC),
                      `Total cost of set up of Hypertension service (GBP)` =
                        sum(HYPTENSET_FEES),
@@ -1220,7 +1220,7 @@ table_6 <- function(national_extract){
                      `Total cost of  PFS UMS Reimbursement (GBP)` =
                        sum(pfcp_umsmireimbursement),
                      `Total items using PFS Clinical Pathways` =
-                     sum(pf_items),
+                       sum(pf_items),
                      `Total cost of items using PFS Clinical Pathways` =
                        sum(pf_nic),
                      `Pharmacies providing Hep C testing service` =
@@ -2136,7 +2136,9 @@ infoBox_border <- function(
   font-weight: bold;
   font-size: 18px;
   margin-top: 0px;
-  margin-bottom: 10px;'>", header, "</h4>
+  margin-bottom: 10px;
+  display: ", display,";'>",
+    header, "</p>
   <p style = 'color: ", fontColour, ";
   font-size: 16px;
   margin-top: 0px;
